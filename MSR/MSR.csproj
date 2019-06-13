@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\DBAccessAPI.cs" />
     <Compile Include="MSRMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
