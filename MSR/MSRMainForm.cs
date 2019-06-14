@@ -16,5 +16,21 @@ namespace MSR
         {
             InitializeComponent();
         }
+
+        private void AddStock_createTab_button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AddStockItemForm fAddStockItem = new AddStockItemForm();
+            fAddStockItem.ShowDialog();
+            this.Show();
+        }
+
+        private void AddNonStock_createTab_button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm();
+            fAddNonStockItem.ShowDialog();
+            this.Show();
+        }
     }
 }

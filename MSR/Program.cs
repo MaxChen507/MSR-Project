@@ -16,7 +16,16 @@ namespace MSR
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MSRMainForm());
+
+            LoginForm fLogin = new LoginForm();
+            if (fLogin.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new MSRMainForm());
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
     }
 }
