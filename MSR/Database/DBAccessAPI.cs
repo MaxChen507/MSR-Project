@@ -11,7 +11,7 @@ namespace MSR.Database
 {
     class DBAccessAPI
     {
-        private static string _connectionString = @"Data Source=BPAL-MCHEN;Initial Catalog=test;User ID=sa;Password=Bankers1!";
+        private static string _connectionString = @"Data Source=BPAL-MCHEN;Initial Catalog=MSR_Reg;User ID=sa;Password=Bankers1!";
         private static SqlConnection _cnn = null;
 
         public DBAccessAPI()

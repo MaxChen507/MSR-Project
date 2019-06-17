@@ -15,6 +15,12 @@ namespace MSR
         public MSRMainForm()
         {
             InitializeComponent();
+            RefreshDataGridViews();
+        }
+
+        private void RefreshDataGridViews()
+        {
+            
         }
 
         private void AddStock_createTab_button_Click(object sender, EventArgs e)
@@ -30,6 +36,14 @@ namespace MSR
             this.Hide();
             AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm();
             fAddNonStockItem.ShowDialog();
+            this.Show();
+        }
+
+        private void Test_ShowMSR_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ShowMSR fshowMSR = new ShowMSR();
+            fshowMSR.ShowDialog();
             this.Show();
         }
     }
