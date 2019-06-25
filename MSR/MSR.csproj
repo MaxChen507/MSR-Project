@@ -58,7 +58,8 @@
     <Compile Include="AddStockItemForm.Designer.cs">
       <DependentUpon>AddStockItemForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Database\DBAccessAPI.cs" />
+    <Compile Include="DatabaseAPI\DBAccessSingleton.cs" />
+    <Compile Include="DatabaseAPI\LoginAPI.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

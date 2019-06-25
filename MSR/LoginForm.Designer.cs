@@ -30,7 +30,7 @@
         {
             this.username_Login_label = new System.Windows.Forms.Label();
             this.username_Login_textBox = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.password_Login_textBox = new System.Windows.Forms.TextBox();
             this.password_Login_label = new System.Windows.Forms.Label();
             this.ok_Login_button = new System.Windows.Forms.Button();
             this.cancel_Login_button = new System.Windows.Forms.Button();
@@ -52,12 +52,13 @@
             this.username_Login_textBox.Size = new System.Drawing.Size(221, 20);
             this.username_Login_textBox.TabIndex = 1;
             // 
-            // textBox1
+            // password_Login_textBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(171, 101);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(221, 20);
-            this.textBox1.TabIndex = 3;
+            this.password_Login_textBox.Location = new System.Drawing.Point(171, 101);
+            this.password_Login_textBox.Name = "password_Login_textBox";
+            this.password_Login_textBox.PasswordChar = '*';
+            this.password_Login_textBox.Size = new System.Drawing.Size(221, 20);
+            this.password_Login_textBox.TabIndex = 3;
             // 
             // password_Login_label
             // 
@@ -95,7 +96,7 @@
             this.ClientSize = new System.Drawing.Size(404, 181);
             this.Controls.Add(this.cancel_Login_button);
             this.Controls.Add(this.ok_Login_button);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.password_Login_textBox);
             this.Controls.Add(this.password_Login_label);
             this.Controls.Add(this.username_Login_textBox);
             this.Controls.Add(this.username_Login_label);
@@ -110,7 +111,7 @@
 
         private System.Windows.Forms.Label username_Login_label;
         private System.Windows.Forms.TextBox username_Login_textBox;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox password_Login_textBox;
         private System.Windows.Forms.Label password_Login_label;
         private System.Windows.Forms.Button ok_Login_button;
         private System.Windows.Forms.Button cancel_Login_button;

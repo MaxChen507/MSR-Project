@@ -46,5 +46,16 @@ namespace MSR
                 reason_showMSR_label.Text = "Reason why you are declining the request";
             }
         }
+
+        private void ChangeDate_showMSR_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (changeDate_showMSR_checkBox.Checked) {
+                changeDate_showMSR_dateTimePicker.Visible = true;
+            }
+            else
+            {
+                changeDate_showMSR_dateTimePicker.Visible = false;
+            }
+        }
     }
 }

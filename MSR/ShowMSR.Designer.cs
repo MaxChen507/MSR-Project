@@ -36,6 +36,8 @@
             this.suggVendor_showMSR_textBox = new System.Windows.Forms.TextBox();
             this.suggVendor_showMSR_label = new System.Windows.Forms.Label();
             this.budget_showMSR_groupBox = new System.Windows.Forms.GroupBox();
+            this.budgetPool_showMSR_textBox = new System.Windows.Forms.TextBox();
+            this.budgetYear_showMSR_textBox = new System.Windows.Forms.TextBox();
             this.AFE_showMSR_label = new System.Windows.Forms.Label();
             this.AFE_showMSR_textBox = new System.Windows.Forms.TextBox();
             this.budgetPool_showMSR_label = new System.Windows.Forms.Label();
@@ -47,29 +49,27 @@
             this.project_showMSR_textBox = new System.Windows.Forms.TextBox();
             this.wellVL_showMSR_label = new System.Windows.Forms.Label();
             this.project_showMSR_label = new System.Windows.Forms.Label();
-            this.budgetYear_showMSR_textBox = new System.Windows.Forms.TextBox();
-            this.budgetPool_showMSR_textBox = new System.Windows.Forms.TextBox();
             this.info_showMSR_groupBox = new System.Windows.Forms.GroupBox();
             this.edit_showMSR_groupBox = new System.Windows.Forms.GroupBox();
+            this.saveChanges_showMSR_button = new System.Windows.Forms.Button();
+            this.undo_showMSR_button = new System.Windows.Forms.Button();
+            this.addNonStock_showMSR_button = new System.Windows.Forms.Button();
+            this.addStock_showMSR_button = new System.Windows.Forms.Button();
+            this.deleteItem_showMSR_button = new System.Windows.Forms.Button();
             this.approve_showMSR_groupBox = new System.Windows.Forms.GroupBox();
+            this.approve_showMSR_Button = new System.Windows.Forms.Button();
+            this.decline_showMSR_radioButton = new System.Windows.Forms.RadioButton();
+            this.needReview_showMSR_radioButton = new System.Windows.Forms.RadioButton();
+            this.approve_showMSR_radioButton = new System.Windows.Forms.RadioButton();
+            this.approval_showMSR_comboBox = new System.Windows.Forms.TextBox();
+            this.originator_showMSR_textBox = new System.Windows.Forms.TextBox();
             this.changeDate_showMSR_dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.changeDate_showMSR_checkBox = new System.Windows.Forms.CheckBox();
             this.approval_createTab_label = new System.Windows.Forms.Label();
             this.originator_showMSR_label = new System.Windows.Forms.Label();
-            this.originator_showMSR_textBox = new System.Windows.Forms.TextBox();
-            this.approval_showMSR_comboBox = new System.Windows.Forms.TextBox();
-            this.approve_showMSR_radioButton = new System.Windows.Forms.RadioButton();
-            this.needReview_showMSR_radioButton = new System.Windows.Forms.RadioButton();
-            this.decline_showMSR_radioButton = new System.Windows.Forms.RadioButton();
-            this.approve_showMSR_Button = new System.Windows.Forms.Button();
             this.reason_showMSR_groupBox = new System.Windows.Forms.GroupBox();
             this.reason_showMSR_richTextBox = new System.Windows.Forms.RichTextBox();
             this.reason_showMSR_label = new System.Windows.Forms.Label();
-            this.deleteItem_showMSR_button = new System.Windows.Forms.Button();
-            this.addStock_showMSR_button = new System.Windows.Forms.Button();
-            this.addNonStock_showMSR_button = new System.Windows.Forms.Button();
-            this.undo_showMSR_button = new System.Windows.Forms.Button();
-            this.saveChanges_showMSR_button = new System.Windows.Forms.Button();
             this.print_showMSR_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.showMSR_dataGridView)).BeginInit();
             this.vendorContact_showMSR_groupBox.SuspendLayout();
@@ -163,6 +163,26 @@
             this.budget_showMSR_groupBox.Size = new System.Drawing.Size(500, 100);
             this.budget_showMSR_groupBox.TabIndex = 10;
             this.budget_showMSR_groupBox.TabStop = false;
+            // 
+            // budgetPool_showMSR_textBox
+            // 
+            this.budgetPool_showMSR_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.budgetPool_showMSR_textBox.Location = new System.Drawing.Point(123, 39);
+            this.budgetPool_showMSR_textBox.Name = "budgetPool_showMSR_textBox";
+            this.budgetPool_showMSR_textBox.ReadOnly = true;
+            this.budgetPool_showMSR_textBox.Size = new System.Drawing.Size(121, 20);
+            this.budgetPool_showMSR_textBox.TabIndex = 8;
+            // 
+            // budgetYear_showMSR_textBox
+            // 
+            this.budgetYear_showMSR_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.budgetYear_showMSR_textBox.Location = new System.Drawing.Point(123, 13);
+            this.budgetYear_showMSR_textBox.Name = "budgetYear_showMSR_textBox";
+            this.budgetYear_showMSR_textBox.ReadOnly = true;
+            this.budgetYear_showMSR_textBox.Size = new System.Drawing.Size(121, 20);
+            this.budgetYear_showMSR_textBox.TabIndex = 6;
             // 
             // AFE_showMSR_label
             // 
@@ -272,26 +292,6 @@
             this.project_showMSR_label.TabIndex = 0;
             this.project_showMSR_label.Text = "PROJECT:";
             // 
-            // budgetYear_showMSR_textBox
-            // 
-            this.budgetYear_showMSR_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.budgetYear_showMSR_textBox.Location = new System.Drawing.Point(123, 13);
-            this.budgetYear_showMSR_textBox.Name = "budgetYear_showMSR_textBox";
-            this.budgetYear_showMSR_textBox.ReadOnly = true;
-            this.budgetYear_showMSR_textBox.Size = new System.Drawing.Size(121, 20);
-            this.budgetYear_showMSR_textBox.TabIndex = 6;
-            // 
-            // budgetPool_showMSR_textBox
-            // 
-            this.budgetPool_showMSR_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.budgetPool_showMSR_textBox.Location = new System.Drawing.Point(123, 39);
-            this.budgetPool_showMSR_textBox.Name = "budgetPool_showMSR_textBox";
-            this.budgetPool_showMSR_textBox.ReadOnly = true;
-            this.budgetPool_showMSR_textBox.Size = new System.Drawing.Size(121, 20);
-            this.budgetPool_showMSR_textBox.TabIndex = 8;
-            // 
             // info_showMSR_groupBox
             // 
             this.info_showMSR_groupBox.Location = new System.Drawing.Point(1035, 12);
@@ -315,6 +315,51 @@
             this.edit_showMSR_groupBox.TabStop = false;
             this.edit_showMSR_groupBox.Text = "Edit MSR";
             // 
+            // saveChanges_showMSR_button
+            // 
+            this.saveChanges_showMSR_button.Location = new System.Drawing.Point(29, 318);
+            this.saveChanges_showMSR_button.Name = "saveChanges_showMSR_button";
+            this.saveChanges_showMSR_button.Size = new System.Drawing.Size(200, 40);
+            this.saveChanges_showMSR_button.TabIndex = 23;
+            this.saveChanges_showMSR_button.Text = "Save Changes";
+            this.saveChanges_showMSR_button.UseVisualStyleBackColor = true;
+            // 
+            // undo_showMSR_button
+            // 
+            this.undo_showMSR_button.Location = new System.Drawing.Point(29, 248);
+            this.undo_showMSR_button.Name = "undo_showMSR_button";
+            this.undo_showMSR_button.Size = new System.Drawing.Size(200, 40);
+            this.undo_showMSR_button.TabIndex = 22;
+            this.undo_showMSR_button.Text = "Undo All Changes";
+            this.undo_showMSR_button.UseVisualStyleBackColor = true;
+            // 
+            // addNonStock_showMSR_button
+            // 
+            this.addNonStock_showMSR_button.Location = new System.Drawing.Point(29, 180);
+            this.addNonStock_showMSR_button.Name = "addNonStock_showMSR_button";
+            this.addNonStock_showMSR_button.Size = new System.Drawing.Size(200, 40);
+            this.addNonStock_showMSR_button.TabIndex = 21;
+            this.addNonStock_showMSR_button.Text = "Add Non Stock Items";
+            this.addNonStock_showMSR_button.UseVisualStyleBackColor = true;
+            // 
+            // addStock_showMSR_button
+            // 
+            this.addStock_showMSR_button.Location = new System.Drawing.Point(29, 106);
+            this.addStock_showMSR_button.Name = "addStock_showMSR_button";
+            this.addStock_showMSR_button.Size = new System.Drawing.Size(200, 40);
+            this.addStock_showMSR_button.TabIndex = 20;
+            this.addStock_showMSR_button.Text = "Add Stock Items";
+            this.addStock_showMSR_button.UseVisualStyleBackColor = true;
+            // 
+            // deleteItem_showMSR_button
+            // 
+            this.deleteItem_showMSR_button.Location = new System.Drawing.Point(29, 32);
+            this.deleteItem_showMSR_button.Name = "deleteItem_showMSR_button";
+            this.deleteItem_showMSR_button.Size = new System.Drawing.Size(200, 40);
+            this.deleteItem_showMSR_button.TabIndex = 19;
+            this.deleteItem_showMSR_button.Text = "Delete Selected Item";
+            this.deleteItem_showMSR_button.UseVisualStyleBackColor = true;
+            // 
             // approve_showMSR_groupBox
             // 
             this.approve_showMSR_groupBox.Controls.Add(this.approve_showMSR_Button);
@@ -333,6 +378,66 @@
             this.approve_showMSR_groupBox.TabIndex = 17;
             this.approve_showMSR_groupBox.TabStop = false;
             // 
+            // approve_showMSR_Button
+            // 
+            this.approve_showMSR_Button.Location = new System.Drawing.Point(189, 149);
+            this.approve_showMSR_Button.Name = "approve_showMSR_Button";
+            this.approve_showMSR_Button.Size = new System.Drawing.Size(105, 35);
+            this.approve_showMSR_Button.TabIndex = 18;
+            this.approve_showMSR_Button.Text = "Approve";
+            this.approve_showMSR_Button.UseVisualStyleBackColor = true;
+            // 
+            // decline_showMSR_radioButton
+            // 
+            this.decline_showMSR_radioButton.AutoSize = true;
+            this.decline_showMSR_radioButton.Location = new System.Drawing.Point(204, 88);
+            this.decline_showMSR_radioButton.Name = "decline_showMSR_radioButton";
+            this.decline_showMSR_radioButton.Size = new System.Drawing.Size(61, 17);
+            this.decline_showMSR_radioButton.TabIndex = 20;
+            this.decline_showMSR_radioButton.Text = "Decline";
+            this.decline_showMSR_radioButton.UseVisualStyleBackColor = true;
+            this.decline_showMSR_radioButton.CheckedChanged += new System.EventHandler(this.Decline_showMSR_radioButton_CheckedChanged);
+            // 
+            // needReview_showMSR_radioButton
+            // 
+            this.needReview_showMSR_radioButton.AutoSize = true;
+            this.needReview_showMSR_radioButton.Location = new System.Drawing.Point(204, 65);
+            this.needReview_showMSR_radioButton.Name = "needReview_showMSR_radioButton";
+            this.needReview_showMSR_radioButton.Size = new System.Drawing.Size(90, 17);
+            this.needReview_showMSR_radioButton.TabIndex = 19;
+            this.needReview_showMSR_radioButton.Text = "Need Review";
+            this.needReview_showMSR_radioButton.UseVisualStyleBackColor = true;
+            this.needReview_showMSR_radioButton.CheckedChanged += new System.EventHandler(this.NeedReview_showMSR_radioButton_CheckedChanged);
+            // 
+            // approve_showMSR_radioButton
+            // 
+            this.approve_showMSR_radioButton.AutoSize = true;
+            this.approve_showMSR_radioButton.Checked = true;
+            this.approve_showMSR_radioButton.Location = new System.Drawing.Point(204, 42);
+            this.approve_showMSR_radioButton.Name = "approve_showMSR_radioButton";
+            this.approve_showMSR_radioButton.Size = new System.Drawing.Size(65, 17);
+            this.approve_showMSR_radioButton.TabIndex = 18;
+            this.approve_showMSR_radioButton.TabStop = true;
+            this.approve_showMSR_radioButton.Text = "Approve";
+            this.approve_showMSR_radioButton.UseVisualStyleBackColor = true;
+            this.approve_showMSR_radioButton.CheckedChanged += new System.EventHandler(this.Approve_showMSR_radioButton_CheckedChanged);
+            // 
+            // approval_showMSR_comboBox
+            // 
+            this.approval_showMSR_comboBox.Location = new System.Drawing.Point(25, 96);
+            this.approval_showMSR_comboBox.Name = "approval_showMSR_comboBox";
+            this.approval_showMSR_comboBox.ReadOnly = true;
+            this.approval_showMSR_comboBox.Size = new System.Drawing.Size(131, 20);
+            this.approval_showMSR_comboBox.TabIndex = 12;
+            // 
+            // originator_showMSR_textBox
+            // 
+            this.originator_showMSR_textBox.Location = new System.Drawing.Point(25, 42);
+            this.originator_showMSR_textBox.Name = "originator_showMSR_textBox";
+            this.originator_showMSR_textBox.ReadOnly = true;
+            this.originator_showMSR_textBox.Size = new System.Drawing.Size(130, 20);
+            this.originator_showMSR_textBox.TabIndex = 9;
+            // 
             // changeDate_showMSR_dateTimePicker
             // 
             this.changeDate_showMSR_dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -340,16 +445,18 @@
             this.changeDate_showMSR_dateTimePicker.Name = "changeDate_showMSR_dateTimePicker";
             this.changeDate_showMSR_dateTimePicker.Size = new System.Drawing.Size(130, 20);
             this.changeDate_showMSR_dateTimePicker.TabIndex = 11;
+            this.changeDate_showMSR_dateTimePicker.Visible = false;
             // 
             // changeDate_showMSR_checkBox
             // 
             this.changeDate_showMSR_checkBox.AutoSize = true;
             this.changeDate_showMSR_checkBox.Location = new System.Drawing.Point(25, 141);
             this.changeDate_showMSR_checkBox.Name = "changeDate_showMSR_checkBox";
-            this.changeDate_showMSR_checkBox.Size = new System.Drawing.Size(131, 17);
+            this.changeDate_showMSR_checkBox.Size = new System.Drawing.Size(134, 17);
             this.changeDate_showMSR_checkBox.TabIndex = 0;
-            this.changeDate_showMSR_checkBox.Text = "Change Creation Date";
+            this.changeDate_showMSR_checkBox.Text = "Change Approval Date";
             this.changeDate_showMSR_checkBox.UseVisualStyleBackColor = true;
+            this.changeDate_showMSR_checkBox.CheckedChanged += new System.EventHandler(this.ChangeDate_showMSR_checkBox_CheckedChanged);
             // 
             // approval_createTab_label
             // 
@@ -368,66 +475,6 @@
             this.originator_showMSR_label.Size = new System.Drawing.Size(133, 13);
             this.originator_showMSR_label.TabIndex = 6;
             this.originator_showMSR_label.Text = "REQUEST ORIGINATOR:";
-            // 
-            // originator_showMSR_textBox
-            // 
-            this.originator_showMSR_textBox.Location = new System.Drawing.Point(25, 42);
-            this.originator_showMSR_textBox.Name = "originator_showMSR_textBox";
-            this.originator_showMSR_textBox.ReadOnly = true;
-            this.originator_showMSR_textBox.Size = new System.Drawing.Size(130, 20);
-            this.originator_showMSR_textBox.TabIndex = 9;
-            // 
-            // approval_showMSR_comboBox
-            // 
-            this.approval_showMSR_comboBox.Location = new System.Drawing.Point(25, 96);
-            this.approval_showMSR_comboBox.Name = "approval_showMSR_comboBox";
-            this.approval_showMSR_comboBox.ReadOnly = true;
-            this.approval_showMSR_comboBox.Size = new System.Drawing.Size(131, 20);
-            this.approval_showMSR_comboBox.TabIndex = 12;
-            // 
-            // approve_showMSR_radioButton
-            // 
-            this.approve_showMSR_radioButton.AutoSize = true;
-            this.approve_showMSR_radioButton.Checked = true;
-            this.approve_showMSR_radioButton.Location = new System.Drawing.Point(204, 42);
-            this.approve_showMSR_radioButton.Name = "approve_showMSR_radioButton";
-            this.approve_showMSR_radioButton.Size = new System.Drawing.Size(65, 17);
-            this.approve_showMSR_radioButton.TabIndex = 18;
-            this.approve_showMSR_radioButton.TabStop = true;
-            this.approve_showMSR_radioButton.Text = "Approve";
-            this.approve_showMSR_radioButton.UseVisualStyleBackColor = true;
-            this.approve_showMSR_radioButton.CheckedChanged += new System.EventHandler(this.Approve_showMSR_radioButton_CheckedChanged);
-            // 
-            // needReview_showMSR_radioButton
-            // 
-            this.needReview_showMSR_radioButton.AutoSize = true;
-            this.needReview_showMSR_radioButton.Location = new System.Drawing.Point(204, 65);
-            this.needReview_showMSR_radioButton.Name = "needReview_showMSR_radioButton";
-            this.needReview_showMSR_radioButton.Size = new System.Drawing.Size(90, 17);
-            this.needReview_showMSR_radioButton.TabIndex = 19;
-            this.needReview_showMSR_radioButton.Text = "Need Review";
-            this.needReview_showMSR_radioButton.UseVisualStyleBackColor = true;
-            this.needReview_showMSR_radioButton.CheckedChanged += new System.EventHandler(this.NeedReview_showMSR_radioButton_CheckedChanged);
-            // 
-            // decline_showMSR_radioButton
-            // 
-            this.decline_showMSR_radioButton.AutoSize = true;
-            this.decline_showMSR_radioButton.Location = new System.Drawing.Point(204, 88);
-            this.decline_showMSR_radioButton.Name = "decline_showMSR_radioButton";
-            this.decline_showMSR_radioButton.Size = new System.Drawing.Size(61, 17);
-            this.decline_showMSR_radioButton.TabIndex = 20;
-            this.decline_showMSR_radioButton.Text = "Decline";
-            this.decline_showMSR_radioButton.UseVisualStyleBackColor = true;
-            this.decline_showMSR_radioButton.CheckedChanged += new System.EventHandler(this.Decline_showMSR_radioButton_CheckedChanged);
-            // 
-            // approve_showMSR_Button
-            // 
-            this.approve_showMSR_Button.Location = new System.Drawing.Point(189, 149);
-            this.approve_showMSR_Button.Name = "approve_showMSR_Button";
-            this.approve_showMSR_Button.Size = new System.Drawing.Size(105, 35);
-            this.approve_showMSR_Button.TabIndex = 18;
-            this.approve_showMSR_Button.Text = "Approve";
-            this.approve_showMSR_Button.UseVisualStyleBackColor = true;
             // 
             // reason_showMSR_groupBox
             // 
@@ -459,51 +506,6 @@
             this.reason_showMSR_label.Size = new System.Drawing.Size(91, 13);
             this.reason_showMSR_label.TabIndex = 20;
             this.reason_showMSR_label.Text = "*Reason Approve";
-            // 
-            // deleteItem_showMSR_button
-            // 
-            this.deleteItem_showMSR_button.Location = new System.Drawing.Point(29, 32);
-            this.deleteItem_showMSR_button.Name = "deleteItem_showMSR_button";
-            this.deleteItem_showMSR_button.Size = new System.Drawing.Size(200, 40);
-            this.deleteItem_showMSR_button.TabIndex = 19;
-            this.deleteItem_showMSR_button.Text = "Delete Selected Item";
-            this.deleteItem_showMSR_button.UseVisualStyleBackColor = true;
-            // 
-            // addStock_showMSR_button
-            // 
-            this.addStock_showMSR_button.Location = new System.Drawing.Point(29, 106);
-            this.addStock_showMSR_button.Name = "addStock_showMSR_button";
-            this.addStock_showMSR_button.Size = new System.Drawing.Size(200, 40);
-            this.addStock_showMSR_button.TabIndex = 20;
-            this.addStock_showMSR_button.Text = "Add Stock Items";
-            this.addStock_showMSR_button.UseVisualStyleBackColor = true;
-            // 
-            // addNonStock_showMSR_button
-            // 
-            this.addNonStock_showMSR_button.Location = new System.Drawing.Point(29, 180);
-            this.addNonStock_showMSR_button.Name = "addNonStock_showMSR_button";
-            this.addNonStock_showMSR_button.Size = new System.Drawing.Size(200, 40);
-            this.addNonStock_showMSR_button.TabIndex = 21;
-            this.addNonStock_showMSR_button.Text = "Add Non Stock Items";
-            this.addNonStock_showMSR_button.UseVisualStyleBackColor = true;
-            // 
-            // undo_showMSR_button
-            // 
-            this.undo_showMSR_button.Location = new System.Drawing.Point(29, 248);
-            this.undo_showMSR_button.Name = "undo_showMSR_button";
-            this.undo_showMSR_button.Size = new System.Drawing.Size(200, 40);
-            this.undo_showMSR_button.TabIndex = 22;
-            this.undo_showMSR_button.Text = "Undo All Changes";
-            this.undo_showMSR_button.UseVisualStyleBackColor = true;
-            // 
-            // saveChanges_showMSR_button
-            // 
-            this.saveChanges_showMSR_button.Location = new System.Drawing.Point(29, 318);
-            this.saveChanges_showMSR_button.Name = "saveChanges_showMSR_button";
-            this.saveChanges_showMSR_button.Size = new System.Drawing.Size(200, 40);
-            this.saveChanges_showMSR_button.TabIndex = 23;
-            this.saveChanges_showMSR_button.Text = "Save Changes";
-            this.saveChanges_showMSR_button.UseVisualStyleBackColor = true;
             // 
             // print_showMSR_button
             // 

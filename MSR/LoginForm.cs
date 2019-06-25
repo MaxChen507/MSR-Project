@@ -19,10 +19,15 @@ namespace MSR
 
         private void Ok_Login_button_Click(object sender, EventArgs e)
         {            
-            Boolean loginSuccessFlag = true;
+            Boolean loginSuccessFlag = DatabaseAPI.DBAccessSingleton.Instance.LoginAPI.ValidateLogin(username_Login_textBox.Text, password_Login_textBox.Text);
+            
             if (loginSuccessFlag)
             {
                 this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Invalid username and password.");
             }
         }
 
