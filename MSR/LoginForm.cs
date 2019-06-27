@@ -23,6 +23,7 @@ namespace MSR
             
             if (loginSuccessFlag)
             {
+                SetUserSession();
                 this.DialogResult = DialogResult.OK;
             }
             else
@@ -34,6 +35,13 @@ namespace MSR
         private void Cancel_Login_button_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void SetUserSession()
+        {
+
+            //TO DO: Use DatabaseAPI to return an user session object and set to singleton
+            BusinessAPI.UserSessionSingleton.Instance._username = username_Login_textBox.Text;
         }
     }
 }

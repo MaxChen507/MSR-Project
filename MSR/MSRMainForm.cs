@@ -20,7 +20,8 @@ namespace MSR
 
         private void RefreshDataGridViews()
         {
-            
+            //testing
+            MessageBox.Show(BusinessAPI.UserSessionSingleton.Instance._username);
         }
 
         private void AddStock_createTab_button_Click(object sender, EventArgs e)
