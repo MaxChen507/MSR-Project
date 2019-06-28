@@ -15,7 +15,27 @@ namespace MSR
         public MSRMainForm()
         {
             InitializeComponent();
+            InitalizeBudgetFieldsSection();
             RefreshDataGridViews();
+        }
+
+        private void InitalizeBudgetFieldsSection()
+        {
+            //Full Date from server
+            //MessageBox.Show(DatabaseAPI.DBAccessSingleton.Instance.GetDateTime().ToString());
+
+            //Initialize Budget Year ComboBox
+            int currentYear = DatabaseAPI.DBAccessSingleton.Instance.GetDateTime().Year;
+
+            budgetYear_createTab_comboBox.Items.Add((currentYear - 1).ToString());
+            budgetYear_createTab_comboBox.Items.Add((currentYear).ToString());
+            budgetYear_createTab_comboBox.Items.Add((currentYear + 1).ToString());
+
+            //Initialize BP ComboBox
+            foreach (String item in BusinessAPI.BusinessSingleton.Instance.GetUniqueBP_List())
+            {
+                budgetPool_createTab_comboBox.Items.Add(item);
+            }
         }
 
         private void RefreshDataGridViews()

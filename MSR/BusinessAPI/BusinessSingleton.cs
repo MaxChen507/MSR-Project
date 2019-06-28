@@ -33,5 +33,11 @@ namespace MSR.BusinessAPI
             }
         }
 
+        public ICollection<String> GetUniqueBP_List()
+        {
+            ICollection<String> results = budgetInfo.Select(x => x.Bp_No).Distinct().ToList();
+
+            return results;
+        }
     }
 }

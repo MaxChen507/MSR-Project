@@ -50,7 +50,7 @@ namespace MSR.DatabaseAPI
         {
             ICollection<Domain.BudgetInfo> results = (
                                            from item in budgetInfoList
-                                           where item._Bp_No == Bp_No
+                                           where item.Bp_No == Bp_No
                                            select item
                                            ).ToList();
 

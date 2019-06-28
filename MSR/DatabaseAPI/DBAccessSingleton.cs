@@ -41,6 +41,37 @@ namespace MSR.DatabaseAPI
         public BudgetInfoAPI BudgetInfoAPI { get; private set; }
         public UserInfoAPI UserInfoAPI { get; private set; }
 
+        //DB_Server DateTime Methods
+        public DateTime GetDateTime()
+        {
+            DateTime dateTime = DateTime.MinValue;
+
+            _cnn = new SqlConnection(_connectionString);
+            SqlDataReader dataReader = null;
+
+            using (SqlCommand cmd = new SqlCommand("Select Getdate() AS DateTime", _cnn))
+            {
+                //cmd.CommandType = commandType;
+                //cmd.Parameters.AddRange(parameters);
+
+                _cnn.Open();
+
+                // When using CommandBehavior.CloseConnection, the connection will be closed when the
+                // IDataReader is closed.
+                dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (dataReader.Read())
+                {
+                    dateTime = dataReader.GetDateTime(0);
+
+                }
+
+            }
+
+            return dateTime;
+        }
+
+
         //Query Methods
         public SqlDataReader MyExecuteQuery(String queryString)
         {

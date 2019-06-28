@@ -8,13 +8,13 @@ namespace MSR.Domain
 {
     public class BudgetInfo
     {
-        public String _Bp_No { get; set; }
-        public String _AC_No { get; set; }
+        public String Bp_No { get; set; }
+        public String AC_No { get; set; }
 
         public BudgetInfo(String Bp_No, String AC_No)
         {
-            _Bp_No = Bp_No;
-            _AC_No = AC_No;
+            this.Bp_No = Bp_No;
+            this.AC_No = AC_No;
         }
 
     }
