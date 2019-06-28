@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MSR.BusinessAPI
+namespace MSR.Domain
 {
     public class BudgetInfo
     {
@@ -16,5 +16,6 @@ namespace MSR.BusinessAPI
             _Bp_No = Bp_No;
             _AC_No = AC_No;
         }
+
     }
 }

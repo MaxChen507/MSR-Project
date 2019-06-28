@@ -14,10 +14,10 @@ namespace MSR.DatabaseAPI
 
         }
 
-        //Bp_Ac_API Methods
-        public List<BudgetInfoDB> GetBudgetInfo_List(String DeptId)
+        //BudgetInfoAPI Methods
+        public List<Domain.BudgetInfo> GetBudgetInfo_List(String DeptId)
         {
-            ICollection<BudgetInfoDB> budgetInfoData = null;
+            ICollection<Domain.BudgetInfo> budgetInfoData = null;
 
             SqlParameter deptId_param = new SqlParameter("@deptId", Convert.ToInt32(DeptId));
             
@@ -28,14 +28,14 @@ namespace MSR.DatabaseAPI
 
             using (SqlDataReader dataReader = DBAccessSingleton.Instance.MyExecuteQuery(sql, sqlParametersList))
             {
-                budgetInfoData = new List<BudgetInfoDB>();
+                budgetInfoData = new List<Domain.BudgetInfo>();
 
                 while (dataReader.Read())
                 {
                     String bp_No = dataReader["Bp_No"].ToString();
                     String ac_No = dataReader["Ac_No"].ToString();
 
-                    BudgetInfoDB temp = new BudgetInfoDB(bp_No, ac_No);
+                    Domain.BudgetInfo temp = new Domain.BudgetInfo(bp_No, ac_No);
                     budgetInfoData.Add(temp);
                 }
 
@@ -45,15 +45,17 @@ namespace MSR.DatabaseAPI
             return budgetInfoData.ToList();
         }
 
-        public ICollection<BudgetInfoDB> GetFilterBudgetInfo_List(ICollection<BudgetInfoDB> budgetInfoList, string filterString)
+        //Where should this method belong?
+        public ICollection<Domain.BudgetInfo> GetFilterBudgetInfo_List(ICollection<Domain.BudgetInfo> budgetInfoList, string Bp_No)
         {
-            ICollection<BudgetInfoDB> results = (
+            ICollection<Domain.BudgetInfo> results = (
                                            from item in budgetInfoList
-                                           where item._Bp_No == filterString
+                                           where item._Bp_No == Bp_No
                                            select item
                                            ).ToList();
 
             return results;
         }
+
     }
 }

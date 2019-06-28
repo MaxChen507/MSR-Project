@@ -21,6 +21,7 @@ namespace MSR.DatabaseAPI
         {
             LoginAPI = new LoginAPI();
             BudgetInfoAPI = new BudgetInfoAPI();
+            UserInfoAPI = new UserInfoAPI();
         }
 
         public static DBAccessSingleton Instance
@@ -38,7 +39,7 @@ namespace MSR.DatabaseAPI
 
         public LoginAPI LoginAPI { get; private set; }
         public BudgetInfoAPI BudgetInfoAPI { get; private set; }
-
+        public UserInfoAPI UserInfoAPI { get; private set; }
 
         //Query Methods
         public SqlDataReader MyExecuteQuery(String queryString)

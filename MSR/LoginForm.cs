@@ -23,7 +23,7 @@ namespace MSR
             
             if (loginSuccessFlag)
             {
-                SetUserSession();
+                SetUserSession(username_Login_textBox.Text);
                 this.DialogResult = DialogResult.OK;
             }
             else
@@ -37,11 +37,17 @@ namespace MSR
             this.DialogResult = DialogResult.Cancel;
         }
 
-        private void SetUserSession()
+        private void SetUserSession(String username)
         {
-
             //TO DO: Use DatabaseAPI to return an user session object and set to singleton
-            BusinessAPI.UserSessionSingleton.Instance._username = username_Login_textBox.Text;
+
+            //Get domain object UserInfo and Set object to Business Singleton
+            BusinessAPI.BusinessSingleton.Instance.userInfo = DatabaseAPI.DBAccessSingleton.Instance.UserInfoAPI.GetUserInfo(username);
+
+            //Get domain object BudgetInfo and Set object to Business Singleton
+            BusinessAPI.BusinessSingleton.Instance.budgetInfo = DatabaseAPI.DBAccessSingleton.Instance.BudgetInfoAPI.GetBudgetInfo_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId);
+
+
         }
     }
 }
