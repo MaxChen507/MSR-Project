@@ -60,7 +60,7 @@
     </Compile>
     <Compile Include="BusinessAPI\BusinessSingleton.cs" />
     <Compile Include="DatabaseAPI\UserInfoAPI.cs" />
-    <Compile Include="Domain\BudgetInfo.cs" />
+    <Compile Include="Domain\Budget_ActivityInfo.cs" />
     <Compile Include="DatabaseAPI\BudgetInfoAPI.cs" />
     <Compile Include="DatabaseAPI\DBAccessSingleton.cs" />
     <Compile Include="DatabaseAPI\LoginAPI.cs" />

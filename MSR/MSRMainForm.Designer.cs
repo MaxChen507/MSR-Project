@@ -63,13 +63,13 @@
             this.wellVL_createTab_label = new System.Windows.Forms.Label();
             this.project_createTab_label = new System.Windows.Forms.Label();
             this.waitApproval_tabPage = new System.Windows.Forms.TabPage();
+            this.Test_ShowMSR = new System.Windows.Forms.Button();
             this.waitApprovalTab_dataGridView = new System.Windows.Forms.DataGridView();
             this.search_waitApprovalTab_groupBox = new System.Windows.Forms.GroupBox();
             this.idSearch_waitApprovalTab_textBox = new System.Windows.Forms.TextBox();
             this.idSearch_waitApprovalTab_label = new System.Windows.Forms.Label();
             this.MSRMain_menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Test_ShowMSR = new System.Windows.Forms.Button();
             this.mainMSR_tabControl.SuspendLayout();
             this.createNewMSR_tabPage.SuspendLayout();
             this.signDate_createTab_groupBox.SuspendLayout();
@@ -127,6 +127,7 @@
             // save_createTab_button
             // 
             this.save_createTab_button.AutoSize = true;
+            this.save_createTab_button.Enabled = false;
             this.save_createTab_button.Location = new System.Drawing.Point(436, 730);
             this.save_createTab_button.Name = "save_createTab_button";
             this.save_createTab_button.Size = new System.Drawing.Size(120, 50);
@@ -137,6 +138,7 @@
             // addNonStock_createTab_button
             // 
             this.addNonStock_createTab_button.AutoSize = true;
+            this.addNonStock_createTab_button.Enabled = false;
             this.addNonStock_createTab_button.Location = new System.Drawing.Point(436, 676);
             this.addNonStock_createTab_button.Name = "addNonStock_createTab_button";
             this.addNonStock_createTab_button.Size = new System.Drawing.Size(120, 50);
@@ -148,6 +150,7 @@
             // addStock_createTab_button
             // 
             this.addStock_createTab_button.AutoSize = true;
+            this.addStock_createTab_button.Enabled = false;
             this.addStock_createTab_button.Location = new System.Drawing.Point(436, 620);
             this.addStock_createTab_button.Name = "addStock_createTab_button";
             this.addStock_createTab_button.Size = new System.Drawing.Size(120, 50);
@@ -172,6 +175,7 @@
             // 
             // changeDate_createTab_dateTimePicker
             // 
+            this.changeDate_createTab_dateTimePicker.Enabled = false;
             this.changeDate_createTab_dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.changeDate_createTab_dateTimePicker.Location = new System.Drawing.Point(181, 45);
             this.changeDate_createTab_dateTimePicker.Name = "changeDate_createTab_dateTimePicker";
@@ -187,11 +191,13 @@
             this.changeDate_createTab_checkBox.TabIndex = 0;
             this.changeDate_createTab_checkBox.Text = "Change Creation Date";
             this.changeDate_createTab_checkBox.UseVisualStyleBackColor = true;
+            this.changeDate_createTab_checkBox.CheckedChanged += new System.EventHandler(this.ChangeDate_createTab_checkBox_CheckedChanged);
             // 
             // approval_createTab_comboBox
             // 
             this.approval_createTab_comboBox.BackColor = System.Drawing.SystemColors.Window;
             this.approval_createTab_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.approval_createTab_comboBox.Enabled = false;
             this.approval_createTab_comboBox.FormattingEnabled = true;
             this.approval_createTab_comboBox.Location = new System.Drawing.Point(25, 96);
             this.approval_createTab_comboBox.Name = "approval_createTab_comboBox";
@@ -211,6 +217,7 @@
             // 
             this.originator_createTab_comboBox.BackColor = System.Drawing.SystemColors.Window;
             this.originator_createTab_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.originator_createTab_comboBox.Enabled = false;
             this.originator_createTab_comboBox.FormattingEnabled = true;
             this.originator_createTab_comboBox.Location = new System.Drawing.Point(25, 42);
             this.originator_createTab_comboBox.Name = "originator_createTab_comboBox";
@@ -325,6 +332,7 @@
             this.budgetPool_createTab_comboBox.Name = "budgetPool_createTab_comboBox";
             this.budgetPool_createTab_comboBox.Size = new System.Drawing.Size(121, 21);
             this.budgetPool_createTab_comboBox.TabIndex = 9;
+            this.budgetPool_createTab_comboBox.SelectedIndexChanged += new System.EventHandler(this.BudgetPool_createTab_comboBox_SelectedIndexChanged);
             // 
             // AFE_createTab_textBox
             // 
@@ -444,6 +452,17 @@
             this.waitApproval_tabPage.Text = "MSRs Waiting for Approval";
             this.waitApproval_tabPage.UseVisualStyleBackColor = true;
             // 
+            // Test_ShowMSR
+            // 
+            this.Test_ShowMSR.AutoSize = true;
+            this.Test_ShowMSR.Location = new System.Drawing.Point(1013, 33);
+            this.Test_ShowMSR.Name = "Test_ShowMSR";
+            this.Test_ShowMSR.Size = new System.Drawing.Size(95, 23);
+            this.Test_ShowMSR.TabIndex = 2;
+            this.Test_ShowMSR.Text = "Test_ShowMSR";
+            this.Test_ShowMSR.UseVisualStyleBackColor = true;
+            this.Test_ShowMSR.Click += new System.EventHandler(this.Test_ShowMSR_Click);
+            // 
             // waitApprovalTab_dataGridView
             // 
             this.waitApprovalTab_dataGridView.AllowUserToAddRows = false;
@@ -497,17 +516,6 @@
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "Menu";
-            // 
-            // Test_ShowMSR
-            // 
-            this.Test_ShowMSR.AutoSize = true;
-            this.Test_ShowMSR.Location = new System.Drawing.Point(1013, 33);
-            this.Test_ShowMSR.Name = "Test_ShowMSR";
-            this.Test_ShowMSR.Size = new System.Drawing.Size(95, 23);
-            this.Test_ShowMSR.TabIndex = 2;
-            this.Test_ShowMSR.Text = "Test_ShowMSR";
-            this.Test_ShowMSR.UseVisualStyleBackColor = true;
-            this.Test_ShowMSR.Click += new System.EventHandler(this.Test_ShowMSR_Click);
             // 
             // MSRMainForm
             // 

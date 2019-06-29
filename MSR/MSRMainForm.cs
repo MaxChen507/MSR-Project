@@ -15,11 +15,11 @@ namespace MSR
         public MSRMainForm()
         {
             InitializeComponent();
-            InitalizeBudgetFieldsSection();
+            InitalizeStartingFields();
             RefreshDataGridViews();
         }
 
-        private void InitalizeBudgetFieldsSection()
+        private void InitalizeStartingFields()
         {
             //Full Date from server
             //MessageBox.Show(DatabaseAPI.DBAccessSingleton.Instance.GetDateTime().ToString());
@@ -36,6 +36,14 @@ namespace MSR
             {
                 budgetPool_createTab_comboBox.Items.Add(item);
             }
+
+            //Initialize Originator Combobox Selected Item
+            originator_createTab_comboBox.Enabled = true;
+            originator_createTab_comboBox.Items.Add(BusinessAPI.BusinessSingleton.Instance.userInfo.Username);
+            originator_createTab_comboBox.SelectedItem = BusinessAPI.BusinessSingleton.Instance.userInfo.Username;
+
+            //Initialize DateTime Picker
+            changeDate_createTab_dateTimePicker.Value = DatabaseAPI.DBAccessSingleton.Instance.GetDateTime();
         }
 
         private void RefreshDataGridViews()
@@ -66,6 +74,37 @@ namespace MSR
             ShowMSR fshowMSR = new ShowMSR();
             fshowMSR.ShowDialog();
             this.Show();
+        }
+
+        private void BudgetPool_createTab_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Clear then Populate Approval Combobox
+            approval_createTab_comboBox.Items.Clear();
+            approval_createTab_comboBox.Enabled = true;
+            foreach (String item in DatabaseAPI.DBAccessSingleton.Instance.BudgetInfoAPI.GetBudgetHolder_List(budgetPool_createTab_comboBox.Text))
+            {
+                approval_createTab_comboBox.Items.Add(item);
+            }
+
+            addStock_createTab_button.Enabled = true;
+            addNonStock_createTab_button.Enabled = true;
+
+
+            //TODO:
+        }
+
+        private void ChangeDate_createTab_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if(changeDate_createTab_checkBox.Checked)
+            {
+                changeDate_createTab_dateTimePicker.Enabled = true;
+            }
+            else
+            {
+                changeDate_createTab_dateTimePicker.Enabled = false;
+                changeDate_createTab_dateTimePicker.Value = DatabaseAPI.DBAccessSingleton.Instance.GetDateTime();
+            }
+            
         }
     }
 }
