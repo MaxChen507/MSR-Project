@@ -55,7 +55,7 @@ namespace MSR
         private void AddStock_createTab_button_Click(object sender, EventArgs e)
         {
             this.Hide();
-            AddStockItemForm fAddStockItem = new AddStockItemForm();
+            AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_createTab_comboBox.Text);
             fAddStockItem.ShowDialog();
             this.Show();
         }

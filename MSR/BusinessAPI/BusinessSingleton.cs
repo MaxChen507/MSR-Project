@@ -44,7 +44,7 @@ namespace MSR.BusinessAPI
         {
             ICollection<String> results = (
                                            from item in budgetInfo
-                                           where item.Bp_No == Bp_No
+                                           where item.Bp_No.Equals(Bp_No)
                                            select item.AC_No
                                            ).ToList();
 

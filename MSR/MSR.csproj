@@ -59,11 +59,13 @@
       <DependentUpon>AddStockItemForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BusinessAPI\BusinessSingleton.cs" />
+    <Compile Include="DatabaseAPI\StockItemsAPI.cs" />
     <Compile Include="DatabaseAPI\UserInfoAPI.cs" />
     <Compile Include="Domain\Budget_ActivityInfo.cs" />
     <Compile Include="DatabaseAPI\BudgetInfoAPI.cs" />
     <Compile Include="DatabaseAPI\DBAccessSingleton.cs" />
     <Compile Include="DatabaseAPI\LoginAPI.cs" />
+    <Compile Include="Domain\StockItems.cs" />
     <Compile Include="Domain\UserInfo.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
