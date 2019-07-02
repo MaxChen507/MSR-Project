@@ -47,7 +47,8 @@ namespace MSR
             //Get domain object BudgetInfo and Set object to Business Singleton
             BusinessAPI.BusinessSingleton.Instance.budgetInfo = DatabaseAPI.DBAccessSingleton.Instance.BudgetInfoAPI.GetBudgetInfo_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId);
 
-
+            //Initalize shared FormItems Data List to Business Singleton
+            BusinessAPI.BusinessSingleton.Instance.formItemList = new List<Domain.FormItems>();
         }
     }
 }

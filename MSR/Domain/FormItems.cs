@@ -14,10 +14,12 @@ namespace MSR.Domain
         public String Unit { get; }
         public String UnitPrice { get; }
         public String Currency { get; }
+        public String ROS_Date { get; }
+        public String Comments { get; }
         public String AC_No { get; }
-        
-        
-        public FormItems(String ItemCode, String ItemDesc, String Quantity, String Unit, String UnitPrice, String Currency, String AC_No)
+
+
+        public FormItems(String ItemCode, String ItemDesc, String Quantity, String Unit, String UnitPrice, String Currency, String ROS_Date, String Comments, String AC_No)
         {
             this.ItemCode = ItemCode;
             this.ItemDesc = ItemDesc;
@@ -25,6 +27,8 @@ namespace MSR.Domain
             this.Unit = Unit;
             this.UnitPrice = UnitPrice;
             this.Currency = Currency;
+            this.ROS_Date = ROS_Date;
+            this.Comments = Comments;
             this.AC_No = AC_No;
         }
     }

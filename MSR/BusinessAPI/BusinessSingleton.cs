@@ -15,6 +15,8 @@ namespace MSR.BusinessAPI
         public ICollection<Domain.Budget_ActivityInfo> budgetInfo { get; set; }
         public Domain.UserInfo userInfo { get; set; }
 
+        public ICollection<Domain.FormItems> formItemList { get; set; }
+
         private BusinessSingleton()
         {
             

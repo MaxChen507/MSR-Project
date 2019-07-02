@@ -36,6 +36,11 @@
             this.applyClose_AddStock_button = new System.Windows.Forms.Button();
             this.itemList_addStock_dataGridView = new System.Windows.Forms.DataGridView();
             this.addList_addStock_dataGridView = new System.Windows.Forms.DataGridView();
+            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.itemList_addStock_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addList_addStock_dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -113,13 +118,49 @@
             // addList_addStock_dataGridView
             // 
             this.addList_addStock_dataGridView.AllowUserToAddRows = false;
-            this.addList_addStock_dataGridView.AllowUserToDeleteRows = false;
+            this.addList_addStock_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.addList_addStock_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.addList_addStock_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ItemCode,
+            this.ItemDesc,
+            this.Quantity,
+            this.Unit,
+            this.AC_No});
             this.addList_addStock_dataGridView.Location = new System.Drawing.Point(12, 294);
             this.addList_addStock_dataGridView.Name = "addList_addStock_dataGridView";
             this.addList_addStock_dataGridView.ReadOnly = true;
             this.addList_addStock_dataGridView.Size = new System.Drawing.Size(776, 240);
             this.addList_addStock_dataGridView.TabIndex = 7;
+            // 
+            // ItemCode
+            // 
+            this.ItemCode.HeaderText = "ItemCode";
+            this.ItemCode.Name = "ItemCode";
+            this.ItemCode.ReadOnly = true;
+            // 
+            // ItemDesc
+            // 
+            this.ItemDesc.HeaderText = "ItemDesc";
+            this.ItemDesc.Name = "ItemDesc";
+            this.ItemDesc.ReadOnly = true;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            // 
+            // Unit
+            // 
+            this.Unit.HeaderText = "Unit";
+            this.Unit.Name = "Unit";
+            this.Unit.ReadOnly = true;
+            // 
+            // AC_No
+            // 
+            this.AC_No.HeaderText = "AC_No";
+            this.AC_No.Name = "AC_No";
+            this.AC_No.ReadOnly = true;
             // 
             // AddStockItemForm
             // 
@@ -153,5 +194,10 @@
         private System.Windows.Forms.Button applyClose_AddStock_button;
         private System.Windows.Forms.DataGridView itemList_addStock_dataGridView;
         private System.Windows.Forms.DataGridView addList_addStock_dataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AC_No;
     }
 }

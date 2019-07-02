@@ -70,6 +70,13 @@
             this.idSearch_waitApprovalTab_label = new System.Windows.Forms.Label();
             this.MSRMain_menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainMSR_tabControl.SuspendLayout();
             this.createNewMSR_tabPage.SuspendLayout();
             this.signDate_createTab_groupBox.SuspendLayout();
@@ -236,11 +243,18 @@
             // createTab_dataGridView
             // 
             this.createTab_dataGridView.AllowUserToAddRows = false;
-            this.createTab_dataGridView.AllowUserToDeleteRows = false;
+            this.createTab_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.createTab_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.createTab_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ItemCode,
+            this.ItemDesc,
+            this.Quantity,
+            this.Unit,
+            this.UnitPrice,
+            this.Currency,
+            this.AC_No});
             this.createTab_dataGridView.Location = new System.Drawing.Point(17, 214);
             this.createTab_dataGridView.Name = "createTab_dataGridView";
-            this.createTab_dataGridView.ReadOnly = true;
             this.createTab_dataGridView.Size = new System.Drawing.Size(1006, 400);
             this.createTab_dataGridView.TabIndex = 8;
             // 
@@ -517,6 +531,43 @@
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "Menu";
             // 
+            // ItemCode
+            // 
+            this.ItemCode.HeaderText = "ItemCode";
+            this.ItemCode.Name = "ItemCode";
+            this.ItemCode.ReadOnly = true;
+            // 
+            // ItemDesc
+            // 
+            this.ItemDesc.HeaderText = "ItemDesc";
+            this.ItemDesc.Name = "ItemDesc";
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            // 
+            // Unit
+            // 
+            this.Unit.HeaderText = "Unit";
+            this.Unit.Name = "Unit";
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.HeaderText = "UnitPrice";
+            this.UnitPrice.Name = "UnitPrice";
+            // 
+            // Currency
+            // 
+            this.Currency.HeaderText = "Currency";
+            this.Currency.Name = "Currency";
+            // 
+            // AC_No
+            // 
+            this.AC_No.HeaderText = "AC_No";
+            this.AC_No.Name = "AC_No";
+            this.AC_No.ReadOnly = true;
+            // 
             // MSRMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -596,6 +647,13 @@
         private System.Windows.Forms.Label idSearch_waitApprovalTab_label;
         private System.Windows.Forms.DataGridView waitApprovalTab_dataGridView;
         private System.Windows.Forms.Button Test_ShowMSR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Currency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AC_No;
     }
 }
 

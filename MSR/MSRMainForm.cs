@@ -19,7 +19,7 @@ namespace MSR
         {
             InitializeComponent();
             InitalizeStartingFields();
-            RefreshDataGridViews();
+            RefreshDataGridView();
         }
 
         private void InitalizeStartingFields()
@@ -47,19 +47,60 @@ namespace MSR
 
             //Initialize DateTime Picker
             changeDate_createTab_dateTimePicker.Value = DatabaseAPI.DBAccessSingleton.Instance.GetDateTime();
+
         }
 
-        private void RefreshDataGridViews()
+        private void RefreshDataGridView()
         {
-            //testing
-            //MessageBox.Show("Testing " + BusinessAPI.BusinessSingleton.Instance.userInfo.Username);
+            //DGV clear
+            createTab_dataGridView.DataSource = null;
+            createTab_dataGridView.Rows.Clear();
+            createTab_dataGridView.Refresh();
+
+            createTab_dataGridView.ClearSelection();
+
+            //Populate from Singleton List
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList)
+            {
+                createTab_dataGridView.Rows.Add(item.ItemCode, item.ItemDesc, "1", item.Unit, "", "", item.AC_No);
+            }
+        }
+
+        private void UpdateBusinessSingletonFormItemList()
+        {
+            //Data List Initialization
+            ICollection<Domain.FormItems> tempData_List = new List<Domain.FormItems>();
+
+            //Copy data from data grid view and populate addListData
+            foreach (DataGridViewRow row in createTab_dataGridView.Rows)
+            {
+                String ItemCode = row.Cells["ItemCode"].FormattedValue.ToString();
+                String ItemDesc = row.Cells["ItemDesc"].FormattedValue.ToString();
+                String Unit = row.Cells["Unit"].FormattedValue.ToString();
+                String AC_No = row.Cells["AC_No"].FormattedValue.ToString();
+
+                Domain.FormItems addItem = new Domain.FormItems(ItemCode, ItemDesc, "1", Unit, "", "", "", "", AC_No);
+
+                tempData_List.Add(addItem);
+            }
+
+            //Assigns temp List to singleton List
+            BusinessAPI.BusinessSingleton.Instance.formItemList = tempData_List;
         }
 
         private void AddStock_createTab_button_Click(object sender, EventArgs e)
         {
             this.Hide();
+
+            //Save state of DGV
+            UpdateBusinessSingletonFormItemList();
+
             AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_createTab_comboBox.Text);
             fAddStockItem.ShowDialog();
+
+            //Update state of DGV
+            RefreshDataGridView();
+
             this.Show();
         }
 

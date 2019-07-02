@@ -59,22 +59,51 @@ namespace MSR
             addList_addStock_dataGridView.Rows.Clear();
             addList_addStock_dataGridView.Refresh();
 
-            //SingletonDGV reinitialize
-            UserInterfaceAPI.UI_Singleton.Instance.ReInitializeDataSource();
-            addList_addStock_dataGridView.DataSource = UserInterfaceAPI.UI_Singleton.Instance.mainDGV;
-
             addList_addStock_dataGridView.ClearSelection();
+
+            //Populate from Singleton List
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList)
+            {
+                addList_addStock_dataGridView.Rows.Add(item.ItemCode, item.ItemDesc, "1", item.Unit, "", "", item.AC_No);
+            }
+
+        }
+
+        private void UpdateBusinessSingletonFormItemList()
+        {
+            //Data List Initialization
+            ICollection<Domain.FormItems> formItemData_List = new List<Domain.FormItems>();
+
+            //Copy data from data grid view and populate addListData
+            foreach (DataGridViewRow row in addList_addStock_dataGridView.Rows)
+            {
+                String ItemCode = row.Cells["ItemCode"].FormattedValue.ToString();
+                String ItemDesc = row.Cells["ItemDesc"].FormattedValue.ToString();
+                String Unit = row.Cells["Unit"].FormattedValue.ToString();
+                String AC_No = row.Cells["AC_No"].FormattedValue.ToString();
+
+                Domain.FormItems addItem = new Domain.FormItems(ItemCode, ItemDesc, "1", Unit, "", "", "", "", AC_No);
+
+                formItemData_List.Add(addItem);
+            }
+
+            BusinessAPI.BusinessSingleton.Instance.formItemList = formItemData_List;
         }
 
         private void ApplyClose_AddStock_button_Click(object sender, EventArgs e)
         {
-            //Must clear all datagridviews when closing a form
-            addList_addStock_dataGridView.Rows.Clear();
-            addList_addStock_dataGridView.Refresh();
+            //Save state of DGV
+            UpdateBusinessSingletonFormItemList();
 
-            itemList_addStock_dataGridView.Rows.Clear();
-            itemList_addStock_dataGridView.Refresh();
-
+            //testing
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList)
+            {
+                sb.Append(item.ItemCode);
+                sb.Append(Environment.NewLine);
+            }
+            MessageBox.Show(sb.ToString());
+                       
             this.Close();
         }
 
@@ -108,16 +137,9 @@ namespace MSR
                 String ItemCode = itemList_addStock_dataGridView.SelectedRows[0].Cells["ItemCode"].FormattedValue.ToString();
                 String ItemDesc = itemList_addStock_dataGridView.SelectedRows[0].Cells["ItemDesc"].FormattedValue.ToString();
                 String Unit = itemList_addStock_dataGridView.SelectedRows[0].Cells["Unit"].FormattedValue.ToString();
-                String LookUp = itemList_addStock_dataGridView.SelectedRows[0].Cells["LookUp"].FormattedValue.ToString();
-                String BarCode = itemList_addStock_dataGridView.SelectedRows[0].Cells["BarCode"].FormattedValue.ToString();
                 String AC_No = itemList_addStock_dataGridView.SelectedRows[0].Cells["AC_No"].FormattedValue.ToString();
-                String ActiveFlag = itemList_addStock_dataGridView.SelectedRows[0].Cells["ItemDesc"].FormattedValue.ToString();
 
-                Domain.FormItems addItem = new Domain.FormItems(ItemCode, ItemDesc, "1", Unit, "", "", AC_No);
-
-                UserInterfaceAPI.UI_Singleton.Instance.formItemsList.Add(addItem);
-
-                AddListDGV_Load();
+                addList_addStock_dataGridView.Rows.Add(ItemCode, ItemDesc, "1", Unit, AC_No);
             }
 
         }
