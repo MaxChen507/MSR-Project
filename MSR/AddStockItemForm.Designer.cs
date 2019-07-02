@@ -83,6 +83,7 @@
             this.addItem_AddStock_button.TabIndex = 4;
             this.addItem_AddStock_button.Text = "Add Selected Item";
             this.addItem_AddStock_button.UseVisualStyleBackColor = true;
+            this.addItem_AddStock_button.Click += new System.EventHandler(this.AddItem_AddStock_button_Click);
             // 
             // applyClose_AddStock_button
             // 
@@ -99,10 +100,13 @@
             // 
             this.itemList_addStock_dataGridView.AllowUserToAddRows = false;
             this.itemList_addStock_dataGridView.AllowUserToDeleteRows = false;
+            this.itemList_addStock_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.itemList_addStock_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.itemList_addStock_dataGridView.Location = new System.Drawing.Point(12, 57);
+            this.itemList_addStock_dataGridView.MultiSelect = false;
             this.itemList_addStock_dataGridView.Name = "itemList_addStock_dataGridView";
             this.itemList_addStock_dataGridView.ReadOnly = true;
+            this.itemList_addStock_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.itemList_addStock_dataGridView.Size = new System.Drawing.Size(776, 215);
             this.itemList_addStock_dataGridView.TabIndex = 6;
             // 

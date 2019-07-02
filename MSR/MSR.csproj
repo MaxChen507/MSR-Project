@@ -65,6 +65,7 @@
     <Compile Include="DatabaseAPI\BudgetInfoAPI.cs" />
     <Compile Include="DatabaseAPI\DBAccessSingleton.cs" />
     <Compile Include="DatabaseAPI\LoginAPI.cs" />
+    <Compile Include="Domain\FormItems.cs" />
     <Compile Include="Domain\StockItems.cs" />
     <Compile Include="Domain\UserInfo.cs" />
     <Compile Include="LoginForm.cs">
@@ -87,6 +88,7 @@
     <Compile Include="ShowMSR.Designer.cs">
       <DependentUpon>ShowMSR.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserInterfaceAPI\UI_Singleton.cs" />
     <EmbeddedResource Include="AddNonStockItemForm.resx">
       <DependentUpon>AddNonStockItemForm.cs</DependentUpon>
     </EmbeddedResource>

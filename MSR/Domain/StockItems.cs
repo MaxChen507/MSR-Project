@@ -25,5 +25,6 @@ namespace MSR.Domain
             this.Unit = Unit;
             this.ActiveFlag = ActiveFlag;
         }
+
     }
 }

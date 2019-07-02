@@ -12,6 +12,9 @@ namespace MSR
 {
     public partial class MSRMainForm : Form
     {
+        //Binding Source Initialization
+        BindingSource createTabDGV_source { get; set; }
+        
         public MSRMainForm()
         {
             InitializeComponent();
@@ -49,7 +52,7 @@ namespace MSR
         private void RefreshDataGridViews()
         {
             //testing
-            MessageBox.Show("Testing " + BusinessAPI.BusinessSingleton.Instance.userInfo.Username);
+            //MessageBox.Show("Testing " + BusinessAPI.BusinessSingleton.Instance.userInfo.Username);
         }
 
         private void AddStock_createTab_button_Click(object sender, EventArgs e)
