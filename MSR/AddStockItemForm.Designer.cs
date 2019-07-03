@@ -51,21 +51,22 @@
             this.search_AddStock_label.AutoSize = true;
             this.search_AddStock_label.Location = new System.Drawing.Point(12, 34);
             this.search_AddStock_label.Name = "search_AddStock_label";
-            this.search_AddStock_label.Size = new System.Drawing.Size(44, 13);
+            this.search_AddStock_label.Size = new System.Drawing.Size(100, 13);
             this.search_AddStock_label.TabIndex = 0;
-            this.search_AddStock_label.Text = "Search:";
+            this.search_AddStock_label.Text = "Search Description:";
             // 
             // search_AddStock_textBox
             // 
-            this.search_AddStock_textBox.Location = new System.Drawing.Point(62, 31);
+            this.search_AddStock_textBox.Location = new System.Drawing.Point(118, 32);
             this.search_AddStock_textBox.Name = "search_AddStock_textBox";
-            this.search_AddStock_textBox.Size = new System.Drawing.Size(100, 20);
+            this.search_AddStock_textBox.Size = new System.Drawing.Size(151, 20);
             this.search_AddStock_textBox.TabIndex = 1;
+            this.search_AddStock_textBox.TextChanged += new System.EventHandler(this.Search_AddStock_textBox_TextChanged);
             // 
             // lookup_AddStock_label
             // 
             this.lookup_AddStock_label.AutoSize = true;
-            this.lookup_AddStock_label.Location = new System.Drawing.Point(172, 34);
+            this.lookup_AddStock_label.Location = new System.Drawing.Point(275, 34);
             this.lookup_AddStock_label.Name = "lookup_AddStock_label";
             this.lookup_AddStock_label.Size = new System.Drawing.Size(71, 13);
             this.lookup_AddStock_label.TabIndex = 2;
@@ -75,10 +76,11 @@
             // 
             this.lookup_AddStock_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lookup_AddStock_comboBox.FormattingEnabled = true;
-            this.lookup_AddStock_comboBox.Location = new System.Drawing.Point(249, 31);
+            this.lookup_AddStock_comboBox.Location = new System.Drawing.Point(352, 30);
             this.lookup_AddStock_comboBox.Name = "lookup_AddStock_comboBox";
             this.lookup_AddStock_comboBox.Size = new System.Drawing.Size(121, 21);
             this.lookup_AddStock_comboBox.TabIndex = 3;
+            this.lookup_AddStock_comboBox.SelectedIndexChanged += new System.EventHandler(this.Lookup_AddStock_comboBox_SelectedIndexChanged);
             // 
             // addItem_AddStock_button
             // 

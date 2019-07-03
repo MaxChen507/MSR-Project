@@ -64,5 +64,26 @@ namespace MSR.DatabaseAPI
             }
             return stockItemData;
         }
+
+        public ICollection<Domain.StockItems> GetFilterStockItem_List(ICollection<Domain.StockItems> stockItemList, string searchString, string lookUpString)
+        {
+            ICollection<Domain.StockItems> results = (
+                                           from item in stockItemList
+                                           where item.ItemDesc.ToLower().Contains(searchString.ToLower()) && item.LookUp.Contains(lookUpString)
+                                           select item
+                                           ).ToList();
+
+            return results;
+        }
+
+        public ICollection<String> GetLookUpCode_List(ICollection<Domain.StockItems> stockItemList)
+        {
+            ICollection<String> results = (
+                                from item in stockItemList
+                                select item.LookUp
+                                ).Distinct().ToList();
+
+            return results;
+        }
     }
 }

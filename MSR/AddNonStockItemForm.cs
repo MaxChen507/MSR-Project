@@ -110,6 +110,12 @@ namespace MSR
 
         private void AddItem_addNonStock_button_Click(object sender, EventArgs e)
         {
+            if (budgetInfo_addNonStock_dataGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select an item.");
+                return;
+            }
+
             Boolean itemExists = false;
 
 

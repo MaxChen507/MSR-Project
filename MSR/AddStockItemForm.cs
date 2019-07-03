@@ -25,8 +25,20 @@ namespace MSR
         {
             InitializeComponent();
             this.Bp_No = Bp_No;
+            InitializeStartingFields();
+        }
+
+        private void InitializeStartingFields()
+        {
             ItemListDGV_Load();
             AddListDGV_Load();
+
+            //Initialize LookUp ComboBox
+            lookup_AddStock_comboBox.Items.Add("");
+            foreach (String item in DatabaseAPI.DBAccessSingleton.Instance.StockItemsAPI.GetLookUpCode_List(itemListData))
+            {
+                lookup_AddStock_comboBox.Items.Add(item);
+            }
         }
 
         private void ItemListDGV_Load()
@@ -110,6 +122,13 @@ namespace MSR
 
         private void AddItem_AddStock_button_Click(object sender, EventArgs e)
         {
+
+            if(itemList_addStock_dataGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select an item.");
+                return;
+            }
+
             Boolean itemExists = false;
 
 
@@ -144,6 +163,32 @@ namespace MSR
                 addList_addStock_dataGridView.Rows.Add(BudgetPool, ItemCode, ItemDesc, "1", Unit, AC_No);
             }
 
+        }
+
+        private void PopulateFilteredItemListDGV()
+        {
+            ICollection<Domain.StockItems> stockItemDatafilter = DatabaseAPI.DBAccessSingleton.Instance.StockItemsAPI.GetFilterStockItem_List(itemListData, search_AddStock_textBox.Text.ToString(), lookup_AddStock_comboBox.Text.ToString());
+
+            if (stockItemDatafilter == null)
+            {
+                MessageBox.Show("DB error");
+                return;
+            }
+
+            itemListDGV_source.DataSource = stockItemDatafilter;
+            itemList_addStock_dataGridView.DataSource = itemListDGV_source;
+
+            itemList_addStock_dataGridView.ClearSelection();
+        }
+
+        private void Search_AddStock_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredItemListDGV();
+        }
+
+        private void Lookup_AddStock_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredItemListDGV();
         }
     }
 }
