@@ -70,6 +70,7 @@
             this.idSearch_waitApprovalTab_label = new System.Windows.Forms.Label();
             this.MSRMain_menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BudgetPool = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -246,6 +247,7 @@
             this.createTab_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.createTab_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.createTab_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.BudgetPool,
             this.ItemCode,
             this.ItemDesc,
             this.Quantity,
@@ -531,6 +533,11 @@
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "Menu";
             // 
+            // BudgetPool
+            // 
+            this.BudgetPool.HeaderText = "BudgetPool";
+            this.BudgetPool.Name = "BudgetPool";
+            // 
             // ItemCode
             // 
             this.ItemCode.HeaderText = "ItemCode";
@@ -647,6 +654,7 @@
         private System.Windows.Forms.Label idSearch_waitApprovalTab_label;
         private System.Windows.Forms.DataGridView waitApprovalTab_dataGridView;
         private System.Windows.Forms.Button Test_ShowMSR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BudgetPool;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;

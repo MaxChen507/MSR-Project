@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace MSR.Domain
 {
-    public class Budget_ActivityInfo
+    public class BudgetInfo
     {
         public String Bp_No { get; set; }
         public String AC_No { get; set; }
+        public String AC_Desc { get; set; }
 
-        public Budget_ActivityInfo(String Bp_No, String AC_No)
+        public BudgetInfo(String Bp_No, String AC_No, String AC_Desc)
         {
             this.Bp_No = Bp_No;
             this.AC_No = AC_No;
+            this.AC_Desc = AC_Desc;
         }
 
     }

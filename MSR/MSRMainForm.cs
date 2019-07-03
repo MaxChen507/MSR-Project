@@ -62,7 +62,7 @@ namespace MSR
             //Populate from Singleton List
             foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList)
             {
-                createTab_dataGridView.Rows.Add(item.ItemCode, item.ItemDesc, "1", item.Unit, "", "", item.AC_No);
+                createTab_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, "1", item.Unit, "", "", item.AC_No);
             }
         }
 
@@ -74,12 +74,13 @@ namespace MSR
             //Copy data from data grid view and populate addListData
             foreach (DataGridViewRow row in createTab_dataGridView.Rows)
             {
+                String BudgetPool = row.Cells["BudgetPool"].FormattedValue.ToString();
                 String ItemCode = row.Cells["ItemCode"].FormattedValue.ToString();
                 String ItemDesc = row.Cells["ItemDesc"].FormattedValue.ToString();
                 String Unit = row.Cells["Unit"].FormattedValue.ToString();
                 String AC_No = row.Cells["AC_No"].FormattedValue.ToString();
 
-                Domain.FormItems addItem = new Domain.FormItems(ItemCode, ItemDesc, "1", Unit, "", "", "", "", AC_No);
+                Domain.FormItems addItem = new Domain.FormItems(BudgetPool, ItemCode, ItemDesc, "1", Unit, "", "", "", "", AC_No);
 
                 tempData_List.Add(addItem);
             }
@@ -107,8 +108,16 @@ namespace MSR
         private void AddNonStock_createTab_button_Click(object sender, EventArgs e)
         {
             this.Hide();
-            AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm();
+
+            //Save state of DGV
+            UpdateBusinessSingletonFormItemList();
+
+            AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_createTab_comboBox.Text);
             fAddNonStockItem.ShowDialog();
+
+            //Update state of DGV
+            RefreshDataGridView();
+
             this.Show();
         }
 

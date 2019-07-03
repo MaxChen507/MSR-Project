@@ -12,7 +12,7 @@ namespace MSR.BusinessAPI
         private static BusinessSingleton instance;
 
         //User variables
-        public ICollection<Domain.Budget_ActivityInfo> budgetInfo { get; set; }
+        public ICollection<Domain.BudgetInfo> budgetInfo { get; set; }
         public Domain.UserInfo userInfo { get; set; }
 
         public ICollection<Domain.FormItems> formItemList { get; set; }
@@ -48,6 +48,17 @@ namespace MSR.BusinessAPI
                                            from item in budgetInfo
                                            where item.Bp_No.Equals(Bp_No)
                                            select item.AC_No
+                                           ).ToList();
+
+            return results;
+        }
+
+        public ICollection<Domain.BudgetInfo> GetFilterBudgetInfo(string Bp_No)
+        {
+            ICollection<Domain.BudgetInfo> results = (
+                                           from item in budgetInfo
+                                           where item.Bp_No.Equals(Bp_No)
+                                           select item
                                            ).ToList();
 
             return results;

@@ -55,7 +55,7 @@ namespace MSR.DatabaseAPI
                     String Unit = dataReader["Unit"].ToString();
                     String ActiveFlag = dataReader["ActiveFlag"].ToString();
 
-                    Domain.StockItems temp = new Domain.StockItems(ItemCode, ItemDesc, LookUp, BarCode, AC_No, Unit, ActiveFlag);
+                    Domain.StockItems temp = new Domain.StockItems(Bp_No, ItemCode, ItemDesc, LookUp, BarCode, AC_No, Unit, ActiveFlag);
                     stockItemData.Add(temp);
                 }
 

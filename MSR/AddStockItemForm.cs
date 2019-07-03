@@ -64,7 +64,7 @@ namespace MSR
             //Populate from Singleton List
             foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList)
             {
-                addList_addStock_dataGridView.Rows.Add(item.ItemCode, item.ItemDesc, "1", item.Unit, "", "", item.AC_No);
+                addList_addStock_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, "1", item.Unit, item.AC_No);
             }
 
         }
@@ -77,12 +77,13 @@ namespace MSR
             //Copy data from data grid view and populate addListData
             foreach (DataGridViewRow row in addList_addStock_dataGridView.Rows)
             {
+                String BudgetPool = row.Cells["BudgetPool"].FormattedValue.ToString();
                 String ItemCode = row.Cells["ItemCode"].FormattedValue.ToString();
                 String ItemDesc = row.Cells["ItemDesc"].FormattedValue.ToString();
                 String Unit = row.Cells["Unit"].FormattedValue.ToString();
                 String AC_No = row.Cells["AC_No"].FormattedValue.ToString();
 
-                Domain.FormItems addItem = new Domain.FormItems(ItemCode, ItemDesc, "1", Unit, "", "", "", "", AC_No);
+                Domain.FormItems addItem = new Domain.FormItems(BudgetPool, ItemCode, ItemDesc, "1", Unit, "", "", "", "", AC_No);
 
                 formItemData_List.Add(addItem);
             }
@@ -134,12 +135,13 @@ namespace MSR
             }
             else
             {
+                String BudgetPool = itemList_addStock_dataGridView.SelectedRows[0].Cells["BudgetPool"].FormattedValue.ToString();
                 String ItemCode = itemList_addStock_dataGridView.SelectedRows[0].Cells["ItemCode"].FormattedValue.ToString();
                 String ItemDesc = itemList_addStock_dataGridView.SelectedRows[0].Cells["ItemDesc"].FormattedValue.ToString();
                 String Unit = itemList_addStock_dataGridView.SelectedRows[0].Cells["Unit"].FormattedValue.ToString();
                 String AC_No = itemList_addStock_dataGridView.SelectedRows[0].Cells["AC_No"].FormattedValue.ToString();
 
-                addList_addStock_dataGridView.Rows.Add(ItemCode, ItemDesc, "1", Unit, AC_No);
+                addList_addStock_dataGridView.Rows.Add(BudgetPool, ItemCode, ItemDesc, "1", Unit, AC_No);
             }
 
         }

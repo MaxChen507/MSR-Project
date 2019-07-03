@@ -36,6 +36,7 @@
             this.applyClose_AddStock_button = new System.Windows.Forms.Button();
             this.itemList_addStock_dataGridView = new System.Windows.Forms.DataGridView();
             this.addList_addStock_dataGridView = new System.Windows.Forms.DataGridView();
+            this.BudgetPool = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -121,6 +122,7 @@
             this.addList_addStock_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.addList_addStock_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.addList_addStock_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.BudgetPool,
             this.ItemCode,
             this.ItemDesc,
             this.Quantity,
@@ -131,6 +133,12 @@
             this.addList_addStock_dataGridView.ReadOnly = true;
             this.addList_addStock_dataGridView.Size = new System.Drawing.Size(776, 240);
             this.addList_addStock_dataGridView.TabIndex = 7;
+            // 
+            // BudgetPool
+            // 
+            this.BudgetPool.HeaderText = "BudgetPool";
+            this.BudgetPool.Name = "BudgetPool";
+            this.BudgetPool.ReadOnly = true;
             // 
             // ItemCode
             // 
@@ -194,6 +202,7 @@
         private System.Windows.Forms.Button applyClose_AddStock_button;
         private System.Windows.Forms.DataGridView itemList_addStock_dataGridView;
         private System.Windows.Forms.DataGridView addList_addStock_dataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BudgetPool;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
