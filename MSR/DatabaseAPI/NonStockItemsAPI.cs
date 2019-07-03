@@ -10,9 +10,17 @@ namespace MSR.DatabaseAPI
     {
         public ICollection<Domain.BudgetInfo> GetFilterBudgetInfo_List(ICollection<Domain.BudgetInfo> budgetInfoList, string AcSearchString, string AcDescSearchString)
         {
+            List<string> acSearchStringList = AcSearchString.Split(' ').ToList();
+
+            List<string> acDescSearchStringList = AcDescSearchString.Split(' ').ToList();
+
             ICollection<Domain.BudgetInfo> results = (
                                            from item in budgetInfoList
-                                           where item.AC_No.ToLower().Contains(AcSearchString.ToLower()) && item.AC_Desc.ToLower().Contains(AcDescSearchString.ToLower())
+                                           where
+                                                acSearchStringList.All(sTring => item.AC_No.ToUpperInvariant().Contains(sTring.ToUpperInvariant()))
+                                                &&
+                                                acDescSearchStringList.All(sTring => item.AC_Desc.ToUpperInvariant().Contains(sTring.ToUpperInvariant()))
+                                           //item.AC_No.ToUpperInvariant().Contains(AcSearchString.ToUpperInvariant()) && item.AC_Desc.ToUpperInvariant().Contains(AcDescSearchString.ToUpperInvariant())
                                            select item
                                            ).ToList();
 
