@@ -46,6 +46,11 @@
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.search_addNonStock_label = new System.Windows.Forms.Label();
+            this.AcSearch_addNonStock_textBox = new System.Windows.Forms.TextBox();
+            this.AcSearch_addNonStock_label = new System.Windows.Forms.Label();
+            this.AcDescSearch_addNonStock_textBox = new System.Windows.Forms.TextBox();
+            this.AcDescSearch_addNonStock_label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.budgetInfo_addNonStock_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addList_addNonStock_dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -56,7 +61,7 @@
             this.budgetInfo_addNonStock_dataGridView.AllowUserToDeleteRows = false;
             this.budgetInfo_addNonStock_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.budgetInfo_addNonStock_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.budgetInfo_addNonStock_dataGridView.Location = new System.Drawing.Point(12, 51);
+            this.budgetInfo_addNonStock_dataGridView.Location = new System.Drawing.Point(15, 51);
             this.budgetInfo_addNonStock_dataGridView.MultiSelect = false;
             this.budgetInfo_addNonStock_dataGridView.Name = "budgetInfo_addNonStock_dataGridView";
             this.budgetInfo_addNonStock_dataGridView.ReadOnly = true;
@@ -207,11 +212,59 @@
             this.AC_No.Name = "AC_No";
             this.AC_No.ReadOnly = true;
             // 
+            // search_addNonStock_label
+            // 
+            this.search_addNonStock_label.AutoSize = true;
+            this.search_addNonStock_label.Location = new System.Drawing.Point(12, 25);
+            this.search_addNonStock_label.Name = "search_addNonStock_label";
+            this.search_addNonStock_label.Size = new System.Drawing.Size(44, 13);
+            this.search_addNonStock_label.TabIndex = 13;
+            this.search_addNonStock_label.Text = "Search:";
+            // 
+            // AcSearch_addNonStock_textBox
+            // 
+            this.AcSearch_addNonStock_textBox.Location = new System.Drawing.Point(174, 25);
+            this.AcSearch_addNonStock_textBox.Name = "AcSearch_addNonStock_textBox";
+            this.AcSearch_addNonStock_textBox.Size = new System.Drawing.Size(100, 20);
+            this.AcSearch_addNonStock_textBox.TabIndex = 15;
+            this.AcSearch_addNonStock_textBox.TextChanged += new System.EventHandler(this.AcSearch_addNonStock_textBox_TextChanged);
+            // 
+            // AcSearch_addNonStock_label
+            // 
+            this.AcSearch_addNonStock_label.AutoSize = true;
+            this.AcSearch_addNonStock_label.Location = new System.Drawing.Point(201, 9);
+            this.AcSearch_addNonStock_label.Name = "AcSearch_addNonStock_label";
+            this.AcSearch_addNonStock_label.Size = new System.Drawing.Size(41, 13);
+            this.AcSearch_addNonStock_label.TabIndex = 14;
+            this.AcSearch_addNonStock_label.Text = "AC_No";
+            // 
+            // AcDescSearch_addNonStock_textBox
+            // 
+            this.AcDescSearch_addNonStock_textBox.Location = new System.Drawing.Point(286, 25);
+            this.AcDescSearch_addNonStock_textBox.Name = "AcDescSearch_addNonStock_textBox";
+            this.AcDescSearch_addNonStock_textBox.Size = new System.Drawing.Size(103, 20);
+            this.AcDescSearch_addNonStock_textBox.TabIndex = 17;
+            this.AcDescSearch_addNonStock_textBox.TextChanged += new System.EventHandler(this.AcDescSearch_addNonStock_textBox_TextChanged);
+            // 
+            // AcDescSearch_addNonStock_label
+            // 
+            this.AcDescSearch_addNonStock_label.AutoSize = true;
+            this.AcDescSearch_addNonStock_label.Location = new System.Drawing.Point(310, 9);
+            this.AcDescSearch_addNonStock_label.Name = "AcDescSearch_addNonStock_label";
+            this.AcDescSearch_addNonStock_label.Size = new System.Drawing.Size(52, 13);
+            this.AcDescSearch_addNonStock_label.TabIndex = 16;
+            this.AcDescSearch_addNonStock_label.Text = "AC_Desc";
+            // 
             // AddNonStockItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(803, 611);
+            this.Controls.Add(this.AcDescSearch_addNonStock_textBox);
+            this.Controls.Add(this.AcDescSearch_addNonStock_label);
+            this.Controls.Add(this.AcSearch_addNonStock_textBox);
+            this.Controls.Add(this.AcSearch_addNonStock_label);
+            this.Controls.Add(this.search_addNonStock_label);
             this.Controls.Add(this.addList_addNonStock_dataGridView);
             this.Controls.Add(this.applyClose_addNonStock_button);
             this.Controls.Add(this.addItem_addNonStock_button);
@@ -253,5 +306,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
         private System.Windows.Forms.DataGridViewTextBoxColumn AC_No;
+        private System.Windows.Forms.Label search_addNonStock_label;
+        private System.Windows.Forms.TextBox AcSearch_addNonStock_textBox;
+        private System.Windows.Forms.Label AcSearch_addNonStock_label;
+        private System.Windows.Forms.TextBox AcDescSearch_addNonStock_textBox;
+        private System.Windows.Forms.Label AcDescSearch_addNonStock_label;
     }
 }

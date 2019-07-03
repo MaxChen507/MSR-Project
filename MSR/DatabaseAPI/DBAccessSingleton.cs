@@ -23,6 +23,7 @@ namespace MSR.DatabaseAPI
             BudgetInfoAPI = new BudgetInfoAPI();
             UserInfoAPI = new UserInfoAPI();
             StockItemsAPI = new StockItemsAPI();
+            NonStockItemsAPI = new NonStockItemsAPI();
         }
 
         public static DBAccessSingleton Instance
@@ -42,6 +43,7 @@ namespace MSR.DatabaseAPI
         public BudgetInfoAPI BudgetInfoAPI { get; private set; }
         public UserInfoAPI UserInfoAPI { get; private set; }
         public StockItemsAPI StockItemsAPI { get; private set; }
+        public NonStockItemsAPI NonStockItemsAPI { get; private set; }
 
         //DB_Server DateTime Methods
         public DateTime GetDateTime()

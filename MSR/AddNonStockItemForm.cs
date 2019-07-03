@@ -154,5 +154,31 @@ namespace MSR
                 addList_addNonStock_dataGridView.Rows.Add(BudgetPool, ItemCode, ItemDesc, "1", Unit, AC_No);
             }
         }
+
+        private void PopulateFilteredBudgetInfoListDGV()
+        {
+            ICollection<Domain.BudgetInfo> budgetInfoItemDatafilter = DatabaseAPI.DBAccessSingleton.Instance.NonStockItemsAPI.GetFilterBudgetInfo_List(budgetListData, AcSearch_addNonStock_textBox.Text, AcDescSearch_addNonStock_textBox.Text);
+
+            if (budgetInfoItemDatafilter == null)
+            {
+                MessageBox.Show("DB error");
+                return;
+            }
+
+            budgetListDGV_source.DataSource = budgetInfoItemDatafilter;
+            budgetInfo_addNonStock_dataGridView.DataSource = budgetListDGV_source;
+
+            budgetInfo_addNonStock_dataGridView.ClearSelection();
+        }
+
+        private void AcSearch_addNonStock_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredBudgetInfoListDGV();
+        }
+
+        private void AcDescSearch_addNonStock_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredBudgetInfoListDGV();
+        }
     }
 }
