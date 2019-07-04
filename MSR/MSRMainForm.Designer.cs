@@ -42,6 +42,14 @@
             this.originator_createTab_comboBox = new System.Windows.Forms.ComboBox();
             this.originator_createTab_label = new System.Windows.Forms.Label();
             this.createTab_dataGridView = new System.Windows.Forms.DataGridView();
+            this.BudgetPool = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vendorContact_createTab_groupBox = new System.Windows.Forms.GroupBox();
             this.vendorContact_createTab_textBox = new System.Windows.Forms.TextBox();
             this.vendorContact_createTab_label = new System.Windows.Forms.Label();
@@ -70,14 +78,6 @@
             this.idSearch_waitApprovalTab_label = new System.Windows.Forms.Label();
             this.MSRMain_menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.BudgetPool = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainMSR_tabControl.SuspendLayout();
             this.createNewMSR_tabPage.SuspendLayout();
             this.signDate_createTab_groupBox.SuspendLayout();
@@ -135,13 +135,13 @@
             // save_createTab_button
             // 
             this.save_createTab_button.AutoSize = true;
-            this.save_createTab_button.Enabled = false;
             this.save_createTab_button.Location = new System.Drawing.Point(436, 730);
             this.save_createTab_button.Name = "save_createTab_button";
             this.save_createTab_button.Size = new System.Drawing.Size(120, 50);
             this.save_createTab_button.TabIndex = 13;
             this.save_createTab_button.Text = "Save";
             this.save_createTab_button.UseVisualStyleBackColor = true;
+            this.save_createTab_button.Click += new System.EventHandler(this.Save_createTab_button_Click);
             // 
             // addNonStock_createTab_button
             // 
@@ -259,6 +259,48 @@
             this.createTab_dataGridView.Name = "createTab_dataGridView";
             this.createTab_dataGridView.Size = new System.Drawing.Size(1006, 400);
             this.createTab_dataGridView.TabIndex = 8;
+            // 
+            // BudgetPool
+            // 
+            this.BudgetPool.HeaderText = "BudgetPool";
+            this.BudgetPool.Name = "BudgetPool";
+            // 
+            // ItemCode
+            // 
+            this.ItemCode.HeaderText = "ItemCode";
+            this.ItemCode.Name = "ItemCode";
+            this.ItemCode.ReadOnly = true;
+            // 
+            // ItemDesc
+            // 
+            this.ItemDesc.HeaderText = "ItemDesc";
+            this.ItemDesc.Name = "ItemDesc";
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            // 
+            // Unit
+            // 
+            this.Unit.HeaderText = "Unit";
+            this.Unit.Name = "Unit";
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.HeaderText = "UnitPrice";
+            this.UnitPrice.Name = "UnitPrice";
+            // 
+            // Currency
+            // 
+            this.Currency.HeaderText = "Currency";
+            this.Currency.Name = "Currency";
+            // 
+            // AC_No
+            // 
+            this.AC_No.HeaderText = "AC_No";
+            this.AC_No.Name = "AC_No";
+            this.AC_No.ReadOnly = true;
             // 
             // vendorContact_createTab_groupBox
             // 
@@ -532,48 +574,6 @@
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "Menu";
-            // 
-            // BudgetPool
-            // 
-            this.BudgetPool.HeaderText = "BudgetPool";
-            this.BudgetPool.Name = "BudgetPool";
-            // 
-            // ItemCode
-            // 
-            this.ItemCode.HeaderText = "ItemCode";
-            this.ItemCode.Name = "ItemCode";
-            this.ItemCode.ReadOnly = true;
-            // 
-            // ItemDesc
-            // 
-            this.ItemDesc.HeaderText = "ItemDesc";
-            this.ItemDesc.Name = "ItemDesc";
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            // 
-            // Unit
-            // 
-            this.Unit.HeaderText = "Unit";
-            this.Unit.Name = "Unit";
-            // 
-            // UnitPrice
-            // 
-            this.UnitPrice.HeaderText = "UnitPrice";
-            this.UnitPrice.Name = "UnitPrice";
-            // 
-            // Currency
-            // 
-            this.Currency.HeaderText = "Currency";
-            this.Currency.Name = "Currency";
-            // 
-            // AC_No
-            // 
-            this.AC_No.HeaderText = "AC_No";
-            this.AC_No.Name = "AC_No";
-            this.AC_No.ReadOnly = true;
             // 
             // MSRMainForm
             // 

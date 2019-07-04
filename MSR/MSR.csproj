@@ -89,6 +89,7 @@
     <Compile Include="ShowMSR.Designer.cs">
       <DependentUpon>ShowMSR.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserInterfaceAPI\UserInterfaceSingleton.cs" />
     <EmbeddedResource Include="AddNonStockItemForm.resx">
       <DependentUpon>AddNonStockItemForm.cs</DependentUpon>
     </EmbeddedResource>
