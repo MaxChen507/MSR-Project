@@ -41,6 +41,10 @@
             this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ROS_Date = new MSR.Domain.CalendarColumn();
+            this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.itemList_addStock_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addList_addStock_dataGridView)).BeginInit();
@@ -129,6 +133,10 @@
             this.ItemDesc,
             this.Quantity,
             this.Unit,
+            this.UnitPrice,
+            this.Currency,
+            this.ROS_Date,
+            this.Comments,
             this.AC_No});
             this.addList_addStock_dataGridView.Location = new System.Drawing.Point(12, 294);
             this.addList_addStock_dataGridView.Name = "addList_addStock_dataGridView";
@@ -165,6 +173,32 @@
             this.Unit.HeaderText = "Unit";
             this.Unit.Name = "Unit";
             this.Unit.ReadOnly = true;
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.HeaderText = "UnitPrice";
+            this.UnitPrice.Name = "UnitPrice";
+            this.UnitPrice.ReadOnly = true;
+            // 
+            // Currency
+            // 
+            this.Currency.HeaderText = "Currency";
+            this.Currency.Name = "Currency";
+            this.Currency.ReadOnly = true;
+            // 
+            // ROS_Date
+            // 
+            this.ROS_Date.HeaderText = "ROS_Date";
+            this.ROS_Date.Name = "ROS_Date";
+            this.ROS_Date.ReadOnly = true;
+            this.ROS_Date.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ROS_Date.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Comments
+            // 
+            this.Comments.HeaderText = "Comments";
+            this.Comments.Name = "Comments";
+            this.Comments.ReadOnly = true;
             // 
             // AC_No
             // 
@@ -209,6 +243,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Currency;
+        private Domain.CalendarColumn ROS_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comments;
         private System.Windows.Forms.DataGridViewTextBoxColumn AC_No;
     }
 }

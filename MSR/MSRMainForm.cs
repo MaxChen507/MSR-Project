@@ -62,7 +62,7 @@ namespace MSR
             //Populate from Singleton List
             foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList)
             {
-                createTab_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, "1", item.Unit, "", "", item.AC_No);
+                createTab_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
             }
         }
 
@@ -229,12 +229,16 @@ namespace MSR
             //Obtain approver info of selected
             Domain.ApproverInfo approverInfo = (Domain.ApproverInfo)approval_createTab_comboBox.SelectedItem;
 
+            //INSERT into MSR
             Domain.MSRInfo mSRInfo = new Domain.MSRInfo(project_createTab_textBox.Text, wellVL_createTab_textBox.Text, comments_createTab_textBox.Text, budgetYear_createTab_comboBox.Text, budgetPool_createTab_comboBox.Text, AFE_createTab_textBox.Text, suggVendor_createTab_textBox.Text, vendorContact_createTab_textBox.Text, BusinessAPI.BusinessSingleton.Instance.userInfo.UserId, approverInfo.UserId, changeDate_createTab_dateTimePicker.Value, "CREATED");
 
-            int tempMSRID = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.CreateInitialMSR(mSRInfo);
+            //Obtain Just inserted Identity
+            int tempMSRID = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.InsertInitialMSR(mSRInfo);
 
             //testing
             MessageBox.Show("MSR ID is: " + tempMSRID.ToString());
+
+            //INSERT into FormItems
 
         }
 

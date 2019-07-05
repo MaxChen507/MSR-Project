@@ -14,7 +14,7 @@ namespace MSR.DatabaseAPI
 
         }
 
-        public int CreateInitialMSR(Domain.MSRInfo msrInfo)
+        public int InsertInitialMSR(Domain.MSRInfo msrInfo)
         {
             int MSR_Id;
 
@@ -64,5 +64,36 @@ namespace MSR.DatabaseAPI
 
             return MSR_Id;
         }
+
+        public void InsertInitialFormItems(Domain.FormItems formItemsInfo, int MSRId)
+        {
+            SqlParameter itemCode_param = new SqlParameter("@itemCode", formItemsInfo.ItemCode);
+            SqlParameter itemDesc_param = new SqlParameter("@itemDesc", formItemsInfo.ItemDesc);
+            SqlParameter quantity_param = new SqlParameter("@quantity", Convert.ToDouble(formItemsInfo.Quantity));
+            SqlParameter unit_param = new SqlParameter("@unit", formItemsInfo.Unit);
+            SqlParameter unitPrice_param = new SqlParameter("@unitPrice", String.IsNullOrEmpty(formItemsInfo.UnitPrice) ? Convert.DBNull : Convert.ToDouble(formItemsInfo.UnitPrice));
+            SqlParameter currency_param = new SqlParameter("@currency", formItemsInfo.Currency);
+            SqlParameter ROS_Date_param = new SqlParameter("@ROS_Date", formItemsInfo.ROS_Date);
+            SqlParameter comments_param = new SqlParameter("@comments", formItemsInfo.Comments);
+            SqlParameter MSRId_param = new SqlParameter("@MSRId", MSRId.ToString());
+            SqlParameter AC_No_param = new SqlParameter("@AC_No", formItemsInfo.AC_No);
+
+            List<SqlParameter> sqlParametersList = new List<SqlParameter>();
+            sqlParametersList.Add(itemCode_param);
+            sqlParametersList.Add(itemDesc_param);
+            sqlParametersList.Add(quantity_param);
+            sqlParametersList.Add(unit_param);
+            sqlParametersList.Add(unitPrice_param);
+            sqlParametersList.Add(currency_param);
+            sqlParametersList.Add(ROS_Date_param);
+            sqlParametersList.Add(comments_param);
+            sqlParametersList.Add(MSRId_param);
+            sqlParametersList.Add(AC_No_param);
+
+            String sql = "INSERT INTO FormItems (ItemCode, ItemDesc, Quantity, Unit, UnitPrice, Currency, ROS_Date, Comments, MSRId, AC_No) VALUES (@itemCode, @itemDesc, @quantity, @unit, @unitPrice, @currency, @ROS_Date, @comments, @MSRId, @AC_No)";
+
+            DatabaseAPI.DBAccessSingleton.Instance.MyExecuteInsertStmt(sql, sqlParametersList);
+        }
+
     }
 }

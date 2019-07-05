@@ -64,7 +64,7 @@ namespace MSR
             //Populate from Singleton List
             foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList)
             {
-                addList_addNonStock_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, "1", item.Unit, item.AC_No);
+                addList_addNonStock_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
             }
 
         }
@@ -126,10 +126,15 @@ namespace MSR
                 String BudgetPool = budgetInfo_addNonStock_dataGridView.SelectedRows[0].Cells["BP_No"].FormattedValue.ToString();
                 String ItemCode = "[NonStock]";
                 String ItemDesc = itemDesc_addNonStock_richTextBox.Text;
+                String Quantity = "1";
                 String Unit = unit_addNonStock_textBox.Text;
+                String UnitPrice = "";
+                String Currency = "";
+                String ROS_Date = DatabaseAPI.DBAccessSingleton.Instance.GetDateTime().ToString("MM/dd/yyyy");
+                String Comments = "";
                 String AC_No = budgetInfo_addNonStock_dataGridView.SelectedRows[0].Cells["AC_No"].FormattedValue.ToString();
 
-                addList_addNonStock_dataGridView.Rows.Add(BudgetPool, ItemCode, ItemDesc, "1", Unit, AC_No);
+                addList_addNonStock_dataGridView.Rows.Add(BudgetPool, ItemCode, ItemDesc, Quantity, Unit, UnitPrice, Currency, ROS_Date, Comments, AC_No);
             }
         }
 

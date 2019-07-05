@@ -76,7 +76,7 @@ namespace MSR
             //Populate from Singleton List
             foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList)
             {
-                addList_addStock_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, "1", item.Unit, item.AC_No);
+                addList_addStock_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
             }
 
         }
@@ -135,10 +135,15 @@ namespace MSR
                 String BudgetPool = itemList_addStock_dataGridView.SelectedRows[0].Cells["BudgetPool"].FormattedValue.ToString();
                 String ItemCode = itemList_addStock_dataGridView.SelectedRows[0].Cells["ItemCode"].FormattedValue.ToString();
                 String ItemDesc = itemList_addStock_dataGridView.SelectedRows[0].Cells["ItemDesc"].FormattedValue.ToString();
+                String Quantity = "1";
                 String Unit = itemList_addStock_dataGridView.SelectedRows[0].Cells["Unit"].FormattedValue.ToString();
+                String UnitPrice = "";
+                String Currency = "";
+                String ROS_Date = DatabaseAPI.DBAccessSingleton.Instance.GetDateTime().ToString("MM/dd/yyyy");
+                String Comments = "";
                 String AC_No = itemList_addStock_dataGridView.SelectedRows[0].Cells["AC_No"].FormattedValue.ToString();
 
-                addList_addStock_dataGridView.Rows.Add(BudgetPool, ItemCode, ItemDesc, "1", Unit, AC_No);
+                addList_addStock_dataGridView.Rows.Add(BudgetPool, ItemCode, ItemDesc, Quantity, Unit, UnitPrice, Currency, ROS_Date, Comments, AC_No);
             }
 
         }

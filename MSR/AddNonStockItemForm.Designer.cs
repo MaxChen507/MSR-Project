@@ -40,17 +40,21 @@
             this.addItem_addNonStock_button = new System.Windows.Forms.Button();
             this.applyClose_addNonStock_button = new System.Windows.Forms.Button();
             this.addList_addNonStock_dataGridView = new System.Windows.Forms.DataGridView();
-            this.BudgetPool = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.search_addNonStock_label = new System.Windows.Forms.Label();
             this.AcSearch_addNonStock_textBox = new System.Windows.Forms.TextBox();
             this.AcSearch_addNonStock_label = new System.Windows.Forms.Label();
             this.AcDescSearch_addNonStock_textBox = new System.Windows.Forms.TextBox();
             this.AcDescSearch_addNonStock_label = new System.Windows.Forms.Label();
+            this.BudgetPool = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ROS_Date = new MSR.Domain.CalendarColumn();
+            this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.budgetInfo_addNonStock_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addList_addNonStock_dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -169,48 +173,16 @@
             this.ItemDesc,
             this.Quantity,
             this.Unit,
+            this.UnitPrice,
+            this.Currency,
+            this.ROS_Date,
+            this.Comments,
             this.AC_No});
             this.addList_addNonStock_dataGridView.Location = new System.Drawing.Point(12, 361);
             this.addList_addNonStock_dataGridView.Name = "addList_addNonStock_dataGridView";
             this.addList_addNonStock_dataGridView.ReadOnly = true;
             this.addList_addNonStock_dataGridView.Size = new System.Drawing.Size(779, 240);
             this.addList_addNonStock_dataGridView.TabIndex = 12;
-            // 
-            // BudgetPool
-            // 
-            this.BudgetPool.HeaderText = "BudgetPool";
-            this.BudgetPool.Name = "BudgetPool";
-            this.BudgetPool.ReadOnly = true;
-            // 
-            // ItemCode
-            // 
-            this.ItemCode.HeaderText = "ItemCode";
-            this.ItemCode.Name = "ItemCode";
-            this.ItemCode.ReadOnly = true;
-            // 
-            // ItemDesc
-            // 
-            this.ItemDesc.HeaderText = "ItemDesc";
-            this.ItemDesc.Name = "ItemDesc";
-            this.ItemDesc.ReadOnly = true;
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            // 
-            // Unit
-            // 
-            this.Unit.HeaderText = "Unit";
-            this.Unit.Name = "Unit";
-            this.Unit.ReadOnly = true;
-            // 
-            // AC_No
-            // 
-            this.AC_No.HeaderText = "AC_No";
-            this.AC_No.Name = "AC_No";
-            this.AC_No.ReadOnly = true;
             // 
             // search_addNonStock_label
             // 
@@ -254,6 +226,68 @@
             this.AcDescSearch_addNonStock_label.Size = new System.Drawing.Size(52, 13);
             this.AcDescSearch_addNonStock_label.TabIndex = 16;
             this.AcDescSearch_addNonStock_label.Text = "AC_Desc";
+            // 
+            // BudgetPool
+            // 
+            this.BudgetPool.HeaderText = "BudgetPool";
+            this.BudgetPool.Name = "BudgetPool";
+            this.BudgetPool.ReadOnly = true;
+            // 
+            // ItemCode
+            // 
+            this.ItemCode.HeaderText = "ItemCode";
+            this.ItemCode.Name = "ItemCode";
+            this.ItemCode.ReadOnly = true;
+            // 
+            // ItemDesc
+            // 
+            this.ItemDesc.HeaderText = "ItemDesc";
+            this.ItemDesc.Name = "ItemDesc";
+            this.ItemDesc.ReadOnly = true;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            // 
+            // Unit
+            // 
+            this.Unit.HeaderText = "Unit";
+            this.Unit.Name = "Unit";
+            this.Unit.ReadOnly = true;
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.HeaderText = "UnitPrice";
+            this.UnitPrice.Name = "UnitPrice";
+            this.UnitPrice.ReadOnly = true;
+            // 
+            // Currency
+            // 
+            this.Currency.HeaderText = "Currency";
+            this.Currency.Name = "Currency";
+            this.Currency.ReadOnly = true;
+            // 
+            // ROS_Date
+            // 
+            this.ROS_Date.HeaderText = "ROS_Date";
+            this.ROS_Date.Name = "ROS_Date";
+            this.ROS_Date.ReadOnly = true;
+            this.ROS_Date.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ROS_Date.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Comments
+            // 
+            this.Comments.HeaderText = "Comments";
+            this.Comments.Name = "Comments";
+            this.Comments.ReadOnly = true;
+            // 
+            // AC_No
+            // 
+            this.AC_No.HeaderText = "AC_No";
+            this.AC_No.Name = "AC_No";
+            this.AC_No.ReadOnly = true;
             // 
             // AddNonStockItemForm
             // 
@@ -300,16 +334,20 @@
         private System.Windows.Forms.Button addItem_addNonStock_button;
         private System.Windows.Forms.Button applyClose_addNonStock_button;
         private System.Windows.Forms.DataGridView addList_addNonStock_dataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BudgetPool;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemDesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AC_No;
         private System.Windows.Forms.Label search_addNonStock_label;
         private System.Windows.Forms.TextBox AcSearch_addNonStock_textBox;
         private System.Windows.Forms.Label AcSearch_addNonStock_label;
         private System.Windows.Forms.TextBox AcDescSearch_addNonStock_textBox;
         private System.Windows.Forms.Label AcDescSearch_addNonStock_label;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BudgetPool;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Currency;
+        private Domain.CalendarColumn ROS_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comments;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AC_No;
     }
 }
