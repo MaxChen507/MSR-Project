@@ -182,7 +182,9 @@ namespace MSR
                 return;
             }
 
+            //Checking if all item's fields are correct
             Boolean itemsCorrectFlag = true;
+
             //Checking if all items's budget pool matches combobox budget pool
             foreach (DataGridViewRow row in createTab_dataGridView.Rows)
             {
@@ -207,6 +209,8 @@ namespace MSR
                 MessageBox.Show("Highlighted item's budget pool doesn't match with selected Budget Pool.");
                 return;
             }
+
+
 
             //To confirm if you want to Submit MSR
             DialogResult result = MessageBox.Show("Are you sure you want to submit the MSR?", "Confirmation", MessageBoxButtons.YesNo);

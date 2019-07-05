@@ -130,7 +130,7 @@ namespace MSR
                 String Unit = unit_addNonStock_textBox.Text;
                 String UnitPrice = "";
                 String Currency = "";
-                String ROS_Date = DatabaseAPI.DBAccessSingleton.Instance.GetDateTime().ToString("MM/dd/yyyy");
+                String ROS_Date = DatabaseAPI.DBAccessSingleton.Instance.GetDateTime().AddDays(14).ToString("MM/dd/yyyy");
                 String Comments = "";
                 String AC_No = budgetInfo_addNonStock_dataGridView.SelectedRows[0].Cells["AC_No"].FormattedValue.ToString();
 

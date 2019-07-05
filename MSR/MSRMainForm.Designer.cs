@@ -542,6 +542,7 @@
             // 
             this.BudgetPool.HeaderText = "BudgetPool";
             this.BudgetPool.Name = "BudgetPool";
+            this.BudgetPool.ReadOnly = true;
             // 
             // ItemCode
             // 
@@ -553,6 +554,7 @@
             // 
             this.ItemDesc.HeaderText = "ItemDesc";
             this.ItemDesc.Name = "ItemDesc";
+            this.ItemDesc.ReadOnly = true;
             // 
             // Quantity
             // 
@@ -563,6 +565,7 @@
             // 
             this.Unit.HeaderText = "Unit";
             this.Unit.Name = "Unit";
+            this.Unit.ReadOnly = true;
             // 
             // UnitPrice
             // 
