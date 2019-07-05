@@ -55,6 +55,50 @@ namespace MSR.UserInterfaceAPI
             BusinessAPI.BusinessSingleton.Instance.formItemList = formItemData_List;
         }
 
+        public void ResetAllControls(Control form)
+        {
+            foreach (Control control in form.Controls)
+            {
+                //MessageBox.Show(control.Name.ToString());
+                if (control is GroupBox)
+                {
+                    ResetAllControls(control);
+                }
+
+                if (control is TextBox)
+                {
+                    TextBox textBox = (TextBox)control;
+                    textBox.Text = null;
+                }
+
+                if (control is ComboBox)
+                {
+                    ComboBox comboBox = (ComboBox)control;
+                    if (comboBox.Items.Count > 0)
+                        comboBox.SelectedIndex = 0;
+                }
+
+                if (control is CheckBox)
+                {
+                    CheckBox checkBox = (CheckBox)control;
+                    checkBox.Checked = false;
+                }
+
+                if (control is ListBox)
+                {
+                    ListBox listBox = (ListBox)control;
+                    listBox.ClearSelected();
+                }
+
+                if (control is DataGridView)
+                {
+                    DataGridView dataGridView = (DataGridView)control;
+                    dataGridView.DataSource = null;
+                    dataGridView.Rows.Clear();
+                    dataGridView.Refresh();
+                }
+            }
+        }
 
     }
 }

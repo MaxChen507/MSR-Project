@@ -42,8 +42,8 @@ namespace MSR
 
             //Initialize Originator Combobox Selected Item
             originator_createTab_comboBox.Enabled = true;
-            originator_createTab_comboBox.Items.Add(BusinessAPI.BusinessSingleton.Instance.userInfo.Username);
-            originator_createTab_comboBox.SelectedItem = BusinessAPI.BusinessSingleton.Instance.userInfo.Username;
+            originator_createTab_comboBox.Items.Add(BusinessAPI.BusinessSingleton.Instance.userInfo.FullName);
+            originator_createTab_comboBox.SelectedItem = BusinessAPI.BusinessSingleton.Instance.userInfo.FullName;
 
             //Initialize DateTime Picker
             changeDate_createTab_dateTimePicker.Value = DatabaseAPI.DBAccessSingleton.Instance.GetDateTime();
@@ -108,13 +108,25 @@ namespace MSR
 
         private void BudgetPool_createTab_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Clear then Populate Approval Combobox
-            approval_createTab_comboBox.Items.Clear();
-            approval_createTab_comboBox.Enabled = true;
-            foreach (String item in DatabaseAPI.DBAccessSingleton.Instance.BudgetInfoAPI.GetBudgetHolder_List(budgetPool_createTab_comboBox.Text))
+            //Check if reseting
+            if(budgetPool_createTab_comboBox.SelectedIndex == -1)
             {
-                approval_createTab_comboBox.Items.Add(item);
+                return;
             }
+
+            //Clear then Populate Approval Combobox
+            //approval_createTab_comboBox.Items.Clear();
+            approval_createTab_comboBox.DataSource = null;
+            approval_createTab_comboBox.Enabled = true;
+            //foreach (Domain.ApproverInfo item in DatabaseAPI.DBAccessSingleton.Instance.BudgetInfoAPI.GetBudgetHolder_List(budgetPool_createTab_comboBox.Text))
+            //{
+            //    approval_createTab_comboBox.Items.Add(item.FullName);
+            //}
+
+            approval_createTab_comboBox.DataSource = DatabaseAPI.DBAccessSingleton.Instance.BudgetInfoAPI.GetBudgetHolder_List(budgetPool_createTab_comboBox.Text);
+            approval_createTab_comboBox.DisplayMember = "FullName";
+
+            approval_createTab_comboBox.SelectedIndex = -1;
 
             addStock_createTab_button.Enabled = true;
             addNonStock_createTab_button.Enabled = true;
@@ -136,13 +148,75 @@ namespace MSR
 
         private void Save_createTab_button_Click(object sender, EventArgs e)
         {
-            Boolean MSR_correctFlag = false;
-
-            if (budgetYear_createTab_comboBox.SelectedIndex > -1)
+            //Checking all required fields
+            if (budgetYear_createTab_comboBox.SelectedIndex == -1)
             {
-                MessageBox.Show(budgetYear_createTab_comboBox.Text);
+                MessageBox.Show("Please select a budget year.");
+                return;
             }
+
+            if (budgetPool_createTab_comboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a budget pool.");
+                return;
+            }
+
+            if (originator_createTab_comboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select an originator.");
+                return;
+            }
+
+            if (createTab_dataGridView.Rows.Count == 0)
+            {
+                MessageBox.Show("Please add an item.");
+                return;
+            }
+
+            if (approval_createTab_comboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select an approver.");
+                return;
+            }
+
+            //Obtain approver info of selected
+            Domain.ApproverInfo approverInfo = (Domain.ApproverInfo) approval_createTab_comboBox.SelectedItem;
+
+            //Checking if all items
             
+            Domain.MSRInfo mSRInfo = new Domain.MSRInfo(project_createTab_textBox.Text, wellVL_createTab_textBox.Text, comments_createTab_textBox.Text, budgetYear_createTab_comboBox.Text, budgetPool_createTab_comboBox.Text, AFE_createTab_textBox.Text, suggVendor_createTab_textBox.Text, vendorContact_createTab_textBox.Text, BusinessAPI.BusinessSingleton.Instance.userInfo.UserId, approverInfo.UserId, changeDate_createTab_dateTimePicker.Value, "CREATED");
+
+            int tempMSRID = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.CreateInitialMSR(mSRInfo);
+
+
+            //TODO: To confirm if you want to Submit MSR
+
+
+
+            //testing
+            MessageBox.Show("MSR ID is: " + tempMSRID.ToString());
+
         }
+
+        private void ClearAllFields_createTab_button_Click(object sender, EventArgs e)
+        {
+            //First Basic Reset
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.ResetAllControls(createNewMSR_tabPage);
+
+            //Reset Budget GroupBox
+            budgetYear_createTab_comboBox.SelectedIndex = -1;
+            budgetPool_createTab_comboBox.SelectedIndex = -1;
+
+            //Reset SignDate GroupBox
+            approval_createTab_comboBox.SelectedIndex = -1;
+
+            //Reset Buttons
+            addStock_createTab_button.Enabled = false;
+            addNonStock_createTab_button.Enabled = false;
+
+
+        }
+
+
     }
 }

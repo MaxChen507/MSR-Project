@@ -131,6 +131,7 @@
             this.clearAllFields_createTab_button.TabIndex = 14;
             this.clearAllFields_createTab_button.Text = "Clear All Fields";
             this.clearAllFields_createTab_button.UseVisualStyleBackColor = true;
+            this.clearAllFields_createTab_button.Click += new System.EventHandler(this.ClearAllFields_createTab_button_Click);
             // 
             // save_createTab_button
             // 

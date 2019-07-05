@@ -24,6 +24,7 @@ namespace MSR.DatabaseAPI
             UserInfoAPI = new UserInfoAPI();
             StockItemsAPI = new StockItemsAPI();
             NonStockItemsAPI = new NonStockItemsAPI();
+            MSRInfoAPI = new MSRInfoAPI();
         }
 
         public static DBAccessSingleton Instance
@@ -44,6 +45,7 @@ namespace MSR.DatabaseAPI
         public UserInfoAPI UserInfoAPI { get; private set; }
         public StockItemsAPI StockItemsAPI { get; private set; }
         public NonStockItemsAPI NonStockItemsAPI { get; private set; }
+        public MSRInfoAPI MSRInfoAPI { get; private set; }
 
         //DB_Server DateTime Methods
         public DateTime GetDateTime()
@@ -97,6 +99,7 @@ namespace MSR.DatabaseAPI
                 reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 
                 //How exactly do I close everything?
+                //_cnn.Close();
 
             }
             return reader;
@@ -125,6 +128,7 @@ namespace MSR.DatabaseAPI
                 reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 
                 //How exactly do I close everything?
+                //_cnn.Close();
 
             }
             return reader;
@@ -156,6 +160,40 @@ namespace MSR.DatabaseAPI
                 cmd.Dispose();
                 _cnn.Close();
             }
+
+        }
+
+        //Insert and return Identity
+        public int MyExecuteInsertStmt_GetIdentity(String queryString, List<SqlParameter> sqlParameters)
+        {
+            if (string.IsNullOrEmpty(queryString))
+                throw new ArgumentNullException(nameof(queryString));
+
+            if (!sqlParameters.Any())
+                throw new ArgumentNullException(nameof(sqlParameters));
+
+            _cnn = new SqlConnection(_connectionString);
+            SqlDataAdapter adapter = new SqlDataAdapter();
+
+            int id;
+
+            using (SqlCommand cmd = new SqlCommand(queryString, _cnn))
+            {
+                foreach (var param in sqlParameters)
+                {
+                    cmd.Parameters.Add(param);
+                }
+
+                _cnn.Open();
+
+                adapter.InsertCommand = cmd;
+                id = (int)(decimal)adapter.InsertCommand.ExecuteScalar();
+
+                cmd.Dispose();
+                _cnn.Close();
+            }
+
+            return id;
 
         }
 
