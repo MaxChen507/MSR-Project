@@ -289,6 +289,8 @@ namespace MSR
                 return;
             }
 
+            //return;
+
             //Obtain approver info of selected
             Domain.ApproverInfo approverInfo = (Domain.ApproverInfo)approval_createTab_comboBox.SelectedItem;
 
@@ -301,8 +303,14 @@ namespace MSR
             //testing
             MessageBox.Show("MSR ID is: " + tempMSRID.ToString());
 
-            //INSERT into FormItems
+            //Save state of DGV
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(createTab_dataGridView);
 
+            //INSERT into FormItems
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList)
+            {
+                DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.InsertInitialFormItems(item, tempMSRID);
+            }
         }
 
         private void ClearAllFields_createTab_button_Click(object sender, EventArgs e)
