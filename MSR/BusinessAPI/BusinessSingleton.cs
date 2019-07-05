@@ -35,6 +35,14 @@ namespace MSR.BusinessAPI
             }
         }
 
+        public Boolean IsNumeric(object Expression)
+        {
+            double retNum;
+
+            Boolean isNum = Double.TryParse(Convert.ToString(Expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out retNum);
+            return isNum;
+        }
+
         public ICollection<String> GetUniqueBP_List()
         {
             ICollection<String> results = budgetInfo.Select(x => x.Bp_No).Distinct().ToList();

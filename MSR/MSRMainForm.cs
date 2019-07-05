@@ -210,7 +210,66 @@ namespace MSR
                 return;
             }
 
+            //Checking if all numeric fields are numeric
+            foreach (DataGridViewRow row in createTab_dataGridView.Rows)
+            {
+                if ( !BusinessAPI.BusinessSingleton.Instance.IsNumeric(row.Cells["Quantity"].FormattedValue.ToString()) )
+                {
+                    Color lightRed = ControlPaint.Light(Color.Red);
+                    row.Cells["Quantity"].Style.BackColor = lightRed;
+                    itemsCorrectFlag = false;
+                }
+                else
+                {
+                    row.Cells["Quantity"].Style.BackColor = (Color)System.Drawing.SystemColors.Window;
+                }
 
+                if ( !BusinessAPI.BusinessSingleton.Instance.IsNumeric(row.Cells["UnitPrice"].FormattedValue.ToString()) && !String.IsNullOrEmpty(row.Cells["UnitPrice"].FormattedValue.ToString()) )
+                {
+                    Color lightRed = ControlPaint.Light(Color.Red);
+                    row.Cells["UnitPrice"].Style.BackColor = lightRed;
+                    itemsCorrectFlag = false;
+                }
+                else
+                {
+                    row.Cells["UnitPrice"].Style.BackColor = (Color)System.Drawing.SystemColors.Window;
+                }
+            }
+
+            if (itemsCorrectFlag)
+            {
+                MessageBox.Show("Quantity and UnitPrice are double.");
+            }
+            else
+            {
+                MessageBox.Show("Highlighted items' fields must be corrected to double.");
+                return;
+            }
+
+            //Checking if all required form item fields are set
+            foreach (DataGridViewRow row in createTab_dataGridView.Rows)
+            {
+                if ( String.IsNullOrEmpty(row.Cells["Quantity"].FormattedValue.ToString()) )
+                {
+                    Color lightRed = ControlPaint.Light(Color.Red);
+                    row.Cells["Quantity"].Style.BackColor = lightRed;
+                    itemsCorrectFlag = false;
+                }
+                else
+                {
+                    row.Cells["Quantity"].Style.BackColor = (Color)System.Drawing.SystemColors.Window;
+                }
+            }
+
+            if (itemsCorrectFlag)
+            {
+                MessageBox.Show("All form item fields are filled.");
+            }
+            else
+            {
+                MessageBox.Show("Highlighted items' fields must be filled");
+                return;
+            }
 
             //To confirm if you want to Submit MSR
             DialogResult result = MessageBox.Show("Are you sure you want to submit the MSR?", "Confirmation", MessageBoxButtons.YesNo);

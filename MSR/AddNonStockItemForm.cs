@@ -117,9 +117,13 @@ namespace MSR
             {
                 MessageBox.Show("The selected item description already exists.");
             }
-            else if (itemDesc_addNonStock_richTextBox.Text.Equals(""))
+            else if (String.IsNullOrWhiteSpace(itemDesc_addNonStock_richTextBox.Text))
             {
                 MessageBox.Show("The item description is empty.");
+            }
+            else if(String.IsNullOrWhiteSpace(unit_addNonStock_textBox.Text))
+            {
+                MessageBox.Show("The unit is empty.");
             }
             else
             {
