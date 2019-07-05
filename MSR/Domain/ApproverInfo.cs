@@ -12,12 +12,14 @@ namespace MSR.Domain
         public String Username { get; }
         public String FullName { get; }
         public String Email { get; }
-        public ApproverInfo(String UserId, String Username, String FullName, String Email)
+        public String DeptId { get; }
+        public ApproverInfo(String UserId, String Username, String FullName, String Email, String DeptId)
         {
             this.UserId = UserId;
             this.Username = Username;
             this.FullName = FullName;
             this.Email = Email;
+            this.DeptId = DeptId;
         }
     }
 }

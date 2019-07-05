@@ -57,7 +57,7 @@ namespace MSR.DatabaseAPI
             List<SqlParameter> sqlParametersList = new List<SqlParameter>();
             sqlParametersList.Add(bp_No_param);
 
-            String sql = "SELECT Usr.UserId, Usr.Username, Usr.FullName, Usr.Email FROM BudgetHolder INNER JOIN BudgetPool ON BudgetHolder.BP_No = BudgetPool.BP_No INNER JOIN Usr ON BudgetHolder.UserId = Usr.UserId WHERE BudgetPool.BP_No = @bp_No";
+            String sql = "SELECT Usr.UserId, Usr.Username, Usr.FullName, Usr.Email, Usr.DeptId FROM BudgetHolder INNER JOIN BudgetPool ON BudgetHolder.BP_No = BudgetPool.BP_No INNER JOIN Usr ON BudgetHolder.UserId = Usr.UserId WHERE BudgetPool.BP_No = @bp_No";
 
             using (SqlDataReader dataReader = DBAccessSingleton.Instance.MyExecuteQuery(sql, sqlParametersList))
             {
@@ -69,8 +69,9 @@ namespace MSR.DatabaseAPI
                     String Username = dataReader["Username"].ToString();
                     String FullName = dataReader["FullName"].ToString();
                     String Email = dataReader["Email"].ToString();
+                    String DeptId = dataReader["DeptId"].ToString();
 
-                    approverInfo = new Domain.ApproverInfo(UserId, Username, FullName, Email);
+                    approverInfo = new Domain.ApproverInfo(UserId, Username, FullName, Email, DeptId);
 
                     budgetHolderData.Add(approverInfo);
                 }

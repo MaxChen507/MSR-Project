@@ -31,7 +31,7 @@
             this.mainMSR_tabControl = new System.Windows.Forms.TabControl();
             this.createNewMSR_tabPage = new System.Windows.Forms.TabPage();
             this.clearAllFields_createTab_button = new System.Windows.Forms.Button();
-            this.save_createTab_button = new System.Windows.Forms.Button();
+            this.submit_createTab_button = new System.Windows.Forms.Button();
             this.addNonStock_createTab_button = new System.Windows.Forms.Button();
             this.addStock_createTab_button = new System.Windows.Forms.Button();
             this.signDate_createTab_groupBox = new System.Windows.Forms.GroupBox();
@@ -105,7 +105,7 @@
             // createNewMSR_tabPage
             // 
             this.createNewMSR_tabPage.Controls.Add(this.clearAllFields_createTab_button);
-            this.createNewMSR_tabPage.Controls.Add(this.save_createTab_button);
+            this.createNewMSR_tabPage.Controls.Add(this.submit_createTab_button);
             this.createNewMSR_tabPage.Controls.Add(this.addNonStock_createTab_button);
             this.createNewMSR_tabPage.Controls.Add(this.addStock_createTab_button);
             this.createNewMSR_tabPage.Controls.Add(this.signDate_createTab_groupBox);
@@ -133,16 +133,16 @@
             this.clearAllFields_createTab_button.UseVisualStyleBackColor = true;
             this.clearAllFields_createTab_button.Click += new System.EventHandler(this.ClearAllFields_createTab_button_Click);
             // 
-            // save_createTab_button
+            // submit_createTab_button
             // 
-            this.save_createTab_button.AutoSize = true;
-            this.save_createTab_button.Location = new System.Drawing.Point(436, 730);
-            this.save_createTab_button.Name = "save_createTab_button";
-            this.save_createTab_button.Size = new System.Drawing.Size(120, 50);
-            this.save_createTab_button.TabIndex = 13;
-            this.save_createTab_button.Text = "Save";
-            this.save_createTab_button.UseVisualStyleBackColor = true;
-            this.save_createTab_button.Click += new System.EventHandler(this.Save_createTab_button_Click);
+            this.submit_createTab_button.AutoSize = true;
+            this.submit_createTab_button.Location = new System.Drawing.Point(436, 730);
+            this.submit_createTab_button.Name = "submit_createTab_button";
+            this.submit_createTab_button.Size = new System.Drawing.Size(120, 50);
+            this.submit_createTab_button.TabIndex = 13;
+            this.submit_createTab_button.Text = "Submit";
+            this.submit_createTab_button.UseVisualStyleBackColor = true;
+            this.submit_createTab_button.Click += new System.EventHandler(this.Save_createTab_button_Click);
             // 
             // addNonStock_createTab_button
             // 
@@ -647,7 +647,7 @@
         private System.Windows.Forms.DateTimePicker changeDate_createTab_dateTimePicker;
         private System.Windows.Forms.CheckBox changeDate_createTab_checkBox;
         private System.Windows.Forms.Button addStock_createTab_button;
-        private System.Windows.Forms.Button save_createTab_button;
+        private System.Windows.Forms.Button submit_createTab_button;
         private System.Windows.Forms.Button addNonStock_createTab_button;
         private System.Windows.Forms.Button clearAllFields_createTab_button;
         private System.Windows.Forms.GroupBox search_waitApprovalTab_groupBox;

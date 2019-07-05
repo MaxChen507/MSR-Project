@@ -148,6 +148,9 @@ namespace MSR
 
         private void Save_createTab_button_Click(object sender, EventArgs e)
         {
+            //Unselect DataGridView
+            createTab_dataGridView.ClearSelection();
+
             //Checking all required fields
             if (budgetYear_createTab_comboBox.SelectedIndex == -1)
             {
@@ -179,19 +182,56 @@ namespace MSR
                 return;
             }
 
-            //Obtain approver info of selected
-            Domain.ApproverInfo approverInfo = (Domain.ApproverInfo) approval_createTab_comboBox.SelectedItem;
+            Boolean itemsCorrectFlag = true;
+            //Checking if all items's budget pool matches combobox budget pool
+            foreach (DataGridViewRow row in createTab_dataGridView.Rows)
+            {
+                if ( !(row.Cells["BudgetPool"].FormattedValue.ToString().Equals(budgetPool_createTab_comboBox.Text)) )
+                {
+                    Color lightRed = ControlPaint.Light(Color.Red);
+                    row.Cells["BudgetPool"].Style.BackColor = lightRed;
+                    itemsCorrectFlag = false;
+                }
+                else
+                {
+                    row.Cells["BudgetPool"].Style.BackColor = (Color)System.Drawing.SystemColors.Window;
+                }
+            }
 
-            //Checking if all items
-            
+            if (itemsCorrectFlag)
+            {
+                MessageBox.Show("All item's budget pool match with selected Budget Pool.");
+            }
+            else
+            {
+                MessageBox.Show("Highlighted item's budget pool doesn't match with selected Budget Pool.");
+                return;
+            }
+
+            //To confirm if you want to Submit MSR
+            DialogResult result = MessageBox.Show("Are you sure you want to submit the MSR?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                MessageBox.Show("Selected YES.");
+                //...
+            }
+            else if (result == DialogResult.No)
+            {
+                MessageBox.Show("Selected NO.");
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Selected NO.");
+                return;
+            }
+
+            //Obtain approver info of selected
+            Domain.ApproverInfo approverInfo = (Domain.ApproverInfo)approval_createTab_comboBox.SelectedItem;
+
             Domain.MSRInfo mSRInfo = new Domain.MSRInfo(project_createTab_textBox.Text, wellVL_createTab_textBox.Text, comments_createTab_textBox.Text, budgetYear_createTab_comboBox.Text, budgetPool_createTab_comboBox.Text, AFE_createTab_textBox.Text, suggVendor_createTab_textBox.Text, vendorContact_createTab_textBox.Text, BusinessAPI.BusinessSingleton.Instance.userInfo.UserId, approverInfo.UserId, changeDate_createTab_dateTimePicker.Value, "CREATED");
 
             int tempMSRID = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.CreateInitialMSR(mSRInfo);
-
-
-            //TODO: To confirm if you want to Submit MSR
-
-
 
             //testing
             MessageBox.Show("MSR ID is: " + tempMSRID.ToString());
