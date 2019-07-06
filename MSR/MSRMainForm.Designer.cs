@@ -86,13 +86,6 @@
             this.idSearch_waitApprovalTab_label = new System.Windows.Forms.Label();
             this.MSRMain_menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MSRId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BP_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeptName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Originator = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Approver = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Req_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comments_waitApprovalTab = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainMSR_tabControl.SuspendLayout();
             this.createNewMSR_tabPage.SuspendLayout();
             this.signDate_createTab_groupBox.SuspendLayout();
@@ -559,14 +552,6 @@
             this.waitApprovalTab_dataGridView.AllowUserToAddRows = false;
             this.waitApprovalTab_dataGridView.AllowUserToDeleteRows = false;
             this.waitApprovalTab_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.waitApprovalTab_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MSRId,
-            this.BP_No,
-            this.DeptName,
-            this.Originator,
-            this.Approver,
-            this.Req_Date,
-            this.Comments_waitApprovalTab});
             this.waitApprovalTab_dataGridView.Location = new System.Drawing.Point(19, 113);
             this.waitApprovalTab_dataGridView.Name = "waitApprovalTab_dataGridView";
             this.waitApprovalTab_dataGridView.ReadOnly = true;
@@ -596,6 +581,7 @@
             this.apSearch_waitApprovalTab_textBox.Name = "apSearch_waitApprovalTab_textBox";
             this.apSearch_waitApprovalTab_textBox.Size = new System.Drawing.Size(100, 20);
             this.apSearch_waitApprovalTab_textBox.TabIndex = 7;
+            this.apSearch_waitApprovalTab_textBox.TextChanged += new System.EventHandler(this.ApSearch_waitApprovalTab_textBox_TextChanged);
             // 
             // apSearch_waitApprovalTab_label
             // 
@@ -612,6 +598,7 @@
             this.ogSearch_waitApprovalTab_textBox.Name = "ogSearch_waitApprovalTab_textBox";
             this.ogSearch_waitApprovalTab_textBox.Size = new System.Drawing.Size(100, 20);
             this.ogSearch_waitApprovalTab_textBox.TabIndex = 5;
+            this.ogSearch_waitApprovalTab_textBox.TextChanged += new System.EventHandler(this.OgSearch_waitApprovalTab_textBox_TextChanged);
             // 
             // ogSearch_waitApprovalTab_label
             // 
@@ -628,6 +615,7 @@
             this.deptSearch_waitApprovalTab_textBox.Name = "deptSearch_waitApprovalTab_textBox";
             this.deptSearch_waitApprovalTab_textBox.Size = new System.Drawing.Size(100, 20);
             this.deptSearch_waitApprovalTab_textBox.TabIndex = 3;
+            this.deptSearch_waitApprovalTab_textBox.TextChanged += new System.EventHandler(this.DeptSearch_waitApprovalTab_textBox_TextChanged);
             // 
             // deptSearch_waitApprovalTab_label
             // 
@@ -644,6 +632,7 @@
             this.idSearch_waitApprovalTab_textBox.Name = "idSearch_waitApprovalTab_textBox";
             this.idSearch_waitApprovalTab_textBox.Size = new System.Drawing.Size(100, 20);
             this.idSearch_waitApprovalTab_textBox.TabIndex = 1;
+            this.idSearch_waitApprovalTab_textBox.TextChanged += new System.EventHandler(this.IdSearch_waitApprovalTab_textBox_TextChanged);
             // 
             // idSearch_waitApprovalTab_label
             // 
@@ -669,48 +658,6 @@
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "Menu";
-            // 
-            // MSRId
-            // 
-            this.MSRId.HeaderText = "MSRId";
-            this.MSRId.Name = "MSRId";
-            this.MSRId.ReadOnly = true;
-            // 
-            // BP_No
-            // 
-            this.BP_No.HeaderText = "BP_No";
-            this.BP_No.Name = "BP_No";
-            this.BP_No.ReadOnly = true;
-            // 
-            // DeptName
-            // 
-            this.DeptName.HeaderText = "DeptName";
-            this.DeptName.Name = "DeptName";
-            this.DeptName.ReadOnly = true;
-            // 
-            // Originator
-            // 
-            this.Originator.HeaderText = "Originator";
-            this.Originator.Name = "Originator";
-            this.Originator.ReadOnly = true;
-            // 
-            // Approver
-            // 
-            this.Approver.HeaderText = "Approver";
-            this.Approver.Name = "Approver";
-            this.Approver.ReadOnly = true;
-            // 
-            // Req_Date
-            // 
-            this.Req_Date.HeaderText = "Req_Date";
-            this.Req_Date.Name = "Req_Date";
-            this.Req_Date.ReadOnly = true;
-            // 
-            // Comments_waitApprovalTab
-            // 
-            this.Comments_waitApprovalTab.HeaderText = "Comments";
-            this.Comments_waitApprovalTab.Name = "Comments_waitApprovalTab";
-            this.Comments_waitApprovalTab.ReadOnly = true;
             // 
             // MSRMainForm
             // 
@@ -807,13 +754,6 @@
         private System.Windows.Forms.Label ogSearch_waitApprovalTab_label;
         private System.Windows.Forms.TextBox deptSearch_waitApprovalTab_textBox;
         private System.Windows.Forms.Label deptSearch_waitApprovalTab_label;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MSRId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BP_No;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DeptName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Originator;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Approver;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Req_Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Comments_waitApprovalTab;
     }
 }
 

@@ -14,7 +14,7 @@ namespace MSR
     {
         //Binding Source Initialization
         BindingSource createTabDGV_source { get; set; }
-        BindingSource waitApprovalTabDGV_source { get; set; }
+        BindingSource waitApprovalTabDGV_source = new BindingSource();
 
         public MSRMainForm()
         {
@@ -64,10 +64,10 @@ namespace MSR
             }
 
             //Populate waitApprovalTab_dataGridView from Database Singleton
-            foreach (Domain.ShowMSRItem item in DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.GetshowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId))
-            {
-                waitApprovalTab_dataGridView.Rows.Add(item.MSRId, item.Bp_No, item.DeptName, item.Originator, item.Approver, item.Req_Date.ToShortDateString(), item.Comments);
-            }
+            waitApprovalTabDGV_source.DataSource = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.GetshowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId);
+            waitApprovalTab_dataGridView.DataSource = waitApprovalTabDGV_source;
+
+            waitApprovalTab_dataGridView.ClearSelection();
 
         }
 
@@ -356,5 +356,24 @@ namespace MSR
             waitApprovalTab_dataGridView.ClearSelection();
         }
 
+        private void IdSearch_waitApprovalTab_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredShowMSRItemListDGV();
+        }
+
+        private void DeptSearch_waitApprovalTab_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredShowMSRItemListDGV();
+        }
+
+        private void OgSearch_waitApprovalTab_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredShowMSRItemListDGV();
+        }
+
+        private void ApSearch_waitApprovalTab_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredShowMSRItemListDGV();
+        }
     }
 }
