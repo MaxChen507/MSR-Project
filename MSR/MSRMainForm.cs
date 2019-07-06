@@ -14,7 +14,8 @@ namespace MSR
     {
         //Binding Source Initialization
         BindingSource createTabDGV_source { get; set; }
-        
+        BindingSource waitApprovalTabDGV_source { get; set; }
+
         public MSRMainForm()
         {
             InitializeComponent();
@@ -53,17 +54,21 @@ namespace MSR
         private void RefreshDataGridView()
         {
             //DGV clear
-            createTab_dataGridView.DataSource = null;
-            createTab_dataGridView.Rows.Clear();
-            createTab_dataGridView.Refresh();
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(createTab_dataGridView);
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(waitApprovalTab_dataGridView);
 
-            createTab_dataGridView.ClearSelection();
-
-            //Populate from Singleton List
+            //Populate createTab_dataGridView from Business Singleton List
             foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList)
             {
                 createTab_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
             }
+
+            //Populate waitApprovalTab_dataGridView from Database Singleton
+            foreach (Domain.ShowMSRItem item in DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.GetshowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId))
+            {
+                waitApprovalTab_dataGridView.Rows.Add(item.MSRId, item.Bp_No, item.DeptName, item.Originator, item.Approver, item.Req_Date.ToShortDateString(), item.Comments);
+            }
+
         }
 
         private void AddStock_createTab_button_Click(object sender, EventArgs e)
@@ -311,6 +316,9 @@ namespace MSR
             {
                 DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.InsertInitialFormItems(item, tempMSRID);
             }
+
+            //Refresh all the DataGridViews
+            RefreshDataGridView();
         }
 
         private void ClearAllFields_createTab_button_Click(object sender, EventArgs e)
@@ -328,10 +336,25 @@ namespace MSR
             //Reset Buttons
             addStock_createTab_button.Enabled = false;
             addNonStock_createTab_button.Enabled = false;
-
-
         }
+        
+        private void PopulateFilteredShowMSRItemListDGV()
+        {
+            ICollection<Domain.ShowMSRItem> showMSRItemData = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.GetshowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId);
 
+            ICollection<Domain.ShowMSRItem> showMSRItemDatafilter = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.GetFiltershowMSR_List(showMSRItemData, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text);
+
+            if (showMSRItemDatafilter == null)
+            {
+                MessageBox.Show("DB error");
+                return;
+            }
+
+            waitApprovalTabDGV_source.DataSource = showMSRItemDatafilter;
+            waitApprovalTab_dataGridView.DataSource = waitApprovalTabDGV_source;
+
+            waitApprovalTab_dataGridView.ClearSelection();
+        }
 
     }
 }

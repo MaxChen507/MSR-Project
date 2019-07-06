@@ -106,5 +106,14 @@ namespace MSR.UserInterfaceAPI
             }
         }
 
+        public void Custom_DGV_Clear(DataGridView DGV)
+        {
+            DGV.DataSource = null;
+            DGV.Rows.Clear();
+            DGV.Refresh();
+
+            DGV.ClearSelection();
+        }
+
     }
 }

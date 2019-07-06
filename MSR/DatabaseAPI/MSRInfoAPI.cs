@@ -95,5 +95,68 @@ namespace MSR.DatabaseAPI
             DatabaseAPI.DBAccessSingleton.Instance.MyExecuteInsertStmt(sql, sqlParametersList);
         }
 
+        public ICollection<Domain.ShowMSRItem> GetshowMSR_List(String DeptId)
+        {
+            ICollection<Domain.ShowMSRItem> showMSRData = null;
+
+            SqlParameter deptId_param = new SqlParameter("@DeptId", DeptId);
+
+            List<SqlParameter> sqlParametersList = new List<SqlParameter>();
+            sqlParametersList.Add(deptId_param);
+
+            String sql = "SELECT MSRId, Bp_No, DeptName, Originator, Approver, Req_Date, Comments FROM V_ShowMSR WHERE DeptId = @DeptId";
+
+            using (SqlDataReader dataReader = DBAccessSingleton.Instance.MyExecuteQuery(sql, sqlParametersList))
+            {
+                showMSRData = new List<Domain.ShowMSRItem>();
+
+                while (dataReader.Read())
+                {
+                    String MSRId = dataReader["MSRId"].ToString();
+                    String Bp_No = dataReader["Bp_No"].ToString();
+                    String DeptName = dataReader["DeptName"].ToString();
+                    String Originator = dataReader["Originator"].ToString();
+                    String Approver = dataReader["Approver"].ToString();
+                    DateTime Req_Date = DateTime.Parse(dataReader["Req_Date"].ToString());
+                    String Comments = dataReader["Comments"].ToString();
+
+                    Domain.ShowMSRItem temp = new Domain.ShowMSRItem(MSRId, Bp_No, DeptName, Originator, Approver, Req_Date, Comments);
+                    showMSRData.Add(temp);
+                }
+
+                dataReader.Close();
+
+            }
+            return showMSRData;
+        }
+
+        public ICollection<Domain.ShowMSRItem> GetFiltershowMSR_List(ICollection<Domain.ShowMSRItem> showMSRList, string searchMSRID, string searchDept, string searchOg, string searchAp)
+        {
+
+            List<string> searchMSRIDList = searchMSRID.Split(' ').ToList();
+
+            List<string> searchDeptList = searchDept.Split(' ').ToList();
+
+            List<string> searchOgList = searchOg.Split(' ').ToList();
+
+            List<string> searchApList = searchAp.Split(' ').ToList();
+
+            ICollection<Domain.ShowMSRItem> results = (
+                                           from item in showMSRList
+                                           where
+                                                searchMSRIDList.All(sTring => item.MSRId.ToUpperInvariant().Contains(sTring.ToUpperInvariant()))
+                                                &&
+                                                searchDeptList.All(sTring => item.DeptName.ToUpperInvariant().Contains(sTring.ToUpperInvariant()))
+                                                &&
+                                                searchOgList.All(sTring => item.Originator.ToUpperInvariant().Contains(sTring.ToUpperInvariant()))
+                                                &&
+                                                searchApList.All(sTring => item.Approver.ToUpperInvariant().Contains(sTring.ToUpperInvariant()))
+                                           select item
+                                           ).ToList();
+
+            return results;
+        }
+
+
     }
 }

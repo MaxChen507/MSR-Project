@@ -27,6 +27,12 @@ namespace MSR
             this.Bp_No = Bp_No;
             BudgetListDGV_Load();
             AddListDGV_Load();
+            InitalizeStartingFields();
+        }
+
+        private void InitalizeStartingFields()
+        {
+            itemCode_addNonStock_textBox.Text = "[NonStock]";
         }
 
         private void BudgetListDGV_Load()
@@ -167,5 +173,6 @@ namespace MSR
         {
             PopulateFilteredBudgetInfoListDGV();
         }
+
     }
 }

@@ -75,6 +75,7 @@
     </Compile>
     <Compile Include="Domain\FormItems.cs" />
     <Compile Include="Domain\MSRInfo.cs" />
+    <Compile Include="Domain\ShowMSRItem.cs" />
     <Compile Include="Domain\StockItems.cs" />
     <Compile Include="Domain\UserInfo.cs" />
     <Compile Include="LoginForm.cs">

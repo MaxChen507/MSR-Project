@@ -42,6 +42,16 @@
             this.originator_createTab_comboBox = new System.Windows.Forms.ComboBox();
             this.originator_createTab_label = new System.Windows.Forms.Label();
             this.createTab_dataGridView = new System.Windows.Forms.DataGridView();
+            this.BudgetPool = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ROS_Date = new MSR.Domain.CalendarColumn();
+            this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vendorContact_createTab_groupBox = new System.Windows.Forms.GroupBox();
             this.vendorContact_createTab_textBox = new System.Windows.Forms.TextBox();
             this.vendorContact_createTab_label = new System.Windows.Forms.Label();
@@ -66,20 +76,23 @@
             this.Test_ShowMSR = new System.Windows.Forms.Button();
             this.waitApprovalTab_dataGridView = new System.Windows.Forms.DataGridView();
             this.search_waitApprovalTab_groupBox = new System.Windows.Forms.GroupBox();
+            this.apSearch_waitApprovalTab_textBox = new System.Windows.Forms.TextBox();
+            this.apSearch_waitApprovalTab_label = new System.Windows.Forms.Label();
+            this.ogSearch_waitApprovalTab_textBox = new System.Windows.Forms.TextBox();
+            this.ogSearch_waitApprovalTab_label = new System.Windows.Forms.Label();
+            this.deptSearch_waitApprovalTab_textBox = new System.Windows.Forms.TextBox();
+            this.deptSearch_waitApprovalTab_label = new System.Windows.Forms.Label();
             this.idSearch_waitApprovalTab_textBox = new System.Windows.Forms.TextBox();
             this.idSearch_waitApprovalTab_label = new System.Windows.Forms.Label();
             this.MSRMain_menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.BudgetPool = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ROS_Date = new MSR.Domain.CalendarColumn();
-            this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MSRId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BP_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeptName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Originator = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Approver = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Req_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comments_waitApprovalTab = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainMSR_tabControl.SuspendLayout();
             this.createNewMSR_tabPage.SuspendLayout();
             this.signDate_createTab_groupBox.SuspendLayout();
@@ -264,6 +277,63 @@
             this.createTab_dataGridView.Name = "createTab_dataGridView";
             this.createTab_dataGridView.Size = new System.Drawing.Size(1006, 400);
             this.createTab_dataGridView.TabIndex = 8;
+            // 
+            // BudgetPool
+            // 
+            this.BudgetPool.HeaderText = "BudgetPool";
+            this.BudgetPool.Name = "BudgetPool";
+            this.BudgetPool.ReadOnly = true;
+            // 
+            // ItemCode
+            // 
+            this.ItemCode.HeaderText = "ItemCode";
+            this.ItemCode.Name = "ItemCode";
+            this.ItemCode.ReadOnly = true;
+            // 
+            // ItemDesc
+            // 
+            this.ItemDesc.HeaderText = "ItemDesc";
+            this.ItemDesc.Name = "ItemDesc";
+            this.ItemDesc.ReadOnly = true;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            // 
+            // Unit
+            // 
+            this.Unit.HeaderText = "Unit";
+            this.Unit.Name = "Unit";
+            this.Unit.ReadOnly = true;
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.HeaderText = "UnitPrice";
+            this.UnitPrice.Name = "UnitPrice";
+            // 
+            // Currency
+            // 
+            this.Currency.HeaderText = "Currency";
+            this.Currency.Name = "Currency";
+            // 
+            // ROS_Date
+            // 
+            this.ROS_Date.HeaderText = "ROS_Date";
+            this.ROS_Date.Name = "ROS_Date";
+            this.ROS_Date.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ROS_Date.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Comments
+            // 
+            this.Comments.HeaderText = "Comments";
+            this.Comments.Name = "Comments";
+            // 
+            // AC_No
+            // 
+            this.AC_No.HeaderText = "AC_No";
+            this.AC_No.Name = "AC_No";
+            this.AC_No.ReadOnly = true;
             // 
             // vendorContact_createTab_groupBox
             // 
@@ -489,6 +559,14 @@
             this.waitApprovalTab_dataGridView.AllowUserToAddRows = false;
             this.waitApprovalTab_dataGridView.AllowUserToDeleteRows = false;
             this.waitApprovalTab_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.waitApprovalTab_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MSRId,
+            this.BP_No,
+            this.DeptName,
+            this.Originator,
+            this.Approver,
+            this.Req_Date,
+            this.Comments_waitApprovalTab});
             this.waitApprovalTab_dataGridView.Location = new System.Drawing.Point(19, 113);
             this.waitApprovalTab_dataGridView.Name = "waitApprovalTab_dataGridView";
             this.waitApprovalTab_dataGridView.ReadOnly = true;
@@ -497,6 +575,12 @@
             // 
             // search_waitApprovalTab_groupBox
             // 
+            this.search_waitApprovalTab_groupBox.Controls.Add(this.apSearch_waitApprovalTab_textBox);
+            this.search_waitApprovalTab_groupBox.Controls.Add(this.apSearch_waitApprovalTab_label);
+            this.search_waitApprovalTab_groupBox.Controls.Add(this.ogSearch_waitApprovalTab_textBox);
+            this.search_waitApprovalTab_groupBox.Controls.Add(this.ogSearch_waitApprovalTab_label);
+            this.search_waitApprovalTab_groupBox.Controls.Add(this.deptSearch_waitApprovalTab_textBox);
+            this.search_waitApprovalTab_groupBox.Controls.Add(this.deptSearch_waitApprovalTab_label);
             this.search_waitApprovalTab_groupBox.Controls.Add(this.idSearch_waitApprovalTab_textBox);
             this.search_waitApprovalTab_groupBox.Controls.Add(this.idSearch_waitApprovalTab_label);
             this.search_waitApprovalTab_groupBox.Location = new System.Drawing.Point(19, 18);
@@ -505,6 +589,54 @@
             this.search_waitApprovalTab_groupBox.TabIndex = 0;
             this.search_waitApprovalTab_groupBox.TabStop = false;
             this.search_waitApprovalTab_groupBox.Text = "Search";
+            // 
+            // apSearch_waitApprovalTab_textBox
+            // 
+            this.apSearch_waitApprovalTab_textBox.Location = new System.Drawing.Point(349, 53);
+            this.apSearch_waitApprovalTab_textBox.Name = "apSearch_waitApprovalTab_textBox";
+            this.apSearch_waitApprovalTab_textBox.Size = new System.Drawing.Size(100, 20);
+            this.apSearch_waitApprovalTab_textBox.TabIndex = 7;
+            // 
+            // apSearch_waitApprovalTab_label
+            // 
+            this.apSearch_waitApprovalTab_label.AutoSize = true;
+            this.apSearch_waitApprovalTab_label.Location = new System.Drawing.Point(346, 37);
+            this.apSearch_waitApprovalTab_label.Name = "apSearch_waitApprovalTab_label";
+            this.apSearch_waitApprovalTab_label.Size = new System.Drawing.Size(50, 13);
+            this.apSearch_waitApprovalTab_label.TabIndex = 6;
+            this.apSearch_waitApprovalTab_label.Text = "Approver";
+            // 
+            // ogSearch_waitApprovalTab_textBox
+            // 
+            this.ogSearch_waitApprovalTab_textBox.Location = new System.Drawing.Point(243, 53);
+            this.ogSearch_waitApprovalTab_textBox.Name = "ogSearch_waitApprovalTab_textBox";
+            this.ogSearch_waitApprovalTab_textBox.Size = new System.Drawing.Size(100, 20);
+            this.ogSearch_waitApprovalTab_textBox.TabIndex = 5;
+            // 
+            // ogSearch_waitApprovalTab_label
+            // 
+            this.ogSearch_waitApprovalTab_label.AutoSize = true;
+            this.ogSearch_waitApprovalTab_label.Location = new System.Drawing.Point(240, 37);
+            this.ogSearch_waitApprovalTab_label.Name = "ogSearch_waitApprovalTab_label";
+            this.ogSearch_waitApprovalTab_label.Size = new System.Drawing.Size(52, 13);
+            this.ogSearch_waitApprovalTab_label.TabIndex = 4;
+            this.ogSearch_waitApprovalTab_label.Text = "Originator";
+            // 
+            // deptSearch_waitApprovalTab_textBox
+            // 
+            this.deptSearch_waitApprovalTab_textBox.Location = new System.Drawing.Point(137, 53);
+            this.deptSearch_waitApprovalTab_textBox.Name = "deptSearch_waitApprovalTab_textBox";
+            this.deptSearch_waitApprovalTab_textBox.Size = new System.Drawing.Size(100, 20);
+            this.deptSearch_waitApprovalTab_textBox.TabIndex = 3;
+            // 
+            // deptSearch_waitApprovalTab_label
+            // 
+            this.deptSearch_waitApprovalTab_label.AutoSize = true;
+            this.deptSearch_waitApprovalTab_label.Location = new System.Drawing.Point(134, 37);
+            this.deptSearch_waitApprovalTab_label.Name = "deptSearch_waitApprovalTab_label";
+            this.deptSearch_waitApprovalTab_label.Size = new System.Drawing.Size(62, 13);
+            this.deptSearch_waitApprovalTab_label.TabIndex = 2;
+            this.deptSearch_waitApprovalTab_label.Text = "Department";
             // 
             // idSearch_waitApprovalTab_textBox
             // 
@@ -538,62 +670,47 @@
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "Menu";
             // 
-            // BudgetPool
+            // MSRId
             // 
-            this.BudgetPool.HeaderText = "BudgetPool";
-            this.BudgetPool.Name = "BudgetPool";
-            this.BudgetPool.ReadOnly = true;
+            this.MSRId.HeaderText = "MSRId";
+            this.MSRId.Name = "MSRId";
+            this.MSRId.ReadOnly = true;
             // 
-            // ItemCode
+            // BP_No
             // 
-            this.ItemCode.HeaderText = "ItemCode";
-            this.ItemCode.Name = "ItemCode";
-            this.ItemCode.ReadOnly = true;
+            this.BP_No.HeaderText = "BP_No";
+            this.BP_No.Name = "BP_No";
+            this.BP_No.ReadOnly = true;
             // 
-            // ItemDesc
+            // DeptName
             // 
-            this.ItemDesc.HeaderText = "ItemDesc";
-            this.ItemDesc.Name = "ItemDesc";
-            this.ItemDesc.ReadOnly = true;
+            this.DeptName.HeaderText = "DeptName";
+            this.DeptName.Name = "DeptName";
+            this.DeptName.ReadOnly = true;
             // 
-            // Quantity
+            // Originator
             // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
+            this.Originator.HeaderText = "Originator";
+            this.Originator.Name = "Originator";
+            this.Originator.ReadOnly = true;
             // 
-            // Unit
+            // Approver
             // 
-            this.Unit.HeaderText = "Unit";
-            this.Unit.Name = "Unit";
-            this.Unit.ReadOnly = true;
+            this.Approver.HeaderText = "Approver";
+            this.Approver.Name = "Approver";
+            this.Approver.ReadOnly = true;
             // 
-            // UnitPrice
+            // Req_Date
             // 
-            this.UnitPrice.HeaderText = "UnitPrice";
-            this.UnitPrice.Name = "UnitPrice";
+            this.Req_Date.HeaderText = "Req_Date";
+            this.Req_Date.Name = "Req_Date";
+            this.Req_Date.ReadOnly = true;
             // 
-            // Currency
+            // Comments_waitApprovalTab
             // 
-            this.Currency.HeaderText = "Currency";
-            this.Currency.Name = "Currency";
-            // 
-            // ROS_Date
-            // 
-            this.ROS_Date.HeaderText = "ROS_Date";
-            this.ROS_Date.Name = "ROS_Date";
-            this.ROS_Date.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ROS_Date.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Comments
-            // 
-            this.Comments.HeaderText = "Comments";
-            this.Comments.Name = "Comments";
-            // 
-            // AC_No
-            // 
-            this.AC_No.HeaderText = "AC_No";
-            this.AC_No.Name = "AC_No";
-            this.AC_No.ReadOnly = true;
+            this.Comments_waitApprovalTab.HeaderText = "Comments";
+            this.Comments_waitApprovalTab.Name = "Comments_waitApprovalTab";
+            this.Comments_waitApprovalTab.ReadOnly = true;
             // 
             // MSRMainForm
             // 
@@ -684,6 +801,19 @@
         private Domain.CalendarColumn ROS_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Comments;
         private System.Windows.Forms.DataGridViewTextBoxColumn AC_No;
+        private System.Windows.Forms.TextBox apSearch_waitApprovalTab_textBox;
+        private System.Windows.Forms.Label apSearch_waitApprovalTab_label;
+        private System.Windows.Forms.TextBox ogSearch_waitApprovalTab_textBox;
+        private System.Windows.Forms.Label ogSearch_waitApprovalTab_label;
+        private System.Windows.Forms.TextBox deptSearch_waitApprovalTab_textBox;
+        private System.Windows.Forms.Label deptSearch_waitApprovalTab_label;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MSRId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BP_No;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DeptName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Originator;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Approver;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Req_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comments_waitApprovalTab;
     }
 }
 

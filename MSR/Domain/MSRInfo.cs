@@ -8,6 +8,7 @@ namespace MSR.Domain
 {
     class MSRInfo
     {
+        public String MSRId { get; }
         public String Project { get; }
         public String WVL { get; }
         public String Comments { get; }
@@ -27,8 +28,9 @@ namespace MSR.Domain
         public String Review_Comment { get; }
         public String StateFlag { get; }
 
-        public MSRInfo(String Project, String WVL, String Comments, String BudgetYear, String BP_No, String AFE, String SugVendor, String ContactVendor, String Request_Originator, String Company_Approval, DateTime Req_Date, DateTime Appr_Date, String Recieve_By, DateTime Recieve_Date, String PUR_Comment, String Decline_Comment, String Review_Comment, String StateFlag)
+        public MSRInfo(String MSRId, String Project, String WVL, String Comments, String BudgetYear, String BP_No, String AFE, String SugVendor, String ContactVendor, String Request_Originator, String Company_Approval, DateTime Req_Date, DateTime Appr_Date, String Recieve_By, DateTime Recieve_Date, String PUR_Comment, String Decline_Comment, String Review_Comment, String StateFlag)
         {
+            this.MSRId = MSRId;
             this.Project = Project;
             this.WVL = WVL;
             this.Comments = Comments;

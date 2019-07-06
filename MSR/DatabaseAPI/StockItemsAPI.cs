@@ -36,7 +36,7 @@ namespace MSR.DatabaseAPI
                 }
                 else
                 {
-                    sql = string.Concat(sql, tempParamName + " AND Ac_No = ");
+                    sql = string.Concat(sql, tempParamName + " OR Ac_No = ");
                 }
 
             }
