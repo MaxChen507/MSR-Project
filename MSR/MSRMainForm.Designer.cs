@@ -42,16 +42,6 @@
             this.originator_createTab_comboBox = new System.Windows.Forms.ComboBox();
             this.originator_createTab_label = new System.Windows.Forms.Label();
             this.createTab_dataGridView = new System.Windows.Forms.DataGridView();
-            this.BudgetPool = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ROS_Date = new MSR.Domain.CalendarColumn();
-            this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vendorContact_createTab_groupBox = new System.Windows.Forms.GroupBox();
             this.vendorContact_createTab_textBox = new System.Windows.Forms.TextBox();
             this.vendorContact_createTab_label = new System.Windows.Forms.Label();
@@ -73,7 +63,6 @@
             this.wellVL_createTab_label = new System.Windows.Forms.Label();
             this.project_createTab_label = new System.Windows.Forms.Label();
             this.waitApproval_tabPage = new System.Windows.Forms.TabPage();
-            this.Test_ShowMSR = new System.Windows.Forms.Button();
             this.waitApprovalTab_dataGridView = new System.Windows.Forms.DataGridView();
             this.search_waitApprovalTab_groupBox = new System.Windows.Forms.GroupBox();
             this.apSearch_waitApprovalTab_textBox = new System.Windows.Forms.TextBox();
@@ -86,6 +75,26 @@
             this.idSearch_waitApprovalTab_label = new System.Windows.Forms.Label();
             this.MSRMain_menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.calendarColumn1 = new MSR.Domain.CalendarColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BudgetPool = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ROS_Date = new MSR.Domain.CalendarColumn();
+            this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainMSR_tabControl.SuspendLayout();
             this.createNewMSR_tabPage.SuspendLayout();
             this.signDate_createTab_groupBox.SuspendLayout();
@@ -270,63 +279,6 @@
             this.createTab_dataGridView.Name = "createTab_dataGridView";
             this.createTab_dataGridView.Size = new System.Drawing.Size(1006, 400);
             this.createTab_dataGridView.TabIndex = 8;
-            // 
-            // BudgetPool
-            // 
-            this.BudgetPool.HeaderText = "BudgetPool";
-            this.BudgetPool.Name = "BudgetPool";
-            this.BudgetPool.ReadOnly = true;
-            // 
-            // ItemCode
-            // 
-            this.ItemCode.HeaderText = "ItemCode";
-            this.ItemCode.Name = "ItemCode";
-            this.ItemCode.ReadOnly = true;
-            // 
-            // ItemDesc
-            // 
-            this.ItemDesc.HeaderText = "ItemDesc";
-            this.ItemDesc.Name = "ItemDesc";
-            this.ItemDesc.ReadOnly = true;
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            // 
-            // Unit
-            // 
-            this.Unit.HeaderText = "Unit";
-            this.Unit.Name = "Unit";
-            this.Unit.ReadOnly = true;
-            // 
-            // UnitPrice
-            // 
-            this.UnitPrice.HeaderText = "UnitPrice";
-            this.UnitPrice.Name = "UnitPrice";
-            // 
-            // Currency
-            // 
-            this.Currency.HeaderText = "Currency";
-            this.Currency.Name = "Currency";
-            // 
-            // ROS_Date
-            // 
-            this.ROS_Date.HeaderText = "ROS_Date";
-            this.ROS_Date.Name = "ROS_Date";
-            this.ROS_Date.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ROS_Date.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Comments
-            // 
-            this.Comments.HeaderText = "Comments";
-            this.Comments.Name = "Comments";
-            // 
-            // AC_No
-            // 
-            this.AC_No.HeaderText = "AC_No";
-            this.AC_No.Name = "AC_No";
-            this.AC_No.ReadOnly = true;
             // 
             // vendorContact_createTab_groupBox
             // 
@@ -525,7 +477,6 @@
             // 
             // waitApproval_tabPage
             // 
-            this.waitApproval_tabPage.Controls.Add(this.Test_ShowMSR);
             this.waitApproval_tabPage.Controls.Add(this.waitApprovalTab_dataGridView);
             this.waitApproval_tabPage.Controls.Add(this.search_waitApprovalTab_groupBox);
             this.waitApproval_tabPage.Location = new System.Drawing.Point(4, 22);
@@ -536,27 +487,20 @@
             this.waitApproval_tabPage.Text = "MSRs Waiting for Approval";
             this.waitApproval_tabPage.UseVisualStyleBackColor = true;
             // 
-            // Test_ShowMSR
-            // 
-            this.Test_ShowMSR.AutoSize = true;
-            this.Test_ShowMSR.Location = new System.Drawing.Point(1013, 33);
-            this.Test_ShowMSR.Name = "Test_ShowMSR";
-            this.Test_ShowMSR.Size = new System.Drawing.Size(95, 23);
-            this.Test_ShowMSR.TabIndex = 2;
-            this.Test_ShowMSR.Text = "Test_ShowMSR";
-            this.Test_ShowMSR.UseVisualStyleBackColor = true;
-            this.Test_ShowMSR.Click += new System.EventHandler(this.Test_ShowMSR_Click);
-            // 
             // waitApprovalTab_dataGridView
             // 
             this.waitApprovalTab_dataGridView.AllowUserToAddRows = false;
             this.waitApprovalTab_dataGridView.AllowUserToDeleteRows = false;
+            this.waitApprovalTab_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.waitApprovalTab_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.waitApprovalTab_dataGridView.Location = new System.Drawing.Point(19, 113);
+            this.waitApprovalTab_dataGridView.MultiSelect = false;
             this.waitApprovalTab_dataGridView.Name = "waitApprovalTab_dataGridView";
             this.waitApprovalTab_dataGridView.ReadOnly = true;
+            this.waitApprovalTab_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.waitApprovalTab_dataGridView.Size = new System.Drawing.Size(930, 450);
             this.waitApprovalTab_dataGridView.TabIndex = 1;
+            this.waitApprovalTab_dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.WaitApprovalTab_dataGridView_CellDoubleClick);
             // 
             // search_waitApprovalTab_groupBox
             // 
@@ -659,6 +603,130 @@
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "Menu";
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "BudgetPool";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 96;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "ItemCode";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 97;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "ItemDesc";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 96;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Quantity";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 96;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Unit";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 97;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "UnitPrice";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Width = 96;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Currency";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Width = 96;
+            // 
+            // calendarColumn1
+            // 
+            this.calendarColumn1.HeaderText = "ROS_Date";
+            this.calendarColumn1.Name = "calendarColumn1";
+            this.calendarColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.calendarColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.calendarColumn1.Width = 96;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Comments";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.Width = 97;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "AC_No";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Width = 96;
+            // 
+            // BudgetPool
+            // 
+            this.BudgetPool.HeaderText = "BudgetPool";
+            this.BudgetPool.Name = "BudgetPool";
+            this.BudgetPool.ReadOnly = true;
+            // 
+            // ItemCode
+            // 
+            this.ItemCode.HeaderText = "ItemCode";
+            this.ItemCode.Name = "ItemCode";
+            this.ItemCode.ReadOnly = true;
+            // 
+            // ItemDesc
+            // 
+            this.ItemDesc.HeaderText = "ItemDesc";
+            this.ItemDesc.Name = "ItemDesc";
+            this.ItemDesc.ReadOnly = true;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            // 
+            // Unit
+            // 
+            this.Unit.HeaderText = "Unit";
+            this.Unit.Name = "Unit";
+            this.Unit.ReadOnly = true;
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.HeaderText = "UnitPrice";
+            this.UnitPrice.Name = "UnitPrice";
+            // 
+            // Currency
+            // 
+            this.Currency.HeaderText = "Currency";
+            this.Currency.Name = "Currency";
+            // 
+            // ROS_Date
+            // 
+            this.ROS_Date.HeaderText = "ROS_Date";
+            this.ROS_Date.Name = "ROS_Date";
+            this.ROS_Date.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ROS_Date.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Comments
+            // 
+            this.Comments.HeaderText = "Comments";
+            this.Comments.Name = "Comments";
+            // 
+            // AC_No
+            // 
+            this.AC_No.HeaderText = "AC_No";
+            this.AC_No.Name = "AC_No";
+            this.AC_No.ReadOnly = true;
+            // 
             // MSRMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -683,7 +751,6 @@
             this.project_createTab_groupBox.ResumeLayout(false);
             this.project_createTab_groupBox.PerformLayout();
             this.waitApproval_tabPage.ResumeLayout(false);
-            this.waitApproval_tabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waitApprovalTab_dataGridView)).EndInit();
             this.search_waitApprovalTab_groupBox.ResumeLayout(false);
             this.search_waitApprovalTab_groupBox.PerformLayout();
@@ -737,7 +804,6 @@
         private System.Windows.Forms.TextBox idSearch_waitApprovalTab_textBox;
         private System.Windows.Forms.Label idSearch_waitApprovalTab_label;
         private System.Windows.Forms.DataGridView waitApprovalTab_dataGridView;
-        private System.Windows.Forms.Button Test_ShowMSR;
         private System.Windows.Forms.DataGridViewTextBoxColumn BudgetPool;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDesc;
@@ -754,6 +820,16 @@
         private System.Windows.Forms.Label ogSearch_waitApprovalTab_label;
         private System.Windows.Forms.TextBox deptSearch_waitApprovalTab_textBox;
         private System.Windows.Forms.Label deptSearch_waitApprovalTab_label;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private Domain.CalendarColumn calendarColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
     }
 }
 

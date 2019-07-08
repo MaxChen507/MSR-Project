@@ -95,6 +95,107 @@ namespace MSR.DatabaseAPI
             DatabaseAPI.DBAccessSingleton.Instance.MyExecuteInsertStmt(sql, sqlParametersList);
         }
 
+        public Domain.MSRInfo GetMSR(String _MSRId)
+        {
+            Domain.MSRInfo MSRInfoData = null;
+
+            SqlParameter MSRId_param = new SqlParameter("@MSRId", _MSRId);
+
+            List<SqlParameter> sqlParametersList = new List<SqlParameter>();
+            sqlParametersList.Add(MSRId_param);
+
+            String sql = "SELECT * FROM V_ShowMSRForm WHERE MSRId = @MSRId";
+
+            using (SqlDataReader dataReader = DBAccessSingleton.Instance.MyExecuteQuery(sql, sqlParametersList))
+            {
+
+
+                while (dataReader.Read())
+                {
+                    //Project, WVL, Comments, BudgetYear, BP_No, AFE, SugVendor, ContactVendor, Request_Originator, Company_Approval, Req_Date, Appr_Date, Recieve_By, Recieve_Date, PUR_Comment, Decline_Comment, Review_Comment, StateFlag
+
+                    String MSRId = dataReader["MSRId"].ToString();
+                    String Project = dataReader["Project"].ToString();
+                    String WVL = dataReader["WVL"].ToString();
+                    String Comments = dataReader["Comments"].ToString();
+                    String BudgetYear = dataReader["BudgetYear"].ToString();
+                    String BP_No = dataReader["BP_No"].ToString();
+                    String AFE = dataReader["AFE"].ToString();
+                    String SugVendor = dataReader["SugVendor"].ToString();
+                    String ContactVendor = dataReader["ContactVendor"].ToString();
+                    String Request_Originator = dataReader["Request_Originator"].ToString();
+                    String Company_Approval = dataReader["Company_Approval"].ToString();
+                    DateTime Req_Date = DateTime.Parse(dataReader["Req_Date"].ToString());
+
+                    DateTime? Appr_Date = null;
+                    if (!dataReader.IsDBNull(dataReader.GetOrdinal("Appr_Date")))
+                    {
+                        Appr_Date = DateTime.Parse(dataReader["Appr_Date"].ToString());
+                    }
+
+                    String Recieve_By = "";
+                    if (!dataReader.IsDBNull(dataReader.GetOrdinal("Recieve_By")))
+                    {
+                        Recieve_By = dataReader["Recieve_By"].ToString();
+                    }
+
+                    DateTime? Recieve_Date = null;
+                    if (!dataReader.IsDBNull(dataReader.GetOrdinal("Recieve_Date")))
+                    {
+                        Recieve_Date = DateTime.Parse(dataReader["Recieve_Date"].ToString());
+                    }
+
+                    String PUR_Comment = dataReader["PUR_Comment"].ToString();
+                    String Decline_Comment = dataReader["Decline_Comment"].ToString();
+                    String Review_Comment = dataReader["Review_Comment"].ToString();
+                    String StateFlag = dataReader["StateFlag"].ToString();
+
+                    MSRInfoData = new Domain.MSRInfo(MSRId, Project, WVL, Comments, BudgetYear, BP_No, AFE, SugVendor, ContactVendor, Request_Originator, Company_Approval, Req_Date, Appr_Date, Recieve_By, Recieve_Date, PUR_Comment, Decline_Comment, Review_Comment, StateFlag);
+                }
+
+                dataReader.Close();
+
+            }
+            return MSRInfoData;
+        }
+
+        public ICollection<Domain.FormItems> GetFormItems_List(String MSRId)
+        {
+            ICollection<Domain.FormItems> formItemsData = null;
+
+            SqlParameter MSRId_param = new SqlParameter("@MSRId", MSRId);
+
+            List<SqlParameter> sqlParametersList = new List<SqlParameter>();
+            sqlParametersList.Add(MSRId_param);
+
+            String sql = "SELECT ItemCode, ItemDesc, Quantity, Unit, UnitPrice, Currency, ROS_Date, Comments, AC_No FROM FormItems WHERE MSRId = @MSRId";
+
+            using (SqlDataReader dataReader = DBAccessSingleton.Instance.MyExecuteQuery(sql, sqlParametersList))
+            {
+                formItemsData = new List<Domain.FormItems>();
+
+                while (dataReader.Read())
+                {
+                    String ItemCode = dataReader["ItemCode"].ToString();
+                    String ItemDesc = dataReader["ItemDesc"].ToString();
+                    String Quantity = dataReader["Quantity"].ToString();
+                    String Unit = dataReader["Unit"].ToString();
+                    String UnitPrice = dataReader["UnitPrice"].ToString();
+                    String Currency = dataReader["Currency"].ToString();
+                    DateTime ROS_Date = DateTime.Parse(dataReader["ROS_Date"].ToString());
+                    String Comments = dataReader["Comments"].ToString();
+                    String AC_No = dataReader["AC_No"].ToString();
+
+                    Domain.FormItems temp = new Domain.FormItems(ItemCode, ItemDesc, Quantity, Unit, UnitPrice, Currency, ROS_Date, Comments, AC_No);
+                    formItemsData.Add(temp);
+                }
+
+                dataReader.Close();
+
+            }
+            return formItemsData;
+        }
+
         public ICollection<Domain.ShowMSRItem> GetshowMSR_List(String DeptId)
         {
             ICollection<Domain.ShowMSRItem> showMSRData = null;

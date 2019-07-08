@@ -20,7 +20,7 @@ namespace MSR
         {
             InitializeComponent();
             InitalizeStartingFields();
-            RefreshDataGridView();
+            RefreshDataGridViews();
         }
 
         private void InitalizeStartingFields()
@@ -51,7 +51,7 @@ namespace MSR
 
         }
 
-        private void RefreshDataGridView()
+        private void RefreshDataGridViews()
         {
             //DGV clear
             UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(createTab_dataGridView);
@@ -82,7 +82,7 @@ namespace MSR
             fAddStockItem.ShowDialog();
 
             //Update state of DGV
-            RefreshDataGridView();
+            RefreshDataGridViews();
 
             this.Show();
         }
@@ -98,16 +98,8 @@ namespace MSR
             fAddNonStockItem.ShowDialog();
 
             //Update state of DGV
-            RefreshDataGridView();
+            RefreshDataGridViews();
 
-            this.Show();
-        }
-
-        private void Test_ShowMSR_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            ShowMSR fshowMSR = new ShowMSR();
-            fshowMSR.ShowDialog();
             this.Show();
         }
 
@@ -318,7 +310,10 @@ namespace MSR
             }
 
             //Refresh all the DataGridViews
-            RefreshDataGridView();
+            RefreshDataGridViews();
+
+            //Clear all fields of Create Tab
+            clearAllFields_createTab_button.PerformClick();
         }
 
         private void ClearAllFields_createTab_button_Click(object sender, EventArgs e)
@@ -374,6 +369,23 @@ namespace MSR
         private void ApSearch_waitApprovalTab_textBox_TextChanged(object sender, EventArgs e)
         {
             PopulateFilteredShowMSRItemListDGV();
+        }
+
+        private void WaitApprovalTab_dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show(waitApprovalTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
+            
+            this.Hide();
+
+            ShowMSR fShowMSR = new ShowMSR(waitApprovalTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
+
+            fShowMSR.ShowDialog();
+
+            //Update state of DGV
+            RefreshDataGridViews();
+
+            this.Show();
+
         }
     }
 }
