@@ -87,11 +87,12 @@ namespace MSR
         private void ChangeDate_showMSR_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             if (changeDate_showMSR_checkBox.Checked) {
-                changeDate_showMSR_dateTimePicker.Visible = true;
+                changeDate_showMSR_dateTimePicker.Enabled = true;
             }
             else
             {
-                changeDate_showMSR_dateTimePicker.Visible = false;
+                changeDate_showMSR_dateTimePicker.Enabled = false;
+                changeDate_showMSR_dateTimePicker.Value = DatabaseAPI.DBAccessSingleton.Instance.GetDateTime();
             }
         }
     }

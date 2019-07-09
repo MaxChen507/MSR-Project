@@ -16,7 +16,8 @@ namespace MSR.Domain
         public String Email { get; }
         public String ActiveFlag { get; }
         public String DeptId { get; }
-        public UserInfo(String UserId, String Username, String Password, String FullName, String Title, String Email, String ActiveFlag, String DeptId)
+        public String GroupsId { get; }
+        public UserInfo(String UserId, String Username, String Password, String FullName, String Title, String Email, String ActiveFlag, String DeptId, String GroupsId)
         {
             this.UserId = UserId;
             this.Username = Username;
@@ -26,6 +27,7 @@ namespace MSR.Domain
             this.Email = Email;
             this.ActiveFlag = ActiveFlag;
             this.DeptId = DeptId;
+            this.GroupsId = GroupsId;
         }
     }
 }

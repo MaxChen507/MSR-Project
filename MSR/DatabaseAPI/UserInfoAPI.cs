@@ -28,8 +28,6 @@ namespace MSR.DatabaseAPI
 
             using (SqlDataReader dataReader = DBAccessSingleton.Instance.MyExecuteQuery(sql, sqlParametersList))
             {
-                
-
                 while (dataReader.Read())
                 {
                     String UserId = dataReader["UserId"].ToString();
@@ -40,8 +38,9 @@ namespace MSR.DatabaseAPI
                     String Email = dataReader["Email"].ToString();
                     String ActiveFlag = dataReader["ActiveFlag"].ToString();
                     String DeptId = dataReader["DeptId"].ToString();
+                    String GroupsId = dataReader["GroupsId"].ToString();
 
-                    userInfo = new Domain.UserInfo(UserId, Username, Password, FullName, Title, Email, ActiveFlag, DeptId);
+                    userInfo = new Domain.UserInfo(UserId, Username, Password, FullName, Title, Email, ActiveFlag, DeptId, GroupsId);
                 }
 
                 dataReader.Close();

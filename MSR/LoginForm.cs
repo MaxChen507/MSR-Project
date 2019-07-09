@@ -44,11 +44,22 @@ namespace MSR
             //Get domain object UserInfo and Set object to Business Singleton
             BusinessAPI.BusinessSingleton.Instance.userInfo = DatabaseAPI.DBAccessSingleton.Instance.UserInfoAPI.GetUserInfo(username);
 
+            //Get domain object GroupsInfo and Set object to Business Singleton
+            BusinessAPI.BusinessSingleton.Instance.groupsInfo = DatabaseAPI.DBAccessSingleton.Instance.GroupsInfoAPI.GetGroupsInfo(BusinessAPI.BusinessSingleton.Instance.userInfo.GroupsId);
+
             //Get domain object BudgetInfo and Set object to Business Singleton
             BusinessAPI.BusinessSingleton.Instance.budgetInfo = DatabaseAPI.DBAccessSingleton.Instance.BudgetInfoAPI.GetBudgetInfo_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId);
 
             //Initalize shared FormItems Data List to Business Singleton
             BusinessAPI.BusinessSingleton.Instance.formItemList = new List<Domain.FormItems>();
+        }
+
+        private void Password_Login_textBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ok_Login_button.PerformClick();
+            }
         }
     }
 }

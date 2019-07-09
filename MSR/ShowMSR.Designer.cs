@@ -29,6 +29,15 @@
         private void InitializeComponent()
         {
             this.showMSR_dataGridView = new System.Windows.Forms.DataGridView();
+            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ROS_Date = new MSR.Domain.CalendarColumn();
+            this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vendorContact_showMSR_groupBox = new System.Windows.Forms.GroupBox();
             this.vendorContact_showMSR_textBox = new System.Windows.Forms.TextBox();
             this.vendorContact_showMSR_label = new System.Windows.Forms.Label();
@@ -57,6 +66,7 @@
             this.addStock_showMSR_button = new System.Windows.Forms.Button();
             this.deleteItem_showMSR_button = new System.Windows.Forms.Button();
             this.approve_showMSR_groupBox = new System.Windows.Forms.GroupBox();
+            this.compApproval_showMSR_textBox = new System.Windows.Forms.TextBox();
             this.approve_showMSR_Button = new System.Windows.Forms.Button();
             this.decline_showMSR_radioButton = new System.Windows.Forms.RadioButton();
             this.needReview_showMSR_radioButton = new System.Windows.Forms.RadioButton();
@@ -70,7 +80,6 @@
             this.reason_showMSR_richTextBox = new System.Windows.Forms.RichTextBox();
             this.reason_showMSR_label = new System.Windows.Forms.Label();
             this.print_showMSR_button = new System.Windows.Forms.Button();
-            this.compApproval_showMSR_textBox = new System.Windows.Forms.TextBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,15 +89,6 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ROS_Date = new MSR.Domain.CalendarColumn();
-            this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.showMSR_dataGridView)).BeginInit();
             this.vendorContact_showMSR_groupBox.SuspendLayout();
             this.suggVendor_showMSR_groupBox.SuspendLayout();
@@ -120,6 +120,62 @@
             this.showMSR_dataGridView.ReadOnly = true;
             this.showMSR_dataGridView.Size = new System.Drawing.Size(1006, 400);
             this.showMSR_dataGridView.TabIndex = 13;
+            // 
+            // ItemCode
+            // 
+            this.ItemCode.HeaderText = "ItemCode";
+            this.ItemCode.Name = "ItemCode";
+            this.ItemCode.ReadOnly = true;
+            // 
+            // ItemDesc
+            // 
+            this.ItemDesc.HeaderText = "ItemDesc";
+            this.ItemDesc.Name = "ItemDesc";
+            this.ItemDesc.ReadOnly = true;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            // 
+            // Unit
+            // 
+            this.Unit.HeaderText = "Unit";
+            this.Unit.Name = "Unit";
+            this.Unit.ReadOnly = true;
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.HeaderText = "UnitPrice";
+            this.UnitPrice.Name = "UnitPrice";
+            this.UnitPrice.ReadOnly = true;
+            // 
+            // Currency
+            // 
+            this.Currency.HeaderText = "Currency";
+            this.Currency.Name = "Currency";
+            this.Currency.ReadOnly = true;
+            // 
+            // ROS_Date
+            // 
+            this.ROS_Date.HeaderText = "ROS_Date";
+            this.ROS_Date.Name = "ROS_Date";
+            this.ROS_Date.ReadOnly = true;
+            this.ROS_Date.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ROS_Date.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Comments
+            // 
+            this.Comments.HeaderText = "Comments";
+            this.Comments.Name = "Comments";
+            this.Comments.ReadOnly = true;
+            // 
+            // AC_No
+            // 
+            this.AC_No.HeaderText = "AC_No";
+            this.AC_No.Name = "AC_No";
+            this.AC_No.ReadOnly = true;
             // 
             // vendorContact_showMSR_groupBox
             // 
@@ -407,6 +463,14 @@
             this.approve_showMSR_groupBox.TabIndex = 17;
             this.approve_showMSR_groupBox.TabStop = false;
             // 
+            // compApproval_showMSR_textBox
+            // 
+            this.compApproval_showMSR_textBox.Location = new System.Drawing.Point(25, 96);
+            this.compApproval_showMSR_textBox.Name = "compApproval_showMSR_textBox";
+            this.compApproval_showMSR_textBox.ReadOnly = true;
+            this.compApproval_showMSR_textBox.Size = new System.Drawing.Size(130, 20);
+            this.compApproval_showMSR_textBox.TabIndex = 21;
+            // 
             // approve_showMSR_Button
             // 
             this.approve_showMSR_Button.Location = new System.Drawing.Point(189, 149);
@@ -461,12 +525,12 @@
             // 
             // changeDate_showMSR_dateTimePicker
             // 
+            this.changeDate_showMSR_dateTimePicker.Enabled = false;
             this.changeDate_showMSR_dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.changeDate_showMSR_dateTimePicker.Location = new System.Drawing.Point(25, 164);
             this.changeDate_showMSR_dateTimePicker.Name = "changeDate_showMSR_dateTimePicker";
             this.changeDate_showMSR_dateTimePicker.Size = new System.Drawing.Size(130, 20);
             this.changeDate_showMSR_dateTimePicker.TabIndex = 11;
-            this.changeDate_showMSR_dateTimePicker.Visible = false;
             // 
             // changeDate_showMSR_checkBox
             // 
@@ -537,14 +601,6 @@
             this.print_showMSR_button.Text = "Print";
             this.print_showMSR_button.UseVisualStyleBackColor = true;
             // 
-            // compApproval_showMSR_textBox
-            // 
-            this.compApproval_showMSR_textBox.Location = new System.Drawing.Point(25, 96);
-            this.compApproval_showMSR_textBox.Name = "compApproval_showMSR_textBox";
-            this.compApproval_showMSR_textBox.ReadOnly = true;
-            this.compApproval_showMSR_textBox.Size = new System.Drawing.Size(130, 20);
-            this.compApproval_showMSR_textBox.TabIndex = 21;
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "ItemCode";
@@ -598,62 +654,6 @@
             this.dataGridViewTextBoxColumn9.HeaderText = "AC_No";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.Width = 107;
-            // 
-            // ItemCode
-            // 
-            this.ItemCode.HeaderText = "ItemCode";
-            this.ItemCode.Name = "ItemCode";
-            this.ItemCode.ReadOnly = true;
-            // 
-            // ItemDesc
-            // 
-            this.ItemDesc.HeaderText = "ItemDesc";
-            this.ItemDesc.Name = "ItemDesc";
-            this.ItemDesc.ReadOnly = true;
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            // 
-            // Unit
-            // 
-            this.Unit.HeaderText = "Unit";
-            this.Unit.Name = "Unit";
-            this.Unit.ReadOnly = true;
-            // 
-            // UnitPrice
-            // 
-            this.UnitPrice.HeaderText = "UnitPrice";
-            this.UnitPrice.Name = "UnitPrice";
-            this.UnitPrice.ReadOnly = true;
-            // 
-            // Currency
-            // 
-            this.Currency.HeaderText = "Currency";
-            this.Currency.Name = "Currency";
-            this.Currency.ReadOnly = true;
-            // 
-            // ROS_Date
-            // 
-            this.ROS_Date.HeaderText = "ROS_Date";
-            this.ROS_Date.Name = "ROS_Date";
-            this.ROS_Date.ReadOnly = true;
-            this.ROS_Date.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ROS_Date.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Comments
-            // 
-            this.Comments.HeaderText = "Comments";
-            this.Comments.Name = "Comments";
-            this.Comments.ReadOnly = true;
-            // 
-            // AC_No
-            // 
-            this.AC_No.HeaderText = "AC_No";
-            this.AC_No.Name = "AC_No";
-            this.AC_No.ReadOnly = true;
             // 
             // ShowMSR
             // 

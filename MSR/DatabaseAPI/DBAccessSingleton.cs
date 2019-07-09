@@ -22,6 +22,7 @@ namespace MSR.DatabaseAPI
             LoginAPI = new LoginAPI();
             BudgetInfoAPI = new BudgetInfoAPI();
             UserInfoAPI = new UserInfoAPI();
+            GroupsInfoAPI = new GroupsInfoAPI();
             StockItemsAPI = new StockItemsAPI();
             NonStockItemsAPI = new NonStockItemsAPI();
             MSRInfoAPI = new MSRInfoAPI();
@@ -43,6 +44,7 @@ namespace MSR.DatabaseAPI
         public LoginAPI LoginAPI { get; private set; }
         public BudgetInfoAPI BudgetInfoAPI { get; private set; }
         public UserInfoAPI UserInfoAPI { get; private set; }
+        public GroupsInfoAPI GroupsInfoAPI { get; private set; }
         public StockItemsAPI StockItemsAPI { get; private set; }
         public NonStockItemsAPI NonStockItemsAPI { get; private set; }
         public MSRInfoAPI MSRInfoAPI { get; private set; }
