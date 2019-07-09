@@ -14,6 +14,7 @@ namespace MSR
     {
         //Form variables
         String Bp_No;
+        String workFlowTrace;
 
         //Binding Source Initialization
         BindingSource budgetListDGV_source = new BindingSource();
@@ -21,18 +22,30 @@ namespace MSR
         //Data List Initialization
         ICollection<Domain.BudgetInfo> budgetListData = null;
 
-        public AddNonStockItemForm(String Bp_No)
+
+        public AddNonStockItemForm(String Bp_No, String workFlowTrace)
         {
             InitializeComponent();
             this.Bp_No = Bp_No;
+            this.workFlowTrace = workFlowTrace;
             BudgetListDGV_Load();
-            AddListDGV_Load();
             InitalizeStartingFields();
         }
 
         private void InitalizeStartingFields()
         {
             itemCode_addNonStock_textBox.Text = "[NonStock]";
+
+            //WorkFlowTrace
+            if (workFlowTrace.Equals(Domain.WorkFlowTrace.createMSR))
+            {
+                AddListDGV_Load_CreateMSR();
+            }
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
+            {
+                AddListDGV_Load_WaitForApproval();
+
+            }
         }
 
         private void BudgetListDGV_Load()
@@ -58,7 +71,7 @@ namespace MSR
             budgetInfo_addNonStock_dataGridView.ClearSelection();
         }
 
-        private void AddListDGV_Load()
+        private void AddListDGV_Load_CreateMSR()
         {
             //DGV clear
             addList_addNonStock_dataGridView.DataSource = null;
@@ -68,26 +81,41 @@ namespace MSR
             addList_addNonStock_dataGridView.ClearSelection();
 
             //Populate from Singleton List
-            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList)
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR)
             {
                 addList_addNonStock_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
             }
 
         }
 
+        private void AddListDGV_Load_WaitForApproval()
+        {
+            //DGV clear
+            addList_addNonStock_dataGridView.DataSource = null;
+            addList_addNonStock_dataGridView.Rows.Clear();
+            addList_addNonStock_dataGridView.Refresh();
+
+            addList_addNonStock_dataGridView.ClearSelection();
+
+            //Populate from Singleton List
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval)
+            {
+                addList_addNonStock_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
+            }
+        }
+
         private void ApplyClose_AddNonStock_button_Click(object sender, EventArgs e)
         {
-            //Save state of DGV
-            UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(addList_addNonStock_dataGridView);
-
-            //testing
-            //System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            //foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList)
-            //{
-            //    sb.Append(item.ItemCode);
-            //    sb.Append(Environment.NewLine);
-            //}
-            //MessageBox.Show(sb.ToString());
+            if (workFlowTrace.Equals(Domain.WorkFlowTrace.createMSR))
+            {
+                //Save state of DGV to CreateMSR
+                BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(addList_addNonStock_dataGridView);
+            }
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
+            {
+                //Save state of DGV to WaitForApproval
+                BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(addList_addNonStock_dataGridView);
+            }
 
             this.Close();
         }

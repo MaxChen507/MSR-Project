@@ -33,7 +33,7 @@ namespace MSR.UserInterfaceAPI
             }
         }
 
-        public void UpdateBusinessSingletonFormItemList(DataGridView formItemsDGV)
+        public ICollection<Domain.FormItems> UpdateBusinessSingletonFormItemList(DataGridView formItemsDGV)
         {
             //Data List Initialization
             ICollection<Domain.FormItems> formItemData_List = new List<Domain.FormItems>();
@@ -58,7 +58,7 @@ namespace MSR.UserInterfaceAPI
                 formItemData_List.Add(addItem);
             }
 
-            BusinessAPI.BusinessSingleton.Instance.formItemList = formItemData_List;
+            return formItemData_List;
         }
 
         public void ResetAllControls(Control form)

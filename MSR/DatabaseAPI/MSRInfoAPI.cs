@@ -159,7 +159,7 @@ namespace MSR.DatabaseAPI
             return MSRInfoData;
         }
 
-        public ICollection<Domain.FormItems> GetFormItems_List(String MSRId)
+        public ICollection<Domain.FormItems> GetFormItems_List(String MSRId, String BP_No)
         {
             ICollection<Domain.FormItems> formItemsData = null;
 
@@ -176,6 +176,7 @@ namespace MSR.DatabaseAPI
 
                 while (dataReader.Read())
                 {
+                    String BudgetPool = BP_No;
                     String ItemCode = dataReader["ItemCode"].ToString();
                     String ItemDesc = dataReader["ItemDesc"].ToString();
                     String Quantity = dataReader["Quantity"].ToString();
@@ -186,7 +187,7 @@ namespace MSR.DatabaseAPI
                     String Comments = dataReader["Comments"].ToString();
                     String AC_No = dataReader["AC_No"].ToString();
 
-                    Domain.FormItems temp = new Domain.FormItems(ItemCode, ItemDesc, Quantity, Unit, UnitPrice, Currency, ROS_Date, Comments, AC_No);
+                    Domain.FormItems temp = new Domain.FormItems(BudgetPool, ItemCode, ItemDesc, Quantity, Unit, UnitPrice, Currency, ROS_Date, Comments, AC_No);
                     formItemsData.Add(temp);
                 }
 

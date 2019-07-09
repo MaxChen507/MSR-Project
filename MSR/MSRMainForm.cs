@@ -58,7 +58,7 @@ namespace MSR
             UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(waitApprovalTab_dataGridView);
 
             //Populate createTab_dataGridView from Business Singleton List
-            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList)
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR)
             {
                 createTab_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
             }
@@ -76,9 +76,9 @@ namespace MSR
             this.Hide();
 
             //Save state of DGV
-            UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(createTab_dataGridView);
+            BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(createTab_dataGridView);
 
-            AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_createTab_comboBox.Text);
+            AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_createTab_comboBox.Text, Domain.WorkFlowTrace.createMSR);
             fAddStockItem.ShowDialog();
 
             //Update state of DGV
@@ -92,9 +92,9 @@ namespace MSR
             this.Hide();
 
             //Save state of DGV
-            UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(createTab_dataGridView);
+            BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(createTab_dataGridView);
 
-            AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_createTab_comboBox.Text);
+            AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_createTab_comboBox.Text, Domain.WorkFlowTrace.createMSR);
             fAddNonStockItem.ShowDialog();
 
             //Update state of DGV
@@ -301,10 +301,10 @@ namespace MSR
             MessageBox.Show("MSR ID is: " + tempMSRID.ToString());
 
             //Save state of DGV
-            UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(createTab_dataGridView);
+            BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(createTab_dataGridView);
 
             //INSERT into FormItems
-            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList)
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR)
             {
                 DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.InsertInitialFormItems(item, tempMSRID);
             }
@@ -377,7 +377,7 @@ namespace MSR
             
             this.Hide();
 
-            ShowMSR fShowMSR = new ShowMSR(waitApprovalTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
+            ShowMSR fShowMSR = new ShowMSR(waitApprovalTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString(), Domain.WorkFlowTrace.waitForApproval);
 
             fShowMSR.ShowDialog();
 

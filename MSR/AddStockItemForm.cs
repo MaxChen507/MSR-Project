@@ -14,6 +14,7 @@ namespace MSR
     {
         //Form variables
         String Bp_No;
+        String workFlowTrace;
 
         //Binding Source Initialization
         BindingSource itemListDGV_source = new BindingSource();
@@ -21,17 +22,17 @@ namespace MSR
         //Data List Initialization
         ICollection<Domain.StockItems> itemListData = null;
 
-        public AddStockItemForm(String Bp_No)
+        public AddStockItemForm(String Bp_No, String workFlowTrace)
         {
             InitializeComponent();
             this.Bp_No = Bp_No;
+            this.workFlowTrace = workFlowTrace;
             InitializeStartingFields();
         }
 
         private void InitializeStartingFields()
         {
             ItemListDGV_Load();
-            AddListDGV_Load();
 
             //Initialize LookUp ComboBox
             lookup_AddStock_comboBox.Items.Add("");
@@ -39,6 +40,19 @@ namespace MSR
             {
                 lookup_AddStock_comboBox.Items.Add(item);
             }
+
+            //WorkFlowTrace
+            if (workFlowTrace.Equals(Domain.WorkFlowTrace.createMSR))
+            {
+                AddListDGV_Load_CreateMSR();
+            }
+            else if(workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
+            {
+                AddListDGV_Load_WaitForApproval();
+
+            }
+
+            
         }
 
         private void ItemListDGV_Load()
@@ -64,7 +78,7 @@ namespace MSR
             itemList_addStock_dataGridView.ClearSelection();
         }
 
-        private void AddListDGV_Load()
+        private void AddListDGV_Load_CreateMSR()
         {
             //DGV clear
             addList_addStock_dataGridView.DataSource = null;
@@ -74,7 +88,24 @@ namespace MSR
             addList_addStock_dataGridView.ClearSelection();
 
             //Populate from Singleton List
-            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList)
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR)
+            {
+                addList_addStock_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
+            }
+
+        }
+
+        private void AddListDGV_Load_WaitForApproval()
+        {
+            //DGV clear
+            addList_addStock_dataGridView.DataSource = null;
+            addList_addStock_dataGridView.Rows.Clear();
+            addList_addStock_dataGridView.Refresh();
+
+            addList_addStock_dataGridView.ClearSelection();
+
+            //Populate from Singleton List
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval)
             {
                 addList_addStock_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
             }
@@ -83,17 +114,16 @@ namespace MSR
 
         private void ApplyClose_AddStock_button_Click(object sender, EventArgs e)
         {
-            //Save state of DGV
-            UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(addList_addStock_dataGridView);
-
-            //testing
-            //System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            //foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList)
-            //{
-            //    sb.Append(item.ItemCode);
-            //    sb.Append(Environment.NewLine);
-            //}
-            //MessageBox.Show(sb.ToString());
+            if (workFlowTrace.Equals(Domain.WorkFlowTrace.createMSR))
+            {
+                //Save state of DGV to CreateMSR
+                BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(addList_addStock_dataGridView);
+            }
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
+            {
+                //Save state of DGV to WaitForApproval
+                BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(addList_addStock_dataGridView);
+            }
                        
             this.Close();
         }

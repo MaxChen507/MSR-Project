@@ -51,7 +51,7 @@ namespace MSR
             BusinessAPI.BusinessSingleton.Instance.budgetInfo = DatabaseAPI.DBAccessSingleton.Instance.BudgetInfoAPI.GetBudgetInfo_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId);
 
             //Initalize shared FormItems Data List to Business Singleton
-            BusinessAPI.BusinessSingleton.Instance.formItemList = new List<Domain.FormItems>();
+            BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = new List<Domain.FormItems>();
         }
 
         private void Password_Login_textBox_KeyDown(object sender, KeyEventArgs e)

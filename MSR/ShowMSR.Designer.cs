@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.showMSR_dataGridView = new System.Windows.Forms.DataGridView();
+            this.BudgetPool = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,7 +61,6 @@
             this.project_showMSR_label = new System.Windows.Forms.Label();
             this.info_showMSR_groupBox = new System.Windows.Forms.GroupBox();
             this.edit_showMSR_groupBox = new System.Windows.Forms.GroupBox();
-            this.saveChanges_showMSR_button = new System.Windows.Forms.Button();
             this.undo_showMSR_button = new System.Windows.Forms.Button();
             this.addNonStock_showMSR_button = new System.Windows.Forms.Button();
             this.addStock_showMSR_button = new System.Windows.Forms.Button();
@@ -86,6 +86,7 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.calendarColumn1 = new MSR.Domain.CalendarColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,6 +107,7 @@
             this.showMSR_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.showMSR_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.showMSR_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.BudgetPool,
             this.ItemCode,
             this.ItemDesc,
             this.Quantity,
@@ -116,10 +118,16 @@
             this.Comments,
             this.AC_No});
             this.showMSR_dataGridView.Location = new System.Drawing.Point(12, 208);
+            this.showMSR_dataGridView.MultiSelect = false;
             this.showMSR_dataGridView.Name = "showMSR_dataGridView";
-            this.showMSR_dataGridView.ReadOnly = true;
             this.showMSR_dataGridView.Size = new System.Drawing.Size(1006, 400);
             this.showMSR_dataGridView.TabIndex = 13;
+            // 
+            // BudgetPool
+            // 
+            this.BudgetPool.HeaderText = "BudgetPool";
+            this.BudgetPool.Name = "BudgetPool";
+            this.BudgetPool.ReadOnly = true;
             // 
             // ItemCode
             // 
@@ -381,42 +389,34 @@
             // 
             this.info_showMSR_groupBox.Location = new System.Drawing.Point(1035, 12);
             this.info_showMSR_groupBox.Name = "info_showMSR_groupBox";
-            this.info_showMSR_groupBox.Size = new System.Drawing.Size(251, 181);
+            this.info_showMSR_groupBox.Size = new System.Drawing.Size(251, 100);
             this.info_showMSR_groupBox.TabIndex = 14;
             this.info_showMSR_groupBox.TabStop = false;
             this.info_showMSR_groupBox.Text = "MSR Info";
             // 
             // edit_showMSR_groupBox
             // 
-            this.edit_showMSR_groupBox.Controls.Add(this.saveChanges_showMSR_button);
             this.edit_showMSR_groupBox.Controls.Add(this.undo_showMSR_button);
             this.edit_showMSR_groupBox.Controls.Add(this.addNonStock_showMSR_button);
             this.edit_showMSR_groupBox.Controls.Add(this.addStock_showMSR_button);
             this.edit_showMSR_groupBox.Controls.Add(this.deleteItem_showMSR_button);
+            this.edit_showMSR_groupBox.Enabled = false;
             this.edit_showMSR_groupBox.Location = new System.Drawing.Point(1035, 208);
             this.edit_showMSR_groupBox.Name = "edit_showMSR_groupBox";
             this.edit_showMSR_groupBox.Size = new System.Drawing.Size(251, 400);
             this.edit_showMSR_groupBox.TabIndex = 15;
             this.edit_showMSR_groupBox.TabStop = false;
-            this.edit_showMSR_groupBox.Text = "Edit MSR";
-            // 
-            // saveChanges_showMSR_button
-            // 
-            this.saveChanges_showMSR_button.Location = new System.Drawing.Point(29, 318);
-            this.saveChanges_showMSR_button.Name = "saveChanges_showMSR_button";
-            this.saveChanges_showMSR_button.Size = new System.Drawing.Size(200, 40);
-            this.saveChanges_showMSR_button.TabIndex = 23;
-            this.saveChanges_showMSR_button.Text = "Save Changes";
-            this.saveChanges_showMSR_button.UseVisualStyleBackColor = true;
+            this.edit_showMSR_groupBox.Text = "Edit MSR Items";
             // 
             // undo_showMSR_button
             // 
-            this.undo_showMSR_button.Location = new System.Drawing.Point(29, 248);
+            this.undo_showMSR_button.Location = new System.Drawing.Point(29, 257);
             this.undo_showMSR_button.Name = "undo_showMSR_button";
             this.undo_showMSR_button.Size = new System.Drawing.Size(200, 40);
             this.undo_showMSR_button.TabIndex = 22;
             this.undo_showMSR_button.Text = "Undo All Changes";
             this.undo_showMSR_button.UseVisualStyleBackColor = true;
+            this.undo_showMSR_button.Click += new System.EventHandler(this.Undo_showMSR_button_Click);
             // 
             // addNonStock_showMSR_button
             // 
@@ -426,6 +426,7 @@
             this.addNonStock_showMSR_button.TabIndex = 21;
             this.addNonStock_showMSR_button.Text = "Add Non Stock Items";
             this.addNonStock_showMSR_button.UseVisualStyleBackColor = true;
+            this.addNonStock_showMSR_button.Click += new System.EventHandler(this.AddNonStock_showMSR_button_Click);
             // 
             // addStock_showMSR_button
             // 
@@ -435,6 +436,7 @@
             this.addStock_showMSR_button.TabIndex = 20;
             this.addStock_showMSR_button.Text = "Add Stock Items";
             this.addStock_showMSR_button.UseVisualStyleBackColor = true;
+            this.addStock_showMSR_button.Click += new System.EventHandler(this.AddStock_showMSR_button_Click);
             // 
             // deleteItem_showMSR_button
             // 
@@ -444,6 +446,7 @@
             this.deleteItem_showMSR_button.TabIndex = 19;
             this.deleteItem_showMSR_button.Text = "Delete Selected Item";
             this.deleteItem_showMSR_button.UseVisualStyleBackColor = true;
+            this.deleteItem_showMSR_button.Click += new System.EventHandler(this.DeleteItem_showMSR_button_Click);
             // 
             // approve_showMSR_groupBox
             // 
@@ -457,6 +460,7 @@
             this.approve_showMSR_groupBox.Controls.Add(this.changeDate_showMSR_checkBox);
             this.approve_showMSR_groupBox.Controls.Add(this.compApproval_showMSR_label);
             this.approve_showMSR_groupBox.Controls.Add(this.originator_showMSR_label);
+            this.approve_showMSR_groupBox.Enabled = false;
             this.approve_showMSR_groupBox.Location = new System.Drawing.Point(12, 614);
             this.approve_showMSR_groupBox.Name = "approve_showMSR_groupBox";
             this.approve_showMSR_groupBox.Size = new System.Drawing.Size(329, 198);
@@ -479,6 +483,7 @@
             this.approve_showMSR_Button.TabIndex = 18;
             this.approve_showMSR_Button.Text = "Approve";
             this.approve_showMSR_Button.UseVisualStyleBackColor = true;
+            this.approve_showMSR_Button.Click += new System.EventHandler(this.Approve_showMSR_Button_Click);
             // 
             // decline_showMSR_radioButton
             // 
@@ -605,48 +610,65 @@
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "ItemCode";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Width = 107;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.HeaderText = "ItemDesc";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Width = 107;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.HeaderText = "Quantity";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Width = 107;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.HeaderText = "Unit";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 107;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.HeaderText = "UnitPrice";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             this.dataGridViewTextBoxColumn5.Width = 107;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.HeaderText = "Currency";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Width = 107;
+            // 
+            // calendarColumn1
+            // 
+            this.calendarColumn1.HeaderText = "ROS_Date";
+            this.calendarColumn1.Name = "calendarColumn1";
+            this.calendarColumn1.ReadOnly = true;
+            this.calendarColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.calendarColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.calendarColumn1.Width = 107;
             // 
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.HeaderText = "ROS_Date";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             this.dataGridViewTextBoxColumn7.Width = 107;
             // 
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.HeaderText = "Comments";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
             this.dataGridViewTextBoxColumn8.Width = 107;
             // 
             // dataGridViewTextBoxColumn9
@@ -729,21 +751,11 @@
         private System.Windows.Forms.RichTextBox reason_showMSR_richTextBox;
         private System.Windows.Forms.Label reason_showMSR_label;
         private System.Windows.Forms.Button deleteItem_showMSR_button;
-        private System.Windows.Forms.Button saveChanges_showMSR_button;
         private System.Windows.Forms.Button undo_showMSR_button;
         private System.Windows.Forms.Button addNonStock_showMSR_button;
         private System.Windows.Forms.Button addStock_showMSR_button;
         private System.Windows.Forms.Button print_showMSR_button;
         private System.Windows.Forms.TextBox compApproval_showMSR_textBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemDesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Currency;
-        private Domain.CalendarColumn ROS_Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Comments;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AC_No;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -753,5 +765,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private Domain.CalendarColumn calendarColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BudgetPool;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Currency;
+        private Domain.CalendarColumn ROS_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comments;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AC_No;
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MSR.Domain
 {
-    class FormItems
+    public class FormItems
     {
         public String BudgetPool { get; }
         public String ItemCode { get; }
@@ -33,18 +33,5 @@ namespace MSR.Domain
             this.AC_No = AC_No;
         }
 
-        public FormItems(String ItemCode, String ItemDesc, String Quantity, String Unit, String UnitPrice, String Currency, DateTime ROS_Date, String Comments, String AC_No)
-        {
-            this.BudgetPool = "";
-            this.ItemCode = ItemCode;
-            this.ItemDesc = ItemDesc;
-            this.Quantity = Quantity;
-            this.Unit = Unit;
-            this.UnitPrice = UnitPrice;
-            this.Currency = Currency;
-            this.ROS_Date = ROS_Date;
-            this.Comments = Comments;
-            this.AC_No = AC_No;
-        }
     }
 }
