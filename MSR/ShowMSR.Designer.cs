@@ -90,6 +90,7 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.submitReview_showMSR_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.showMSR_dataGridView)).BeginInit();
             this.vendorContact_showMSR_groupBox.SuspendLayout();
             this.suggVendor_showMSR_groupBox.SuspendLayout();
@@ -677,11 +678,24 @@
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.Width = 107;
             // 
+            // submitReview_showMSR_button
+            // 
+            this.submitReview_showMSR_button.Enabled = false;
+            this.submitReview_showMSR_button.Location = new System.Drawing.Point(728, 760);
+            this.submitReview_showMSR_button.Name = "submitReview_showMSR_button";
+            this.submitReview_showMSR_button.Size = new System.Drawing.Size(200, 40);
+            this.submitReview_showMSR_button.TabIndex = 25;
+            this.submitReview_showMSR_button.Text = "Submit Review";
+            this.submitReview_showMSR_button.UseVisualStyleBackColor = true;
+            this.submitReview_showMSR_button.Visible = false;
+            this.submitReview_showMSR_button.Click += new System.EventHandler(this.SubmitReview_showMSR_button_Click);
+            // 
             // ShowMSR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1298, 822);
+            this.Controls.Add(this.submitReview_showMSR_button);
             this.Controls.Add(this.print_showMSR_button);
             this.Controls.Add(this.reason_showMSR_groupBox);
             this.Controls.Add(this.approve_showMSR_groupBox);
@@ -776,5 +790,6 @@
         private Domain.CalendarColumn ROS_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Comments;
         private System.Windows.Forms.DataGridViewTextBoxColumn AC_No;
+        private System.Windows.Forms.Button submitReview_showMSR_button;
     }
 }

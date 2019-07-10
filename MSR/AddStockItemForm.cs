@@ -49,10 +49,13 @@ namespace MSR
             else if(workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
             {
                 AddListDGV_Load_WaitForApproval();
-
+            }
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
+            {
+                AddListDGV_Load_NeedReview();
             }
 
-            
+
         }
 
         private void ItemListDGV_Load()
@@ -112,6 +115,23 @@ namespace MSR
 
         }
 
+        private void AddListDGV_Load_NeedReview()
+        {
+            //DGV clear
+            addList_addStock_dataGridView.DataSource = null;
+            addList_addStock_dataGridView.Rows.Clear();
+            addList_addStock_dataGridView.Refresh();
+
+            addList_addStock_dataGridView.ClearSelection();
+
+            //Populate from Singleton List
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview)
+            {
+                addList_addStock_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
+            }
+
+        }
+
         private void ApplyClose_AddStock_button_Click(object sender, EventArgs e)
         {
             if (workFlowTrace.Equals(Domain.WorkFlowTrace.createMSR))
@@ -124,7 +144,12 @@ namespace MSR
                 //Save state of DGV to WaitForApproval
                 BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(addList_addStock_dataGridView);
             }
-                       
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
+            {
+                //Save state of DGV to WaitForApproval
+                BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(addList_addStock_dataGridView);
+            }
+
             this.Close();
         }
 

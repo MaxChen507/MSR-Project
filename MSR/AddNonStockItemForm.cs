@@ -44,8 +44,12 @@ namespace MSR
             else if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
             {
                 AddListDGV_Load_WaitForApproval();
-
             }
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
+            {
+                AddListDGV_Load_NeedReview();
+            }
+
         }
 
         private void BudgetListDGV_Load()
@@ -104,6 +108,23 @@ namespace MSR
             }
         }
 
+        private void AddListDGV_Load_NeedReview()
+        {
+            //DGV clear
+            addList_addNonStock_dataGridView.DataSource = null;
+            addList_addNonStock_dataGridView.Rows.Clear();
+            addList_addNonStock_dataGridView.Refresh();
+
+            addList_addNonStock_dataGridView.ClearSelection();
+
+            //Populate from Singleton List
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview)
+            {
+                addList_addNonStock_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
+            }
+
+        }
+
         private void ApplyClose_AddNonStock_button_Click(object sender, EventArgs e)
         {
             if (workFlowTrace.Equals(Domain.WorkFlowTrace.createMSR))
@@ -115,6 +136,11 @@ namespace MSR
             {
                 //Save state of DGV to WaitForApproval
                 BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(addList_addNonStock_dataGridView);
+            }
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
+            {
+                //Save state of DGV to WaitForApproval
+                BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(addList_addNonStock_dataGridView);
             }
 
             this.Close();

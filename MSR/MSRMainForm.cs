@@ -16,6 +16,7 @@ namespace MSR
         BindingSource createTabDGV_source { get; set; }
         BindingSource waitApprovalTabDGV_source = new BindingSource();
         BindingSource approvedTabDGV_source = new BindingSource();
+        BindingSource needReviewTabDGV_source = new BindingSource();
 
         public MSRMainForm()
         {
@@ -75,6 +76,12 @@ namespace MSR
             approvedTab_dataGridView.DataSource = approvedTabDGV_source;
 
             approvedTab_dataGridView.ClearSelection();
+
+            //Populate needReviewTab_dataGridView from Database Singleton
+            needReviewTabDGV_source.DataSource = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.GetshowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId, Domain.WorkFlowTrace.NEED_REVIEW);
+            needReviewTab_dataGridView.DataSource = needReviewTabDGV_source;
+
+            needReviewTab_dataGridView.ClearSelection();
 
         }
 
@@ -393,6 +400,38 @@ namespace MSR
 
             this.Show();
 
+        }
+
+        private void ApprovedTab_dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show(approvedTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
+
+            this.Hide();
+
+            ShowMSR fShowMSR = new ShowMSR(approvedTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString(), Domain.WorkFlowTrace.approvedMSR);
+
+            fShowMSR.ShowDialog();
+
+            //Update state of DGV
+            RefreshDataGridViews();
+
+            this.Show();
+        }
+        
+        private void NeedReviewTab_dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show(needReviewTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
+
+            this.Hide();
+
+            ShowMSR fShowMSR = new ShowMSR(needReviewTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString(), Domain.WorkFlowTrace.needReview);
+
+            fShowMSR.ShowDialog();
+
+            //Update state of DGV
+            RefreshDataGridViews();
+
+            this.Show();
         }
     }
 }

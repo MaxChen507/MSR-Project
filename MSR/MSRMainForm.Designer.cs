@@ -83,6 +83,28 @@
             this.deptSearch_waitApprovalTab_label = new System.Windows.Forms.Label();
             this.idSearch_waitApprovalTab_textBox = new System.Windows.Forms.TextBox();
             this.idSearch_waitApprovalTab_label = new System.Windows.Forms.Label();
+            this.needReview_tabPage = new System.Windows.Forms.TabPage();
+            this.needReviewTab_dataGridView = new System.Windows.Forms.DataGridView();
+            this.search_needReviewTab_groupBox = new System.Windows.Forms.GroupBox();
+            this.apSearch_needReviewTab_textBox = new System.Windows.Forms.TextBox();
+            this.apSearch_needReviewTab_label = new System.Windows.Forms.Label();
+            this.ogSearch_needReviewTab_textBox = new System.Windows.Forms.TextBox();
+            this.ogSearch_needReviewTab_label = new System.Windows.Forms.Label();
+            this.deptSearch_needReviewTab_textBox = new System.Windows.Forms.TextBox();
+            this.deptSearch_needReviewTab_label = new System.Windows.Forms.Label();
+            this.idSearch_needReview_textBox = new System.Windows.Forms.TextBox();
+            this.idSearch_needReview_label = new System.Windows.Forms.Label();
+            this.approved_tabPage = new System.Windows.Forms.TabPage();
+            this.approvedTab_dataGridView = new System.Windows.Forms.DataGridView();
+            this.search_approvedTab_groupBox = new System.Windows.Forms.GroupBox();
+            this.apSearch_approvedTab_textBox = new System.Windows.Forms.TextBox();
+            this.apSearch_approvedTab_label = new System.Windows.Forms.Label();
+            this.ogSearch_approvedTab_textBox = new System.Windows.Forms.TextBox();
+            this.ogSearch_approvedTab_label = new System.Windows.Forms.Label();
+            this.deptSearch_approvedTab_textBox = new System.Windows.Forms.TextBox();
+            this.deptSearch_approvedTab_label = new System.Windows.Forms.Label();
+            this.idSearch_approvedTab_textBox = new System.Windows.Forms.TextBox();
+            this.idSearch_approvedTab_label = new System.Windows.Forms.Label();
             this.MSRMain_menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,17 +117,6 @@
             this.calendarColumn1 = new MSR.Domain.CalendarColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.approved_tabPage = new System.Windows.Forms.TabPage();
-            this.approvedTab_dataGridView = new System.Windows.Forms.DataGridView();
-            this.search_approvedTab_groupBox = new System.Windows.Forms.GroupBox();
-            this.apSearch_approvedTab_textBox = new System.Windows.Forms.TextBox();
-            this.apSearch_approvedTab_label = new System.Windows.Forms.Label();
-            this.ogSearch_approvedTab_textBox = new System.Windows.Forms.TextBox();
-            this.ogSearch_approvedTab_label = new System.Windows.Forms.Label();
-            this.deptSearch_approvedTab_textBox = new System.Windows.Forms.TextBox();
-            this.deptSearch_approvedTab_label = new System.Windows.Forms.Label();
-            this.idSearch_approvedTab_textBox = new System.Windows.Forms.TextBox();
-            this.idSearch_approvedTab_label = new System.Windows.Forms.Label();
             this.mainMSR_tabControl.SuspendLayout();
             this.createNewMSR_tabPage.SuspendLayout();
             this.signDate_createTab_groupBox.SuspendLayout();
@@ -117,16 +128,20 @@
             this.waitApproval_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waitApprovalTab_dataGridView)).BeginInit();
             this.search_waitApprovalTab_groupBox.SuspendLayout();
-            this.MSRMain_menuStrip.SuspendLayout();
+            this.needReview_tabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.needReviewTab_dataGridView)).BeginInit();
+            this.search_needReviewTab_groupBox.SuspendLayout();
             this.approved_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.approvedTab_dataGridView)).BeginInit();
             this.search_approvedTab_groupBox.SuspendLayout();
+            this.MSRMain_menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMSR_tabControl
             // 
             this.mainMSR_tabControl.Controls.Add(this.createNewMSR_tabPage);
             this.mainMSR_tabControl.Controls.Add(this.waitApproval_tabPage);
+            this.mainMSR_tabControl.Controls.Add(this.needReview_tabPage);
             this.mainMSR_tabControl.Controls.Add(this.approved_tabPage);
             this.mainMSR_tabControl.Location = new System.Drawing.Point(12, 27);
             this.mainMSR_tabControl.Name = "mainMSR_tabControl";
@@ -659,6 +674,222 @@
             this.idSearch_waitApprovalTab_label.TabIndex = 0;
             this.idSearch_waitApprovalTab_label.Text = "MSR ID";
             // 
+            // needReview_tabPage
+            // 
+            this.needReview_tabPage.Controls.Add(this.needReviewTab_dataGridView);
+            this.needReview_tabPage.Controls.Add(this.search_needReviewTab_groupBox);
+            this.needReview_tabPage.Location = new System.Drawing.Point(4, 22);
+            this.needReview_tabPage.Name = "needReview_tabPage";
+            this.needReview_tabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.needReview_tabPage.Size = new System.Drawing.Size(1152, 786);
+            this.needReview_tabPage.TabIndex = 4;
+            this.needReview_tabPage.Text = "MSRs Need Review";
+            this.needReview_tabPage.UseVisualStyleBackColor = true;
+            // 
+            // needReviewTab_dataGridView
+            // 
+            this.needReviewTab_dataGridView.AllowUserToAddRows = false;
+            this.needReviewTab_dataGridView.AllowUserToDeleteRows = false;
+            this.needReviewTab_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.needReviewTab_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.needReviewTab_dataGridView.Location = new System.Drawing.Point(19, 113);
+            this.needReviewTab_dataGridView.MultiSelect = false;
+            this.needReviewTab_dataGridView.Name = "needReviewTab_dataGridView";
+            this.needReviewTab_dataGridView.ReadOnly = true;
+            this.needReviewTab_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.needReviewTab_dataGridView.Size = new System.Drawing.Size(930, 450);
+            this.needReviewTab_dataGridView.TabIndex = 1;
+            this.needReviewTab_dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.NeedReviewTab_dataGridView_CellDoubleClick);
+            // 
+            // search_needReviewTab_groupBox
+            // 
+            this.search_needReviewTab_groupBox.Controls.Add(this.apSearch_needReviewTab_textBox);
+            this.search_needReviewTab_groupBox.Controls.Add(this.apSearch_needReviewTab_label);
+            this.search_needReviewTab_groupBox.Controls.Add(this.ogSearch_needReviewTab_textBox);
+            this.search_needReviewTab_groupBox.Controls.Add(this.ogSearch_needReviewTab_label);
+            this.search_needReviewTab_groupBox.Controls.Add(this.deptSearch_needReviewTab_textBox);
+            this.search_needReviewTab_groupBox.Controls.Add(this.deptSearch_needReviewTab_label);
+            this.search_needReviewTab_groupBox.Controls.Add(this.idSearch_needReview_textBox);
+            this.search_needReviewTab_groupBox.Controls.Add(this.idSearch_needReview_label);
+            this.search_needReviewTab_groupBox.Location = new System.Drawing.Point(19, 18);
+            this.search_needReviewTab_groupBox.Name = "search_needReviewTab_groupBox";
+            this.search_needReviewTab_groupBox.Size = new System.Drawing.Size(930, 89);
+            this.search_needReviewTab_groupBox.TabIndex = 0;
+            this.search_needReviewTab_groupBox.TabStop = false;
+            this.search_needReviewTab_groupBox.Text = "Search";
+            // 
+            // apSearch_needReviewTab_textBox
+            // 
+            this.apSearch_needReviewTab_textBox.Location = new System.Drawing.Point(349, 53);
+            this.apSearch_needReviewTab_textBox.Name = "apSearch_needReviewTab_textBox";
+            this.apSearch_needReviewTab_textBox.Size = new System.Drawing.Size(100, 20);
+            this.apSearch_needReviewTab_textBox.TabIndex = 7;
+            // 
+            // apSearch_needReviewTab_label
+            // 
+            this.apSearch_needReviewTab_label.AutoSize = true;
+            this.apSearch_needReviewTab_label.Location = new System.Drawing.Point(346, 37);
+            this.apSearch_needReviewTab_label.Name = "apSearch_needReviewTab_label";
+            this.apSearch_needReviewTab_label.Size = new System.Drawing.Size(50, 13);
+            this.apSearch_needReviewTab_label.TabIndex = 6;
+            this.apSearch_needReviewTab_label.Text = "Approver";
+            // 
+            // ogSearch_needReviewTab_textBox
+            // 
+            this.ogSearch_needReviewTab_textBox.Location = new System.Drawing.Point(243, 53);
+            this.ogSearch_needReviewTab_textBox.Name = "ogSearch_needReviewTab_textBox";
+            this.ogSearch_needReviewTab_textBox.Size = new System.Drawing.Size(100, 20);
+            this.ogSearch_needReviewTab_textBox.TabIndex = 5;
+            // 
+            // ogSearch_needReviewTab_label
+            // 
+            this.ogSearch_needReviewTab_label.AutoSize = true;
+            this.ogSearch_needReviewTab_label.Location = new System.Drawing.Point(240, 37);
+            this.ogSearch_needReviewTab_label.Name = "ogSearch_needReviewTab_label";
+            this.ogSearch_needReviewTab_label.Size = new System.Drawing.Size(52, 13);
+            this.ogSearch_needReviewTab_label.TabIndex = 4;
+            this.ogSearch_needReviewTab_label.Text = "Originator";
+            // 
+            // deptSearch_needReviewTab_textBox
+            // 
+            this.deptSearch_needReviewTab_textBox.Location = new System.Drawing.Point(137, 53);
+            this.deptSearch_needReviewTab_textBox.Name = "deptSearch_needReviewTab_textBox";
+            this.deptSearch_needReviewTab_textBox.Size = new System.Drawing.Size(100, 20);
+            this.deptSearch_needReviewTab_textBox.TabIndex = 3;
+            // 
+            // deptSearch_needReviewTab_label
+            // 
+            this.deptSearch_needReviewTab_label.AutoSize = true;
+            this.deptSearch_needReviewTab_label.Location = new System.Drawing.Point(134, 37);
+            this.deptSearch_needReviewTab_label.Name = "deptSearch_needReviewTab_label";
+            this.deptSearch_needReviewTab_label.Size = new System.Drawing.Size(62, 13);
+            this.deptSearch_needReviewTab_label.TabIndex = 2;
+            this.deptSearch_needReviewTab_label.Text = "Department";
+            // 
+            // idSearch_needReview_textBox
+            // 
+            this.idSearch_needReview_textBox.Location = new System.Drawing.Point(31, 53);
+            this.idSearch_needReview_textBox.Name = "idSearch_needReview_textBox";
+            this.idSearch_needReview_textBox.Size = new System.Drawing.Size(100, 20);
+            this.idSearch_needReview_textBox.TabIndex = 1;
+            // 
+            // idSearch_needReview_label
+            // 
+            this.idSearch_needReview_label.AutoSize = true;
+            this.idSearch_needReview_label.Location = new System.Drawing.Point(28, 37);
+            this.idSearch_needReview_label.Name = "idSearch_needReview_label";
+            this.idSearch_needReview_label.Size = new System.Drawing.Size(45, 13);
+            this.idSearch_needReview_label.TabIndex = 0;
+            this.idSearch_needReview_label.Text = "MSR ID";
+            // 
+            // approved_tabPage
+            // 
+            this.approved_tabPage.Controls.Add(this.approvedTab_dataGridView);
+            this.approved_tabPage.Controls.Add(this.search_approvedTab_groupBox);
+            this.approved_tabPage.Location = new System.Drawing.Point(4, 22);
+            this.approved_tabPage.Name = "approved_tabPage";
+            this.approved_tabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.approved_tabPage.Size = new System.Drawing.Size(1152, 786);
+            this.approved_tabPage.TabIndex = 3;
+            this.approved_tabPage.Text = "Approved MSRs";
+            this.approved_tabPage.UseVisualStyleBackColor = true;
+            // 
+            // approvedTab_dataGridView
+            // 
+            this.approvedTab_dataGridView.AllowUserToAddRows = false;
+            this.approvedTab_dataGridView.AllowUserToDeleteRows = false;
+            this.approvedTab_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.approvedTab_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.approvedTab_dataGridView.Location = new System.Drawing.Point(19, 113);
+            this.approvedTab_dataGridView.MultiSelect = false;
+            this.approvedTab_dataGridView.Name = "approvedTab_dataGridView";
+            this.approvedTab_dataGridView.ReadOnly = true;
+            this.approvedTab_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.approvedTab_dataGridView.Size = new System.Drawing.Size(930, 450);
+            this.approvedTab_dataGridView.TabIndex = 1;
+            this.approvedTab_dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ApprovedTab_dataGridView_CellDoubleClick);
+            // 
+            // search_approvedTab_groupBox
+            // 
+            this.search_approvedTab_groupBox.Controls.Add(this.apSearch_approvedTab_textBox);
+            this.search_approvedTab_groupBox.Controls.Add(this.apSearch_approvedTab_label);
+            this.search_approvedTab_groupBox.Controls.Add(this.ogSearch_approvedTab_textBox);
+            this.search_approvedTab_groupBox.Controls.Add(this.ogSearch_approvedTab_label);
+            this.search_approvedTab_groupBox.Controls.Add(this.deptSearch_approvedTab_textBox);
+            this.search_approvedTab_groupBox.Controls.Add(this.deptSearch_approvedTab_label);
+            this.search_approvedTab_groupBox.Controls.Add(this.idSearch_approvedTab_textBox);
+            this.search_approvedTab_groupBox.Controls.Add(this.idSearch_approvedTab_label);
+            this.search_approvedTab_groupBox.Location = new System.Drawing.Point(19, 18);
+            this.search_approvedTab_groupBox.Name = "search_approvedTab_groupBox";
+            this.search_approvedTab_groupBox.Size = new System.Drawing.Size(930, 89);
+            this.search_approvedTab_groupBox.TabIndex = 0;
+            this.search_approvedTab_groupBox.TabStop = false;
+            this.search_approvedTab_groupBox.Text = "Search";
+            // 
+            // apSearch_approvedTab_textBox
+            // 
+            this.apSearch_approvedTab_textBox.Location = new System.Drawing.Point(349, 53);
+            this.apSearch_approvedTab_textBox.Name = "apSearch_approvedTab_textBox";
+            this.apSearch_approvedTab_textBox.Size = new System.Drawing.Size(100, 20);
+            this.apSearch_approvedTab_textBox.TabIndex = 7;
+            // 
+            // apSearch_approvedTab_label
+            // 
+            this.apSearch_approvedTab_label.AutoSize = true;
+            this.apSearch_approvedTab_label.Location = new System.Drawing.Point(346, 37);
+            this.apSearch_approvedTab_label.Name = "apSearch_approvedTab_label";
+            this.apSearch_approvedTab_label.Size = new System.Drawing.Size(50, 13);
+            this.apSearch_approvedTab_label.TabIndex = 6;
+            this.apSearch_approvedTab_label.Text = "Approver";
+            // 
+            // ogSearch_approvedTab_textBox
+            // 
+            this.ogSearch_approvedTab_textBox.Location = new System.Drawing.Point(243, 53);
+            this.ogSearch_approvedTab_textBox.Name = "ogSearch_approvedTab_textBox";
+            this.ogSearch_approvedTab_textBox.Size = new System.Drawing.Size(100, 20);
+            this.ogSearch_approvedTab_textBox.TabIndex = 5;
+            // 
+            // ogSearch_approvedTab_label
+            // 
+            this.ogSearch_approvedTab_label.AutoSize = true;
+            this.ogSearch_approvedTab_label.Location = new System.Drawing.Point(240, 37);
+            this.ogSearch_approvedTab_label.Name = "ogSearch_approvedTab_label";
+            this.ogSearch_approvedTab_label.Size = new System.Drawing.Size(52, 13);
+            this.ogSearch_approvedTab_label.TabIndex = 4;
+            this.ogSearch_approvedTab_label.Text = "Originator";
+            // 
+            // deptSearch_approvedTab_textBox
+            // 
+            this.deptSearch_approvedTab_textBox.Location = new System.Drawing.Point(137, 53);
+            this.deptSearch_approvedTab_textBox.Name = "deptSearch_approvedTab_textBox";
+            this.deptSearch_approvedTab_textBox.Size = new System.Drawing.Size(100, 20);
+            this.deptSearch_approvedTab_textBox.TabIndex = 3;
+            // 
+            // deptSearch_approvedTab_label
+            // 
+            this.deptSearch_approvedTab_label.AutoSize = true;
+            this.deptSearch_approvedTab_label.Location = new System.Drawing.Point(134, 37);
+            this.deptSearch_approvedTab_label.Name = "deptSearch_approvedTab_label";
+            this.deptSearch_approvedTab_label.Size = new System.Drawing.Size(62, 13);
+            this.deptSearch_approvedTab_label.TabIndex = 2;
+            this.deptSearch_approvedTab_label.Text = "Department";
+            // 
+            // idSearch_approvedTab_textBox
+            // 
+            this.idSearch_approvedTab_textBox.Location = new System.Drawing.Point(31, 53);
+            this.idSearch_approvedTab_textBox.Name = "idSearch_approvedTab_textBox";
+            this.idSearch_approvedTab_textBox.Size = new System.Drawing.Size(100, 20);
+            this.idSearch_approvedTab_textBox.TabIndex = 1;
+            // 
+            // idSearch_approvedTab_label
+            // 
+            this.idSearch_approvedTab_label.AutoSize = true;
+            this.idSearch_approvedTab_label.Location = new System.Drawing.Point(28, 37);
+            this.idSearch_approvedTab_label.Name = "idSearch_approvedTab_label";
+            this.idSearch_approvedTab_label.Size = new System.Drawing.Size(45, 13);
+            this.idSearch_approvedTab_label.TabIndex = 0;
+            this.idSearch_approvedTab_label.Text = "MSR ID";
+            // 
             // MSRMain_menuStrip
             // 
             this.MSRMain_menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -742,113 +973,6 @@
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             this.dataGridViewTextBoxColumn9.Width = 96;
             // 
-            // approved_tabPage
-            // 
-            this.approved_tabPage.Controls.Add(this.approvedTab_dataGridView);
-            this.approved_tabPage.Controls.Add(this.search_approvedTab_groupBox);
-            this.approved_tabPage.Location = new System.Drawing.Point(4, 22);
-            this.approved_tabPage.Name = "approved_tabPage";
-            this.approved_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.approved_tabPage.Size = new System.Drawing.Size(1152, 786);
-            this.approved_tabPage.TabIndex = 3;
-            this.approved_tabPage.Text = "Approved MSRs";
-            this.approved_tabPage.UseVisualStyleBackColor = true;
-            // 
-            // approvedTab_dataGridView
-            // 
-            this.approvedTab_dataGridView.AllowUserToAddRows = false;
-            this.approvedTab_dataGridView.AllowUserToDeleteRows = false;
-            this.approvedTab_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.approvedTab_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.approvedTab_dataGridView.Location = new System.Drawing.Point(19, 113);
-            this.approvedTab_dataGridView.MultiSelect = false;
-            this.approvedTab_dataGridView.Name = "approvedTab_dataGridView";
-            this.approvedTab_dataGridView.ReadOnly = true;
-            this.approvedTab_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.approvedTab_dataGridView.Size = new System.Drawing.Size(930, 450);
-            this.approvedTab_dataGridView.TabIndex = 1;
-            // 
-            // search_approvedTab_groupBox
-            // 
-            this.search_approvedTab_groupBox.Controls.Add(this.apSearch_approvedTab_textBox);
-            this.search_approvedTab_groupBox.Controls.Add(this.apSearch_approvedTab_label);
-            this.search_approvedTab_groupBox.Controls.Add(this.ogSearch_approvedTab_textBox);
-            this.search_approvedTab_groupBox.Controls.Add(this.ogSearch_approvedTab_label);
-            this.search_approvedTab_groupBox.Controls.Add(this.deptSearch_approvedTab_textBox);
-            this.search_approvedTab_groupBox.Controls.Add(this.deptSearch_approvedTab_label);
-            this.search_approvedTab_groupBox.Controls.Add(this.idSearch_approvedTab_textBox);
-            this.search_approvedTab_groupBox.Controls.Add(this.idSearch_approvedTab_label);
-            this.search_approvedTab_groupBox.Location = new System.Drawing.Point(19, 18);
-            this.search_approvedTab_groupBox.Name = "search_approvedTab_groupBox";
-            this.search_approvedTab_groupBox.Size = new System.Drawing.Size(930, 89);
-            this.search_approvedTab_groupBox.TabIndex = 0;
-            this.search_approvedTab_groupBox.TabStop = false;
-            this.search_approvedTab_groupBox.Text = "Search";
-            // 
-            // apSearch_approvedTab_textBox
-            // 
-            this.apSearch_approvedTab_textBox.Location = new System.Drawing.Point(349, 53);
-            this.apSearch_approvedTab_textBox.Name = "apSearch_approvedTab_textBox";
-            this.apSearch_approvedTab_textBox.Size = new System.Drawing.Size(100, 20);
-            this.apSearch_approvedTab_textBox.TabIndex = 7;
-            // 
-            // apSearch_approvedTab_label
-            // 
-            this.apSearch_approvedTab_label.AutoSize = true;
-            this.apSearch_approvedTab_label.Location = new System.Drawing.Point(346, 37);
-            this.apSearch_approvedTab_label.Name = "apSearch_approvedTab_label";
-            this.apSearch_approvedTab_label.Size = new System.Drawing.Size(50, 13);
-            this.apSearch_approvedTab_label.TabIndex = 6;
-            this.apSearch_approvedTab_label.Text = "Approver";
-            // 
-            // ogSearch_approvedTab_textBox
-            // 
-            this.ogSearch_approvedTab_textBox.Location = new System.Drawing.Point(243, 53);
-            this.ogSearch_approvedTab_textBox.Name = "ogSearch_approvedTab_textBox";
-            this.ogSearch_approvedTab_textBox.Size = new System.Drawing.Size(100, 20);
-            this.ogSearch_approvedTab_textBox.TabIndex = 5;
-            // 
-            // ogSearch_approvedTab_label
-            // 
-            this.ogSearch_approvedTab_label.AutoSize = true;
-            this.ogSearch_approvedTab_label.Location = new System.Drawing.Point(240, 37);
-            this.ogSearch_approvedTab_label.Name = "ogSearch_approvedTab_label";
-            this.ogSearch_approvedTab_label.Size = new System.Drawing.Size(52, 13);
-            this.ogSearch_approvedTab_label.TabIndex = 4;
-            this.ogSearch_approvedTab_label.Text = "Originator";
-            // 
-            // deptSearch_approvedTab_textBox
-            // 
-            this.deptSearch_approvedTab_textBox.Location = new System.Drawing.Point(137, 53);
-            this.deptSearch_approvedTab_textBox.Name = "deptSearch_approvedTab_textBox";
-            this.deptSearch_approvedTab_textBox.Size = new System.Drawing.Size(100, 20);
-            this.deptSearch_approvedTab_textBox.TabIndex = 3;
-            // 
-            // deptSearch_approvedTab_label
-            // 
-            this.deptSearch_approvedTab_label.AutoSize = true;
-            this.deptSearch_approvedTab_label.Location = new System.Drawing.Point(134, 37);
-            this.deptSearch_approvedTab_label.Name = "deptSearch_approvedTab_label";
-            this.deptSearch_approvedTab_label.Size = new System.Drawing.Size(62, 13);
-            this.deptSearch_approvedTab_label.TabIndex = 2;
-            this.deptSearch_approvedTab_label.Text = "Department";
-            // 
-            // idSearch_approvedTab_textBox
-            // 
-            this.idSearch_approvedTab_textBox.Location = new System.Drawing.Point(31, 53);
-            this.idSearch_approvedTab_textBox.Name = "idSearch_approvedTab_textBox";
-            this.idSearch_approvedTab_textBox.Size = new System.Drawing.Size(100, 20);
-            this.idSearch_approvedTab_textBox.TabIndex = 1;
-            // 
-            // idSearch_approvedTab_label
-            // 
-            this.idSearch_approvedTab_label.AutoSize = true;
-            this.idSearch_approvedTab_label.Location = new System.Drawing.Point(28, 37);
-            this.idSearch_approvedTab_label.Name = "idSearch_approvedTab_label";
-            this.idSearch_approvedTab_label.Size = new System.Drawing.Size(45, 13);
-            this.idSearch_approvedTab_label.TabIndex = 0;
-            this.idSearch_approvedTab_label.Text = "MSR ID";
-            // 
             // MSRMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -876,12 +1000,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.waitApprovalTab_dataGridView)).EndInit();
             this.search_waitApprovalTab_groupBox.ResumeLayout(false);
             this.search_waitApprovalTab_groupBox.PerformLayout();
-            this.MSRMain_menuStrip.ResumeLayout(false);
-            this.MSRMain_menuStrip.PerformLayout();
+            this.needReview_tabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.needReviewTab_dataGridView)).EndInit();
+            this.search_needReviewTab_groupBox.ResumeLayout(false);
+            this.search_needReviewTab_groupBox.PerformLayout();
             this.approved_tabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.approvedTab_dataGridView)).EndInit();
             this.search_approvedTab_groupBox.ResumeLayout(false);
             this.search_approvedTab_groupBox.PerformLayout();
+            this.MSRMain_menuStrip.ResumeLayout(false);
+            this.MSRMain_menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -967,6 +1095,17 @@
         private System.Windows.Forms.Label deptSearch_approvedTab_label;
         private System.Windows.Forms.TextBox idSearch_approvedTab_textBox;
         private System.Windows.Forms.Label idSearch_approvedTab_label;
+        private System.Windows.Forms.TabPage needReview_tabPage;
+        private System.Windows.Forms.DataGridView needReviewTab_dataGridView;
+        private System.Windows.Forms.GroupBox search_needReviewTab_groupBox;
+        private System.Windows.Forms.TextBox apSearch_needReviewTab_textBox;
+        private System.Windows.Forms.Label apSearch_needReviewTab_label;
+        private System.Windows.Forms.TextBox ogSearch_needReviewTab_textBox;
+        private System.Windows.Forms.Label ogSearch_needReviewTab_label;
+        private System.Windows.Forms.TextBox deptSearch_needReviewTab_textBox;
+        private System.Windows.Forms.Label deptSearch_needReviewTab_label;
+        private System.Windows.Forms.TextBox idSearch_needReview_textBox;
+        private System.Windows.Forms.Label idSearch_needReview_label;
     }
 }
 

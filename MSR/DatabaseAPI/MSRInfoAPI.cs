@@ -107,13 +107,28 @@ namespace MSR.DatabaseAPI
             DatabaseAPI.DBAccessSingleton.Instance.MyExecuteDeleteStmt(sql, sqlParametersList);
         }
 
-        public void UpdateMSR_ApproveButton(int MSRId, String ApproveButton, String ApproveComments, String StateFlag)
+        public void UpdateMSR_SubmitReview(int MSRId, String StateFlag)
+        {
+            //Update Approve Date
+            SqlParameter MSRId_param = new SqlParameter("@MSRId", MSRId.ToString());
+            SqlParameter stateFlag_param = new SqlParameter("@stateFlag", StateFlag);
+
+            List<SqlParameter> sqlParametersList = new List<SqlParameter>();
+            sqlParametersList.Add(MSRId_param);
+            sqlParametersList.Add(stateFlag_param);
+
+            String sql = "UPDATE MSR SET StateFlag = @stateFlag WHERE MSRId = @MSRId";
+
+            DatabaseAPI.DBAccessSingleton.Instance.MyExecuteUpdateStmt(sql, sqlParametersList);
+        }
+
+        public void UpdateMSR_ApproveButton(int MSRId, String ApproveButton, String ApproveComments, DateTime ApprovalDate, String StateFlag)
         {
             if (ApproveButton.Equals("Approve"))
             {
                 //Update Approve Date
                 SqlParameter MSRId_param = new SqlParameter("@MSRId", MSRId.ToString());
-                SqlParameter appr_Date_param = new SqlParameter("@appr_Date", DatabaseAPI.DBAccessSingleton.Instance.GetDateTime());
+                SqlParameter appr_Date_param = new SqlParameter("@appr_Date", ApprovalDate);
                 SqlParameter stateFlag_param = new SqlParameter("@stateFlag", StateFlag);
 
                 List<SqlParameter> sqlParametersList = new List<SqlParameter>();
@@ -227,6 +242,36 @@ namespace MSR.DatabaseAPI
             return MSRInfoData;
         }
 
+        public String GetOriginatorID(String MSRId)
+        {
+            String OgId = null;
+
+            SqlParameter MSRId_param = new SqlParameter("@MSRId", MSRId);
+
+            List<SqlParameter> sqlParametersList = new List<SqlParameter>();
+            sqlParametersList.Add(MSRId_param);
+
+            String sql = "SELECT Request_Originator FROM MSR WHERE MSRId = @MSRId";
+
+            using (SqlDataReader dataReader = DBAccessSingleton.Instance.MyExecuteQuery(sql, sqlParametersList))
+            {
+
+
+                while (dataReader.Read())
+                {
+                    //Project, WVL, Comments, BudgetYear, BP_No, AFE, SugVendor, ContactVendor, Request_Originator, Company_Approval, Req_Date, Appr_Date, Recieve_By, Recieve_Date, PUR_Comment, Decline_Comment, Review_Comment, StateFlag
+
+                    String Request_Originator = dataReader["Request_Originator"].ToString();
+
+                    OgId = Request_Originator;
+                }
+
+                dataReader.Close();
+            }
+
+            return OgId;
+        }
+
         public ICollection<Domain.FormItems> GetFormItems_List(String MSRId, String BP_No)
         {
             ICollection<Domain.FormItems> formItemsData = null;
@@ -276,7 +321,7 @@ namespace MSR.DatabaseAPI
             sqlParametersList.Add(deptId_param);
             sqlParametersList.Add(stateFlag_param);
 
-            String sql = "SELECT MSRId, Bp_No, DeptName, Originator, Approver, Req_Date, Comments FROM V_ShowMSR WHERE DeptId = @DeptId AND StateFlag = @StateFlag";
+            String sql = "SELECT MSRId, Bp_No, DeptName, Originator, Approver, Req_Date, Comments, Appr_Date FROM V_ShowMSR WHERE DeptId = @DeptId AND StateFlag = @StateFlag";
 
             using (SqlDataReader dataReader = DBAccessSingleton.Instance.MyExecuteQuery(sql, sqlParametersList))
             {
@@ -292,7 +337,13 @@ namespace MSR.DatabaseAPI
                     DateTime Req_Date = DateTime.Parse(dataReader["Req_Date"].ToString());
                     String Comments = dataReader["Comments"].ToString();
 
-                    Domain.ShowMSRItem temp = new Domain.ShowMSRItem(MSRId, Bp_No, DeptName, Originator, Approver, Req_Date, Comments);
+                    String Appr_Date = "No Approval Yet";
+                    if (!dataReader.IsDBNull(dataReader.GetOrdinal("Appr_Date")))
+                    {
+                        Appr_Date = Convert.ToDateTime(dataReader["Appr_Date"]).ToString("M/d/yyyy");
+                    }
+
+                    Domain.ShowMSRItem temp = new Domain.ShowMSRItem(MSRId, Bp_No, DeptName, Originator, Approver, Req_Date, Comments, Appr_Date);
                     showMSRData.Add(temp);
                 }
 

@@ -15,8 +15,9 @@ namespace MSR.Domain
         public String Approver { get; }
         public DateTime Req_Date { get; }
         public String Comments { get; }
+        public String Appr_Date { get; }
 
-        public ShowMSRItem(string MSRId, string Bp_No, string DeptName, string Originator, string Approver, DateTime Req_Date, string Comments)
+        public ShowMSRItem(string MSRId, string Bp_No, string DeptName, string Originator, string Approver, DateTime Req_Date, string Comments, String Appr_Date)
         {
             this.MSRId = MSRId;
             this.Bp_No = Bp_No;
@@ -25,6 +26,7 @@ namespace MSR.Domain
             this.Approver = Approver;
             this.Req_Date = Req_Date;
             this.Comments = Comments;
+            this.Appr_Date = Appr_Date;
         }
     }
 }
