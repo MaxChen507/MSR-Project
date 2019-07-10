@@ -15,5 +15,10 @@ namespace MSR.Domain
 
         public static String StandUser = "StandUser";
         public static String StandBH = "StandBH";
+
+        public static String CREATED = "CREATED";
+        public static String APPROVED = "APPROVED";
+        public static String NEED_REVIEW = "NEED_REVIEW";
+        public static String DECLINED = "DECLINED";
     }
 }

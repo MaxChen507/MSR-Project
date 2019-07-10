@@ -42,6 +42,16 @@
             this.originator_createTab_comboBox = new System.Windows.Forms.ComboBox();
             this.originator_createTab_label = new System.Windows.Forms.Label();
             this.createTab_dataGridView = new System.Windows.Forms.DataGridView();
+            this.BudgetPool = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ROS_Date = new MSR.Domain.CalendarColumn();
+            this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vendorContact_createTab_groupBox = new System.Windows.Forms.GroupBox();
             this.vendorContact_createTab_textBox = new System.Windows.Forms.TextBox();
             this.vendorContact_createTab_label = new System.Windows.Forms.Label();
@@ -85,16 +95,17 @@
             this.calendarColumn1 = new MSR.Domain.CalendarColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BudgetPool = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ROS_Date = new MSR.Domain.CalendarColumn();
-            this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.approved_tabPage = new System.Windows.Forms.TabPage();
+            this.approvedTab_dataGridView = new System.Windows.Forms.DataGridView();
+            this.search_approvedTab_groupBox = new System.Windows.Forms.GroupBox();
+            this.apSearch_approvedTab_textBox = new System.Windows.Forms.TextBox();
+            this.apSearch_approvedTab_label = new System.Windows.Forms.Label();
+            this.ogSearch_approvedTab_textBox = new System.Windows.Forms.TextBox();
+            this.ogSearch_approvedTab_label = new System.Windows.Forms.Label();
+            this.deptSearch_approvedTab_textBox = new System.Windows.Forms.TextBox();
+            this.deptSearch_approvedTab_label = new System.Windows.Forms.Label();
+            this.idSearch_approvedTab_textBox = new System.Windows.Forms.TextBox();
+            this.idSearch_approvedTab_label = new System.Windows.Forms.Label();
             this.mainMSR_tabControl.SuspendLayout();
             this.createNewMSR_tabPage.SuspendLayout();
             this.signDate_createTab_groupBox.SuspendLayout();
@@ -107,12 +118,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.waitApprovalTab_dataGridView)).BeginInit();
             this.search_waitApprovalTab_groupBox.SuspendLayout();
             this.MSRMain_menuStrip.SuspendLayout();
+            this.approved_tabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.approvedTab_dataGridView)).BeginInit();
+            this.search_approvedTab_groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMSR_tabControl
             // 
             this.mainMSR_tabControl.Controls.Add(this.createNewMSR_tabPage);
             this.mainMSR_tabControl.Controls.Add(this.waitApproval_tabPage);
+            this.mainMSR_tabControl.Controls.Add(this.approved_tabPage);
             this.mainMSR_tabControl.Location = new System.Drawing.Point(12, 27);
             this.mainMSR_tabControl.Name = "mainMSR_tabControl";
             this.mainMSR_tabControl.SelectedIndex = 0;
@@ -279,6 +294,63 @@
             this.createTab_dataGridView.Name = "createTab_dataGridView";
             this.createTab_dataGridView.Size = new System.Drawing.Size(1006, 400);
             this.createTab_dataGridView.TabIndex = 8;
+            // 
+            // BudgetPool
+            // 
+            this.BudgetPool.HeaderText = "BudgetPool";
+            this.BudgetPool.Name = "BudgetPool";
+            this.BudgetPool.ReadOnly = true;
+            // 
+            // ItemCode
+            // 
+            this.ItemCode.HeaderText = "ItemCode";
+            this.ItemCode.Name = "ItemCode";
+            this.ItemCode.ReadOnly = true;
+            // 
+            // ItemDesc
+            // 
+            this.ItemDesc.HeaderText = "ItemDesc";
+            this.ItemDesc.Name = "ItemDesc";
+            this.ItemDesc.ReadOnly = true;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            // 
+            // Unit
+            // 
+            this.Unit.HeaderText = "Unit";
+            this.Unit.Name = "Unit";
+            this.Unit.ReadOnly = true;
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.HeaderText = "UnitPrice";
+            this.UnitPrice.Name = "UnitPrice";
+            // 
+            // Currency
+            // 
+            this.Currency.HeaderText = "Currency";
+            this.Currency.Name = "Currency";
+            // 
+            // ROS_Date
+            // 
+            this.ROS_Date.HeaderText = "ROS_Date";
+            this.ROS_Date.Name = "ROS_Date";
+            this.ROS_Date.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ROS_Date.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Comments
+            // 
+            this.Comments.HeaderText = "Comments";
+            this.Comments.Name = "Comments";
+            // 
+            // AC_No
+            // 
+            this.AC_No.HeaderText = "AC_No";
+            this.AC_No.Name = "AC_No";
+            this.AC_No.ReadOnly = true;
             // 
             // vendorContact_createTab_groupBox
             // 
@@ -670,62 +742,112 @@
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             this.dataGridViewTextBoxColumn9.Width = 96;
             // 
-            // BudgetPool
+            // approved_tabPage
             // 
-            this.BudgetPool.HeaderText = "BudgetPool";
-            this.BudgetPool.Name = "BudgetPool";
-            this.BudgetPool.ReadOnly = true;
+            this.approved_tabPage.Controls.Add(this.approvedTab_dataGridView);
+            this.approved_tabPage.Controls.Add(this.search_approvedTab_groupBox);
+            this.approved_tabPage.Location = new System.Drawing.Point(4, 22);
+            this.approved_tabPage.Name = "approved_tabPage";
+            this.approved_tabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.approved_tabPage.Size = new System.Drawing.Size(1152, 786);
+            this.approved_tabPage.TabIndex = 3;
+            this.approved_tabPage.Text = "Approved MSRs";
+            this.approved_tabPage.UseVisualStyleBackColor = true;
             // 
-            // ItemCode
+            // approvedTab_dataGridView
             // 
-            this.ItemCode.HeaderText = "ItemCode";
-            this.ItemCode.Name = "ItemCode";
-            this.ItemCode.ReadOnly = true;
+            this.approvedTab_dataGridView.AllowUserToAddRows = false;
+            this.approvedTab_dataGridView.AllowUserToDeleteRows = false;
+            this.approvedTab_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.approvedTab_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.approvedTab_dataGridView.Location = new System.Drawing.Point(19, 113);
+            this.approvedTab_dataGridView.MultiSelect = false;
+            this.approvedTab_dataGridView.Name = "approvedTab_dataGridView";
+            this.approvedTab_dataGridView.ReadOnly = true;
+            this.approvedTab_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.approvedTab_dataGridView.Size = new System.Drawing.Size(930, 450);
+            this.approvedTab_dataGridView.TabIndex = 1;
             // 
-            // ItemDesc
+            // search_approvedTab_groupBox
             // 
-            this.ItemDesc.HeaderText = "ItemDesc";
-            this.ItemDesc.Name = "ItemDesc";
-            this.ItemDesc.ReadOnly = true;
+            this.search_approvedTab_groupBox.Controls.Add(this.apSearch_approvedTab_textBox);
+            this.search_approvedTab_groupBox.Controls.Add(this.apSearch_approvedTab_label);
+            this.search_approvedTab_groupBox.Controls.Add(this.ogSearch_approvedTab_textBox);
+            this.search_approvedTab_groupBox.Controls.Add(this.ogSearch_approvedTab_label);
+            this.search_approvedTab_groupBox.Controls.Add(this.deptSearch_approvedTab_textBox);
+            this.search_approvedTab_groupBox.Controls.Add(this.deptSearch_approvedTab_label);
+            this.search_approvedTab_groupBox.Controls.Add(this.idSearch_approvedTab_textBox);
+            this.search_approvedTab_groupBox.Controls.Add(this.idSearch_approvedTab_label);
+            this.search_approvedTab_groupBox.Location = new System.Drawing.Point(19, 18);
+            this.search_approvedTab_groupBox.Name = "search_approvedTab_groupBox";
+            this.search_approvedTab_groupBox.Size = new System.Drawing.Size(930, 89);
+            this.search_approvedTab_groupBox.TabIndex = 0;
+            this.search_approvedTab_groupBox.TabStop = false;
+            this.search_approvedTab_groupBox.Text = "Search";
             // 
-            // Quantity
+            // apSearch_approvedTab_textBox
             // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
+            this.apSearch_approvedTab_textBox.Location = new System.Drawing.Point(349, 53);
+            this.apSearch_approvedTab_textBox.Name = "apSearch_approvedTab_textBox";
+            this.apSearch_approvedTab_textBox.Size = new System.Drawing.Size(100, 20);
+            this.apSearch_approvedTab_textBox.TabIndex = 7;
             // 
-            // Unit
+            // apSearch_approvedTab_label
             // 
-            this.Unit.HeaderText = "Unit";
-            this.Unit.Name = "Unit";
-            this.Unit.ReadOnly = true;
+            this.apSearch_approvedTab_label.AutoSize = true;
+            this.apSearch_approvedTab_label.Location = new System.Drawing.Point(346, 37);
+            this.apSearch_approvedTab_label.Name = "apSearch_approvedTab_label";
+            this.apSearch_approvedTab_label.Size = new System.Drawing.Size(50, 13);
+            this.apSearch_approvedTab_label.TabIndex = 6;
+            this.apSearch_approvedTab_label.Text = "Approver";
             // 
-            // UnitPrice
+            // ogSearch_approvedTab_textBox
             // 
-            this.UnitPrice.HeaderText = "UnitPrice";
-            this.UnitPrice.Name = "UnitPrice";
+            this.ogSearch_approvedTab_textBox.Location = new System.Drawing.Point(243, 53);
+            this.ogSearch_approvedTab_textBox.Name = "ogSearch_approvedTab_textBox";
+            this.ogSearch_approvedTab_textBox.Size = new System.Drawing.Size(100, 20);
+            this.ogSearch_approvedTab_textBox.TabIndex = 5;
             // 
-            // Currency
+            // ogSearch_approvedTab_label
             // 
-            this.Currency.HeaderText = "Currency";
-            this.Currency.Name = "Currency";
+            this.ogSearch_approvedTab_label.AutoSize = true;
+            this.ogSearch_approvedTab_label.Location = new System.Drawing.Point(240, 37);
+            this.ogSearch_approvedTab_label.Name = "ogSearch_approvedTab_label";
+            this.ogSearch_approvedTab_label.Size = new System.Drawing.Size(52, 13);
+            this.ogSearch_approvedTab_label.TabIndex = 4;
+            this.ogSearch_approvedTab_label.Text = "Originator";
             // 
-            // ROS_Date
+            // deptSearch_approvedTab_textBox
             // 
-            this.ROS_Date.HeaderText = "ROS_Date";
-            this.ROS_Date.Name = "ROS_Date";
-            this.ROS_Date.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ROS_Date.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.deptSearch_approvedTab_textBox.Location = new System.Drawing.Point(137, 53);
+            this.deptSearch_approvedTab_textBox.Name = "deptSearch_approvedTab_textBox";
+            this.deptSearch_approvedTab_textBox.Size = new System.Drawing.Size(100, 20);
+            this.deptSearch_approvedTab_textBox.TabIndex = 3;
             // 
-            // Comments
+            // deptSearch_approvedTab_label
             // 
-            this.Comments.HeaderText = "Comments";
-            this.Comments.Name = "Comments";
+            this.deptSearch_approvedTab_label.AutoSize = true;
+            this.deptSearch_approvedTab_label.Location = new System.Drawing.Point(134, 37);
+            this.deptSearch_approvedTab_label.Name = "deptSearch_approvedTab_label";
+            this.deptSearch_approvedTab_label.Size = new System.Drawing.Size(62, 13);
+            this.deptSearch_approvedTab_label.TabIndex = 2;
+            this.deptSearch_approvedTab_label.Text = "Department";
             // 
-            // AC_No
+            // idSearch_approvedTab_textBox
             // 
-            this.AC_No.HeaderText = "AC_No";
-            this.AC_No.Name = "AC_No";
-            this.AC_No.ReadOnly = true;
+            this.idSearch_approvedTab_textBox.Location = new System.Drawing.Point(31, 53);
+            this.idSearch_approvedTab_textBox.Name = "idSearch_approvedTab_textBox";
+            this.idSearch_approvedTab_textBox.Size = new System.Drawing.Size(100, 20);
+            this.idSearch_approvedTab_textBox.TabIndex = 1;
+            // 
+            // idSearch_approvedTab_label
+            // 
+            this.idSearch_approvedTab_label.AutoSize = true;
+            this.idSearch_approvedTab_label.Location = new System.Drawing.Point(28, 37);
+            this.idSearch_approvedTab_label.Name = "idSearch_approvedTab_label";
+            this.idSearch_approvedTab_label.Size = new System.Drawing.Size(45, 13);
+            this.idSearch_approvedTab_label.TabIndex = 0;
+            this.idSearch_approvedTab_label.Text = "MSR ID";
             // 
             // MSRMainForm
             // 
@@ -756,6 +878,10 @@
             this.search_waitApprovalTab_groupBox.PerformLayout();
             this.MSRMain_menuStrip.ResumeLayout(false);
             this.MSRMain_menuStrip.PerformLayout();
+            this.approved_tabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.approvedTab_dataGridView)).EndInit();
+            this.search_approvedTab_groupBox.ResumeLayout(false);
+            this.search_approvedTab_groupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -830,6 +956,17 @@
         private Domain.CalendarColumn calendarColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.TabPage approved_tabPage;
+        private System.Windows.Forms.DataGridView approvedTab_dataGridView;
+        private System.Windows.Forms.GroupBox search_approvedTab_groupBox;
+        private System.Windows.Forms.TextBox apSearch_approvedTab_textBox;
+        private System.Windows.Forms.Label apSearch_approvedTab_label;
+        private System.Windows.Forms.TextBox ogSearch_approvedTab_textBox;
+        private System.Windows.Forms.Label ogSearch_approvedTab_label;
+        private System.Windows.Forms.TextBox deptSearch_approvedTab_textBox;
+        private System.Windows.Forms.Label deptSearch_approvedTab_label;
+        private System.Windows.Forms.TextBox idSearch_approvedTab_textBox;
+        private System.Windows.Forms.Label idSearch_approvedTab_label;
     }
 }
 

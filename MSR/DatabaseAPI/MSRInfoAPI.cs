@@ -95,6 +95,74 @@ namespace MSR.DatabaseAPI
             DatabaseAPI.DBAccessSingleton.Instance.MyExecuteInsertStmt(sql, sqlParametersList);
         }
 
+        public void DeleteFormItems(int MSRId)
+        {
+            SqlParameter MSRId_param = new SqlParameter("@MSRId", MSRId.ToString());
+
+            List<SqlParameter> sqlParametersList = new List<SqlParameter>();
+            sqlParametersList.Add(MSRId_param);
+
+            String sql = "Delete FROM FormItems where MSRId = @MSRId";
+
+            DatabaseAPI.DBAccessSingleton.Instance.MyExecuteDeleteStmt(sql, sqlParametersList);
+        }
+
+        public void UpdateMSR_ApproveButton(int MSRId, String ApproveButton, String ApproveComments, String StateFlag)
+        {
+            if (ApproveButton.Equals("Approve"))
+            {
+                //Update Approve Date
+                SqlParameter MSRId_param = new SqlParameter("@MSRId", MSRId.ToString());
+                SqlParameter appr_Date_param = new SqlParameter("@appr_Date", DatabaseAPI.DBAccessSingleton.Instance.GetDateTime());
+                SqlParameter stateFlag_param = new SqlParameter("@stateFlag", StateFlag);
+
+                List<SqlParameter> sqlParametersList = new List<SqlParameter>();
+                sqlParametersList.Add(MSRId_param);
+                sqlParametersList.Add(appr_Date_param);
+                sqlParametersList.Add(stateFlag_param);
+
+                String sql = "UPDATE MSR SET appr_Date = @appr_Date, StateFlag = @stateFlag WHERE MSRId = @MSRId";
+
+                DatabaseAPI.DBAccessSingleton.Instance.MyExecuteUpdateStmt(sql, sqlParametersList);
+            }
+            else if (ApproveButton.Equals("Send for Review"))
+            {
+                //Update Review Comment
+                SqlParameter MSRId_param = new SqlParameter("@MSRId", MSRId.ToString());
+                SqlParameter review_Comment_param = new SqlParameter("@review_Comment", ApproveComments);
+                SqlParameter stateFlag_param = new SqlParameter("@stateFlag", StateFlag);
+
+                List<SqlParameter> sqlParametersList = new List<SqlParameter>();
+                sqlParametersList.Add(MSRId_param);
+                sqlParametersList.Add(review_Comment_param);
+                sqlParametersList.Add(stateFlag_param);
+
+                String sql = "UPDATE MSR SET Review_Comment = @review_Comment, StateFlag = @stateFlag WHERE MSRId = @MSRId";
+
+                DatabaseAPI.DBAccessSingleton.Instance.MyExecuteUpdateStmt(sql, sqlParametersList);
+            }
+            else if (ApproveButton.Equals("Decline"))
+            {
+                //Update Review Comment
+                SqlParameter MSRId_param = new SqlParameter("@MSRId", MSRId.ToString());
+                SqlParameter decline_comments_param = new SqlParameter("@decline_comments", ApproveComments);
+                SqlParameter stateFlag_param = new SqlParameter("@stateFlag", StateFlag);
+
+                List<SqlParameter> sqlParametersList = new List<SqlParameter>();
+                sqlParametersList.Add(MSRId_param);
+                sqlParametersList.Add(decline_comments_param);
+                sqlParametersList.Add(stateFlag_param);
+
+                String sql = "UPDATE MSR SET Decline_Comment = @decline_comments, StateFlag = @stateFlag WHERE MSRId = @MSRId";
+
+                DatabaseAPI.DBAccessSingleton.Instance.MyExecuteUpdateStmt(sql, sqlParametersList);
+            }
+            else
+            {
+
+            }
+        }
+
         public Domain.MSRInfo GetMSR(String _MSRId)
         {
             Domain.MSRInfo MSRInfoData = null;
@@ -197,16 +265,18 @@ namespace MSR.DatabaseAPI
             return formItemsData;
         }
 
-        public ICollection<Domain.ShowMSRItem> GetshowMSR_List(String DeptId)
+        public ICollection<Domain.ShowMSRItem> GetshowMSR_List(String DeptId, String StateFlag)
         {
             ICollection<Domain.ShowMSRItem> showMSRData = null;
 
             SqlParameter deptId_param = new SqlParameter("@DeptId", DeptId);
+            SqlParameter stateFlag_param = new SqlParameter("@StateFlag", StateFlag);
 
             List<SqlParameter> sqlParametersList = new List<SqlParameter>();
             sqlParametersList.Add(deptId_param);
+            sqlParametersList.Add(stateFlag_param);
 
-            String sql = "SELECT MSRId, Bp_No, DeptName, Originator, Approver, Req_Date, Comments FROM V_ShowMSR WHERE DeptId = @DeptId";
+            String sql = "SELECT MSRId, Bp_No, DeptName, Originator, Approver, Req_Date, Comments FROM V_ShowMSR WHERE DeptId = @DeptId AND StateFlag = @StateFlag";
 
             using (SqlDataReader dataReader = DBAccessSingleton.Instance.MyExecuteQuery(sql, sqlParametersList))
             {

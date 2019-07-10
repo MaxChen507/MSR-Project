@@ -214,20 +214,197 @@ namespace MSR
             if (approve_showMSR_Button.Text.ToString().Equals("Approve"))
             {
                 MessageBox.Show("It says Approve");
+
+                //EDIT AND UPDATE MSR
+
+                if (showMSR_dataGridView.Rows.Count == 0)
+                {
+                    MessageBox.Show("Please add an item.");
+                    return;
+                }
+
+                //Checking if all item's fields are correct
+                Boolean itemsCorrectFlag = true;
+
+                //Checking if all items's budget pool matches combobox budget pool
+                foreach (DataGridViewRow row in showMSR_dataGridView.Rows)
+                {
+                    if (!(row.Cells["BudgetPool"].FormattedValue.ToString().Equals(budgetPool_showMSR_textBox.Text)))
+                    {
+                        Color lightRed = ControlPaint.Light(Color.Red);
+                        row.Cells["BudgetPool"].Style.BackColor = lightRed;
+                        itemsCorrectFlag = false;
+                    }
+                    else
+                    {
+                        row.Cells["BudgetPool"].Style.BackColor = (Color)System.Drawing.SystemColors.Window;
+                    }
+                }
+
+                if (itemsCorrectFlag)
+                {
+                    MessageBox.Show("All item's budget pool match with selected Budget Pool.");
+                }
+                else
+                {
+                    MessageBox.Show("Highlighted item's budget pool doesn't match with selected Budget Pool.");
+                    return;
+                }
+
+                //Checking if all numeric fields are numeric
+                foreach (DataGridViewRow row in showMSR_dataGridView.Rows)
+                {
+                    if (!BusinessAPI.BusinessSingleton.Instance.IsNumeric(row.Cells["Quantity"].FormattedValue.ToString()))
+                    {
+                        Color lightRed = ControlPaint.Light(Color.Red);
+                        row.Cells["Quantity"].Style.BackColor = lightRed;
+                        itemsCorrectFlag = false;
+                    }
+                    else
+                    {
+                        row.Cells["Quantity"].Style.BackColor = (Color)System.Drawing.SystemColors.Window;
+                    }
+
+                    if (!BusinessAPI.BusinessSingleton.Instance.IsNumeric(row.Cells["UnitPrice"].FormattedValue.ToString()) && !String.IsNullOrEmpty(row.Cells["UnitPrice"].FormattedValue.ToString()))
+                    {
+                        Color lightRed = ControlPaint.Light(Color.Red);
+                        row.Cells["UnitPrice"].Style.BackColor = lightRed;
+                        itemsCorrectFlag = false;
+                    }
+                    else
+                    {
+                        row.Cells["UnitPrice"].Style.BackColor = (Color)System.Drawing.SystemColors.Window;
+                    }
+                }
+
+                if (itemsCorrectFlag)
+                {
+                    MessageBox.Show("Quantity and UnitPrice are double.");
+                }
+                else
+                {
+                    MessageBox.Show("Highlighted items' fields must be corrected to double.");
+                    return;
+                }
+
+                //Checking if all required form item fields are set
+                foreach (DataGridViewRow row in showMSR_dataGridView.Rows)
+                {
+                    if (String.IsNullOrEmpty(row.Cells["Quantity"].FormattedValue.ToString()))
+                    {
+                        Color lightRed = ControlPaint.Light(Color.Red);
+                        row.Cells["Quantity"].Style.BackColor = lightRed;
+                        itemsCorrectFlag = false;
+                    }
+                    else
+                    {
+                        row.Cells["Quantity"].Style.BackColor = (Color)System.Drawing.SystemColors.Window;
+                    }
+                }
+
+                if (itemsCorrectFlag)
+                {
+                    MessageBox.Show("All form item fields are filled.");
+                }
+                else
+                {
+                    MessageBox.Show("Highlighted items' fields must be filled");
+                    return;
+                }
+
+                //To confirm if you want to Approve MSR
+                DialogResult result = MessageBox.Show("Are you sure you want to approve the MSR?", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    MessageBox.Show("Selected YES.");
+                    //...
+                }
+                else if (result == DialogResult.No)
+                {
+                    MessageBox.Show("Selected NO.");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Selected NO.");
+                    return;
+                }
+
+                //testing
+                MessageBox.Show("MSR ID is: " + MSRInfo.MSRId);
+
+                //Save state of DGV
+                BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(showMSR_dataGridView);
+
+                //DELETE from FormItems
+                DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.DeleteFormItems(Convert.ToInt32(MSRInfo.MSRId));
+
+                //INSERT into FormItems
+                foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval)
+                {
+                    DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.InsertInitialFormItems(item, Convert.ToInt32(MSRInfo.MSRId));
+                }
+
+                //Update MSR States and Approve Dates
+                DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.UpdateMSR_ApproveButton(Convert.ToInt32(MSRInfo.MSRId), approve_showMSR_Button.Text.ToString(), "Approved_NA", Domain.WorkFlowTrace.APPROVED);
+
             }
             else if (approve_showMSR_Button.Text.ToString().Equals("Send for Review"))
             {
                 MessageBox.Show("It says Send for Review");
+
+                //To confirm if you want to Send for Review MSR
+                DialogResult result = MessageBox.Show("Are you sure you want to send the MSR for review?", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    MessageBox.Show("Selected YES.");
+                    //...
+                }
+                else if (result == DialogResult.No)
+                {
+                    MessageBox.Show("Selected NO.");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Selected NO.");
+                    return;
+                }
+
+                //Update MSR
+                DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.UpdateMSR_ApproveButton(Convert.ToInt32(MSRInfo.MSRId), approve_showMSR_Button.Text.ToString(), reason_showMSR_richTextBox.Text.ToString(), Domain.WorkFlowTrace.NEED_REVIEW);
             }
             else if (approve_showMSR_Button.Text.ToString().Equals("Decline"))
             {
                 MessageBox.Show("It says Decline");
+
+                //To confirm if you want to Send for Review MSR
+                DialogResult result = MessageBox.Show("Are you sure you want to decline the MSR?", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    MessageBox.Show("Selected YES.");
+                    //...
+                }
+                else if (result == DialogResult.No)
+                {
+                    MessageBox.Show("Selected NO.");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Selected NO.");
+                    return;
+                }
+
+                //Update MSR
+                DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.UpdateMSR_ApproveButton(Convert.ToInt32(MSRInfo.MSRId), approve_showMSR_Button.Text.ToString(), reason_showMSR_richTextBox.Text.ToString(), Domain.WorkFlowTrace.DECLINED);
             }
             else
             {
                 MessageBox.Show("Error");
             }
 
+            this.Close();
 
         }
     }

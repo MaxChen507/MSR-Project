@@ -15,6 +15,7 @@ namespace MSR
         //Binding Source Initialization
         BindingSource createTabDGV_source { get; set; }
         BindingSource waitApprovalTabDGV_source = new BindingSource();
+        BindingSource approvedTabDGV_source = new BindingSource();
 
         public MSRMainForm()
         {
@@ -64,10 +65,16 @@ namespace MSR
             }
 
             //Populate waitApprovalTab_dataGridView from Database Singleton
-            waitApprovalTabDGV_source.DataSource = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.GetshowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId);
+            waitApprovalTabDGV_source.DataSource = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.GetshowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId, Domain.WorkFlowTrace.CREATED);
             waitApprovalTab_dataGridView.DataSource = waitApprovalTabDGV_source;
 
             waitApprovalTab_dataGridView.ClearSelection();
+
+            //Populate approvedTab_dataGridView from Database Singleton
+            approvedTabDGV_source.DataSource = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.GetshowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId, Domain.WorkFlowTrace.APPROVED);
+            approvedTab_dataGridView.DataSource = approvedTabDGV_source;
+
+            approvedTab_dataGridView.ClearSelection();
 
         }
 
@@ -292,7 +299,7 @@ namespace MSR
             Domain.ApproverInfo approverInfo = (Domain.ApproverInfo)approval_createTab_comboBox.SelectedItem;
 
             //INSERT into MSR
-            Domain.MSRInfo mSRInfo = new Domain.MSRInfo(project_createTab_textBox.Text, wellVL_createTab_textBox.Text, comments_createTab_textBox.Text, budgetYear_createTab_comboBox.Text, budgetPool_createTab_comboBox.Text, AFE_createTab_textBox.Text, suggVendor_createTab_textBox.Text, vendorContact_createTab_textBox.Text, BusinessAPI.BusinessSingleton.Instance.userInfo.UserId, approverInfo.UserId, changeDate_createTab_dateTimePicker.Value, "CREATED");
+            Domain.MSRInfo mSRInfo = new Domain.MSRInfo(project_createTab_textBox.Text, wellVL_createTab_textBox.Text, comments_createTab_textBox.Text, budgetYear_createTab_comboBox.Text, budgetPool_createTab_comboBox.Text, AFE_createTab_textBox.Text, suggVendor_createTab_textBox.Text, vendorContact_createTab_textBox.Text, BusinessAPI.BusinessSingleton.Instance.userInfo.UserId, approverInfo.UserId, changeDate_createTab_dateTimePicker.Value, Domain.WorkFlowTrace.CREATED);
 
             //Obtain Just inserted Identity
             int tempMSRID = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.InsertInitialMSR(mSRInfo);
@@ -335,7 +342,7 @@ namespace MSR
         
         private void PopulateFilteredShowMSRItemListDGV()
         {
-            ICollection<Domain.ShowMSRItem> showMSRItemData = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.GetshowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId);
+            ICollection<Domain.ShowMSRItem> showMSRItemData = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.GetshowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId, Domain.WorkFlowTrace.CREATED);
 
             ICollection<Domain.ShowMSRItem> showMSRItemDatafilter = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.GetFiltershowMSR_List(showMSRItemData, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text);
 
