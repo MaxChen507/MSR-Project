@@ -292,7 +292,6 @@
             // createTab_dataGridView
             // 
             this.createTab_dataGridView.AllowUserToAddRows = false;
-            this.createTab_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.createTab_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.createTab_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.BudgetPool,
@@ -315,39 +314,46 @@
             this.BudgetPool.HeaderText = "BudgetPool";
             this.BudgetPool.Name = "BudgetPool";
             this.BudgetPool.ReadOnly = true;
+            this.BudgetPool.Width = 96;
             // 
             // ItemCode
             // 
             this.ItemCode.HeaderText = "ItemCode";
             this.ItemCode.Name = "ItemCode";
             this.ItemCode.ReadOnly = true;
+            this.ItemCode.Width = 97;
             // 
             // ItemDesc
             // 
             this.ItemDesc.HeaderText = "ItemDesc";
             this.ItemDesc.Name = "ItemDesc";
             this.ItemDesc.ReadOnly = true;
+            this.ItemDesc.Width = 96;
             // 
             // Quantity
             // 
             this.Quantity.HeaderText = "Quantity";
             this.Quantity.Name = "Quantity";
+            this.Quantity.Width = 96;
             // 
             // Unit
             // 
             this.Unit.HeaderText = "Unit";
             this.Unit.Name = "Unit";
             this.Unit.ReadOnly = true;
+            this.Unit.Width = 97;
             // 
             // UnitPrice
             // 
             this.UnitPrice.HeaderText = "UnitPrice";
             this.UnitPrice.Name = "UnitPrice";
+            this.UnitPrice.Width = 96;
             // 
             // Currency
             // 
             this.Currency.HeaderText = "Currency";
             this.Currency.Name = "Currency";
+            this.Currency.Width = 96;
             // 
             // ROS_Date
             // 
@@ -355,17 +361,20 @@
             this.ROS_Date.Name = "ROS_Date";
             this.ROS_Date.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ROS_Date.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ROS_Date.Width = 96;
             // 
             // Comments
             // 
             this.Comments.HeaderText = "Comments";
             this.Comments.Name = "Comments";
+            this.Comments.Width = 97;
             // 
             // AC_No
             // 
             this.AC_No.HeaderText = "AC_No";
             this.AC_No.Name = "AC_No";
             this.AC_No.ReadOnly = true;
+            this.AC_No.Width = 96;
             // 
             // vendorContact_createTab_groupBox
             // 
@@ -977,6 +986,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1181, 847);
             this.Controls.Add(this.mainMSR_tabControl);
             this.Controls.Add(this.MSRMain_menuStrip);

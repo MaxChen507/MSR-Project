@@ -112,7 +112,6 @@
             // 
             this.itemList_addStock_dataGridView.AllowUserToAddRows = false;
             this.itemList_addStock_dataGridView.AllowUserToDeleteRows = false;
-            this.itemList_addStock_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.itemList_addStock_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.itemList_addStock_dataGridView.Location = new System.Drawing.Point(12, 57);
             this.itemList_addStock_dataGridView.MultiSelect = false;
@@ -125,7 +124,6 @@
             // addList_addStock_dataGridView
             // 
             this.addList_addStock_dataGridView.AllowUserToAddRows = false;
-            this.addList_addStock_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.addList_addStock_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.addList_addStock_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.BudgetPool,
@@ -149,42 +147,49 @@
             this.BudgetPool.HeaderText = "BudgetPool";
             this.BudgetPool.Name = "BudgetPool";
             this.BudgetPool.ReadOnly = true;
+            this.BudgetPool.Width = 73;
             // 
             // ItemCode
             // 
             this.ItemCode.HeaderText = "ItemCode";
             this.ItemCode.Name = "ItemCode";
             this.ItemCode.ReadOnly = true;
+            this.ItemCode.Width = 74;
             // 
             // ItemDesc
             // 
             this.ItemDesc.HeaderText = "ItemDesc";
             this.ItemDesc.Name = "ItemDesc";
             this.ItemDesc.ReadOnly = true;
+            this.ItemDesc.Width = 73;
             // 
             // Quantity
             // 
             this.Quantity.HeaderText = "Quantity";
             this.Quantity.Name = "Quantity";
             this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 73;
             // 
             // Unit
             // 
             this.Unit.HeaderText = "Unit";
             this.Unit.Name = "Unit";
             this.Unit.ReadOnly = true;
+            this.Unit.Width = 74;
             // 
             // UnitPrice
             // 
             this.UnitPrice.HeaderText = "UnitPrice";
             this.UnitPrice.Name = "UnitPrice";
             this.UnitPrice.ReadOnly = true;
+            this.UnitPrice.Width = 73;
             // 
             // Currency
             // 
             this.Currency.HeaderText = "Currency";
             this.Currency.Name = "Currency";
             this.Currency.ReadOnly = true;
+            this.Currency.Width = 73;
             // 
             // ROS_Date
             // 
@@ -193,23 +198,27 @@
             this.ROS_Date.ReadOnly = true;
             this.ROS_Date.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ROS_Date.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ROS_Date.Width = 73;
             // 
             // Comments
             // 
             this.Comments.HeaderText = "Comments";
             this.Comments.Name = "Comments";
             this.Comments.ReadOnly = true;
+            this.Comments.Width = 74;
             // 
             // AC_No
             // 
             this.AC_No.HeaderText = "AC_No";
             this.AC_No.Name = "AC_No";
             this.AC_No.ReadOnly = true;
+            this.AC_No.Width = 73;
             // 
             // AddStockItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(800, 546);
             this.Controls.Add(this.addList_addStock_dataGridView);
             this.Controls.Add(this.itemList_addStock_dataGridView);
