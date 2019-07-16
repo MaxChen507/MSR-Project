@@ -213,7 +213,7 @@ namespace MSR
 
             if (itemsCorrectFlag)
             {
-                MessageBox.Show("All item's budget pool match with selected Budget Pool.");
+                //MessageBox.Show("All item's budget pool match with selected Budget Pool.");
             }
             else
             {
@@ -249,7 +249,7 @@ namespace MSR
 
             if (itemsCorrectFlag)
             {
-                MessageBox.Show("Quantity and UnitPrice are double.");
+                //MessageBox.Show("Quantity and UnitPrice are double.");
             }
             else
             {
@@ -274,7 +274,7 @@ namespace MSR
 
             if (itemsCorrectFlag)
             {
-                MessageBox.Show("All form item fields are filled.");
+                //MessageBox.Show("All form item fields are filled.");
             }
             else
             {
@@ -286,17 +286,17 @@ namespace MSR
             DialogResult result = MessageBox.Show("Are you sure you want to submit the MSR?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                MessageBox.Show("Selected YES.");
+                //MessageBox.Show("Selected YES.");
                 //...
             }
             else if (result == DialogResult.No)
             {
-                MessageBox.Show("Selected NO.");
+                //MessageBox.Show("Selected NO.");
                 return;
             }
             else
             {
-                MessageBox.Show("Selected NO.");
+                //MessageBox.Show("Selected NO.");
                 return;
             }
 
@@ -312,7 +312,7 @@ namespace MSR
             int tempMSRID = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.InsertInitialMSR(mSRInfo);
 
             //testing
-            MessageBox.Show("MSR ID is: " + tempMSRID.ToString());
+            //MessageBox.Show("MSR ID is: " + tempMSRID.ToString());
 
             //Save state of DGV
             BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(createTab_dataGridView);
@@ -387,8 +387,11 @@ namespace MSR
 
         private void WaitApprovalTab_dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show(waitApprovalTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
-            
+            //MessageBox.Show(waitApprovalTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
+
+            //Check if header is selected
+            if (e.RowIndex == -1) return;
+
             this.Hide();
 
             ShowMSR fShowMSR = new ShowMSR(waitApprovalTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString(), Domain.WorkFlowTrace.waitForApproval);
@@ -404,7 +407,10 @@ namespace MSR
 
         private void ApprovedTab_dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show(approvedTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
+            //MessageBox.Show(approvedTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
+
+            //Check if header is selected
+            if (e.RowIndex == -1) return;
 
             this.Hide();
 
@@ -420,7 +426,10 @@ namespace MSR
         
         private void NeedReviewTab_dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show(needReviewTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
+            //MessageBox.Show(needReviewTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
+
+            //Check if header is selected
+            if (e.RowIndex == -1) return;
 
             this.Hide();
 

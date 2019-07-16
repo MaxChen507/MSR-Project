@@ -16,7 +16,6 @@ namespace MSR.BusinessAPI
         public Domain.UserInfo userInfo { get; set; }
         public Domain.GroupsInfo groupsInfo { get; set; }
         public ICollection<Domain.FormItems> formItemList_CreateMSR { get; set; }
-
         public ICollection<Domain.FormItems> formItemList_WaitForApproval { get; set; }
         public ICollection<Domain.FormItems> formItemList_Approved { get; set; }
         public ICollection<Domain.FormItems> formItemList_NeedReview { get; set; }

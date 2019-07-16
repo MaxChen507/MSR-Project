@@ -52,9 +52,9 @@ namespace MSR
 
             if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
             {
-                MessageBox.Show("Came from waitForApproval");
+                //MessageBox.Show("Came from waitForApproval");
 
-                MessageBox.Show("I am from group: " + groupsInfo.GroupsName);
+                //MessageBox.Show("I am from group: " + groupsInfo.GroupsName);
 
                 if (groupsInfo.GroupsName.Equals(Domain.WorkFlowTrace.StandUser))
                 {
@@ -75,7 +75,7 @@ namespace MSR
             }
             else if (workFlowTrace.Equals(Domain.WorkFlowTrace.approvedMSR))
             {
-                MessageBox.Show("Came from approvedMSR");
+                //MessageBox.Show("Came from approvedMSR");
 
                 edit_showMSR_groupBox.Hide();
 
@@ -87,11 +87,11 @@ namespace MSR
             }
             else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
             {
-                MessageBox.Show("Came from needReview");
+                //MessageBox.Show("Came from needReview");
 
                 if (BusinessAPI.BusinessSingleton.Instance.userInfo.UserId.Equals(OriginatorId))
                 {
-                    MessageBox.Show("UserID: " + BusinessAPI.BusinessSingleton.Instance.userInfo.UserId + " " + "MSR OG: " + OriginatorId);
+                    //MessageBox.Show("UserID: " + BusinessAPI.BusinessSingleton.Instance.userInfo.UserId + " " + "MSR OG: " + OriginatorId);
                     //Shows a match, they can edit
 
                     needReview_showMSR_radioButton.Checked = true;
@@ -256,7 +256,7 @@ namespace MSR
                 MessageBox.Show("Please select an item.");
                 return;
             }
-            MessageBox.Show("Deleting: " + showMSR_dataGridView.Rows[showMSR_dataGridView.CurrentCell.RowIndex].ToString());
+            //MessageBox.Show("Deleting: " + showMSR_dataGridView.Rows[showMSR_dataGridView.CurrentCell.RowIndex].ToString());
             showMSR_dataGridView.Rows.Remove(showMSR_dataGridView.Rows[showMSR_dataGridView.CurrentCell.RowIndex]);
         }
 
@@ -328,11 +328,11 @@ namespace MSR
 
         private void Approve_showMSR_Button_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(approve_showMSR_Button.Text.ToString());
+            //MessageBox.Show(approve_showMSR_Button.Text.ToString());
 
             if (approve_showMSR_Button.Text.ToString().Equals("Approve"))
             {
-                MessageBox.Show("It says Approve");
+                //MessageBox.Show("It says Approve");
 
                 //EDIT AND UPDATE MSR
 
@@ -345,22 +345,22 @@ namespace MSR
                 DialogResult result = MessageBox.Show("Are you sure you want to approve the MSR?", "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show("Selected YES.");
+                    //MessageBox.Show("Selected YES.");
                     //...
                 }
                 else if (result == DialogResult.No)
                 {
-                    MessageBox.Show("Selected NO.");
+                    //MessageBox.Show("Selected NO.");
                     return;
                 }
                 else
                 {
-                    MessageBox.Show("Selected NO.");
+                    //MessageBox.Show("Selected NO.");
                     return;
                 }
 
                 //testing
-                MessageBox.Show("MSR ID is: " + MSRInfo.MSRId);
+                //MessageBox.Show("MSR ID is: " + MSRInfo.MSRId);
 
                 //Save state of DGV
                 BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(showMSR_dataGridView);
@@ -380,23 +380,23 @@ namespace MSR
             }
             else if (approve_showMSR_Button.Text.ToString().Equals("Send for Review"))
             {
-                MessageBox.Show("It says Send for Review");
+                //MessageBox.Show("It says Send for Review");
 
                 //To confirm if you want to Send for Review MSR
                 DialogResult result = MessageBox.Show("Are you sure you want to send the MSR for review?", "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show("Selected YES.");
+                    //MessageBox.Show("Selected YES.");
                     //...
                 }
                 else if (result == DialogResult.No)
                 {
-                    MessageBox.Show("Selected NO.");
+                    //MessageBox.Show("Selected NO.");
                     return;
                 }
                 else
                 {
-                    MessageBox.Show("Selected NO.");
+                    //MessageBox.Show("Selected NO.");
                     return;
                 }
 
@@ -405,23 +405,23 @@ namespace MSR
             }
             else if (approve_showMSR_Button.Text.ToString().Equals("Decline"))
             {
-                MessageBox.Show("It says Decline");
+                //MessageBox.Show("It says Decline");
 
                 //To confirm if you want to Send for Review MSR
                 DialogResult result = MessageBox.Show("Are you sure you want to decline the MSR?", "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show("Selected YES.");
+                    //MessageBox.Show("Selected YES.");
                     //...
                 }
                 else if (result == DialogResult.No)
                 {
-                    MessageBox.Show("Selected NO.");
+                    //MessageBox.Show("Selected NO.");
                     return;
                 }
                 else
                 {
-                    MessageBox.Show("Selected NO.");
+                    //MessageBox.Show("Selected NO.");
                     return;
                 }
 
@@ -448,22 +448,22 @@ namespace MSR
             DialogResult result = MessageBox.Show("Are you sure you want to submit the MSR edits?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                MessageBox.Show("Selected YES.");
+                //MessageBox.Show("Selected YES.");
                 //...
             }
             else if (result == DialogResult.No)
             {
-                MessageBox.Show("Selected NO.");
+                //MessageBox.Show("Selected NO.");
                 return;
             }
             else
             {
-                MessageBox.Show("Selected NO.");
+                //MessageBox.Show("Selected NO.");
                 return;
             }
 
             //testing
-            MessageBox.Show("MSR ID is: " + MSRInfo.MSRId);
+            //MessageBox.Show("MSR ID is: " + MSRInfo.MSRId);
 
             //Save state of DGV
             BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(showMSR_dataGridView);
@@ -511,7 +511,7 @@ namespace MSR
 
             if (itemsCorrectFlag)
             {
-                MessageBox.Show("All item's budget pool match with selected Budget Pool.");
+                //MessageBox.Show("All item's budget pool match with selected Budget Pool.");
             }
             else
             {
@@ -547,7 +547,7 @@ namespace MSR
 
             if (itemsCorrectFlag)
             {
-                MessageBox.Show("Quantity and UnitPrice are double.");
+                //MessageBox.Show("Quantity and UnitPrice are double.");
             }
             else
             {
@@ -572,7 +572,7 @@ namespace MSR
 
             if (itemsCorrectFlag)
             {
-                MessageBox.Show("All form item fields are filled.");
+                //MessageBox.Show("All form item fields are filled.");
             }
             else
             {
