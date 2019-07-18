@@ -58,6 +58,12 @@
     <Compile Include="AddStockItemForm.Designer.cs">
       <DependentUpon>AddStockItemForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AssignMSR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssignMSR.Designer.cs">
+      <DependentUpon>AssignMSR.cs</DependentUpon>
+    </Compile>
     <Compile Include="BusinessAPI\BusinessSingleton.cs" />
     <Compile Include="DatabaseAPI\GroupsInfoAPI.cs" />
     <Compile Include="DatabaseAPI\MSRInfoAPI.cs" />
@@ -101,12 +107,21 @@
     <Compile Include="ShowMSR.Designer.cs">
       <DependentUpon>ShowMSR.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowMSR_Procure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowMSR_Procure.Designer.cs">
+      <DependentUpon>ShowMSR_Procure.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserInterfaceAPI\UserInterfaceSingleton.cs" />
     <EmbeddedResource Include="AddNonStockItemForm.resx">
       <DependentUpon>AddNonStockItemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddStockItemForm.resx">
       <DependentUpon>AddStockItemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssignMSR.resx">
+      <DependentUpon>AssignMSR.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -125,6 +140,9 @@
     </Compile>
     <EmbeddedResource Include="ShowMSR.resx">
       <DependentUpon>ShowMSR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowMSR_Procure.resx">
+      <DependentUpon>ShowMSR_Procure.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
