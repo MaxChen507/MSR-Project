@@ -321,7 +321,7 @@ namespace MSR.DatabaseAPI
             sqlParametersList.Add(deptId_param);
             sqlParametersList.Add(stateFlag_param);
 
-            String sql = "SELECT MSRId, Bp_No, DeptName, Originator, Approver, Req_Date, Comments, Appr_Date FROM V_ShowMSR WHERE DeptId = @DeptId AND StateFlag = @StateFlag";
+            String sql = "SELECT MSRId, Bp_No, DeptName, Originator, Approver, Req_Date, Comments, Appr_Date FROM V_ShowMSR WHERE (DeptId_Og = @DeptId OR DeptId_Ap = @DeptId) AND StateFlag = @StateFlag";
 
             using (SqlDataReader dataReader = DBAccessSingleton.Instance.MyExecuteQuery(sql, sqlParametersList))
             {
