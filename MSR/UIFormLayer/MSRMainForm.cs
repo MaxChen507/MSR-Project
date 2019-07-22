@@ -17,39 +17,36 @@ namespace MSR
         BindingSource waitApprovalTabDGV_source = new BindingSource();
         BindingSource approvedTabDGV_source = new BindingSource();
         BindingSource needReviewTabDGV_source = new BindingSource();
-
+        
         public MSRMainForm()
         {
             InitializeComponent();
             InitalizeStartingFields();
             RefreshDataGridViews();
         }
-
+               
         private void InitalizeStartingFields()
         {
-            //Full Date from server
-            //MessageBox.Show(DatabaseAPI.DBAccessSingleton.Instance.GetDateTime().ToString());
-
             //Initialize Budget Year ComboBox
-            int currentYear = DatabaseAPI.DBAccessSingleton.Instance.GetDateTime().Year;
+            int currentYear = BusinessAPI.BusinessSingleton.Instance.GetDateTime().Year;
 
             budgetYear_createTab_comboBox.Items.Add((currentYear - 1).ToString());
             budgetYear_createTab_comboBox.Items.Add((currentYear).ToString());
             budgetYear_createTab_comboBox.Items.Add((currentYear + 1).ToString());
 
             //Initialize BP ComboBox
-            foreach (String item in BusinessAPI.BusinessSingleton.Instance.GetUniqueBP_List())
+            foreach (String item in BusinessAPI.BusinessSingleton.Instance.GetUniqueBP_Access_List())
             {
                 budgetPool_createTab_comboBox.Items.Add(item);
             }
 
             //Initialize Originator Combobox Selected Item
             originator_createTab_comboBox.Enabled = true;
-            originator_createTab_comboBox.Items.Add(BusinessAPI.BusinessSingleton.Instance.userInfo.FullName);
-            originator_createTab_comboBox.SelectedItem = BusinessAPI.BusinessSingleton.Instance.userInfo.FullName;
+            originator_createTab_comboBox.Items.Add(BusinessAPI.BusinessSingleton.Instance.userInfo_EF.FullName);
+            originator_createTab_comboBox.SelectedItem = BusinessAPI.BusinessSingleton.Instance.userInfo_EF.FullName;
 
             //Initialize DateTime Picker
-            changeDate_createTab_dateTimePicker.Value = DatabaseAPI.DBAccessSingleton.Instance.GetDateTime();
+            changeDate_createTab_dateTimePicker.Value = BusinessAPI.BusinessSingleton.Instance.GetDateTime();
 
         }
 

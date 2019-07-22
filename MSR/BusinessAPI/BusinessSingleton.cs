@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.EntityClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,10 +24,11 @@ namespace MSR.BusinessAPI
 
         //New User Variables
         public Usr userInfo_EF { get; set; }
+        public ICollection<V_BP_DEPT> v_bp_dept_Access_EF { get; set; }
 
         private BusinessSingleton()
         {
-            LoginAPI = new LoginAPI_B();
+            LoginAPI_B = new LoginAPI_B();
         }
 
         public static BusinessSingleton Instance
@@ -42,7 +44,7 @@ namespace MSR.BusinessAPI
             }
         }
 
-        public LoginAPI_B LoginAPI { get; private set; }
+        public LoginAPI_B LoginAPI_B { get; private set; }
 
         public Boolean IsNumeric(object Expression)
         {
@@ -52,13 +54,8 @@ namespace MSR.BusinessAPI
             return isNum;
         }
 
-        public ICollection<String> GetUniqueBP_List()
-        {
-            ICollection<String> results = budgetInfo.Select(x => x.Bp_No).Distinct().ToList();
+        //OLD Functions:
 
-            return results;
-        }
-       
         public ICollection<String> GetAC_List(string Bp_No)
         {
             ICollection<String> results = (
@@ -86,7 +83,37 @@ namespace MSR.BusinessAPI
 
         public void SetUsrLoginSessionVariables(string username)
         {
-            userInfo_EF = LoginAPI.GetUsrByUsername(username);
+            //Sets the UserInfo
+            userInfo_EF = LoginAPI_B.GetUsrByUsername(username);
+
+            //Sets the BPInfo User can access
+            v_bp_dept_Access_EF = LoginAPI_B.GetBudgetInfo_AccessByDeptId(userInfo_EF.DeptId);
+
+        }
+
+        public DateTime GetDateTime()
+        {
+            DateTime dateTime = DateTime.MinValue;
+
+            using (var context = new MSR_Max_V2Entities())
+            {
+                //Log DB commands to console
+                context.Database.Log = Console.WriteLine;
+
+                var dateTimeVar = (from dt in context.Database.SqlQuery<DateTime>("Select Getdate() AS DateTime")
+                         select dt).FirstOrDefault();
+
+                dateTime = dateTimeVar;
+            }
+
+            return dateTime;
+        }
+
+        public ICollection<String> GetUniqueBP_Access_List()
+        {
+            ICollection<String> results = v_bp_dept_Access_EF.Select(x => x.BP_No).Distinct().ToList();
+
+            return results;
         }
 
     }

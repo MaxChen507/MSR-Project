@@ -23,7 +23,7 @@ namespace MSR
             //Boolean loginSuccessFlag = DatabaseAPI.DBAccessSingleton.Instance.LoginAPI.ValidateLogin(username_Login_textBox.Text, password_Login_textBox.Text);
 
             //New Workflow
-            Boolean loginSuccessFlag = BusinessAPI.BusinessSingleton.Instance.LoginAPI.ValidateLogin_B(username_Login_textBox.Text, password_Login_textBox.Text);
+            Boolean loginSuccessFlag = BusinessAPI.BusinessSingleton.Instance.LoginAPI_B.ValidateLogin_B(username_Login_textBox.Text, password_Login_textBox.Text);
 
             if (loginSuccessFlag)
             {

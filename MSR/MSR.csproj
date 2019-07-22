@@ -166,6 +166,9 @@
     <Compile Include="Usr.cs">
       <DependentUpon>MSR_V2.tt</DependentUpon>
     </Compile>
+    <Compile Include="V_BP_DEPT.cs">
+      <DependentUpon>MSR_V2.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UIFormLayer\AddNonStockItemForm.resx">
       <DependentUpon>AddNonStockItemForm.cs</DependentUpon>
     </EmbeddedResource>

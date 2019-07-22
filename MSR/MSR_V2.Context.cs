@@ -18,8 +18,6 @@ namespace MSR
         public MSR_Max_V2Entities()
             : base("name=MSR_Max_V2Entities")
         {
-            //TODO: Change this later to more secure
-            this.Database.Connection.ConnectionString = @"Data Source=BPAL-MCHEN;Initial Catalog=MSR_Max_V2;User ID=sa;Password=Bankers1!";
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -36,5 +34,6 @@ namespace MSR
         public virtual DbSet<MSR> MSRs { get; set; }
         public virtual DbSet<StockItem> StockItems { get; set; }
         public virtual DbSet<Usr> Usrs { get; set; }
+        public virtual DbSet<V_BP_DEPT> V_BP_DEPT { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MSR_Max_V2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MSR_Max_V2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ActivityCode">
           <Key>
             <PropertyRef Name="AC_No" />
@@ -127,6 +127,20 @@
           <Property Name="ActiveFlag" Type="bit" Nullable="false" />
           <Property Name="DeptId" Type="int" Nullable="false" />
           <Property Name="GroupsId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MSR_Max_V2.dbo.V_BP_DEPT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_BP_DEPT">
+          <Key>
+            <PropertyRef Name="BudgetInfoId" />
+            <PropertyRef Name="BP_No" />
+            <PropertyRef Name="AC_No" />
+            <PropertyRef Name="DeptId" />
+          </Key>
+          <Property Name="BudgetInfoId" Type="int" Nullable="false" />
+          <Property Name="BP_No" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="AC_No" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DeptId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_BH_BudgetInfo">
           <End Role="BudgetInfo" Type="Self.BudgetInfo" Multiplicity="1" />
@@ -308,6 +322,14 @@
           <EntitySet Name="MSR" EntityType="Self.MSR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockItems" EntityType="Self.StockItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usr" EntityType="Self.Usr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V_BP_DEPT" EntityType="Self.V_BP_DEPT" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_BP_DEPT].[BudgetInfoId] AS [BudgetInfoId], 
+    [V_BP_DEPT].[BP_No] AS [BP_No], 
+    [V_BP_DEPT].[AC_No] AS [AC_No], 
+    [V_BP_DEPT].[DeptId] AS [DeptId]
+    FROM [dbo].[V_BP_DEPT] AS [V_BP_DEPT]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_BH_BudgetInfo" Association="Self.FK_BH_BudgetInfo">
             <End Role="BudgetInfo" EntitySet="BudgetInfo" />
             <End Role="BudgetHolder" EntitySet="BudgetHolder" />
@@ -365,8 +387,7 @@
             <End Role="Usr" EntitySet="Usr" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MSR_Max_V2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -687,7 +708,20 @@
             <End Role="Department" EntitySet="Departments" />
             <End Role="BudgetInfo" EntitySet="BudgetInfoes" />
           </AssociationSet>
+          <EntitySet Name="V_BP_DEPT" EntityType="MSR_Max_V2Model.V_BP_DEPT" />
         </EntityContainer>
+        <EntityType Name="V_BP_DEPT">
+          <Key>
+            <PropertyRef Name="BudgetInfoId" />
+            <PropertyRef Name="BP_No" />
+            <PropertyRef Name="AC_No" />
+            <PropertyRef Name="DeptId" />
+          </Key>
+          <Property Name="BudgetInfoId" Type="Int32" Nullable="false" />
+          <Property Name="BP_No" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AC_No" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DeptId" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -826,6 +860,16 @@
               <ScalarProperty Name="BudgetInfoId" ColumnName="BudgetInfoId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="V_BP_DEPT">
+            <EntityTypeMapping TypeName="MSR_Max_V2Model.V_BP_DEPT">
+              <MappingFragment StoreEntitySet="V_BP_DEPT">
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="AC_No" ColumnName="AC_No" />
+                <ScalarProperty Name="BP_No" ColumnName="BP_No" />
+                <ScalarProperty Name="BudgetInfoId" ColumnName="BudgetInfoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

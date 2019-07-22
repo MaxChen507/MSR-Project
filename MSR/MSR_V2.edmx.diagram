@@ -26,6 +26,7 @@
         <AssociationConnector Association="MSR_Max_V2Model.FK_MSR_Usr_RO" ManuallyRouted="false" />
         <AssociationConnector Association="MSR_Max_V2Model.BudgetHolder" ManuallyRouted="false" />
         <AssociationConnector Association="MSR_Max_V2Model.Department_BudgetInfo" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MSR_Max_V2Model.V_BP_DEPT" Width="1.5" PointX="6" PointY="9" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
