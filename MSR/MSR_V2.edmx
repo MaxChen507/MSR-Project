@@ -142,6 +142,32 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_BP_DEPT' does not have a primary 
           <Property Name="AC_No" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="DeptId" Type="int" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MSR_Max_V2.dbo.V_ShowMSR' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_ShowMSR">
+          <Key>
+            <PropertyRef Name="MSRId" />
+            <PropertyRef Name="BP_No" />
+            <PropertyRef Name="DeptName" />
+            <PropertyRef Name="Originator" />
+            <PropertyRef Name="Approver" />
+            <PropertyRef Name="Req_Date" />
+            <PropertyRef Name="DeptId_Og" />
+            <PropertyRef Name="DeptId_Ap" />
+            <PropertyRef Name="StateFlag" />
+          </Key>
+          <Property Name="MSRId" Type="int" Nullable="false" />
+          <Property Name="BP_No" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DeptName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Originator" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Approver" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Req_Date" Type="date" Nullable="false" />
+          <Property Name="Comments" Type="varchar(max)" />
+          <Property Name="Appr_Date" Type="date" />
+          <Property Name="DeptId_Og" Type="int" Nullable="false" />
+          <Property Name="DeptId_Ap" Type="int" Nullable="false" />
+          <Property Name="StateFlag" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
         <Association Name="FK_BH_BudgetInfo">
           <End Role="BudgetInfo" Type="Self.BudgetInfo" Multiplicity="1" />
           <End Role="BudgetHolder" Type="Self.BudgetHolder" Multiplicity="*" />
@@ -329,6 +355,21 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_BP_DEPT' does not have a primary 
     [V_BP_DEPT].[AC_No] AS [AC_No], 
     [V_BP_DEPT].[DeptId] AS [DeptId]
     FROM [dbo].[V_BP_DEPT] AS [V_BP_DEPT]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_ShowMSR" EntityType="Self.V_ShowMSR" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_ShowMSR].[MSRId] AS [MSRId], 
+    [V_ShowMSR].[BP_No] AS [BP_No], 
+    [V_ShowMSR].[DeptName] AS [DeptName], 
+    [V_ShowMSR].[Originator] AS [Originator], 
+    [V_ShowMSR].[Approver] AS [Approver], 
+    [V_ShowMSR].[Req_Date] AS [Req_Date], 
+    [V_ShowMSR].[Comments] AS [Comments], 
+    [V_ShowMSR].[Appr_Date] AS [Appr_Date], 
+    [V_ShowMSR].[DeptId_Og] AS [DeptId_Og], 
+    [V_ShowMSR].[DeptId_Ap] AS [DeptId_Ap], 
+    [V_ShowMSR].[StateFlag] AS [StateFlag]
+    FROM [dbo].[V_ShowMSR] AS [V_ShowMSR]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_BH_BudgetInfo" Association="Self.FK_BH_BudgetInfo">
             <End Role="BudgetInfo" EntitySet="BudgetInfo" />
@@ -709,6 +750,7 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_BP_DEPT' does not have a primary 
             <End Role="BudgetInfo" EntitySet="BudgetInfoes" />
           </AssociationSet>
           <EntitySet Name="V_BP_DEPT" EntityType="MSR_Max_V2Model.V_BP_DEPT" />
+          <EntitySet Name="V_ShowMSR" EntityType="MSR_Max_V2Model.V_ShowMSR" />
         </EntityContainer>
         <EntityType Name="V_BP_DEPT">
           <Key>
@@ -721,6 +763,30 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_BP_DEPT' does not have a primary 
           <Property Name="BP_No" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="AC_No" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="DeptId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="V_ShowMSR">
+          <Key>
+            <PropertyRef Name="MSRId" />
+            <PropertyRef Name="BP_No" />
+            <PropertyRef Name="DeptName" />
+            <PropertyRef Name="Originator" />
+            <PropertyRef Name="Approver" />
+            <PropertyRef Name="Req_Date" />
+            <PropertyRef Name="DeptId_Og" />
+            <PropertyRef Name="DeptId_Ap" />
+            <PropertyRef Name="StateFlag" />
+          </Key>
+          <Property Name="MSRId" Type="Int32" Nullable="false" />
+          <Property Name="BP_No" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DeptName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Originator" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Approver" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Req_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Appr_Date" Type="DateTime" Precision="0" />
+          <Property Name="DeptId_Og" Type="Int32" Nullable="false" />
+          <Property Name="DeptId_Ap" Type="Int32" Nullable="false" />
+          <Property Name="StateFlag" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -867,6 +933,23 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_BP_DEPT' does not have a primary 
                 <ScalarProperty Name="AC_No" ColumnName="AC_No" />
                 <ScalarProperty Name="BP_No" ColumnName="BP_No" />
                 <ScalarProperty Name="BudgetInfoId" ColumnName="BudgetInfoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_ShowMSR">
+            <EntityTypeMapping TypeName="MSR_Max_V2Model.V_ShowMSR">
+              <MappingFragment StoreEntitySet="V_ShowMSR">
+                <ScalarProperty Name="StateFlag" ColumnName="StateFlag" />
+                <ScalarProperty Name="DeptId_Ap" ColumnName="DeptId_Ap" />
+                <ScalarProperty Name="DeptId_Og" ColumnName="DeptId_Og" />
+                <ScalarProperty Name="Appr_Date" ColumnName="Appr_Date" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Req_Date" ColumnName="Req_Date" />
+                <ScalarProperty Name="Approver" ColumnName="Approver" />
+                <ScalarProperty Name="Originator" ColumnName="Originator" />
+                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+                <ScalarProperty Name="BP_No" ColumnName="BP_No" />
+                <ScalarProperty Name="MSRId" ColumnName="MSRId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -310,49 +310,6 @@ namespace MSR.DatabaseAPI
             return formItemsData;
         }
 
-        public ICollection<Domain.ShowMSRItem> GetshowMSR_List(String DeptId, String StateFlag)
-        {
-            ICollection<Domain.ShowMSRItem> showMSRData = null;
-
-            SqlParameter deptId_param = new SqlParameter("@DeptId", DeptId);
-            SqlParameter stateFlag_param = new SqlParameter("@StateFlag", StateFlag);
-
-            List<SqlParameter> sqlParametersList = new List<SqlParameter>();
-            sqlParametersList.Add(deptId_param);
-            sqlParametersList.Add(stateFlag_param);
-
-            String sql = "SELECT MSRId, Bp_No, DeptName, Originator, Approver, Req_Date, Comments, Appr_Date FROM V_ShowMSR WHERE (DeptId_Og = @DeptId OR DeptId_Ap = @DeptId) AND StateFlag = @StateFlag";
-
-            using (SqlDataReader dataReader = DBAccessSingleton.Instance.MyExecuteQuery(sql, sqlParametersList))
-            {
-                showMSRData = new List<Domain.ShowMSRItem>();
-
-                while (dataReader.Read())
-                {
-                    String MSRId = dataReader["MSRId"].ToString();
-                    String Bp_No = dataReader["Bp_No"].ToString();
-                    String DeptName = dataReader["DeptName"].ToString();
-                    String Originator = dataReader["Originator"].ToString();
-                    String Approver = dataReader["Approver"].ToString();
-                    DateTime Req_Date = DateTime.Parse(dataReader["Req_Date"].ToString());
-                    String Comments = dataReader["Comments"].ToString();
-
-                    String Appr_Date = "No Approval Yet";
-                    if (!dataReader.IsDBNull(dataReader.GetOrdinal("Appr_Date")))
-                    {
-                        Appr_Date = Convert.ToDateTime(dataReader["Appr_Date"]).ToString("M/d/yyyy");
-                    }
-
-                    Domain.ShowMSRItem temp = new Domain.ShowMSRItem(MSRId, Bp_No, DeptName, Originator, Approver, Req_Date, Comments, Appr_Date);
-                    showMSRData.Add(temp);
-                }
-
-                dataReader.Close();
-
-            }
-            return showMSRData;
-        }
-
         public ICollection<Domain.ShowMSRItem> GetFiltershowMSR_List(ICollection<Domain.ShowMSRItem> showMSRList, string searchMSRID, string searchDept, string searchOg, string searchAp)
         {
 

@@ -19,10 +19,6 @@ namespace MSR
 
         private void Ok_Login_button_Click(object sender, EventArgs e)
         {
-            ////OLD Workflow
-            //Boolean loginSuccessFlag = DatabaseAPI.DBAccessSingleton.Instance.LoginAPI.ValidateLogin(username_Login_textBox.Text, password_Login_textBox.Text);
-
-            //New Workflow
             Boolean loginSuccessFlag = BusinessAPI.BusinessSingleton.Instance.LoginAPI_B.ValidateLogin_B(username_Login_textBox.Text, password_Login_textBox.Text);
 
             if (loginSuccessFlag)
@@ -43,6 +39,7 @@ namespace MSR
 
         private void SetUserSession(String username)
         {
+            //OLD CODE:
             //TO DO: Use DatabaseAPI to return an user session object and set to singleton
 
             //Get domain object UserInfo and Set object to Business Singleton

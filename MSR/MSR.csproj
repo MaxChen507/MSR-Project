@@ -65,6 +65,7 @@
       <DependentUpon>MSR_V2.tt</DependentUpon>
     </Compile>
     <Compile Include="BusinessAPI\LoginAPI_B.cs" />
+    <Compile Include="BusinessAPI\MSRInfoAPI_B.cs" />
     <Compile Include="Department.cs">
       <DependentUpon>MSR_V2.tt</DependentUpon>
     </Compile>
@@ -167,6 +168,9 @@
       <DependentUpon>MSR_V2.tt</DependentUpon>
     </Compile>
     <Compile Include="V_BP_DEPT.cs">
+      <DependentUpon>MSR_V2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_ShowMSR.cs">
       <DependentUpon>MSR_V2.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="UIFormLayer\AddNonStockItemForm.resx">

@@ -992,6 +992,7 @@
             this.Controls.Add(this.MSRMain_menuStrip);
             this.Name = "MSRMainForm";
             this.Text = "MSR Main Form";
+            this.Load += new System.EventHandler(this.MSRMainForm_Load);
             this.mainMSR_tabControl.ResumeLayout(false);
             this.createNewMSR_tabPage.ResumeLayout(false);
             this.createNewMSR_tabPage.PerformLayout();

@@ -16,19 +16,23 @@ namespace MSR.BusinessAPI
         public ICollection<Domain.BudgetInfo> budgetInfo { get; set; }
         public Domain.UserInfo userInfo { get; set; }
         public Domain.GroupsInfo groupsInfo { get; set; }
+        
+
+
+        //New Variables
+        public Usr userInfo_EF { get; set; }
+        public ICollection<V_BP_DEPT> v_bp_dept_access_EF { get; set; }
+
+        // Shared Data of FormItemList
         public ICollection<Domain.FormItems> formItemList_CreateMSR { get; set; }
         public ICollection<Domain.FormItems> formItemList_WaitForApproval { get; set; }
-        public ICollection<Domain.FormItems> formItemList_Approved { get; set; }
         public ICollection<Domain.FormItems> formItemList_NeedReview { get; set; }
-
-
-        //New User Variables
-        public Usr userInfo_EF { get; set; }
-        public ICollection<V_BP_DEPT> v_bp_dept_Access_EF { get; set; }
+        public ICollection<Domain.FormItems> formItemList_Approved { get; set; }
 
         private BusinessSingleton()
         {
             LoginAPI_B = new LoginAPI_B();
+            MSRInfoAPI_B = new MSRInfoAPI_B();
         }
 
         public static BusinessSingleton Instance
@@ -45,6 +49,7 @@ namespace MSR.BusinessAPI
         }
 
         public LoginAPI_B LoginAPI_B { get; private set; }
+        public MSRInfoAPI_B MSRInfoAPI_B { get; private set; }
 
         public Boolean IsNumeric(object Expression)
         {
@@ -87,7 +92,7 @@ namespace MSR.BusinessAPI
             userInfo_EF = LoginAPI_B.GetUsrByUsername(username);
 
             //Sets the BPInfo User can access
-            v_bp_dept_Access_EF = LoginAPI_B.GetBudgetInfo_AccessByDeptId(userInfo_EF.DeptId);
+            v_bp_dept_access_EF = LoginAPI_B.GetBudgetInfo_AccessByDeptId(userInfo_EF.DeptId);
 
         }
 
@@ -111,7 +116,7 @@ namespace MSR.BusinessAPI
 
         public ICollection<String> GetUniqueBP_Access_List()
         {
-            ICollection<String> results = v_bp_dept_Access_EF.Select(x => x.BP_No).Distinct().ToList();
+            ICollection<String> results = v_bp_dept_access_EF.Select(x => x.BP_No).Distinct().ToList();
 
             return results;
         }
