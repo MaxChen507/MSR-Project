@@ -130,17 +130,17 @@ namespace MSR
             if (workFlowTrace.Equals(Domain.WorkFlowTrace.createMSR))
             {
                 //Save state of DGV to CreateMSR
-                BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(addList_addNonStock_dataGridView);
+                BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(addList_addNonStock_dataGridView);
             }
             else if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
             {
                 //Save state of DGV to WaitForApproval
-                BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(addList_addNonStock_dataGridView);
+                BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(addList_addNonStock_dataGridView);
             }
             else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
             {
                 //Save state of DGV to WaitForApproval
-                BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(addList_addNonStock_dataGridView);
+                BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(addList_addNonStock_dataGridView);
             }
 
             this.Close();

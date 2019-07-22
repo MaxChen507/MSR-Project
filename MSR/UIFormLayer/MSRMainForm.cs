@@ -12,7 +12,7 @@ namespace MSR
 {
     public partial class MSRMainForm : Form
     {
-        //Binding Source Initialization
+        //Binding Source Variables
         BindingSource waitApprovalTabDGV_source = new BindingSource();
         BindingSource needReviewTabDGV_source = new BindingSource();
         BindingSource approvedTabDGV_source = new BindingSource();
@@ -88,7 +88,7 @@ namespace MSR
             this.Hide();
 
             //Save state of DGV
-            BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(createTab_dataGridView);
+            BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(createTab_dataGridView);
 
             AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_createTab_comboBox.Text, Domain.WorkFlowTrace.createMSR);
             fAddStockItem.ShowDialog();
@@ -104,7 +104,7 @@ namespace MSR
             this.Hide();
 
             //Save state of DGV
-            BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(createTab_dataGridView);
+            BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(createTab_dataGridView);
 
             AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_createTab_comboBox.Text, Domain.WorkFlowTrace.createMSR);
             fAddNonStockItem.ShowDialog();
@@ -313,7 +313,7 @@ namespace MSR
             //MessageBox.Show("MSR ID is: " + tempMSRID.ToString());
 
             //Save state of DGV
-            BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.UpdateBusinessSingletonFormItemList(createTab_dataGridView);
+            BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(createTab_dataGridView);
 
             //INSERT into FormItems
             foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR)

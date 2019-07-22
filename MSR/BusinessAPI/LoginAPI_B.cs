@@ -8,7 +8,7 @@ namespace MSR.BusinessAPI
 {
     class LoginAPI_B
     {
-        public Boolean ValidateLogin_B(String username, String password)
+        public Boolean ValidateLogin(String username, String password)
         {
             Boolean loginFlag = false;
 

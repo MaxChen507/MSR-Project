@@ -19,7 +19,7 @@ namespace MSR
 
         private void Ok_Login_button_Click(object sender, EventArgs e)
         {
-            Boolean loginSuccessFlag = BusinessAPI.BusinessSingleton.Instance.LoginAPI_B.ValidateLogin_B(username_Login_textBox.Text, password_Login_textBox.Text);
+            Boolean loginSuccessFlag = BusinessAPI.BusinessSingleton.Instance.LoginAPI_B.ValidateLogin(username_Login_textBox.Text, password_Login_textBox.Text);
 
             if (loginSuccessFlag)
             {

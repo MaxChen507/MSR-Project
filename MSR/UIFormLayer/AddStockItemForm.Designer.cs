@@ -230,6 +230,7 @@
             this.Controls.Add(this.search_AddStock_label);
             this.Name = "AddStockItemForm";
             this.Text = "AddStockItemForm";
+            this.Load += new System.EventHandler(this.AddStockItemForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.itemList_addStock_dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addList_addStock_dataGridView)).EndInit();
             this.ResumeLayout(false);

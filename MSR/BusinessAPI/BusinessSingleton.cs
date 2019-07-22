@@ -33,6 +33,7 @@ namespace MSR.BusinessAPI
         {
             LoginAPI_B = new LoginAPI_B();
             MSRInfoAPI_B = new MSRInfoAPI_B();
+            StockItemsAPI_B = new StockItemsAPI_B();
         }
 
         public static BusinessSingleton Instance
@@ -50,6 +51,7 @@ namespace MSR.BusinessAPI
 
         public LoginAPI_B LoginAPI_B { get; private set; }
         public MSRInfoAPI_B MSRInfoAPI_B { get; private set; }
+        public StockItemsAPI_B StockItemsAPI_B { get; private set; }
 
         public Boolean IsNumeric(object Expression)
         {

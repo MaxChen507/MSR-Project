@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="BusinessAPI\LoginAPI_B.cs" />
     <Compile Include="BusinessAPI\MSRInfoAPI_B.cs" />
+    <Compile Include="BusinessAPI\StockItemsAPI_B.cs" />
     <Compile Include="Department.cs">
       <DependentUpon>MSR_V2.tt</DependentUpon>
     </Compile>
