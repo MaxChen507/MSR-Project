@@ -1,0 +1,852 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MSR_Max_V2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActivityCode">
+          <Key>
+            <PropertyRef Name="AC_No" />
+          </Key>
+          <Property Name="AC_No" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="AC_Desc" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="BudgetHolder">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="BudgetInfoId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="BudgetInfoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BudgetInfo">
+          <Key>
+            <PropertyRef Name="BudgetInfoId" />
+          </Key>
+          <Property Name="BudgetInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BP_No" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="AC_No" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BudgetPool">
+          <Key>
+            <PropertyRef Name="BP_No" />
+          </Key>
+          <Property Name="BP_No" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="BP_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BP_Desc" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DeptId" />
+          </Key>
+          <Property Name="DeptId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeptName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DeptDesc" Type="varchar(max)" />
+          <Property Name="ActiveFlag" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department_BudgetInfo">
+          <Key>
+            <PropertyRef Name="DeptId" />
+            <PropertyRef Name="BudgetInfoId" />
+          </Key>
+          <Property Name="DeptId" Type="int" Nullable="false" />
+          <Property Name="BudgetInfoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FormItems">
+          <Key>
+            <PropertyRef Name="FormItemsId" />
+          </Key>
+          <Property Name="FormItemsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemCode" Type="varchar(max)" Nullable="false" />
+          <Property Name="ItemDesc" Type="varchar(max)" Nullable="false" />
+          <Property Name="Quantity" Type="float" Nullable="false" />
+          <Property Name="Unit" Type="varchar(max)" Nullable="false" />
+          <Property Name="UnitPrice" Type="float" />
+          <Property Name="Currency" Type="varchar" MaxLength="50" />
+          <Property Name="ROS_Date" Type="date" Nullable="false" />
+          <Property Name="Comments" Type="varchar(max)" />
+          <Property Name="MSRId" Type="int" Nullable="false" />
+          <Property Name="AC_No" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="GroupsId" />
+          </Key>
+          <Property Name="GroupsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupsName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GroupsDesc" Type="varchar" MaxLength="100" />
+          <Property Name="GroupsActiveFlag" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MSR">
+          <Key>
+            <PropertyRef Name="MSRId" />
+          </Key>
+          <Property Name="MSRId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Project" Type="varchar" MaxLength="50" />
+          <Property Name="WVL" Type="varchar" MaxLength="50" />
+          <Property Name="Comments" Type="varchar(max)" />
+          <Property Name="BudgetYear" Type="int" Nullable="false" />
+          <Property Name="BP_No" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="AFE" Type="varchar" MaxLength="50" />
+          <Property Name="SugVendor" Type="varchar" MaxLength="50" />
+          <Property Name="ContactVendor" Type="varchar" MaxLength="50" />
+          <Property Name="Request_Originator" Type="int" Nullable="false" />
+          <Property Name="Company_Approval" Type="int" Nullable="false" />
+          <Property Name="Req_Date" Type="date" Nullable="false" />
+          <Property Name="Appr_Date" Type="date" />
+          <Property Name="Recieve_By" Type="int" />
+          <Property Name="Recieve_Date" Type="date" />
+          <Property Name="PUR_Comment" Type="varchar(max)" />
+          <Property Name="Decline_Comment" Type="varchar(max)" />
+          <Property Name="Review_Comment" Type="varchar(max)" />
+          <Property Name="StateFlag" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StockItems">
+          <Key>
+            <PropertyRef Name="ItemCode" />
+          </Key>
+          <Property Name="ItemCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemDesc" Type="varchar(max)" Nullable="false" />
+          <Property Name="LookUp" Type="varchar(max)" />
+          <Property Name="BarCode" Type="varchar(max)" />
+          <Property Name="AC_No" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Unit" Type="varchar" MaxLength="50" />
+          <Property Name="ActiveFlag" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usr">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ActiveFlag" Type="bit" Nullable="false" />
+          <Property Name="DeptId" Type="int" Nullable="false" />
+          <Property Name="GroupsId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BH_BudgetInfo">
+          <End Role="BudgetInfo" Type="Self.BudgetInfo" Multiplicity="1" />
+          <End Role="BudgetHolder" Type="Self.BudgetHolder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BudgetInfo">
+              <PropertyRef Name="BudgetInfoId" />
+            </Principal>
+            <Dependent Role="BudgetHolder">
+              <PropertyRef Name="BudgetInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BH_Usr">
+          <End Role="Usr" Type="Self.Usr" Multiplicity="1" />
+          <End Role="BudgetHolder" Type="Self.BudgetHolder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usr">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="BudgetHolder">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetInfo_ActivityCode">
+          <End Role="ActivityCode" Type="Self.ActivityCode" Multiplicity="1" />
+          <End Role="BudgetInfo" Type="Self.BudgetInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityCode">
+              <PropertyRef Name="AC_No" />
+            </Principal>
+            <Dependent Role="BudgetInfo">
+              <PropertyRef Name="AC_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetInfo_BudgetPool">
+          <End Role="BudgetPool" Type="Self.BudgetPool" Multiplicity="1" />
+          <End Role="BudgetInfo" Type="Self.BudgetInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BudgetPool">
+              <PropertyRef Name="BP_No" />
+            </Principal>
+            <Dependent Role="BudgetInfo">
+              <PropertyRef Name="BP_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeptAc_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Department_BudgetInfo" Type="Self.Department_BudgetInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DeptId" />
+            </Principal>
+            <Dependent Role="Department_BudgetInfo">
+              <PropertyRef Name="DeptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeptBI_BudgetInfo">
+          <End Role="BudgetInfo" Type="Self.BudgetInfo" Multiplicity="1" />
+          <End Role="Department_BudgetInfo" Type="Self.Department_BudgetInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BudgetInfo">
+              <PropertyRef Name="BudgetInfoId" />
+            </Principal>
+            <Dependent Role="Department_BudgetInfo">
+              <PropertyRef Name="BudgetInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormItems_ActivityCode">
+          <End Role="ActivityCode" Type="Self.ActivityCode" Multiplicity="1" />
+          <End Role="FormItems" Type="Self.FormItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityCode">
+              <PropertyRef Name="AC_No" />
+            </Principal>
+            <Dependent Role="FormItems">
+              <PropertyRef Name="AC_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormItems_MSR">
+          <End Role="MSR" Type="Self.MSR" Multiplicity="1" />
+          <End Role="FormItems" Type="Self.FormItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MSR">
+              <PropertyRef Name="MSRId" />
+            </Principal>
+            <Dependent Role="FormItems">
+              <PropertyRef Name="MSRId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MSR_BudgetPool">
+          <End Role="BudgetPool" Type="Self.BudgetPool" Multiplicity="1" />
+          <End Role="MSR" Type="Self.MSR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BudgetPool">
+              <PropertyRef Name="BP_No" />
+            </Principal>
+            <Dependent Role="MSR">
+              <PropertyRef Name="BP_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MSR_Usr_CA">
+          <End Role="Usr" Type="Self.Usr" Multiplicity="1" />
+          <End Role="MSR" Type="Self.MSR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usr">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="MSR">
+              <PropertyRef Name="Company_Approval" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MSR_Usr_ReciveBy">
+          <End Role="Usr" Type="Self.Usr" Multiplicity="0..1" />
+          <End Role="MSR" Type="Self.MSR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usr">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="MSR">
+              <PropertyRef Name="Recieve_By" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MSR_Usr_RO">
+          <End Role="Usr" Type="Self.Usr" Multiplicity="1" />
+          <End Role="MSR" Type="Self.MSR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usr">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="MSR">
+              <PropertyRef Name="Request_Originator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usr_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Usr" Type="Self.Usr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DeptId" />
+            </Principal>
+            <Dependent Role="Usr">
+              <PropertyRef Name="DeptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usr_Groups">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="Usr" Type="Self.Usr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupsId" />
+            </Principal>
+            <Dependent Role="Usr">
+              <PropertyRef Name="GroupsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MSR_Max_V2ModelStoreContainer">
+          <EntitySet Name="ActivityCode" EntityType="Self.ActivityCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BudgetHolder" EntityType="Self.BudgetHolder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BudgetInfo" EntityType="Self.BudgetInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BudgetPool" EntityType="Self.BudgetPool" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department_BudgetInfo" EntityType="Self.Department_BudgetInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormItems" EntityType="Self.FormItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MSR" EntityType="Self.MSR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockItems" EntityType="Self.StockItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usr" EntityType="Self.Usr" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BH_BudgetInfo" Association="Self.FK_BH_BudgetInfo">
+            <End Role="BudgetInfo" EntitySet="BudgetInfo" />
+            <End Role="BudgetHolder" EntitySet="BudgetHolder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BH_Usr" Association="Self.FK_BH_Usr">
+            <End Role="Usr" EntitySet="Usr" />
+            <End Role="BudgetHolder" EntitySet="BudgetHolder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetInfo_ActivityCode" Association="Self.FK_BudgetInfo_ActivityCode">
+            <End Role="ActivityCode" EntitySet="ActivityCode" />
+            <End Role="BudgetInfo" EntitySet="BudgetInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetInfo_BudgetPool" Association="Self.FK_BudgetInfo_BudgetPool">
+            <End Role="BudgetPool" EntitySet="BudgetPool" />
+            <End Role="BudgetInfo" EntitySet="BudgetInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeptAc_Department" Association="Self.FK_DeptAc_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Department_BudgetInfo" EntitySet="Department_BudgetInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeptBI_BudgetInfo" Association="Self.FK_DeptBI_BudgetInfo">
+            <End Role="BudgetInfo" EntitySet="BudgetInfo" />
+            <End Role="Department_BudgetInfo" EntitySet="Department_BudgetInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormItems_ActivityCode" Association="Self.FK_FormItems_ActivityCode">
+            <End Role="ActivityCode" EntitySet="ActivityCode" />
+            <End Role="FormItems" EntitySet="FormItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormItems_MSR" Association="Self.FK_FormItems_MSR">
+            <End Role="MSR" EntitySet="MSR" />
+            <End Role="FormItems" EntitySet="FormItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MSR_BudgetPool" Association="Self.FK_MSR_BudgetPool">
+            <End Role="BudgetPool" EntitySet="BudgetPool" />
+            <End Role="MSR" EntitySet="MSR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MSR_Usr_CA" Association="Self.FK_MSR_Usr_CA">
+            <End Role="Usr" EntitySet="Usr" />
+            <End Role="MSR" EntitySet="MSR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MSR_Usr_ReciveBy" Association="Self.FK_MSR_Usr_ReciveBy">
+            <End Role="Usr" EntitySet="Usr" />
+            <End Role="MSR" EntitySet="MSR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MSR_Usr_RO" Association="Self.FK_MSR_Usr_RO">
+            <End Role="Usr" EntitySet="Usr" />
+            <End Role="MSR" EntitySet="MSR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usr_Department" Association="Self.FK_Usr_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Usr" EntitySet="Usr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usr_Groups" Association="Self.FK_Usr_Groups">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Usr" EntitySet="Usr" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MSR_Max_V2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ActivityCode">
+          <Key>
+            <PropertyRef Name="AC_No" />
+          </Key>
+          <Property Name="AC_No" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AC_Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BudgetInfoes" Relationship="Self.FK_BudgetInfo_ActivityCode" FromRole="ActivityCode" ToRole="BudgetInfo" />
+          <NavigationProperty Name="FormItems" Relationship="Self.FK_FormItems_ActivityCode" FromRole="ActivityCode" ToRole="FormItems" />
+        </EntityType>
+        <EntityType Name="BudgetInfo">
+          <Key>
+            <PropertyRef Name="BudgetInfoId" />
+          </Key>
+          <Property Name="BudgetInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BP_No" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AC_No" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ActivityCode" Relationship="Self.FK_BudgetInfo_ActivityCode" FromRole="BudgetInfo" ToRole="ActivityCode" />
+          <NavigationProperty Name="BudgetPool" Relationship="Self.FK_BudgetInfo_BudgetPool" FromRole="BudgetInfo" ToRole="BudgetPool" />
+          <NavigationProperty Name="Usrs" Relationship="Self.BudgetHolder" FromRole="BudgetInfo" ToRole="Usr" />
+          <NavigationProperty Name="Departments" Relationship="Self.Department_BudgetInfo" FromRole="BudgetInfo" ToRole="Department" />
+        </EntityType>
+        <EntityType Name="BudgetPool">
+          <Key>
+            <PropertyRef Name="BP_No" />
+          </Key>
+          <Property Name="BP_No" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BP_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BP_Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BudgetInfoes" Relationship="Self.FK_BudgetInfo_BudgetPool" FromRole="BudgetPool" ToRole="BudgetInfo" />
+          <NavigationProperty Name="MSRs" Relationship="Self.FK_MSR_BudgetPool" FromRole="BudgetPool" ToRole="MSR" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DeptId" />
+          </Key>
+          <Property Name="DeptId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeptName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DeptDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ActiveFlag" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Usrs" Relationship="Self.FK_Usr_Department" FromRole="Department" ToRole="Usr" />
+          <NavigationProperty Name="BudgetInfoes" Relationship="Self.Department_BudgetInfo" FromRole="Department" ToRole="BudgetInfo" />
+        </EntityType>
+        <EntityType Name="FormItem">
+          <Key>
+            <PropertyRef Name="FormItemsId" />
+          </Key>
+          <Property Name="FormItemsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ItemDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Quantity" Type="Double" Nullable="false" />
+          <Property Name="Unit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UnitPrice" Type="Double" />
+          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ROS_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MSRId" Type="Int32" Nullable="false" />
+          <Property Name="AC_No" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ActivityCode" Relationship="Self.FK_FormItems_ActivityCode" FromRole="FormItems" ToRole="ActivityCode" />
+          <NavigationProperty Name="MSR" Relationship="Self.FK_FormItems_MSR" FromRole="FormItems" ToRole="MSR" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupsId" />
+          </Key>
+          <Property Name="GroupsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupsName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GroupsDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GroupsActiveFlag" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Usrs" Relationship="Self.FK_Usr_Groups" FromRole="Groups" ToRole="Usr" />
+        </EntityType>
+        <EntityType Name="MSR">
+          <Key>
+            <PropertyRef Name="MSRId" />
+          </Key>
+          <Property Name="MSRId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Project" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WVL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BudgetYear" Type="Int32" Nullable="false" />
+          <Property Name="BP_No" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AFE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SugVendor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactVendor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Request_Originator" Type="Int32" Nullable="false" />
+          <Property Name="Company_Approval" Type="Int32" Nullable="false" />
+          <Property Name="Req_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Appr_Date" Type="DateTime" Precision="0" />
+          <Property Name="Recieve_By" Type="Int32" />
+          <Property Name="Recieve_Date" Type="DateTime" Precision="0" />
+          <Property Name="PUR_Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Decline_Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Review_Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StateFlag" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BudgetPool" Relationship="Self.FK_MSR_BudgetPool" FromRole="MSR" ToRole="BudgetPool" />
+          <NavigationProperty Name="FormItems" Relationship="Self.FK_FormItems_MSR" FromRole="MSR" ToRole="FormItems" />
+          <NavigationProperty Name="Usr" Relationship="Self.FK_MSR_Usr_CA" FromRole="MSR" ToRole="Usr" />
+          <NavigationProperty Name="Usr1" Relationship="Self.FK_MSR_Usr_ReciveBy" FromRole="MSR" ToRole="Usr" />
+          <NavigationProperty Name="Usr2" Relationship="Self.FK_MSR_Usr_RO" FromRole="MSR" ToRole="Usr" />
+        </EntityType>
+        <EntityType Name="StockItem">
+          <Key>
+            <PropertyRef Name="ItemCode" />
+          </Key>
+          <Property Name="ItemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ItemDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LookUp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BarCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AC_No" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ActiveFlag" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usr">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ActiveFlag" Type="Boolean" Nullable="false" />
+          <Property Name="DeptId" Type="Int32" Nullable="false" />
+          <Property Name="GroupsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_Usr_Department" FromRole="Usr" ToRole="Department" />
+          <NavigationProperty Name="Group" Relationship="Self.FK_Usr_Groups" FromRole="Usr" ToRole="Groups" />
+          <NavigationProperty Name="MSRs" Relationship="Self.FK_MSR_Usr_CA" FromRole="Usr" ToRole="MSR" />
+          <NavigationProperty Name="MSRs1" Relationship="Self.FK_MSR_Usr_ReciveBy" FromRole="Usr" ToRole="MSR" />
+          <NavigationProperty Name="MSRs2" Relationship="Self.FK_MSR_Usr_RO" FromRole="Usr" ToRole="MSR" />
+          <NavigationProperty Name="BudgetInfoes" Relationship="Self.BudgetHolder" FromRole="Usr" ToRole="BudgetInfo" />
+        </EntityType>
+        <Association Name="FK_BudgetInfo_ActivityCode">
+          <End Role="ActivityCode" Type="Self.ActivityCode" Multiplicity="1" />
+          <End Role="BudgetInfo" Type="Self.BudgetInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityCode">
+              <PropertyRef Name="AC_No" />
+            </Principal>
+            <Dependent Role="BudgetInfo">
+              <PropertyRef Name="AC_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormItems_ActivityCode">
+          <End Role="ActivityCode" Type="Self.ActivityCode" Multiplicity="1" />
+          <End Role="FormItems" Type="Self.FormItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityCode">
+              <PropertyRef Name="AC_No" />
+            </Principal>
+            <Dependent Role="FormItems">
+              <PropertyRef Name="AC_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BudgetInfo_BudgetPool">
+          <End Role="BudgetPool" Type="Self.BudgetPool" Multiplicity="1" />
+          <End Role="BudgetInfo" Type="Self.BudgetInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BudgetPool">
+              <PropertyRef Name="BP_No" />
+            </Principal>
+            <Dependent Role="BudgetInfo">
+              <PropertyRef Name="BP_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MSR_BudgetPool">
+          <End Role="BudgetPool" Type="Self.BudgetPool" Multiplicity="1" />
+          <End Role="MSR" Type="Self.MSR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BudgetPool">
+              <PropertyRef Name="BP_No" />
+            </Principal>
+            <Dependent Role="MSR">
+              <PropertyRef Name="BP_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usr_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Usr" Type="Self.Usr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DeptId" />
+            </Principal>
+            <Dependent Role="Usr">
+              <PropertyRef Name="DeptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormItems_MSR">
+          <End Role="MSR" Type="Self.MSR" Multiplicity="1" />
+          <End Role="FormItems" Type="Self.FormItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MSR">
+              <PropertyRef Name="MSRId" />
+            </Principal>
+            <Dependent Role="FormItems">
+              <PropertyRef Name="MSRId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usr_Groups">
+          <End Role="Groups" Type="Self.Group" Multiplicity="1" />
+          <End Role="Usr" Type="Self.Usr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupsId" />
+            </Principal>
+            <Dependent Role="Usr">
+              <PropertyRef Name="GroupsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MSR_Usr_CA">
+          <End Role="Usr" Type="Self.Usr" Multiplicity="1" />
+          <End Role="MSR" Type="Self.MSR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usr">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="MSR">
+              <PropertyRef Name="Company_Approval" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MSR_Usr_ReciveBy">
+          <End Role="Usr" Type="Self.Usr" Multiplicity="0..1" />
+          <End Role="MSR" Type="Self.MSR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usr">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="MSR">
+              <PropertyRef Name="Recieve_By" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MSR_Usr_RO">
+          <End Role="Usr" Type="Self.Usr" Multiplicity="1" />
+          <End Role="MSR" Type="Self.MSR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usr">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="MSR">
+              <PropertyRef Name="Request_Originator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BudgetHolder">
+          <End Role="BudgetInfo" Type="Self.BudgetInfo" Multiplicity="*" />
+          <End Role="Usr" Type="Self.Usr" Multiplicity="*" />
+        </Association>
+        <Association Name="Department_BudgetInfo">
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <End Role="BudgetInfo" Type="Self.BudgetInfo" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="MSR_Max_V2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ActivityCodes" EntityType="Self.ActivityCode" />
+          <EntitySet Name="BudgetInfoes" EntityType="Self.BudgetInfo" />
+          <EntitySet Name="BudgetPools" EntityType="Self.BudgetPool" />
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="FormItems" EntityType="Self.FormItem" />
+          <EntitySet Name="Groups" EntityType="Self.Group" />
+          <EntitySet Name="MSRs" EntityType="Self.MSR" />
+          <EntitySet Name="StockItems" EntityType="Self.StockItem" />
+          <EntitySet Name="Usrs" EntityType="Self.Usr" />
+          <AssociationSet Name="FK_BudgetInfo_ActivityCode" Association="Self.FK_BudgetInfo_ActivityCode">
+            <End Role="ActivityCode" EntitySet="ActivityCodes" />
+            <End Role="BudgetInfo" EntitySet="BudgetInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormItems_ActivityCode" Association="Self.FK_FormItems_ActivityCode">
+            <End Role="ActivityCode" EntitySet="ActivityCodes" />
+            <End Role="FormItems" EntitySet="FormItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BudgetInfo_BudgetPool" Association="Self.FK_BudgetInfo_BudgetPool">
+            <End Role="BudgetPool" EntitySet="BudgetPools" />
+            <End Role="BudgetInfo" EntitySet="BudgetInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MSR_BudgetPool" Association="Self.FK_MSR_BudgetPool">
+            <End Role="BudgetPool" EntitySet="BudgetPools" />
+            <End Role="MSR" EntitySet="MSRs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usr_Department" Association="Self.FK_Usr_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Usr" EntitySet="Usrs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormItems_MSR" Association="Self.FK_FormItems_MSR">
+            <End Role="MSR" EntitySet="MSRs" />
+            <End Role="FormItems" EntitySet="FormItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usr_Groups" Association="Self.FK_Usr_Groups">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Usr" EntitySet="Usrs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MSR_Usr_CA" Association="Self.FK_MSR_Usr_CA">
+            <End Role="Usr" EntitySet="Usrs" />
+            <End Role="MSR" EntitySet="MSRs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MSR_Usr_ReciveBy" Association="Self.FK_MSR_Usr_ReciveBy">
+            <End Role="Usr" EntitySet="Usrs" />
+            <End Role="MSR" EntitySet="MSRs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MSR_Usr_RO" Association="Self.FK_MSR_Usr_RO">
+            <End Role="Usr" EntitySet="Usrs" />
+            <End Role="MSR" EntitySet="MSRs" />
+          </AssociationSet>
+          <AssociationSet Name="BudgetHolder" Association="Self.BudgetHolder">
+            <End Role="BudgetInfo" EntitySet="BudgetInfoes" />
+            <End Role="Usr" EntitySet="Usrs" />
+          </AssociationSet>
+          <AssociationSet Name="Department_BudgetInfo" Association="Self.Department_BudgetInfo">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="BudgetInfo" EntitySet="BudgetInfoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MSR_Max_V2ModelStoreContainer" CdmEntityContainer="MSR_Max_V2Entities">
+          <EntitySetMapping Name="ActivityCodes">
+            <EntityTypeMapping TypeName="MSR_Max_V2Model.ActivityCode">
+              <MappingFragment StoreEntitySet="ActivityCode">
+                <ScalarProperty Name="AC_No" ColumnName="AC_No" />
+                <ScalarProperty Name="AC_Desc" ColumnName="AC_Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BudgetInfoes">
+            <EntityTypeMapping TypeName="MSR_Max_V2Model.BudgetInfo">
+              <MappingFragment StoreEntitySet="BudgetInfo">
+                <ScalarProperty Name="BudgetInfoId" ColumnName="BudgetInfoId" />
+                <ScalarProperty Name="BP_No" ColumnName="BP_No" />
+                <ScalarProperty Name="AC_No" ColumnName="AC_No" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BudgetPools">
+            <EntityTypeMapping TypeName="MSR_Max_V2Model.BudgetPool">
+              <MappingFragment StoreEntitySet="BudgetPool">
+                <ScalarProperty Name="BP_No" ColumnName="BP_No" />
+                <ScalarProperty Name="BP_Name" ColumnName="BP_Name" />
+                <ScalarProperty Name="BP_Desc" ColumnName="BP_Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="MSR_Max_V2Model.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+                <ScalarProperty Name="DeptDesc" ColumnName="DeptDesc" />
+                <ScalarProperty Name="ActiveFlag" ColumnName="ActiveFlag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormItems">
+            <EntityTypeMapping TypeName="MSR_Max_V2Model.FormItem">
+              <MappingFragment StoreEntitySet="FormItems">
+                <ScalarProperty Name="FormItemsId" ColumnName="FormItemsId" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="ItemDesc" ColumnName="ItemDesc" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="ROS_Date" ColumnName="ROS_Date" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="MSRId" ColumnName="MSRId" />
+                <ScalarProperty Name="AC_No" ColumnName="AC_No" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="MSR_Max_V2Model.Group">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="GroupsId" ColumnName="GroupsId" />
+                <ScalarProperty Name="GroupsName" ColumnName="GroupsName" />
+                <ScalarProperty Name="GroupsDesc" ColumnName="GroupsDesc" />
+                <ScalarProperty Name="GroupsActiveFlag" ColumnName="GroupsActiveFlag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MSRs">
+            <EntityTypeMapping TypeName="MSR_Max_V2Model.MSR">
+              <MappingFragment StoreEntitySet="MSR">
+                <ScalarProperty Name="MSRId" ColumnName="MSRId" />
+                <ScalarProperty Name="Project" ColumnName="Project" />
+                <ScalarProperty Name="WVL" ColumnName="WVL" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="BudgetYear" ColumnName="BudgetYear" />
+                <ScalarProperty Name="BP_No" ColumnName="BP_No" />
+                <ScalarProperty Name="AFE" ColumnName="AFE" />
+                <ScalarProperty Name="SugVendor" ColumnName="SugVendor" />
+                <ScalarProperty Name="ContactVendor" ColumnName="ContactVendor" />
+                <ScalarProperty Name="Request_Originator" ColumnName="Request_Originator" />
+                <ScalarProperty Name="Company_Approval" ColumnName="Company_Approval" />
+                <ScalarProperty Name="Req_Date" ColumnName="Req_Date" />
+                <ScalarProperty Name="Appr_Date" ColumnName="Appr_Date" />
+                <ScalarProperty Name="Recieve_By" ColumnName="Recieve_By" />
+                <ScalarProperty Name="Recieve_Date" ColumnName="Recieve_Date" />
+                <ScalarProperty Name="PUR_Comment" ColumnName="PUR_Comment" />
+                <ScalarProperty Name="Decline_Comment" ColumnName="Decline_Comment" />
+                <ScalarProperty Name="Review_Comment" ColumnName="Review_Comment" />
+                <ScalarProperty Name="StateFlag" ColumnName="StateFlag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockItems">
+            <EntityTypeMapping TypeName="MSR_Max_V2Model.StockItem">
+              <MappingFragment StoreEntitySet="StockItems">
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="ItemDesc" ColumnName="ItemDesc" />
+                <ScalarProperty Name="LookUp" ColumnName="LookUp" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="AC_No" ColumnName="AC_No" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="ActiveFlag" ColumnName="ActiveFlag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usrs">
+            <EntityTypeMapping TypeName="MSR_Max_V2Model.Usr">
+              <MappingFragment StoreEntitySet="Usr">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ActiveFlag" ColumnName="ActiveFlag" />
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="GroupsId" ColumnName="GroupsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="BudgetHolder" TypeName="MSR_Max_V2Model.BudgetHolder" StoreEntitySet="BudgetHolder">
+            <EndProperty Name="BudgetInfo">
+              <ScalarProperty Name="BudgetInfoId" ColumnName="BudgetInfoId" />
+            </EndProperty>
+            <EndProperty Name="Usr">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Department_BudgetInfo" TypeName="MSR_Max_V2Model.Department_BudgetInfo" StoreEntitySet="Department_BudgetInfo">
+            <EndProperty Name="Department">
+              <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+            </EndProperty>
+            <EndProperty Name="BudgetInfo">
+              <ScalarProperty Name="BudgetInfoId" ColumnName="BudgetInfoId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

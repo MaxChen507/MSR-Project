@@ -47,7 +47,7 @@
             this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ROS_Date = new MSR.Domain.CalendarColumn();
+            this.ROS_Date = new Domain.CalendarColumn();
             this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.search_addNonStock_label = new System.Windows.Forms.Label();

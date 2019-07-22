@@ -11,7 +11,7 @@ namespace MSR.BusinessAPI
         //Singleton instance
         private static BusinessSingleton instance;
 
-        //User variables
+        //OLD User variables
         public ICollection<Domain.BudgetInfo> budgetInfo { get; set; }
         public Domain.UserInfo userInfo { get; set; }
         public Domain.GroupsInfo groupsInfo { get; set; }
@@ -20,9 +20,13 @@ namespace MSR.BusinessAPI
         public ICollection<Domain.FormItems> formItemList_Approved { get; set; }
         public ICollection<Domain.FormItems> formItemList_NeedReview { get; set; }
 
+
+        //New User Variables
+        public Usr userInfo_EF { get; set; }
+
         private BusinessSingleton()
         {
-            
+            LoginAPI = new LoginAPI_B();
         }
 
         public static BusinessSingleton Instance
@@ -37,6 +41,8 @@ namespace MSR.BusinessAPI
                 return instance;
             }
         }
+
+        public LoginAPI_B LoginAPI { get; private set; }
 
         public Boolean IsNumeric(object Expression)
         {
@@ -73,6 +79,14 @@ namespace MSR.BusinessAPI
                                            ).ToList();
 
             return results;
+        }
+
+
+        //NEW Functions:
+
+        public void SetUsrLoginSessionVariables(string username)
+        {
+            userInfo_EF = LoginAPI.GetUsrByUsername(username);
         }
 
     }

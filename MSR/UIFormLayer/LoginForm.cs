@@ -18,9 +18,13 @@ namespace MSR
         }
 
         private void Ok_Login_button_Click(object sender, EventArgs e)
-        {            
-            Boolean loginSuccessFlag = DatabaseAPI.DBAccessSingleton.Instance.LoginAPI.ValidateLogin(username_Login_textBox.Text, password_Login_textBox.Text);
-            
+        {
+            ////OLD Workflow
+            //Boolean loginSuccessFlag = DatabaseAPI.DBAccessSingleton.Instance.LoginAPI.ValidateLogin(username_Login_textBox.Text, password_Login_textBox.Text);
+
+            //New Workflow
+            Boolean loginSuccessFlag = BusinessAPI.BusinessSingleton.Instance.LoginAPI.ValidateLogin_B(username_Login_textBox.Text, password_Login_textBox.Text);
+
             if (loginSuccessFlag)
             {
                 SetUserSession(username_Login_textBox.Text);
@@ -52,6 +56,14 @@ namespace MSR
 
             //Initalize shared FormItems Data List to Business Singleton
             BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = new List<Domain.FormItems>();
+
+
+
+            //NEW
+            BusinessAPI.BusinessSingleton.Instance.SetUsrLoginSessionVariables(username);
+
+            Usr testUsr = BusinessAPI.BusinessSingleton.Instance.userInfo_EF;
+
         }
 
         private void Password_Login_textBox_KeyDown(object sender, KeyEventArgs e)
