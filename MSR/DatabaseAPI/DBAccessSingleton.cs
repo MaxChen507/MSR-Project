@@ -23,8 +23,6 @@ namespace MSR.DatabaseAPI
             BudgetInfoAPI = new BudgetInfoAPI();
             UserInfoAPI = new UserInfoAPI();
             GroupsInfoAPI = new GroupsInfoAPI();
-            StockItemsAPI = new StockItemsAPI();
-            NonStockItemsAPI = new NonStockItemsAPI();
             MSRInfoAPI = new MSRInfoAPI();
         }
 
@@ -45,8 +43,6 @@ namespace MSR.DatabaseAPI
         public BudgetInfoAPI BudgetInfoAPI { get; private set; }
         public UserInfoAPI UserInfoAPI { get; private set; }
         public GroupsInfoAPI GroupsInfoAPI { get; private set; }
-        public StockItemsAPI StockItemsAPI { get; private set; }
-        public NonStockItemsAPI NonStockItemsAPI { get; private set; }
         public MSRInfoAPI MSRInfoAPI { get; private set; }
 
         //DB_Server DateTime Methods

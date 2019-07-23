@@ -126,9 +126,9 @@
     <Compile Include="DatabaseAPI\BudgetInfoAPI.cs" />
     <Compile Include="DatabaseAPI\DBAccessSingleton.cs" />
     <Compile Include="DatabaseAPI\LoginAPI.cs" />
-    <Compile Include="Domain\CalendarCell.cs" />
-    <Compile Include="Domain\CalendarColumn .cs" />
-    <Compile Include="Domain\CalendarEditingControl.cs">
+    <Compile Include="UserInterfaceAPI\CalendarCell.cs" />
+    <Compile Include="UserInterfaceAPI\CalendarColumn .cs" />
+    <Compile Include="UserInterfaceAPI\CalendarEditingControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Domain\FormItems.cs" />

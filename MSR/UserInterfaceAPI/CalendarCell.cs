@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace MSR.Domain
+namespace MSR.UserInterfaceAPI
 {
     public class CalendarCell : DataGridViewTextBoxCell
     {
@@ -10,7 +10,7 @@ namespace MSR.Domain
             : base()
         {
             // Use the short date format.
-            this.Style.Format = "d";
+            Style.Format = "d";
         }
 
         public override void InitializeEditingControl(int rowIndex, object
@@ -22,13 +22,13 @@ namespace MSR.Domain
             CalendarEditingControl ctl =
                 DataGridView.EditingControl as CalendarEditingControl;
             // Use the default row value when Value property is null.
-            if (this.Value == null)
+            if (Value == null)
             {
-                ctl.Value = (DateTime)this.DefaultNewRowValue;
+                ctl.Value = (DateTime)DefaultNewRowValue;
             }
             else
             {
-                ctl.Value = (DateTime)this.Value;
+                ctl.Value = (DateTime)Value;
             }
         }
 

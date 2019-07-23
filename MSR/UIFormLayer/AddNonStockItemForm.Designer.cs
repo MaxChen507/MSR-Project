@@ -47,7 +47,7 @@
             this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ROS_Date = new Domain.CalendarColumn();
+            this.ROS_Date = new UserInterfaceAPI.CalendarColumn();
             this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.search_addNonStock_label = new System.Windows.Forms.Label();
@@ -357,7 +357,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Currency;
-        private Domain.CalendarColumn ROS_Date;
+        private UserInterfaceAPI.CalendarColumn ROS_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Comments;
         private System.Windows.Forms.DataGridViewTextBoxColumn AC_No;
     }

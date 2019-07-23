@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace MSR.Domain
+namespace MSR.UserInterfaceAPI
 {
     public class CalendarColumn : DataGridViewColumn
     {

@@ -49,7 +49,7 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.calendarColumn1 = new Domain.CalendarColumn();
+            this.calendarColumn1 = new UserInterfaceAPI.CalendarColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.submitReview_showMSR_button = new System.Windows.Forms.Button();
@@ -62,7 +62,7 @@
             this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ROS_Date = new Domain.CalendarColumn();
+            this.ROS_Date = new UserInterfaceAPI.CalendarColumn();
             this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AC_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vendorContact_showMSR_groupBox = new System.Windows.Forms.GroupBox();
@@ -739,7 +739,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private Domain.CalendarColumn calendarColumn1;
+        private UserInterfaceAPI.CalendarColumn calendarColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.Button submitReview_showMSR_button;
@@ -752,7 +752,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Currency;
-        private Domain.CalendarColumn ROS_Date;
+        private UserInterfaceAPI.CalendarColumn ROS_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Comments;
         private System.Windows.Forms.DataGridViewTextBoxColumn AC_No;
         private System.Windows.Forms.GroupBox vendorContact_showMSR_groupBox;

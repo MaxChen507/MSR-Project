@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace MSR.Domain
+namespace MSR.UserInterfaceAPI
 {
     public class CalendarEditingControl : DateTimePicker, IDataGridViewEditingControl
     {
@@ -11,7 +11,7 @@ namespace MSR.Domain
 
         public CalendarEditingControl()
         {
-            this.Format = DateTimePickerFormat.Short;
+            Format = DateTimePickerFormat.Short;
         }
 
         // Implements the IDataGridViewEditingControl.EditingControlFormattedValue 
@@ -20,24 +20,24 @@ namespace MSR.Domain
         {
             get
             {
-                return this.Value.ToShortDateString();
+                return Value.ToShortDateString();
             }
             set
             {
-                if (value is String)
+                if (value is string)
                 {
                     try
                     {
                         // This will throw an exception of the string is 
                         // null, empty, or not in the format of a date.
-                        this.Value = DateTime.Parse((String)value);
+                        Value = DateTime.Parse((string)value);
                     }
                     catch
                     {
                         // In the case of an exception, just use the 
                         // default value so we're not left with a null
                         // value.
-                        this.Value = DateTime.Now;
+                        Value = DateTime.Now;
                     }
                 }
             }
@@ -56,9 +56,9 @@ namespace MSR.Domain
         public void ApplyCellStyleToEditingControl(
             DataGridViewCellStyle dataGridViewCellStyle)
         {
-            this.Font = dataGridViewCellStyle.Font;
-            this.CalendarForeColor = dataGridViewCellStyle.ForeColor;
-            this.CalendarMonthBackground = dataGridViewCellStyle.BackColor;
+            Font = dataGridViewCellStyle.Font;
+            CalendarForeColor = dataGridViewCellStyle.ForeColor;
+            CalendarMonthBackground = dataGridViewCellStyle.BackColor;
         }
 
         // Implements the IDataGridViewEditingControl.EditingControlRowIndex 
@@ -157,7 +157,7 @@ namespace MSR.Domain
             // Notify the DataGridView that the contents of the cell
             // have changed.
             valueChanged = true;
-            this.EditingControlDataGridView.NotifyCurrentCellDirty(true);
+            EditingControlDataGridView.NotifyCurrentCellDirty(true);
             base.OnValueChanged(eventargs);
         }
     }
