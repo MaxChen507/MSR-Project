@@ -147,7 +147,7 @@ namespace MSR
             else
             {
                 changeDate_createTab_dateTimePicker.Enabled = false;
-                changeDate_createTab_dateTimePicker.Value = DatabaseAPI.DBAccessSingleton.Instance.GetDateTime();
+                changeDate_createTab_dateTimePicker.Value = BusinessAPI.BusinessSingleton.Instance.GetDateTime();
             }
             
         }
@@ -346,7 +346,7 @@ namespace MSR
         {
             ICollection<Domain.ShowMSRItem> showMSRItemData = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId, Domain.WorkFlowTrace.CREATED);
 
-            ICollection<Domain.ShowMSRItem> showMSRItemDatafilter = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.GetFiltershowMSR_List(showMSRItemData, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text);
+            ICollection<Domain.ShowMSRItem> showMSRItemDatafilter = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetFiltershowMSR_List(showMSRItemData, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text);
 
             if (showMSRItemDatafilter == null)
             {
@@ -356,7 +356,6 @@ namespace MSR
 
             waitApprovalTabDGV_source.DataSource = showMSRItemDatafilter;
             waitApprovalTab_dataGridView.DataSource = waitApprovalTabDGV_source;
-
             waitApprovalTab_dataGridView.ClearSelection();
         }
 

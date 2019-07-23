@@ -28,5 +28,35 @@ namespace MSR.BusinessAPI
             }
             return showMSRData;
         }
+
+
+        public ICollection<Domain.ShowMSRItem> GetFiltershowMSR_List(ICollection<Domain.ShowMSRItem> showMSRList, string searchMSRID, string searchDept, string searchOg, string searchAp)
+        {
+
+            List<string> searchMSRIDList = searchMSRID.Split(' ').ToList();
+
+            List<string> searchDeptList = searchDept.Split(' ').ToList();
+
+            List<string> searchOgList = searchOg.Split(' ').ToList();
+
+            List<string> searchApList = searchAp.Split(' ').ToList();
+
+            ICollection<Domain.ShowMSRItem> results = (
+                                           from item in showMSRList
+                                           where
+                                                searchMSRIDList.All(sTring => item.MSRId.ToUpperInvariant().Contains(sTring.ToUpperInvariant()))
+                                                &&
+                                                searchDeptList.All(sTring => item.DeptName.ToUpperInvariant().Contains(sTring.ToUpperInvariant()))
+                                                &&
+                                                searchOgList.All(sTring => item.Originator.ToUpperInvariant().Contains(sTring.ToUpperInvariant()))
+                                                &&
+                                                searchApList.All(sTring => item.Approver.ToUpperInvariant().Contains(sTring.ToUpperInvariant()))
+                                           select item
+                                           ).ToList();
+
+            return results;
+        }
+
+
     }
 }
