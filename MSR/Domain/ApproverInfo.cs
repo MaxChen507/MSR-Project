@@ -8,11 +8,16 @@ namespace MSR.Domain
 {
     class ApproverInfo
     {
-        public String UserId { get; }
-        public String Username { get; }
-        public String FullName { get; }
-        public String Email { get; }
-        public String DeptId { get; }
+        public String UserId { get; set; }
+        public String Username { get; set; }
+        public String FullName { get; set; }
+        public String Email { get; set; }
+        public String DeptId { get; set; }
+
+        public ApproverInfo()
+        {
+
+        }
         public ApproverInfo(String UserId, String Username, String FullName, String Email, String DeptId)
         {
             this.UserId = UserId;

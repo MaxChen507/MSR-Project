@@ -20,7 +20,6 @@ namespace MSR.DatabaseAPI
         private DBAccessSingleton()
         {
             LoginAPI = new LoginAPI();
-            BudgetInfoAPI = new BudgetInfoAPI();
             UserInfoAPI = new UserInfoAPI();
             GroupsInfoAPI = new GroupsInfoAPI();
             MSRInfoAPI = new MSRInfoAPI();
@@ -40,7 +39,6 @@ namespace MSR.DatabaseAPI
         }
 
         public LoginAPI LoginAPI { get; private set; }
-        public BudgetInfoAPI BudgetInfoAPI { get; private set; }
         public UserInfoAPI UserInfoAPI { get; private set; }
         public GroupsInfoAPI GroupsInfoAPI { get; private set; }
         public MSRInfoAPI MSRInfoAPI { get; private set; }

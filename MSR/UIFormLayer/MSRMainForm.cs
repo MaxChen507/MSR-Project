@@ -66,17 +66,17 @@ namespace MSR
                 createTab_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
             }
 
-            //Populate waitApprovalTab_dataGridView from Database Singleton
+            //Populate waitApprovalTab_dataGridView from BusinessAPI
             waitApprovalTabDGV_source.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId, Domain.WorkFlowTrace.CREATED);
             waitApprovalTab_dataGridView.DataSource = waitApprovalTabDGV_source;
             waitApprovalTab_dataGridView.ClearSelection();
 
-            //Populate approvedTab_dataGridView from Database Singleton
+            //Populate approvedTab_dataGridView from BusinessAPI
             approvedTabDGV_source.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId, Domain.WorkFlowTrace.APPROVED);
             approvedTab_dataGridView.DataSource = approvedTabDGV_source;
             approvedTab_dataGridView.ClearSelection();
 
-            //Populate needReviewTab_dataGridView from Database Singleton
+            //Populate needReviewTab_dataGridView from BusinessAPI
             needReviewTabDGV_source.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId, Domain.WorkFlowTrace.NEED_REVIEW);
             needReviewTab_dataGridView.DataSource = needReviewTabDGV_source;
             needReviewTab_dataGridView.ClearSelection();
@@ -127,16 +127,13 @@ namespace MSR
             //approval_createTab_comboBox.Items.Clear();
             approval_createTab_comboBox.DataSource = null;
             approval_createTab_comboBox.Enabled = true;
-            //foreach (Domain.ApproverInfo item in DatabaseAPI.DBAccessSingleton.Instance.BudgetInfoAPI.GetBudgetHolder_List(budgetPool_createTab_comboBox.Text))
-            //{
-            //    approval_createTab_comboBox.Items.Add(item.FullName);
-            //}
+            approval_createTab_comboBox.DataSource =  BusinessAPI.BusinessSingleton.Instance.BudgetInfoAPI_B.GetBudgetHolder_List_EF(budgetPool_createTab_comboBox.Text);
 
-            approval_createTab_comboBox.DataSource = DatabaseAPI.DBAccessSingleton.Instance.BudgetInfoAPI.GetBudgetHolder_List(budgetPool_createTab_comboBox.Text);
+            //Change Display of combobox
             approval_createTab_comboBox.DisplayMember = "FullName";
-
             approval_createTab_comboBox.SelectedIndex = -1;
 
+            //Enable Stock Buttons
             addStock_createTab_button.Enabled = true;
             addNonStock_createTab_button.Enabled = true;
         }

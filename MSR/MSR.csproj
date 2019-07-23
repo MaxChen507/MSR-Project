@@ -123,7 +123,6 @@
     <Compile Include="DatabaseAPI\UserInfoAPI.cs" />
     <Compile Include="Domain\ApproverInfo.cs" />
     <Compile Include="Domain\BudgetInfo.cs" />
-    <Compile Include="DatabaseAPI\BudgetInfoAPI.cs" />
     <Compile Include="DatabaseAPI\DBAccessSingleton.cs" />
     <Compile Include="DatabaseAPI\LoginAPI.cs" />
     <Compile Include="UserInterfaceAPI\CalendarCell.cs" />
@@ -166,6 +165,9 @@
     </Compile>
     <Compile Include="UserInterfaceAPI\UserInterfaceSingleton.cs" />
     <Compile Include="Usr.cs">
+      <DependentUpon>MSR_V2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_Approver_BP.cs">
       <DependentUpon>MSR_V2.tt</DependentUpon>
     </Compile>
     <Compile Include="V_BP_AC_DEPT.cs">

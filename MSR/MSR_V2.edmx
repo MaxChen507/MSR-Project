@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MSR_Max_V2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MSR_Max_V2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ActivityCode">
           <Key>
             <PropertyRef Name="AC_No" />
@@ -127,6 +127,24 @@
           <Property Name="ActiveFlag" Type="bit" Nullable="false" />
           <Property Name="DeptId" Type="int" Nullable="false" />
           <Property Name="GroupsId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MSR_Max_V2.dbo.V_Approver_BP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_Approver_BP">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="DeptId" />
+            <PropertyRef Name="BP_No" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DeptId" Type="int" Nullable="false" />
+          <Property Name="BP_No" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'MSR_Max_V2.dbo.V_BP_AC_DEPT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -370,6 +388,16 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_StockItem_BudgetInfo' does not ha
           <EntitySet Name="MSR" EntityType="Self.MSR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockItems" EntityType="Self.StockItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usr" EntityType="Self.Usr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V_Approver_BP" EntityType="Self.V_Approver_BP" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_Approver_BP].[UserId] AS [UserId], 
+    [V_Approver_BP].[Username] AS [Username], 
+    [V_Approver_BP].[FullName] AS [FullName], 
+    [V_Approver_BP].[Email] AS [Email], 
+    [V_Approver_BP].[DeptId] AS [DeptId], 
+    [V_Approver_BP].[BP_No] AS [BP_No]
+    FROM [dbo].[V_Approver_BP] AS [V_Approver_BP]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="V_BP_AC_DEPT" EntityType="Self.V_BP_AC_DEPT" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [V_BP_AC_DEPT].[BudgetInfoId] AS [BudgetInfoId], 
@@ -464,8 +492,7 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_StockItem_BudgetInfo' does not ha
             <End Role="Usr" EntitySet="Usr" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MSR_Max_V2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -845,7 +872,24 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_StockItem_BudgetInfo' does not ha
             <End Role="Department" EntitySet="Departments" />
             <End Role="BudgetInfo" EntitySet="BudgetInfoes" />
           </AssociationSet>
+          <EntitySet Name="V_Approver_BP" EntityType="MSR_Max_V2Model.V_Approver_BP" />
         </EntityContainer>
+        <EntityType Name="V_Approver_BP">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="DeptId" />
+            <PropertyRef Name="BP_No" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeptId" Type="Int32" Nullable="false" />
+          <Property Name="BP_No" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1027,6 +1071,18 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_StockItem_BudgetInfo' does not ha
               <ScalarProperty Name="BudgetInfoId" ColumnName="BudgetInfoId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="V_Approver_BP">
+            <EntityTypeMapping TypeName="MSR_Max_V2Model.V_Approver_BP">
+              <MappingFragment StoreEntitySet="V_Approver_BP">
+                <ScalarProperty Name="BP_No" ColumnName="BP_No" />
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
