@@ -13,15 +13,14 @@ namespace MSR.BusinessAPI
         private static BusinessSingleton instance;
 
         //OLD User variables
-        public ICollection<Domain.BudgetInfo> budgetInfo { get; set; }
+        
         public Domain.UserInfo userInfo { get; set; }
         public Domain.GroupsInfo groupsInfo { get; set; }
         
 
-
         //New Variables
         public Usr userInfo_EF { get; set; }
-        public ICollection<V_BP_DEPT> v_bp_dept_access_EF { get; set; }
+        public ICollection<V_BP_AC_DEPT> v_bp_dept_access_EF { get; set; }
 
         // Shared Data of FormItemList
         public ICollection<Domain.FormItems> formItemList_CreateMSR { get; set; }
@@ -34,6 +33,8 @@ namespace MSR.BusinessAPI
             LoginAPI_B = new LoginAPI_B();
             MSRInfoAPI_B = new MSRInfoAPI_B();
             StockItemsAPI_B = new StockItemsAPI_B();
+            NonStockItemsAPI_B = new NonStockItemsAPI_B();
+            BudgetInfoAPI_B = new BudgetInfoAPI_B();
         }
 
         public static BusinessSingleton Instance
@@ -52,6 +53,9 @@ namespace MSR.BusinessAPI
         public LoginAPI_B LoginAPI_B { get; private set; }
         public MSRInfoAPI_B MSRInfoAPI_B { get; private set; }
         public StockItemsAPI_B StockItemsAPI_B { get; private set; }
+        public NonStockItemsAPI_B NonStockItemsAPI_B { get; private set; }
+        public BudgetInfoAPI_B BudgetInfoAPI_B { get; private set; }
+
 
         public Boolean IsNumeric(object Expression)
         {
@@ -60,31 +64,6 @@ namespace MSR.BusinessAPI
             Boolean isNum = Double.TryParse(Convert.ToString(Expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out retNum);
             return isNum;
         }
-
-        //OLD Functions:
-
-        public ICollection<String> GetAC_List(string Bp_No)
-        {
-            ICollection<String> results = (
-                                           from item in budgetInfo
-                                           where item.Bp_No.Equals(Bp_No)
-                                           select item.AC_No
-                                           ).ToList();
-
-            return results;
-        }
-
-        public ICollection<Domain.BudgetInfo> GetFilterBudgetInfo(string Bp_No)
-        {
-            ICollection<Domain.BudgetInfo> results = (
-                                           from item in budgetInfo
-                                           where item.Bp_No.Equals(Bp_No)
-                                           select item
-                                           ).ToList();
-
-            return results;
-        }
-
 
         //NEW Functions:
 
@@ -95,6 +74,8 @@ namespace MSR.BusinessAPI
 
             //Sets the BPInfo User can access
             v_bp_dept_access_EF = LoginAPI_B.GetBudgetInfo_AccessByDeptId(userInfo_EF.DeptId);
+
+            //Sets the 
 
         }
 
@@ -122,6 +103,18 @@ namespace MSR.BusinessAPI
 
             return results;
         }
+
+        public ICollection<Domain.BudgetInfo> GetFilterBudgetInfo(string Bp_No)
+        {
+            ICollection<Domain.BudgetInfo> results = (
+                                           from item in v_bp_dept_access_EF
+                                           where item.BP_No.Equals(Bp_No)
+                                           select new Domain.BudgetInfo { Bp_No = item.BP_No, AC_No = item.AC_No, AC_Desc = item.AC_Desc}
+                                           ).ToList();
+
+            return results;
+        }
+
 
     }
 }

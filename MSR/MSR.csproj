@@ -64,8 +64,10 @@
     <Compile Include="BudgetPool.cs">
       <DependentUpon>MSR_V2.tt</DependentUpon>
     </Compile>
+    <Compile Include="BusinessAPI\BudgetInfoAPI_B.cs" />
     <Compile Include="BusinessAPI\LoginAPI_B.cs" />
     <Compile Include="BusinessAPI\MSRInfoAPI_B.cs" />
+    <Compile Include="BusinessAPI\NonStockItemsAPI_B.cs" />
     <Compile Include="BusinessAPI\StockItemsAPI_B.cs" />
     <Compile Include="Department.cs">
       <DependentUpon>MSR_V2.tt</DependentUpon>
@@ -118,8 +120,6 @@
     <Compile Include="BusinessAPI\BusinessSingleton.cs" />
     <Compile Include="DatabaseAPI\GroupsInfoAPI.cs" />
     <Compile Include="DatabaseAPI\MSRInfoAPI.cs" />
-    <Compile Include="DatabaseAPI\NonStockItemsAPI.cs" />
-    <Compile Include="DatabaseAPI\StockItemsAPI.cs" />
     <Compile Include="DatabaseAPI\UserInfoAPI.cs" />
     <Compile Include="Domain\ApproverInfo.cs" />
     <Compile Include="Domain\BudgetInfo.cs" />
@@ -168,10 +168,13 @@
     <Compile Include="Usr.cs">
       <DependentUpon>MSR_V2.tt</DependentUpon>
     </Compile>
-    <Compile Include="V_BP_DEPT.cs">
+    <Compile Include="V_BP_AC_DEPT.cs">
       <DependentUpon>MSR_V2.tt</DependentUpon>
     </Compile>
     <Compile Include="V_ShowMSR.cs">
+      <DependentUpon>MSR_V2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_StockItem_BudgetInfo.cs">
       <DependentUpon>MSR_V2.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="UIFormLayer\AddNonStockItemForm.resx">
@@ -226,19 +229,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="MSR_V2.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MSR_V2.Context.cs</LastGenOutput>
       <DependentUpon>MSR_V2.edmx</DependentUpon>
+      <LastGenOutput>MSR_V2.Context.cs</LastGenOutput>
     </Content>
     <Content Include="MSR_V2.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MSR_V2.edmx</DependentUpon>
       <LastGenOutput>MSR_V2.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

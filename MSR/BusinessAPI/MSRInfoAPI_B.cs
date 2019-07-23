@@ -21,11 +21,11 @@ namespace MSR.BusinessAPI
 
                 var showMSRData_db = context.V_ShowMSR.Where(d => ( (d.DeptId_Og.ToString().Equals(DeptId)) || (d.DeptId_Ap.ToString().Equals(DeptId)) ) && d.StateFlag.Equals(StateFlag)).ToList();
 
-                foreach (V_ShowMSR item in showMSRData_db)
-                {
-                    Domain.ShowMSRItem temp = new Domain.ShowMSRItem(item.MSRId.ToString(), item.BP_No, item.DeptName, item.Originator, item.Approver, item.Req_Date, item.Comments, item.Appr_Date.ToString());
-                    showMSRData.Add(temp);
-                }
+                var temp_db = (from d in context.V_ShowMSR
+                            where (((d.DeptId_Og.ToString().Equals(DeptId)) || (d.DeptId_Ap.ToString().Equals(DeptId))) && d.StateFlag.Equals(StateFlag))
+                            select new Domain.ShowMSRItem { MSRId = d.MSRId.ToString(), Bp_No = d.BP_No, DeptName = d.DeptName, Originator = d.Originator, Approver = d.Approver, Req_Date = d.Req_Date, Comments = d.Comments, Appr_Date = d.Appr_Date.ToString() } ).ToList();
+
+                showMSRData = temp_db;
 
             }
             return showMSRData;

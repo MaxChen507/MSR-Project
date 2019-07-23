@@ -12,6 +12,11 @@ namespace MSR.Domain
         public String AC_No { get; set; }
         public String AC_Desc { get; set; }
 
+        public BudgetInfo()
+        {
+
+        }
+
         public BudgetInfo(String Bp_No, String AC_No, String AC_Desc)
         {
             this.Bp_No = Bp_No;

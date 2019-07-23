@@ -12,11 +12,16 @@ namespace MSR
     using System;
     using System.Collections.Generic;
     
-    public partial class V_BP_DEPT
+    public partial class V_StockItem_BudgetInfo
     {
-        public int BudgetInfoId { get; set; }
-        public string BP_No { get; set; }
+        public string ItemCode { get; set; }
+        public string ItemDesc { get; set; }
+        public string LookUp { get; set; }
+        public string BarCode { get; set; }
         public string AC_No { get; set; }
-        public int DeptId { get; set; }
+        public string Unit { get; set; }
+        public bool ActiveFlag { get; set; }
+        public string Expr1 { get; set; }
+        public string BP_No { get; set; }
     }
 }

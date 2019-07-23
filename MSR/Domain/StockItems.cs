@@ -8,14 +8,19 @@ namespace MSR.Domain
 {
     class StockItems
     {
-        public String BudgetPool { get; }
-        public String ItemCode { get; }
-        public String ItemDesc { get; }
-        public String LookUp { get; }
-        public String BarCode { get; }
-        public String AC_No { get; }
-        public String Unit { get; }
-        public String ActiveFlag { get; }
+        public String BudgetPool { get; set; }
+        public String ItemCode { get; set; }
+        public String ItemDesc { get; set; }
+        public String LookUp { get; set; }
+        public String BarCode { get; set; }
+        public String AC_No { get; set; }
+        public String Unit { get; set; }
+        public String ActiveFlag { get; set; }
+
+        public StockItems()
+        {
+
+        }
         public StockItems(String BudgetPool, String ItemCode, String ItemDesc, String LookUp, String BarCode, String AC_No, String Unit, String ActiveFlag)
         {
             this.BudgetPool = BudgetPool;

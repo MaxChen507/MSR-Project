@@ -34,7 +34,8 @@ namespace MSR
         public virtual DbSet<MSR> MSRs { get; set; }
         public virtual DbSet<StockItem> StockItems { get; set; }
         public virtual DbSet<Usr> Usrs { get; set; }
-        public virtual DbSet<V_BP_DEPT> V_BP_DEPT { get; set; }
+        public virtual DbSet<V_BP_AC_DEPT> V_BP_AC_DEPT { get; set; }
         public virtual DbSet<V_ShowMSR> V_ShowMSR { get; set; }
+        public virtual DbSet<V_StockItem_BudgetInfo> V_StockItem_BudgetInfo { get; set; }
     }
 }

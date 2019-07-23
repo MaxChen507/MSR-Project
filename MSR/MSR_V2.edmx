@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MSR_Max_V2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MSR_Max_V2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ActivityCode">
           <Key>
             <PropertyRef Name="AC_No" />
@@ -129,8 +129,8 @@
           <Property Name="GroupsId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'MSR_Max_V2.dbo.V_BP_DEPT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="V_BP_DEPT">
+warning 6002: The table/view 'MSR_Max_V2.dbo.V_BP_AC_DEPT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_BP_AC_DEPT">
           <Key>
             <PropertyRef Name="BudgetInfoId" />
             <PropertyRef Name="BP_No" />
@@ -140,6 +140,7 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_BP_DEPT' does not have a primary 
           <Property Name="BudgetInfoId" Type="int" Nullable="false" />
           <Property Name="BP_No" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="AC_No" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="AC_Desc" Type="varchar" MaxLength="100" />
           <Property Name="DeptId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -167,6 +168,27 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_ShowMSR' does not have a primary 
           <Property Name="DeptId_Og" Type="int" Nullable="false" />
           <Property Name="DeptId_Ap" Type="int" Nullable="false" />
           <Property Name="StateFlag" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MSR_Max_V2.dbo.V_StockItem_BudgetInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_StockItem_BudgetInfo">
+          <Key>
+            <PropertyRef Name="ItemCode" />
+            <PropertyRef Name="ItemDesc" />
+            <PropertyRef Name="AC_No" />
+            <PropertyRef Name="ActiveFlag" />
+            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="BP_No" />
+          </Key>
+          <Property Name="ItemCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemDesc" Type="varchar(max)" Nullable="false" />
+          <Property Name="LookUp" Type="varchar(max)" />
+          <Property Name="BarCode" Type="varchar(max)" />
+          <Property Name="AC_No" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Unit" Type="varchar" MaxLength="50" />
+          <Property Name="ActiveFlag" Type="bit" Nullable="false" />
+          <Property Name="Expr1" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="BP_No" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <Association Name="FK_BH_BudgetInfo">
           <End Role="BudgetInfo" Type="Self.BudgetInfo" Multiplicity="1" />
@@ -348,13 +370,14 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_ShowMSR' does not have a primary 
           <EntitySet Name="MSR" EntityType="Self.MSR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockItems" EntityType="Self.StockItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usr" EntityType="Self.Usr" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="V_BP_DEPT" EntityType="Self.V_BP_DEPT" store:Type="Views" store:Schema="dbo">
+          <EntitySet Name="V_BP_AC_DEPT" EntityType="Self.V_BP_AC_DEPT" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [V_BP_DEPT].[BudgetInfoId] AS [BudgetInfoId], 
-    [V_BP_DEPT].[BP_No] AS [BP_No], 
-    [V_BP_DEPT].[AC_No] AS [AC_No], 
-    [V_BP_DEPT].[DeptId] AS [DeptId]
-    FROM [dbo].[V_BP_DEPT] AS [V_BP_DEPT]</DefiningQuery>
+    [V_BP_AC_DEPT].[BudgetInfoId] AS [BudgetInfoId], 
+    [V_BP_AC_DEPT].[BP_No] AS [BP_No], 
+    [V_BP_AC_DEPT].[AC_No] AS [AC_No], 
+    [V_BP_AC_DEPT].[AC_Desc] AS [AC_Desc], 
+    [V_BP_AC_DEPT].[DeptId] AS [DeptId]
+    FROM [dbo].[V_BP_AC_DEPT] AS [V_BP_AC_DEPT]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="V_ShowMSR" EntityType="Self.V_ShowMSR" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -370,6 +393,19 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_ShowMSR' does not have a primary 
     [V_ShowMSR].[DeptId_Ap] AS [DeptId_Ap], 
     [V_ShowMSR].[StateFlag] AS [StateFlag]
     FROM [dbo].[V_ShowMSR] AS [V_ShowMSR]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_StockItem_BudgetInfo" EntityType="Self.V_StockItem_BudgetInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_StockItem_BudgetInfo].[ItemCode] AS [ItemCode], 
+    [V_StockItem_BudgetInfo].[ItemDesc] AS [ItemDesc], 
+    [V_StockItem_BudgetInfo].[LookUp] AS [LookUp], 
+    [V_StockItem_BudgetInfo].[BarCode] AS [BarCode], 
+    [V_StockItem_BudgetInfo].[AC_No] AS [AC_No], 
+    [V_StockItem_BudgetInfo].[Unit] AS [Unit], 
+    [V_StockItem_BudgetInfo].[ActiveFlag] AS [ActiveFlag], 
+    [V_StockItem_BudgetInfo].[Expr1] AS [Expr1], 
+    [V_StockItem_BudgetInfo].[BP_No] AS [BP_No]
+    FROM [dbo].[V_StockItem_BudgetInfo] AS [V_StockItem_BudgetInfo]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_BH_BudgetInfo" Association="Self.FK_BH_BudgetInfo">
             <End Role="BudgetInfo" EntitySet="BudgetInfo" />
@@ -428,7 +464,8 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_ShowMSR' does not have a primary 
             <End Role="Usr" EntitySet="Usr" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MSR_Max_V2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -562,6 +599,62 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_ShowMSR' does not have a primary 
           <NavigationProperty Name="MSRs1" Relationship="Self.FK_MSR_Usr_ReciveBy" FromRole="Usr" ToRole="MSR" />
           <NavigationProperty Name="MSRs2" Relationship="Self.FK_MSR_Usr_RO" FromRole="Usr" ToRole="MSR" />
           <NavigationProperty Name="BudgetInfoes" Relationship="Self.BudgetHolder" FromRole="Usr" ToRole="BudgetInfo" />
+        </EntityType>
+        <EntityType Name="V_BP_AC_DEPT">
+          <Key>
+            <PropertyRef Name="BudgetInfoId" />
+            <PropertyRef Name="BP_No" />
+            <PropertyRef Name="AC_No" />
+            <PropertyRef Name="DeptId" />
+          </Key>
+          <Property Name="BudgetInfoId" Type="Int32" Nullable="false" />
+          <Property Name="BP_No" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AC_No" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AC_Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DeptId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="V_ShowMSR">
+          <Key>
+            <PropertyRef Name="MSRId" />
+            <PropertyRef Name="BP_No" />
+            <PropertyRef Name="DeptName" />
+            <PropertyRef Name="Originator" />
+            <PropertyRef Name="Approver" />
+            <PropertyRef Name="Req_Date" />
+            <PropertyRef Name="DeptId_Og" />
+            <PropertyRef Name="DeptId_Ap" />
+            <PropertyRef Name="StateFlag" />
+          </Key>
+          <Property Name="MSRId" Type="Int32" Nullable="false" />
+          <Property Name="BP_No" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DeptName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Originator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Approver" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Req_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Appr_Date" Type="DateTime" Precision="0" />
+          <Property Name="DeptId_Og" Type="Int32" Nullable="false" />
+          <Property Name="DeptId_Ap" Type="Int32" Nullable="false" />
+          <Property Name="StateFlag" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="V_StockItem_BudgetInfo">
+          <Key>
+            <PropertyRef Name="ItemCode" />
+            <PropertyRef Name="ItemDesc" />
+            <PropertyRef Name="AC_No" />
+            <PropertyRef Name="ActiveFlag" />
+            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="BP_No" />
+          </Key>
+          <Property Name="ItemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ItemDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LookUp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BarCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AC_No" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ActiveFlag" Type="Boolean" Nullable="false" />
+          <Property Name="Expr1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BP_No" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <Association Name="FK_BudgetInfo_ActivityCode">
           <End Role="ActivityCode" Type="Self.ActivityCode" Multiplicity="1" />
@@ -701,6 +794,9 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_ShowMSR' does not have a primary 
           <EntitySet Name="MSRs" EntityType="Self.MSR" />
           <EntitySet Name="StockItems" EntityType="Self.StockItem" />
           <EntitySet Name="Usrs" EntityType="Self.Usr" />
+          <EntitySet Name="V_BP_AC_DEPT" EntityType="Self.V_BP_AC_DEPT" />
+          <EntitySet Name="V_ShowMSR" EntityType="Self.V_ShowMSR" />
+          <EntitySet Name="V_StockItem_BudgetInfo" EntityType="Self.V_StockItem_BudgetInfo" />
           <AssociationSet Name="FK_BudgetInfo_ActivityCode" Association="Self.FK_BudgetInfo_ActivityCode">
             <End Role="ActivityCode" EntitySet="ActivityCodes" />
             <End Role="BudgetInfo" EntitySet="BudgetInfoes" />
@@ -749,45 +845,7 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_ShowMSR' does not have a primary 
             <End Role="Department" EntitySet="Departments" />
             <End Role="BudgetInfo" EntitySet="BudgetInfoes" />
           </AssociationSet>
-          <EntitySet Name="V_BP_DEPT" EntityType="MSR_Max_V2Model.V_BP_DEPT" />
-          <EntitySet Name="V_ShowMSR" EntityType="MSR_Max_V2Model.V_ShowMSR" />
         </EntityContainer>
-        <EntityType Name="V_BP_DEPT">
-          <Key>
-            <PropertyRef Name="BudgetInfoId" />
-            <PropertyRef Name="BP_No" />
-            <PropertyRef Name="AC_No" />
-            <PropertyRef Name="DeptId" />
-          </Key>
-          <Property Name="BudgetInfoId" Type="Int32" Nullable="false" />
-          <Property Name="BP_No" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="AC_No" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="DeptId" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="V_ShowMSR">
-          <Key>
-            <PropertyRef Name="MSRId" />
-            <PropertyRef Name="BP_No" />
-            <PropertyRef Name="DeptName" />
-            <PropertyRef Name="Originator" />
-            <PropertyRef Name="Approver" />
-            <PropertyRef Name="Req_Date" />
-            <PropertyRef Name="DeptId_Og" />
-            <PropertyRef Name="DeptId_Ap" />
-            <PropertyRef Name="StateFlag" />
-          </Key>
-          <Property Name="MSRId" Type="Int32" Nullable="false" />
-          <Property Name="BP_No" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="DeptName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Originator" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Approver" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Req_Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Appr_Date" Type="DateTime" Precision="0" />
-          <Property Name="DeptId_Og" Type="Int32" Nullable="false" />
-          <Property Name="DeptId_Ap" Type="Int32" Nullable="false" />
-          <Property Name="StateFlag" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -910,6 +968,49 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_ShowMSR' does not have a primary 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="V_BP_AC_DEPT">
+            <EntityTypeMapping TypeName="MSR_Max_V2Model.V_BP_AC_DEPT">
+              <MappingFragment StoreEntitySet="V_BP_AC_DEPT">
+                <ScalarProperty Name="BudgetInfoId" ColumnName="BudgetInfoId" />
+                <ScalarProperty Name="BP_No" ColumnName="BP_No" />
+                <ScalarProperty Name="AC_No" ColumnName="AC_No" />
+                <ScalarProperty Name="AC_Desc" ColumnName="AC_Desc" />
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_ShowMSR">
+            <EntityTypeMapping TypeName="MSR_Max_V2Model.V_ShowMSR">
+              <MappingFragment StoreEntitySet="V_ShowMSR">
+                <ScalarProperty Name="MSRId" ColumnName="MSRId" />
+                <ScalarProperty Name="BP_No" ColumnName="BP_No" />
+                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+                <ScalarProperty Name="Originator" ColumnName="Originator" />
+                <ScalarProperty Name="Approver" ColumnName="Approver" />
+                <ScalarProperty Name="Req_Date" ColumnName="Req_Date" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Appr_Date" ColumnName="Appr_Date" />
+                <ScalarProperty Name="DeptId_Og" ColumnName="DeptId_Og" />
+                <ScalarProperty Name="DeptId_Ap" ColumnName="DeptId_Ap" />
+                <ScalarProperty Name="StateFlag" ColumnName="StateFlag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_StockItem_BudgetInfo">
+            <EntityTypeMapping TypeName="MSR_Max_V2Model.V_StockItem_BudgetInfo">
+              <MappingFragment StoreEntitySet="V_StockItem_BudgetInfo">
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="ItemDesc" ColumnName="ItemDesc" />
+                <ScalarProperty Name="LookUp" ColumnName="LookUp" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="AC_No" ColumnName="AC_No" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="ActiveFlag" ColumnName="ActiveFlag" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="BP_No" ColumnName="BP_No" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <AssociationSetMapping Name="BudgetHolder" TypeName="MSR_Max_V2Model.BudgetHolder" StoreEntitySet="BudgetHolder">
             <EndProperty Name="BudgetInfo">
               <ScalarProperty Name="BudgetInfoId" ColumnName="BudgetInfoId" />
@@ -926,33 +1027,6 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_ShowMSR' does not have a primary 
               <ScalarProperty Name="BudgetInfoId" ColumnName="BudgetInfoId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="V_BP_DEPT">
-            <EntityTypeMapping TypeName="MSR_Max_V2Model.V_BP_DEPT">
-              <MappingFragment StoreEntitySet="V_BP_DEPT">
-                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
-                <ScalarProperty Name="AC_No" ColumnName="AC_No" />
-                <ScalarProperty Name="BP_No" ColumnName="BP_No" />
-                <ScalarProperty Name="BudgetInfoId" ColumnName="BudgetInfoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="V_ShowMSR">
-            <EntityTypeMapping TypeName="MSR_Max_V2Model.V_ShowMSR">
-              <MappingFragment StoreEntitySet="V_ShowMSR">
-                <ScalarProperty Name="StateFlag" ColumnName="StateFlag" />
-                <ScalarProperty Name="DeptId_Ap" ColumnName="DeptId_Ap" />
-                <ScalarProperty Name="DeptId_Og" ColumnName="DeptId_Og" />
-                <ScalarProperty Name="Appr_Date" ColumnName="Appr_Date" />
-                <ScalarProperty Name="Comments" ColumnName="Comments" />
-                <ScalarProperty Name="Req_Date" ColumnName="Req_Date" />
-                <ScalarProperty Name="Approver" ColumnName="Approver" />
-                <ScalarProperty Name="Originator" ColumnName="Originator" />
-                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
-                <ScalarProperty Name="BP_No" ColumnName="BP_No" />
-                <ScalarProperty Name="MSRId" ColumnName="MSRId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

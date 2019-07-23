@@ -22,34 +22,17 @@ namespace MSR
         //Data List Initialization
         ICollection<Domain.BudgetInfo> budgetListData = null;
 
-
         public AddNonStockItemForm(String Bp_No, String workFlowTrace)
         {
             InitializeComponent();
             this.Bp_No = Bp_No;
             this.workFlowTrace = workFlowTrace;
-            BudgetListDGV_Load();
-            InitalizeStartingFields();
         }
 
-        private void InitalizeStartingFields()
+        private void AddNonStockItemForm_Load(object sender, EventArgs e)
         {
-            itemCode_addNonStock_textBox.Text = "[NonStock]";
-
-            //WorkFlowTrace
-            if (workFlowTrace.Equals(Domain.WorkFlowTrace.createMSR))
-            {
-                AddListDGV_Load_CreateMSR();
-            }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
-            {
-                AddListDGV_Load_WaitForApproval();
-            }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
-            {
-                AddListDGV_Load_NeedReview();
-            }
-
+            BudgetListDGV_Load();
+            InitalizeStartingFields();
         }
 
         private void BudgetListDGV_Load()
@@ -71,18 +54,33 @@ namespace MSR
 
             budgetListDGV_source.DataSource = budgetListData;
             budgetInfo_addNonStock_dataGridView.DataSource = budgetListDGV_source;
-
             budgetInfo_addNonStock_dataGridView.ClearSelection();
         }
+        private void InitalizeStartingFields()
+        {
+            itemCode_addNonStock_textBox.Text = "[NonStock]";
+
+            //WorkFlowTrace
+            if (workFlowTrace.Equals(Domain.WorkFlowTrace.createMSR))
+            {
+                AddListDGV_Load_CreateMSR();
+            }
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
+            {
+                AddListDGV_Load_WaitForApproval();
+            }
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
+            {
+                AddListDGV_Load_NeedReview();
+            }
+
+        }
+
 
         private void AddListDGV_Load_CreateMSR()
         {
             //DGV clear
-            addList_addNonStock_dataGridView.DataSource = null;
-            addList_addNonStock_dataGridView.Rows.Clear();
-            addList_addNonStock_dataGridView.Refresh();
-
-            addList_addNonStock_dataGridView.ClearSelection();
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(addList_addNonStock_dataGridView);
 
             //Populate from Singleton List
             foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR)
@@ -95,27 +93,20 @@ namespace MSR
         private void AddListDGV_Load_WaitForApproval()
         {
             //DGV clear
-            addList_addNonStock_dataGridView.DataSource = null;
-            addList_addNonStock_dataGridView.Rows.Clear();
-            addList_addNonStock_dataGridView.Refresh();
-
-            addList_addNonStock_dataGridView.ClearSelection();
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(addList_addNonStock_dataGridView);
 
             //Populate from Singleton List
             foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval)
             {
                 addList_addNonStock_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
             }
+
         }
 
         private void AddListDGV_Load_NeedReview()
         {
             //DGV clear
-            addList_addNonStock_dataGridView.DataSource = null;
-            addList_addNonStock_dataGridView.Rows.Clear();
-            addList_addNonStock_dataGridView.Refresh();
-
-            addList_addNonStock_dataGridView.ClearSelection();
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(addList_addNonStock_dataGridView);
 
             //Populate from Singleton List
             foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview)
@@ -150,12 +141,11 @@ namespace MSR
         {
             if (budgetInfo_addNonStock_dataGridView.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Please select an item.");
+                MessageBox.Show("Please select an AC.");
                 return;
             }
 
             Boolean itemExists = false;
-
 
             if (addList_addNonStock_dataGridView.Rows.Count == 0)
             {
@@ -164,10 +154,7 @@ namespace MSR
 
             foreach (DataGridViewRow row in addList_addNonStock_dataGridView.Rows)
             {
-                //testing
-                //MessageBox.Show("AddList: " + row.Cells["ItemCode"].FormattedValue.ToString() + " VS " + "ItemList: " + itemList_addStock_dataGridView.SelectedRows[0].Cells["ItemCode"].FormattedValue.ToString());
-
-                if (row.Cells["ItemDesc"].FormattedValue.ToString().Equals(itemDesc_addNonStock_richTextBox.Text))
+               if (row.Cells["ItemDesc"].FormattedValue.ToString().Equals(itemDesc_addNonStock_richTextBox.Text))
                 {
                     itemExists = true;
                 }
@@ -194,7 +181,7 @@ namespace MSR
                 String Unit = unit_addNonStock_textBox.Text;
                 String UnitPrice = "";
                 String Currency = "";
-                String ROS_Date = DatabaseAPI.DBAccessSingleton.Instance.GetDateTime().AddDays(14).ToString("MM/dd/yyyy");
+                String ROS_Date = BusinessAPI.BusinessSingleton.Instance.GetDateTime().AddDays(14).ToString("MM/dd/yyyy");
                 String Comments = "";
                 String AC_No = budgetInfo_addNonStock_dataGridView.SelectedRows[0].Cells["AC_No"].FormattedValue.ToString();
 
@@ -204,7 +191,7 @@ namespace MSR
 
         private void PopulateFilteredBudgetInfoListDGV()
         {
-            ICollection<Domain.BudgetInfo> budgetInfoItemDatafilter = DatabaseAPI.DBAccessSingleton.Instance.NonStockItemsAPI.GetFilterBudgetInfo_List(budgetListData, AcSearch_addNonStock_textBox.Text, AcDescSearch_addNonStock_textBox.Text);
+            ICollection<Domain.BudgetInfo> budgetInfoItemDatafilter = BusinessAPI.BusinessSingleton.Instance.NonStockItemsAPI_B.GetFilterBudgetInfo_List(budgetListData, AcSearch_addNonStock_textBox.Text, AcDescSearch_addNonStock_textBox.Text);
 
             if (budgetInfoItemDatafilter == null)
             {

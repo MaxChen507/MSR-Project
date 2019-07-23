@@ -8,15 +8,19 @@ namespace MSR.Domain
 {
     class ShowMSRItem
     {
-        public String MSRId { get; }
-        public String Bp_No { get; }
-        public String DeptName { get; }
-        public String Originator { get; }
-        public String Approver { get; }
-        public DateTime Req_Date { get; }
-        public String Comments { get; }
-        public String Appr_Date { get; }
+        public String MSRId { get; set; }
+        public String Bp_No { get; set; }
+        public String DeptName { get; set; }
+        public String Originator { get; set; }
+        public String Approver { get; set; }
+        public DateTime Req_Date { get; set; }
+        public String Comments { get; set; }
+        public String Appr_Date { get; set; }
 
+        public ShowMSRItem()
+        {
+
+        }
         public ShowMSRItem(string MSRId, string Bp_No, string DeptName, string Originator, string Approver, DateTime Req_Date, string Comments, String Appr_Date)
         {
             this.MSRId = MSRId;

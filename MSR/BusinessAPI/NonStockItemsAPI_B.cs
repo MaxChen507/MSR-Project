@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MSR.DatabaseAPI
+namespace MSR.BusinessAPI
 {
-    class NonStockItemsAPI
+    class NonStockItemsAPI_B
     {
         public ICollection<Domain.BudgetInfo> GetFilterBudgetInfo_List(ICollection<Domain.BudgetInfo> budgetInfoList, string AcSearchString, string AcDescSearchString)
         {

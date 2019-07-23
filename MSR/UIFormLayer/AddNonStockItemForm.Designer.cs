@@ -323,6 +323,7 @@
             this.Controls.Add(this.budgetInfo_addNonStock_dataGridView);
             this.Name = "AddNonStockItemForm";
             this.Text = "AddNonStockItemForm";
+            this.Load += new System.EventHandler(this.AddNonStockItemForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.budgetInfo_addNonStock_dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addList_addNonStock_dataGridView)).EndInit();
             this.ResumeLayout(false);

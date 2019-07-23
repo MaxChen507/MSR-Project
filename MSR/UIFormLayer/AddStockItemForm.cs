@@ -39,7 +39,7 @@ namespace MSR
         {
             try
             {
-                itemListData = DatabaseAPI.DBAccessSingleton.Instance.StockItemsAPI.GetStockItem_List(Bp_No);
+                itemListData = BusinessAPI.BusinessSingleton.Instance.StockItemsAPI_B.GetStockItem_List(Bp_No);
             }
             catch (Exception ex)
             {
@@ -144,8 +144,7 @@ namespace MSR
 
         private void AddItem_AddStock_button_Click(object sender, EventArgs e)
         {
-
-            if(itemList_addStock_dataGridView.SelectedRows.Count == 0)
+            if (itemList_addStock_dataGridView.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Please select an item.");
                 return;
@@ -179,7 +178,7 @@ namespace MSR
                 String Unit = itemList_addStock_dataGridView.SelectedRows[0].Cells["Unit"].FormattedValue.ToString();
                 String UnitPrice = "";
                 String Currency = "";
-                String ROS_Date = DatabaseAPI.DBAccessSingleton.Instance.GetDateTime().AddDays(14).ToString("MM/dd/yyyy");
+                String ROS_Date = BusinessAPI.BusinessSingleton.Instance.GetDateTime().AddDays(14).ToString("MM/dd/yyyy");
                 String Comments = "";
                 String AC_No = itemList_addStock_dataGridView.SelectedRows[0].Cells["AC_No"].FormattedValue.ToString();
 

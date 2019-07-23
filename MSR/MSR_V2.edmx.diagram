@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="85eefdb1b3544f1ab6f3b465c16fa753" Name="Diagram1">
+      <Diagram DiagramId="5ddd07f2e45a4d15b2d6dfd81ad0df52" Name="Diagram1">
         <EntityTypeShape EntityType="MSR_Max_V2Model.ActivityCode" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MSR_Max_V2Model.BudgetInfo" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="MSR_Max_V2Model.BudgetPool" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
@@ -14,6 +14,9 @@
         <EntityTypeShape EntityType="MSR_Max_V2Model.MSR" Width="1.5" PointX="7.5" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MSR_Max_V2Model.StockItem" Width="1.5" PointX="2.75" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="MSR_Max_V2Model.Usr" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSR_Max_V2Model.V_BP_AC_DEPT" Width="1.5" PointX="4.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSR_Max_V2Model.V_ShowMSR" Width="1.5" PointX="6.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSR_Max_V2Model.V_StockItem_BudgetInfo" Width="1.5" PointX="8.75" PointY="9" IsExpanded="true" />
         <AssociationConnector Association="MSR_Max_V2Model.FK_BudgetInfo_ActivityCode" ManuallyRouted="false" />
         <AssociationConnector Association="MSR_Max_V2Model.FK_FormItems_ActivityCode" ManuallyRouted="false" />
         <AssociationConnector Association="MSR_Max_V2Model.FK_BudgetInfo_BudgetPool" ManuallyRouted="false" />
@@ -26,8 +29,6 @@
         <AssociationConnector Association="MSR_Max_V2Model.FK_MSR_Usr_RO" ManuallyRouted="false" />
         <AssociationConnector Association="MSR_Max_V2Model.BudgetHolder" ManuallyRouted="false" />
         <AssociationConnector Association="MSR_Max_V2Model.Department_BudgetInfo" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="MSR_Max_V2Model.V_BP_DEPT" Width="1.5" PointX="6" PointY="9" />
-        <EntityTypeShape EntityType="MSR_Max_V2Model.V_ShowMSR" Width="1.5" PointX="8.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
