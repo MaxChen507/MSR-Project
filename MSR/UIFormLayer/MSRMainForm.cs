@@ -297,25 +297,67 @@ namespace MSR
 
             //return;
 
+
+            //EF Workflow
+
             //Obtain approver info of selected
             Domain.ApproverInfo approverInfo = (Domain.ApproverInfo)approval_createTab_comboBox.SelectedItem;
-
-            //INSERT into MSR
-            Domain.MSRInfo mSRInfo = new Domain.MSRInfo(project_createTab_textBox.Text, wellVL_createTab_textBox.Text, comments_createTab_textBox.Text, budgetYear_createTab_comboBox.Text, budgetPool_createTab_comboBox.Text, AFE_createTab_textBox.Text, suggVendor_createTab_textBox.Text, vendorContact_createTab_textBox.Text, BusinessAPI.BusinessSingleton.Instance.userInfo.UserId, approverInfo.UserId, changeDate_createTab_dateTimePicker.Value, Domain.WorkFlowTrace.CREATED);
-
-            //Obtain Just inserted Identity
-            int tempMSRID = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.InsertInitialMSR(mSRInfo);
-
-            //testing
-            //MessageBox.Show("MSR ID is: " + tempMSRID.ToString());
-
-            //Save state of DGV
-            BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(createTab_dataGridView);
-
-            //INSERT into FormItems
-            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR)
+            
+            using (var context = new MSR_Max_V2Entities())
             {
-                DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.InsertInitialFormItems(item, tempMSRID);
+                //Log DB commands to console
+                context.Database.Log = Console.WriteLine;
+
+                //First obtain referenced users
+                var usr_RO = context.Usrs.Find(BusinessAPI.BusinessSingleton.Instance.userInfo_EF.UserId);
+                var usr_CA = context.Usrs.Find(Int32.Parse(approverInfo.UserId));
+
+                //Initialize new MSR
+                var tempMSR = new MSR
+                {
+                    Project = project_createTab_textBox.Text,
+                    WVL = wellVL_createTab_textBox.Text,
+                    Comments = comments_createTab_textBox.Text,
+                    BudgetYear = Int32.Parse(budgetYear_createTab_comboBox.Text),
+                    BP_No = budgetPool_createTab_comboBox.Text,
+                    AFE = AFE_createTab_textBox.Text,
+                    SugVendor = suggVendor_createTab_textBox.Text,
+                    ContactVendor = vendorContact_createTab_textBox.Text,
+                    Usr2 = usr_RO,
+                    Usr = usr_CA,
+                    Req_Date = changeDate_createTab_dateTimePicker.Value,
+                    PUR_Comment = "",
+                    Decline_Comment = "",
+                    Review_Comment = "",
+                    StateFlag = Domain.WorkFlowTrace.CREATED
+                };
+
+                foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR)
+                {
+                    //First obtain referenced AC
+                    //var tempAC = context.ActivityCodes.Find(item.AC_No);
+
+                    var tempFormItem = new FormItem
+                    {
+                        ItemCode = item.ItemCode,
+                        ItemDesc = item.ItemDesc,
+                        Quantity = Double.Parse(item.Quantity),
+                        Unit = item.Unit,
+                        UnitPrice = String.IsNullOrEmpty(item.UnitPrice) ? (double?)null : Convert.ToDouble(item.UnitPrice),
+                        Currency = item.Currency,
+                        ROS_Date = item.ROS_Date,
+                        Comments = item.Comments,
+                        AC_No = item.AC_No
+
+                    };
+
+                    tempMSR.FormItems.Add(tempFormItem);
+                    
+                }
+
+                context.MSRs.Add(tempMSR);
+                context.SaveChanges();
+
             }
 
             //Refresh all the DataGridViews

@@ -8,25 +8,30 @@ namespace MSR.Domain
 {
     class MSRInfo
     {
-        public String MSRId { get; }
-        public String Project { get; }
-        public String WVL { get; }
-        public String Comments { get; }
-        public String BudgetYear { get; }
-        public String BP_No { get; }
-        public String AFE { get; }
-        public String SugVendor { get; }
-        public String ContactVendor { get; }
-        public String Request_Originator { get; }
-        public String Company_Approval { get; }
-        public DateTime Req_Date { get; }
-        public DateTime? Appr_Date { get; }
-        public String Recieve_By { get; }
-        public DateTime? Recieve_Date { get; }
-        public String PUR_Comment { get; }
-        public String Decline_Comment { get; }
-        public String Review_Comment { get; }
-        public String StateFlag { get; }
+        public String MSRId { get; set; }
+        public String Project { get; set; }
+        public String WVL { get; set; }
+        public String Comments { get; set; }
+        public String BudgetYear { get; set; }
+        public String BP_No { get; set; }
+        public String AFE { get; set; }
+        public String SugVendor { get; set; }
+        public String ContactVendor { get; set; }
+        public String Request_Originator { get; set; }
+        public String Company_Approval { get; set; }
+        public DateTime Req_Date { get; set; }
+        public DateTime? Appr_Date { get; set; }
+        public String Recieve_By { get; set; }
+        public DateTime? Recieve_Date { get; set; }
+        public String PUR_Comment { get; set; }
+        public String Decline_Comment { get; set; }
+        public String Review_Comment { get; set; }
+        public String StateFlag { get; set; }
+
+        public MSRInfo()
+        {
+
+        }
 
         public MSRInfo(String MSRId, String Project, String WVL, String Comments, String BudgetYear, String BP_No, String AFE, String SugVendor, String ContactVendor, String Request_Originator, String Company_Approval, DateTime Req_Date, DateTime? Appr_Date, String Recieve_By, DateTime? Recieve_Date, String PUR_Comment, String Decline_Comment, String Review_Comment, String StateFlag)
         {
