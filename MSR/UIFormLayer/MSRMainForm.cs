@@ -317,6 +317,9 @@ namespace MSR
                 changeDate_createTab_dateTimePicker.Value
                 );
 
+            //Clears the Business formItemList_CreateMSR
+            BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR.Clear();
+
             //Refresh all the DataGridViews
             RefreshDataGridViews();
 
