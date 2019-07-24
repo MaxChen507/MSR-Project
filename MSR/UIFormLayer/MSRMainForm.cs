@@ -67,17 +67,17 @@ namespace MSR
             }
 
             //Populate waitApprovalTab_dataGridView from BusinessAPI
-            waitApprovalTabDGV_source.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId, Domain.WorkFlowTrace.WAIT_FOR_APPROVAL);
+            waitApprovalTabDGV_source.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo_EF.DeptId.ToString(), Domain.WorkFlowTrace.WAIT_FOR_APPROVAL);
             waitApprovalTab_dataGridView.DataSource = waitApprovalTabDGV_source;
             waitApprovalTab_dataGridView.ClearSelection();
 
             //Populate approvedTab_dataGridView from BusinessAPI
-            approvedTabDGV_source.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId, Domain.WorkFlowTrace.APPROVED);
+            approvedTabDGV_source.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo_EF.DeptId.ToString(), Domain.WorkFlowTrace.APPROVED);
             approvedTab_dataGridView.DataSource = approvedTabDGV_source;
             approvedTab_dataGridView.ClearSelection();
 
             //Populate needReviewTab_dataGridView from BusinessAPI
-            needReviewTabDGV_source.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId, Domain.WorkFlowTrace.NEED_REVIEW);
+            needReviewTabDGV_source.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo_EF.DeptId.ToString(), Domain.WorkFlowTrace.NEED_REVIEW);
             needReviewTab_dataGridView.DataSource = needReviewTabDGV_source;
             needReviewTab_dataGridView.ClearSelection();
 
@@ -343,7 +343,7 @@ namespace MSR
         
         private void PopulateFilteredShowMSRItemListDGV()
         {
-            ICollection<Domain.ShowMSRItem> showMSRItemData = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId, Domain.WorkFlowTrace.WAIT_FOR_APPROVAL);
+            ICollection<Domain.ShowMSRItem> showMSRItemData = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo_EF.DeptId.ToString(), Domain.WorkFlowTrace.WAIT_FOR_APPROVAL);
 
             ICollection<Domain.ShowMSRItem> showMSRItemDatafilter = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetFiltershowMSR_List(showMSRItemData, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text);
 

@@ -39,25 +39,12 @@ namespace MSR
 
         private void SetUserSession(String username)
         {
-            //OLD CODE:
-            //TO DO: Use DatabaseAPI to return an user session object and set to singleton
-
-            //Get domain object UserInfo and Set object to Business Singleton
-            BusinessAPI.BusinessSingleton.Instance.userInfo = DatabaseAPI.DBAccessSingleton.Instance.UserInfoAPI.GetUserInfo(username);
-
-            //Get domain object GroupsInfo and Set object to Business Singleton
-            BusinessAPI.BusinessSingleton.Instance.groupsInfo = DatabaseAPI.DBAccessSingleton.Instance.GroupsInfoAPI.GetGroupsInfo(BusinessAPI.BusinessSingleton.Instance.userInfo.GroupsId);
-
             //Initalize shared FormItems Data List to Business Singleton
             BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = new List<Domain.FormItems>();
 
-
-
-            //NEW
             BusinessAPI.BusinessSingleton.Instance.SetUsrLoginSessionVariables(username);
 
-            Usr testUsr = BusinessAPI.BusinessSingleton.Instance.userInfo_EF;
-
+            //Usr testUsr = BusinessAPI.BusinessSingleton.Instance.userInfo_EF;
         }
 
         private void Password_Login_textBox_KeyDown(object sender, KeyEventArgs e)

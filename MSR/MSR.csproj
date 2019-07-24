@@ -118,12 +118,8 @@
       <DependentUpon>AssignMSR.cs</DependentUpon>
     </Compile>
     <Compile Include="BusinessAPI\BusinessSingleton.cs" />
-    <Compile Include="DatabaseAPI\GroupsInfoAPI.cs" />
-    <Compile Include="DatabaseAPI\MSRInfoAPI.cs" />
-    <Compile Include="DatabaseAPI\UserInfoAPI.cs" />
     <Compile Include="Domain\ApproverInfo.cs" />
     <Compile Include="Domain\BudgetInfo.cs" />
-    <Compile Include="DatabaseAPI\DBAccessSingleton.cs" />
     <Compile Include="UIFormLayer\ShowMSR_Approved.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,12 +164,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UIFormLayer\ShowMSR.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UIFormLayer\ShowMSR.Designer.cs">
-      <DependentUpon>ShowMSR.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserInterfaceAPI\UserInterfaceSingleton.cs" />
     <Compile Include="Usr.cs">
       <DependentUpon>MSR_V2.tt</DependentUpon>
@@ -214,9 +204,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UIFormLayer\ShowMSR.resx">
-      <DependentUpon>ShowMSR.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UIFormLayer\ShowMSR_Approved.resx">
       <DependentUpon>ShowMSR_Approved.cs</DependentUpon>
     </EmbeddedResource>

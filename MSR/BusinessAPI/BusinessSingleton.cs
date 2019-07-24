@@ -10,13 +10,7 @@ namespace MSR.BusinessAPI
     class BusinessSingleton
     {
         //Singleton instance
-        private static BusinessSingleton instance;
-
-        //OLD User variables
-        
-        public Domain.UserInfo userInfo { get; set; }
-        public Domain.GroupsInfo groupsInfo { get; set; }
-        
+        private static BusinessSingleton instance;        
 
         //New Variables
         public Usr userInfo_EF { get; set; }
