@@ -66,6 +66,8 @@ namespace MSR.UIFormLayer
             if (groupsInfo.GroupsName.Equals(Domain.WorkFlowTrace.StandUser))
             {
                 edit_showMSR_groupBox.Enabled = false;
+                approve_showMSR_groupBox.Enabled = false;
+
                 changeDate_showMSR_dateTimePicker.Value = BusinessAPI.BusinessSingleton.Instance.GetDateTime();
             }
             else if (groupsInfo.GroupsName.Equals(Domain.WorkFlowTrace.StandBH))
@@ -96,13 +98,16 @@ namespace MSR.UIFormLayer
         {
             if (approve_showMSR_radioButton.Checked)
             {
-                //Change ApprovalDate Access
-                changeDate_showMSR_checkBox.Show();
-                changeDate_showMSR_dateTimePicker.Show();
-
                 reason_showMSR_groupBox.Visible = false;
                 approve_showMSR_Button.Text = "Approve";
                 reason_showMSR_label.Text = "*Reason Approve";
+
+                //Change UI accessability
+                UndoAllChanges();
+                edit_showMSR_groupBox.Enabled = true;
+                //Enable editing for quantity and comments
+                showMSR_dataGridView.Columns[3].ReadOnly = false;
+                showMSR_dataGridView.Columns[8].ReadOnly = false;
             }
         }
 
@@ -119,11 +124,11 @@ namespace MSR.UIFormLayer
                 changeDate_showMSR_dateTimePicker.Enabled = false;
 
                 //Change UI accessability
-                undo_showMSR_button.PerformClick();
+                UndoAllChanges();
                 edit_showMSR_groupBox.Enabled = false;
                 //Enable editing for quantity and comments
-                showMSR_dataGridView.Columns[3].ReadOnly = true;
-                showMSR_dataGridView.Columns[8].ReadOnly = true;
+                showMSR_dataGridView.Columns[3].ReadOnly = false;
+                showMSR_dataGridView.Columns[8].ReadOnly = false;
             }
         }
 
@@ -138,6 +143,13 @@ namespace MSR.UIFormLayer
                 //Change ApprovalDate Access
                 changeDate_showMSR_checkBox.Enabled = false;
                 changeDate_showMSR_dateTimePicker.Enabled = false;
+
+                //Change UI accessability
+                UndoAllChanges();
+                edit_showMSR_groupBox.Enabled = false;
+                //Enable editing for quantity and comments
+                showMSR_dataGridView.Columns[3].ReadOnly = true;
+                showMSR_dataGridView.Columns[8].ReadOnly = true;
             }
         }
 
@@ -164,7 +176,7 @@ namespace MSR.UIFormLayer
             showMSR_dataGridView.Rows.Remove(showMSR_dataGridView.Rows[showMSR_dataGridView.CurrentCell.RowIndex]);
         }
 
-        private void Undo_showMSR_button_Click(object sender, EventArgs e)
+        private void UndoAllChanges()
         {
             //DGV clear
             UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(showMSR_dataGridView);
@@ -174,7 +186,11 @@ namespace MSR.UIFormLayer
             {
                 showMSR_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
             }
+        }
 
+        private void Undo_showMSR_button_Click(object sender, EventArgs e)
+        {
+            UndoAllChanges();
         }
 
         private void AddStock_showMSR_button_Click(object sender, EventArgs e)
@@ -211,12 +227,8 @@ namespace MSR.UIFormLayer
 
         private void Approve_showMSR_Button_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(approve_showMSR_Button.Text.ToString());
-
             if (approve_showMSR_Button.Text.ToString().Equals("Approve"))
             {
-                //MessageBox.Show("It says Approve");
-
                 //EDIT AND UPDATE MSR
 
                 if (CheckShowMSRDGV() == false)
@@ -228,88 +240,85 @@ namespace MSR.UIFormLayer
                 DialogResult result = MessageBox.Show("Are you sure you want to approve the MSR?", "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    //MessageBox.Show("Selected YES.");
-                    //...
+
                 }
                 else if (result == DialogResult.No)
                 {
-                    //MessageBox.Show("Selected NO.");
                     return;
                 }
                 else
                 {
-                    //MessageBox.Show("Selected NO.");
                     return;
                 }
-
-                //testing
-                //MessageBox.Show("MSR ID is: " + MSRInfo.MSRId);
 
                 //Save state of DGV
                 BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
 
                 //DELETE from FormItems
-                DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.DeleteFormItems(Convert.ToInt32(MSRInfo.MSRId));
+                BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.DeleteFormItemsByMSRId(MSRInfo.MSRId.ToString());
 
                 //INSERT into FormItems
-                foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval)
-                {
-                    DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.InsertInitialFormItems(item, Convert.ToInt32(MSRInfo.MSRId));
-                }
+                BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.InsertInitialFormItems(BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval, Convert.ToInt32(MSRInfo.MSRId));
 
                 //Update MSR States and Approve Dates
-                DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.UpdateMSR_ApproveButton(Convert.ToInt32(MSRInfo.MSRId), approve_showMSR_Button.Text.ToString(), "Approved_NA", changeDate_showMSR_dateTimePicker.Value, Domain.WorkFlowTrace.APPROVED);
+                BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.UpdateMSR_ApproveButton(Convert.ToInt32(MSRInfo.MSRId), approve_showMSR_Button.Text.ToString(), "Approved_NA", changeDate_showMSR_dateTimePicker.Value, Domain.WorkFlowTrace.APPROVED);
 
             }
             else if (approve_showMSR_Button.Text.ToString().Equals("Send for Review"))
             {
-                //MessageBox.Show("It says Send for Review");
+                //EDIT AND UPDATE MSR
+
+                if (CheckShowMSRDGV() == false)
+                {
+                    return;
+                }
 
                 //To confirm if you want to Send for Review MSR
                 DialogResult result = MessageBox.Show("Are you sure you want to send the MSR for review?", "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    //MessageBox.Show("Selected YES.");
-                    //...
+
                 }
                 else if (result == DialogResult.No)
                 {
-                    //MessageBox.Show("Selected NO.");
                     return;
                 }
                 else
                 {
-                    //MessageBox.Show("Selected NO.");
                     return;
                 }
 
+                //Save state of DGV
+                BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
+
+                //DELETE from FormItems
+                BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.DeleteFormItemsByMSRId(MSRInfo.MSRId.ToString());
+
+                //INSERT into FormItems
+                BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.InsertInitialFormItems(BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval, Convert.ToInt32(MSRInfo.MSRId));
+
                 //Update MSR
-                DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.UpdateMSR_ApproveButton(Convert.ToInt32(MSRInfo.MSRId), approve_showMSR_Button.Text.ToString(), reason_showMSR_richTextBox.Text.ToString(), DatabaseAPI.DBAccessSingleton.Instance.GetDateTime(), Domain.WorkFlowTrace.NEED_REVIEW);
+                BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.UpdateMSR_ApproveButton(Convert.ToInt32(MSRInfo.MSRId), approve_showMSR_Button.Text.ToString(), reason_showMSR_richTextBox.Text.ToString(), BusinessAPI.BusinessSingleton.Instance.GetDateTime(), Domain.WorkFlowTrace.NEED_REVIEW);
             }
             else if (approve_showMSR_Button.Text.ToString().Equals("Decline"))
             {
-                //MessageBox.Show("It says Decline");
-
-                //To confirm if you want to Send for Review MSR
+                //To confirm if you want to Send for Decline MSR
                 DialogResult result = MessageBox.Show("Are you sure you want to decline the MSR?", "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    //MessageBox.Show("Selected YES.");
-                    //...
+
                 }
                 else if (result == DialogResult.No)
                 {
-                    //MessageBox.Show("Selected NO.");
                     return;
                 }
                 else
                 {
-                    //MessageBox.Show("Selected NO.");
                     return;
                 }
 
                 //Update MSR
-                DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.UpdateMSR_ApproveButton(Convert.ToInt32(MSRInfo.MSRId), approve_showMSR_Button.Text.ToString(), reason_showMSR_richTextBox.Text.ToString(), DatabaseAPI.DBAccessSingleton.Instance.GetDateTime(), Domain.WorkFlowTrace.DECLINED);
+                BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.UpdateMSR_ApproveButton(Convert.ToInt32(MSRInfo.MSRId), approve_showMSR_Button.Text.ToString(), reason_showMSR_richTextBox.Text.ToString(), BusinessAPI.BusinessSingleton.Instance.GetDateTime(), Domain.WorkFlowTrace.DECLINED);
             }
             else
             {
@@ -331,37 +340,28 @@ namespace MSR.UIFormLayer
             DialogResult result = MessageBox.Show("Are you sure you want to submit the MSR edits?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                //MessageBox.Show("Selected YES.");
-                //...
+
             }
             else if (result == DialogResult.No)
             {
-                //MessageBox.Show("Selected NO.");
                 return;
             }
             else
             {
-                //MessageBox.Show("Selected NO.");
                 return;
             }
 
-            //testing
-            //MessageBox.Show("MSR ID is: " + MSRInfo.MSRId);
-
             //Save state of DGV
-            BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
+            BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
 
             //DELETE from FormItems
-            DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.DeleteFormItems(Convert.ToInt32(MSRInfo.MSRId));
+            BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.DeleteFormItemsByMSRId(MSRInfo.MSRId.ToString());
 
             //INSERT into FormItems
-            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview)
-            {
-                DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.InsertInitialFormItems(item, Convert.ToInt32(MSRInfo.MSRId));
-            }
+            BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.InsertInitialFormItems(BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview, Convert.ToInt32(MSRInfo.MSRId));
 
             //Update MSR States and Approve Dates
-            DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.UpdateMSR_SubmitReview(Convert.ToInt32(MSRInfo.MSRId), Domain.WorkFlowTrace.CREATED);
+            BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.UpdateMSR_ApproveButton(Convert.ToInt32(MSRInfo.MSRId), approve_showMSR_Button.Text.ToString(), "Approved_NA", changeDate_showMSR_dateTimePicker.Value, Domain.WorkFlowTrace.APPROVED);
 
             this.Close();
         }
@@ -394,7 +394,7 @@ namespace MSR.UIFormLayer
 
             if (itemsCorrectFlag)
             {
-                //MessageBox.Show("All item's budget pool match with selected Budget Pool.");
+
             }
             else
             {
@@ -430,7 +430,7 @@ namespace MSR.UIFormLayer
 
             if (itemsCorrectFlag)
             {
-                //MessageBox.Show("Quantity and UnitPrice are double.");
+
             }
             else
             {
@@ -455,7 +455,7 @@ namespace MSR.UIFormLayer
 
             if (itemsCorrectFlag)
             {
-                //MessageBox.Show("All form item fields are filled.");
+
             }
             else
             {

@@ -85,7 +85,7 @@ namespace MSR
                 edit_showMSR_groupBox.Hide();
 
                 changeDate_showMSR_checkBox.Hide();
-                changeDate_showMSR_dateTimePicker.Value = MSRInfo.Appr_Date ?? DateTime.MaxValue;
+                changeDate_showMSR_dateTimePicker.Value = MSRInfo.Appr_Date ?? DateTime.Now;
 
                 approve_showMSR_Button.Hide();
 

@@ -58,7 +58,6 @@
             this.calendarColumn1 = new UserInterfaceAPI.CalendarColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.submitReview_showMSR_button = new System.Windows.Forms.Button();
             this.info_showMSR_groupBox = new System.Windows.Forms.GroupBox();
             this.showMSR_dataGridView = new System.Windows.Forms.DataGridView();
             this.BudgetPool = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -159,8 +158,7 @@
             this.approve_showMSR_groupBox.Controls.Add(this.changeDate_showMSR_checkBox);
             this.approve_showMSR_groupBox.Controls.Add(this.compApproval_showMSR_label);
             this.approve_showMSR_groupBox.Controls.Add(this.originator_showMSR_label);
-            this.approve_showMSR_groupBox.Enabled = false;
-            this.approve_showMSR_groupBox.Location = new System.Drawing.Point(12, 616);
+            this.approve_showMSR_groupBox.Location = new System.Drawing.Point(12, 615);
             this.approve_showMSR_groupBox.Name = "approve_showMSR_groupBox";
             this.approve_showMSR_groupBox.Size = new System.Drawing.Size(329, 198);
             this.approve_showMSR_groupBox.TabIndex = 33;
@@ -272,7 +270,7 @@
             this.edit_showMSR_groupBox.Controls.Add(this.addStock_showMSR_button);
             this.edit_showMSR_groupBox.Controls.Add(this.deleteItem_showMSR_button);
             this.edit_showMSR_groupBox.Enabled = false;
-            this.edit_showMSR_groupBox.Location = new System.Drawing.Point(1035, 210);
+            this.edit_showMSR_groupBox.Location = new System.Drawing.Point(1035, 209);
             this.edit_showMSR_groupBox.Name = "edit_showMSR_groupBox";
             this.edit_showMSR_groupBox.Size = new System.Drawing.Size(251, 400);
             this.edit_showMSR_groupBox.TabIndex = 32;
@@ -283,7 +281,7 @@
             // 
             this.reason_showMSR_groupBox.Controls.Add(this.reason_showMSR_richTextBox);
             this.reason_showMSR_groupBox.Controls.Add(this.reason_showMSR_label);
-            this.reason_showMSR_groupBox.Location = new System.Drawing.Point(347, 616);
+            this.reason_showMSR_groupBox.Location = new System.Drawing.Point(347, 615);
             this.reason_showMSR_groupBox.Name = "reason_showMSR_groupBox";
             this.reason_showMSR_groupBox.Size = new System.Drawing.Size(365, 198);
             this.reason_showMSR_groupBox.TabIndex = 34;
@@ -312,7 +310,7 @@
             // 
             // print_showMSR_button
             // 
-            this.print_showMSR_button.Location = new System.Drawing.Point(1064, 628);
+            this.print_showMSR_button.Location = new System.Drawing.Point(1064, 627);
             this.print_showMSR_button.Name = "print_showMSR_button";
             this.print_showMSR_button.Size = new System.Drawing.Size(200, 40);
             this.print_showMSR_button.TabIndex = 35;
@@ -384,21 +382,9 @@
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             this.dataGridViewTextBoxColumn8.Width = 107;
             // 
-            // submitReview_showMSR_button
-            // 
-            this.submitReview_showMSR_button.Enabled = false;
-            this.submitReview_showMSR_button.Location = new System.Drawing.Point(728, 762);
-            this.submitReview_showMSR_button.Name = "submitReview_showMSR_button";
-            this.submitReview_showMSR_button.Size = new System.Drawing.Size(200, 40);
-            this.submitReview_showMSR_button.TabIndex = 36;
-            this.submitReview_showMSR_button.Text = "Submit Review";
-            this.submitReview_showMSR_button.UseVisualStyleBackColor = true;
-            this.submitReview_showMSR_button.Visible = false;
-            this.submitReview_showMSR_button.Click += new System.EventHandler(this.SubmitReview_showMSR_button_Click);
-            // 
             // info_showMSR_groupBox
             // 
-            this.info_showMSR_groupBox.Location = new System.Drawing.Point(1035, 14);
+            this.info_showMSR_groupBox.Location = new System.Drawing.Point(1035, 13);
             this.info_showMSR_groupBox.Name = "info_showMSR_groupBox";
             this.info_showMSR_groupBox.Size = new System.Drawing.Size(251, 100);
             this.info_showMSR_groupBox.TabIndex = 31;
@@ -421,7 +407,7 @@
             this.ROS_Date,
             this.Comments,
             this.AC_No});
-            this.showMSR_dataGridView.Location = new System.Drawing.Point(12, 210);
+            this.showMSR_dataGridView.Location = new System.Drawing.Point(12, 209);
             this.showMSR_dataGridView.MultiSelect = false;
             this.showMSR_dataGridView.Name = "showMSR_dataGridView";
             this.showMSR_dataGridView.Size = new System.Drawing.Size(1006, 400);
@@ -503,7 +489,7 @@
             // 
             this.vendorContact_showMSR_groupBox.Controls.Add(this.vendorContact_showMSR_textBox);
             this.vendorContact_showMSR_groupBox.Controls.Add(this.vendorContact_showMSR_label);
-            this.vendorContact_showMSR_groupBox.Location = new System.Drawing.Point(518, 120);
+            this.vendorContact_showMSR_groupBox.Location = new System.Drawing.Point(518, 119);
             this.vendorContact_showMSR_groupBox.Name = "vendorContact_showMSR_groupBox";
             this.vendorContact_showMSR_groupBox.Size = new System.Drawing.Size(500, 75);
             this.vendorContact_showMSR_groupBox.TabIndex = 29;
@@ -541,7 +527,7 @@
             // 
             this.suggVendor_showMSR_groupBox.Controls.Add(this.suggVendor_showMSR_textBox);
             this.suggVendor_showMSR_groupBox.Controls.Add(this.suggVendor_showMSR_label);
-            this.suggVendor_showMSR_groupBox.Location = new System.Drawing.Point(12, 120);
+            this.suggVendor_showMSR_groupBox.Location = new System.Drawing.Point(12, 119);
             this.suggVendor_showMSR_groupBox.Name = "suggVendor_showMSR_groupBox";
             this.suggVendor_showMSR_groupBox.Size = new System.Drawing.Size(500, 75);
             this.suggVendor_showMSR_groupBox.TabIndex = 28;
@@ -574,7 +560,7 @@
             this.budget_showMSR_groupBox.Controls.Add(this.AFE_showMSR_textBox);
             this.budget_showMSR_groupBox.Controls.Add(this.budgetPool_showMSR_label);
             this.budget_showMSR_groupBox.Controls.Add(this.budgetYear_showMSR_label);
-            this.budget_showMSR_groupBox.Location = new System.Drawing.Point(518, 14);
+            this.budget_showMSR_groupBox.Location = new System.Drawing.Point(518, 13);
             this.budget_showMSR_groupBox.Name = "budget_showMSR_groupBox";
             this.budget_showMSR_groupBox.Size = new System.Drawing.Size(500, 100);
             this.budget_showMSR_groupBox.TabIndex = 27;
@@ -645,7 +631,7 @@
             this.project_showMSR_groupBox.Controls.Add(this.project_showMSR_textBox);
             this.project_showMSR_groupBox.Controls.Add(this.wellVL_showMSR_label);
             this.project_showMSR_groupBox.Controls.Add(this.project_showMSR_label);
-            this.project_showMSR_groupBox.Location = new System.Drawing.Point(12, 14);
+            this.project_showMSR_groupBox.Location = new System.Drawing.Point(12, 13);
             this.project_showMSR_groupBox.Name = "project_showMSR_groupBox";
             this.project_showMSR_groupBox.Size = new System.Drawing.Size(500, 100);
             this.project_showMSR_groupBox.TabIndex = 26;
@@ -708,7 +694,6 @@
             this.Controls.Add(this.edit_showMSR_groupBox);
             this.Controls.Add(this.reason_showMSR_groupBox);
             this.Controls.Add(this.print_showMSR_button);
-            this.Controls.Add(this.submitReview_showMSR_button);
             this.Controls.Add(this.info_showMSR_groupBox);
             this.Controls.Add(this.showMSR_dataGridView);
             this.Controls.Add(this.vendorContact_showMSR_groupBox);
@@ -768,7 +753,6 @@
         private UserInterfaceAPI.CalendarColumn calendarColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.Button submitReview_showMSR_button;
         private System.Windows.Forms.GroupBox info_showMSR_groupBox;
         private System.Windows.Forms.DataGridView showMSR_dataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn BudgetPool;

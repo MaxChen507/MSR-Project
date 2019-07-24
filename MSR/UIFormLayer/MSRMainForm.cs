@@ -302,63 +302,20 @@ namespace MSR
 
             //Obtain approver info of selected
             Domain.ApproverInfo approverInfo = (Domain.ApproverInfo)approval_createTab_comboBox.SelectedItem;
-            
-            using (var context = new MSR_Max_V2Entities())
-            {
-                //Log DB commands to console
-                context.Database.Log = Console.WriteLine;
 
-                //First obtain referenced users
-                var usr_RO = context.Usrs.Find(BusinessAPI.BusinessSingleton.Instance.userInfo_EF.UserId);
-                var usr_CA = context.Usrs.Find(Int32.Parse(approverInfo.UserId));
-
-                //Initialize new MSR
-                var tempMSR = new MSR
-                {
-                    Project = project_createTab_textBox.Text,
-                    WVL = wellVL_createTab_textBox.Text,
-                    Comments = comments_createTab_textBox.Text,
-                    BudgetYear = Int32.Parse(budgetYear_createTab_comboBox.Text),
-                    BP_No = budgetPool_createTab_comboBox.Text,
-                    AFE = AFE_createTab_textBox.Text,
-                    SugVendor = suggVendor_createTab_textBox.Text,
-                    ContactVendor = vendorContact_createTab_textBox.Text,
-                    Usr2 = usr_RO,
-                    Usr = usr_CA,
-                    Req_Date = changeDate_createTab_dateTimePicker.Value,
-                    PUR_Comment = "",
-                    Decline_Comment = "",
-                    Review_Comment = "",
-                    StateFlag = Domain.WorkFlowTrace.CREATED
-                };
-
-                foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR)
-                {
-                    //First obtain referenced AC
-                    //var tempAC = context.ActivityCodes.Find(item.AC_No);
-
-                    var tempFormItem = new FormItem
-                    {
-                        ItemCode = item.ItemCode,
-                        ItemDesc = item.ItemDesc,
-                        Quantity = Double.Parse(item.Quantity),
-                        Unit = item.Unit,
-                        UnitPrice = String.IsNullOrEmpty(item.UnitPrice) ? (double?)null : Convert.ToDouble(item.UnitPrice),
-                        Currency = item.Currency,
-                        ROS_Date = item.ROS_Date,
-                        Comments = item.Comments,
-                        AC_No = item.AC_No
-
-                    };
-
-                    tempMSR.FormItems.Add(tempFormItem);
-                    
-                }
-
-                context.MSRs.Add(tempMSR);
-                context.SaveChanges();
-
-            }
+            //Creates MSR with Associated FormItems
+            BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.InsertIntialMSR(
+                approverInfo, 
+                project_createTab_textBox.Text, 
+                wellVL_createTab_textBox.Text, 
+                comments_createTab_textBox.Text, 
+                budgetYear_createTab_comboBox.Text, 
+                budgetPool_createTab_comboBox.Text, 
+                AFE_createTab_textBox.Text, 
+                suggVendor_createTab_textBox.Text, 
+                vendorContact_createTab_textBox.Text, 
+                changeDate_createTab_dateTimePicker.Value
+                );
 
             //Refresh all the DataGridViews
             RefreshDataGridViews();
@@ -429,8 +386,8 @@ namespace MSR
             if (e.RowIndex == -1) return;
 
             this.Hide();
-
-            ShowMSR fShowMSR = new ShowMSR(waitApprovalTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString(), Domain.WorkFlowTrace.waitForApproval);
+            
+            UIFormLayer.ShowMSR_WaitForApproval fShowMSR = new UIFormLayer.ShowMSR_WaitForApproval(waitApprovalTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
 
             fShowMSR.ShowDialog();
 
