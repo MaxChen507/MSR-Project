@@ -115,6 +115,12 @@ namespace MSR.BusinessAPI
             return results;
         }
 
+        public Domain.GroupsInfo GetGroupsInfo()
+        {
+            Domain.GroupsInfo groupsInfo = new Domain.GroupsInfo(userInfo_EF.Group.GroupsId.ToString(), userInfo_EF.Group.GroupsName, userInfo_EF.Group.GroupsDesc, userInfo_EF.Group.GroupsActiveFlag.ToString());
+
+            return groupsInfo;
+        }
 
     }
 }

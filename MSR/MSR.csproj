@@ -124,7 +124,12 @@
     <Compile Include="Domain\ApproverInfo.cs" />
     <Compile Include="Domain\BudgetInfo.cs" />
     <Compile Include="DatabaseAPI\DBAccessSingleton.cs" />
-    <Compile Include="DatabaseAPI\LoginAPI.cs" />
+    <Compile Include="UIFormLayer\ShowMSR_WaitForApproval.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIFormLayer\ShowMSR_WaitForApproval.Designer.cs">
+      <DependentUpon>ShowMSR_WaitForApproval.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserInterfaceAPI\CalendarCell.cs" />
     <Compile Include="UserInterfaceAPI\CalendarColumn .cs" />
     <Compile Include="UserInterfaceAPI\CalendarEditingControl.cs">
@@ -208,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UIFormLayer\ShowMSR_Procure.resx">
       <DependentUpon>ShowMSR_Procure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIFormLayer\ShowMSR_WaitForApproval.resx">
+      <DependentUpon>ShowMSR_WaitForApproval.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="MSR_V2.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

@@ -8,132 +8,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MSR
+namespace MSR.UIFormLayer
 {
-    public partial class ShowMSR : Form
+    public partial class ShowMSR_WaitForApproval : Form
     {
-        //Form Variables
-        Domain.MSRInfo MSRInfo;
-        String OriginatorId;
-        ICollection<Domain.FormItems> dbFormItems;
+        //EF Variables
+        MSR MSRInfo;
 
-        //Form Setting Variables
+        //View Variables
+        ICollection<Domain.FormItems> ViewFormItems;
         Domain.GroupsInfo groupsInfo;
-        String workFlowTrace;
+        
 
-        //Test
-        MSR mSRTest;
-
-        public ShowMSR(String MSRId, String workFlowTrace)
+        public ShowMSR_WaitForApproval(String MSRId)
         {
             InitializeComponent();
-            //mSRTest = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetMSRByMSRId(MSRId);
+            MSRInfo = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetMSRByMSRId(MSRId);
 
+        }
 
-            MSRInfo = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.GetMSR(MSRId);
+        private void ShowMSR_WaitForApproval_Load(object sender, EventArgs e)
+        {
+            //Update the BusininessAPI with FormItems
+            ViewFormItems = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetDomain_FormItems(MSRInfo.FormItems, MSRInfo.BP_No);
+            BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = ViewFormItems;
 
-            //Initalize shared FormItems Data List to Business Singleton
-            dbFormItems = DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.GetFormItems_List(MSRId, MSRInfo.BP_No);
-
-            OriginatorId = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetOriginatorID(MSRId);
-
-            if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
-            {
-                BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = dbFormItems;
-            }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.approvedMSR))
-            {
-                BusinessAPI.BusinessSingleton.Instance.formItemList_Approved = dbFormItems;
-            }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
-            {
-                BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview = dbFormItems;
-            }
-
-            groupsInfo = BusinessAPI.BusinessSingleton.Instance.groupsInfo;
-            this.workFlowTrace = workFlowTrace;
+            //Set Group Info from BusininessAPI
+            groupsInfo = BusinessAPI.BusinessSingleton.Instance.GetGroupsInfo();
 
             InitalizeStartingFields();
-
-            if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
-            {
-                //MessageBox.Show("Came from waitForApproval");
-
-                //MessageBox.Show("I am from group: " + groupsInfo.GroupsName);
-
-                if (groupsInfo.GroupsName.Equals(Domain.WorkFlowTrace.StandUser))
-                {
-                    edit_showMSR_groupBox.Hide();
-                    changeDate_showMSR_dateTimePicker.Value = DateTime.Now;
-                }
-
-                if (groupsInfo.GroupsName.Equals(Domain.WorkFlowTrace.StandBH))
-                {
-                    edit_showMSR_groupBox.Enabled = true;
-                    approve_showMSR_groupBox.Enabled = true;
-
-                    //Enable editing for quantity and comments
-                    showMSR_dataGridView.Columns[3].ReadOnly = false;
-                    showMSR_dataGridView.Columns[8].ReadOnly = false;
-                }
-
-            }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.approvedMSR))
-            {
-                //MessageBox.Show("Came from approvedMSR");
-
-                edit_showMSR_groupBox.Hide();
-
-                changeDate_showMSR_checkBox.Hide();
-                changeDate_showMSR_dateTimePicker.Value = MSRInfo.Appr_Date ?? DateTime.MaxValue;
-
-                approve_showMSR_Button.Hide();
-
-            }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
-            {
-                //MessageBox.Show("Came from needReview");
-
-                if (BusinessAPI.BusinessSingleton.Instance.userInfo.UserId.Equals(OriginatorId))
-                {
-                    //MessageBox.Show("UserID: " + BusinessAPI.BusinessSingleton.Instance.userInfo.UserId + " " + "MSR OG: " + OriginatorId);
-                    //Shows a match, they can edit
-
-                    needReview_showMSR_radioButton.Checked = true;
-
-                    edit_showMSR_groupBox.Enabled = true;
-
-                    reason_showMSR_richTextBox.Enabled = false;
-                    reason_showMSR_richTextBox.Text = MSRInfo.Review_Comment;
-
-                    //Enable editing for quantity and comments
-                    showMSR_dataGridView.Columns[3].ReadOnly = false;
-                    showMSR_dataGridView.Columns[8].ReadOnly = false;
-
-                    submitReview_showMSR_button.Visible = true;
-                    submitReview_showMSR_button.Enabled = true;
-
-                    changeDate_showMSR_checkBox.Hide();
-                    changeDate_showMSR_dateTimePicker.Hide();
-                }
-                else
-                {
-                    edit_showMSR_groupBox.Hide();
-
-                    changeDate_showMSR_checkBox.Hide();
-                    changeDate_showMSR_dateTimePicker.Hide();
-
-                    needReview_showMSR_radioButton.Checked = true;
-                    reason_showMSR_richTextBox.Enabled = false;
-                    reason_showMSR_richTextBox.Text = MSRInfo.Review_Comment;
-                }
-
-            }
-            else
-            {
-                MessageBox.Show("Came from error");
-            }
-
         }
 
         private void InitalizeStartingFields()
@@ -144,7 +47,7 @@ namespace MSR
             comments_showMSR_textBox.Text = MSRInfo.Comments;
 
             //Initialize Budget GroupBox
-            budgetYear_showMSR_textBox.Text = MSRInfo.BudgetYear;
+            budgetYear_showMSR_textBox.Text = MSRInfo.BudgetYear.ToString();
             budgetPool_showMSR_textBox.Text = MSRInfo.BP_No;
             AFE_showMSR_textBox.Text = MSRInfo.AFE;
 
@@ -153,11 +56,27 @@ namespace MSR
             vendorContact_showMSR_textBox.Text = MSRInfo.ContactVendor;
 
             //Initialize Approve GroupBox
-            originator_showMSR_textBox.Text = MSRInfo.Request_Originator;
-            compApproval_showMSR_textBox.Text = MSRInfo.Company_Approval;
-            changeDate_showMSR_dateTimePicker.Value = DatabaseAPI.DBAccessSingleton.Instance.GetDateTime();
+            originator_showMSR_textBox.Text = MSRInfo.Usr2.FullName;
+            compApproval_showMSR_textBox.Text = MSRInfo.Usr.FullName;
+            changeDate_showMSR_dateTimePicker.Value = BusinessAPI.BusinessSingleton.Instance.GetDateTime();
 
             ShowMSR_DGV_Load();
+
+            //Depending on the type of User, different controls will change
+            if (groupsInfo.GroupsName.Equals(Domain.WorkFlowTrace.StandUser))
+            {
+                edit_showMSR_groupBox.Enabled = false;
+                changeDate_showMSR_dateTimePicker.Value = BusinessAPI.BusinessSingleton.Instance.GetDateTime();
+            }
+            else if (groupsInfo.GroupsName.Equals(Domain.WorkFlowTrace.StandBH))
+            {
+                edit_showMSR_groupBox.Enabled = true;
+                approve_showMSR_groupBox.Enabled = true;
+
+                //Enable editing for quantity and comments
+                showMSR_dataGridView.Columns[3].ReadOnly = false;
+                showMSR_dataGridView.Columns[8].ReadOnly = false;
+            }
 
         }
 
@@ -166,29 +85,9 @@ namespace MSR
             //DGV clear
             UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(showMSR_dataGridView);
 
-            if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval)
             {
-                //Populate showMSR_dataGridView from Business Singleton List
-                foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval)
-                {
-                    showMSR_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
-                }
-            }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.approvedMSR))
-            {
-                //Populate showMSR_dataGridView from Business Singleton List
-                foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_Approved)
-                {
-                    showMSR_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
-                }
-            }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
-            {
-                //Populate showMSR_dataGridView from Business Singleton List
-                foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview)
-                {
-                    showMSR_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
-                }
+                showMSR_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
             }
 
         }
@@ -216,8 +115,8 @@ namespace MSR
                 reason_showMSR_label.Text = "Reason why this needs review";
 
                 //Change ApprovalDate Access
-                changeDate_showMSR_checkBox.Hide();
-                changeDate_showMSR_dateTimePicker.Hide();
+                changeDate_showMSR_checkBox.Enabled = false;
+                changeDate_showMSR_dateTimePicker.Enabled = false;
 
                 //Change UI accessability
                 undo_showMSR_button.PerformClick();
@@ -237,20 +136,21 @@ namespace MSR
                 reason_showMSR_label.Text = "Reason why you are declining the request";
 
                 //Change ApprovalDate Access
-                changeDate_showMSR_checkBox.Hide();
-                changeDate_showMSR_dateTimePicker.Hide();
+                changeDate_showMSR_checkBox.Enabled = false;
+                changeDate_showMSR_dateTimePicker.Enabled = false;
             }
         }
 
         private void ChangeDate_showMSR_checkBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (changeDate_showMSR_checkBox.Checked) {
+            if (changeDate_showMSR_checkBox.Checked)
+            {
                 changeDate_showMSR_dateTimePicker.Enabled = true;
             }
             else
             {
                 changeDate_showMSR_dateTimePicker.Enabled = false;
-                changeDate_showMSR_dateTimePicker.Value = DatabaseAPI.DBAccessSingleton.Instance.GetDateTime();
+                changeDate_showMSR_dateTimePicker.Value = BusinessAPI.BusinessSingleton.Instance.GetDateTime();
             }
         }
 
@@ -261,7 +161,6 @@ namespace MSR
                 MessageBox.Show("Please select an item.");
                 return;
             }
-            //MessageBox.Show("Deleting: " + showMSR_dataGridView.Rows[showMSR_dataGridView.CurrentCell.RowIndex].ToString());
             showMSR_dataGridView.Rows.Remove(showMSR_dataGridView.Rows[showMSR_dataGridView.CurrentCell.RowIndex]);
         }
 
@@ -271,32 +170,22 @@ namespace MSR
             UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(showMSR_dataGridView);
 
             //Populate showMSR_dataGridView from Business Singleton List
-            foreach (Domain.FormItems item in dbFormItems)
+            foreach (Domain.FormItems item in ViewFormItems)
             {
                 showMSR_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
             }
+
         }
 
         private void AddStock_showMSR_button_Click(object sender, EventArgs e)
         {
             this.Hide();
 
-            if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
-            {
-                //Save state of DGV
-                BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
+            //Save state of DGV
+            BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
 
-                AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.waitForApproval);
-                fAddStockItem.ShowDialog();
-            }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
-            {
-                //Save state of DGV
-                BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
-
-                AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.needReview);
-                fAddStockItem.ShowDialog();
-            }
+            AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.waitForApproval);
+            fAddStockItem.ShowDialog();
 
             //Update state of DGV
             ShowMSR_DGV_Load();
@@ -308,23 +197,12 @@ namespace MSR
         {
             this.Hide();
 
-            if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
-            {
-                //Save state of DGV
-                BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
+            //Save state of DGV
+            BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
 
-                AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.waitForApproval);
-                fAddNonStockItem.ShowDialog();
-            }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
-            {
-                //Save state of DGV
-                BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
+            AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.waitForApproval);
+            fAddNonStockItem.ShowDialog();
 
-                AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.needReview);
-                fAddNonStockItem.ShowDialog();
-            }
-            
             //Update state of DGV
             ShowMSR_DGV_Load();
 
@@ -341,7 +219,7 @@ namespace MSR
 
                 //EDIT AND UPDATE MSR
 
-                if(CheckShowMSRDGV() == false)
+                if (CheckShowMSRDGV() == false)
                 {
                     return;
                 }
@@ -587,7 +465,6 @@ namespace MSR
 
             return true;
         }
-
 
     }
 }

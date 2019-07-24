@@ -191,35 +191,6 @@ namespace MSR.DatabaseAPI
             return MSRInfoData;
         }
 
-        public String GetOriginatorID(String MSRId)
-        {
-            String OgId = null;
-
-            SqlParameter MSRId_param = new SqlParameter("@MSRId", MSRId);
-
-            List<SqlParameter> sqlParametersList = new List<SqlParameter>();
-            sqlParametersList.Add(MSRId_param);
-
-            String sql = "SELECT Request_Originator FROM MSR WHERE MSRId = @MSRId";
-
-            using (SqlDataReader dataReader = DBAccessSingleton.Instance.MyExecuteQuery(sql, sqlParametersList))
-            {
-
-
-                while (dataReader.Read())
-                {
-                    //Project, WVL, Comments, BudgetYear, BP_No, AFE, SugVendor, ContactVendor, Request_Originator, Company_Approval, Req_Date, Appr_Date, Recieve_By, Recieve_Date, PUR_Comment, Decline_Comment, Review_Comment, StateFlag
-
-                    String Request_Originator = dataReader["Request_Originator"].ToString();
-
-                    OgId = Request_Originator;
-                }
-
-                dataReader.Close();
-            }
-
-            return OgId;
-        }
 
         public ICollection<Domain.FormItems> GetFormItems_List(String MSRId, String BP_No)
         {
