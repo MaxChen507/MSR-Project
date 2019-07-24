@@ -82,9 +82,9 @@ namespace MSR.BusinessAPI
                 
                 var msr_db = context.MSRs
                     .Include("FormItems")
-                    .Include("Usr2")
-                    .Include("Usr")
-                    .Include("Usr1")
+                    .Include("Usr_RO")
+                    .Include("Usr_CA")
+                    .Include("Usr_RecieveBy")
                     .Where(x => x.MSRId.ToString().Equals(MSRId))
                     .First();
 
@@ -123,7 +123,7 @@ namespace MSR.BusinessAPI
 
                 var msr_db = context.MSRs.Find(Int32.Parse(MSRId));
 
-                OgId = msr_db.Usr2.ToString();
+                OgId = msr_db.Usr_RO.ToString();
             }
 
             return OgId;
@@ -181,13 +181,13 @@ namespace MSR.BusinessAPI
                     AFE = AFE,
                     SugVendor = SugVendor,
                     ContactVendor = ContactVendor,
-                    Usr2 = usr_RO,
-                    Usr = usr_CA,
+                    Usr_RO = usr_RO,
+                    Usr_CA = usr_CA,
                     Req_Date = Req_Date,
                     PUR_Comment = "",
                     Decline_Comment = "",
                     Review_Comment = "",
-                    StateFlag = Domain.WorkFlowTrace.CREATED
+                    StateFlag = Domain.WorkFlowTrace.WAIT_FOR_APPROVAL
                 };
 
                 //Adds the newly created MSR
@@ -202,9 +202,24 @@ namespace MSR.BusinessAPI
             }
         }
 
-        public void UpdateMSR_ApproveButton(int MSRId, String ApproveButton, String CommentFromApproveButton, DateTime ApprovalDate, String StateFlag)
+        internal void UpdateMSR_NeedReview(int MSRId, String StateFlag)
         {
-            if (ApproveButton.Equals("Approve"))
+            using (var context = new MSR_Max_V2Entities())
+            {
+                var msr_db = context.MSRs.Find(MSRId);
+                if (msr_db != null)
+                {
+                    msr_db.StateFlag = StateFlag;
+
+                    context.SaveChanges();
+                }
+
+            }
+        }
+
+        public void UpdateMSR_WaitForApproval(int MSRId, String Path, String CommentFromPath, DateTime ApprovalDate, String StateFlag)
+        {
+            if (Path.Equals("Approve"))
             {
                 using (var context = new MSR_Max_V2Entities())
                 {
@@ -220,14 +235,14 @@ namespace MSR.BusinessAPI
                 }
 
             }
-            else if (ApproveButton.Equals("Send for Review"))
+            else if (Path.Equals("Send for Review"))
             {
                 using (var context = new MSR_Max_V2Entities())
                 {
                     var msr_db = context.MSRs.Find(MSRId);
                     if (msr_db != null)
                     {
-                        msr_db.Review_Comment = CommentFromApproveButton;
+                        msr_db.Review_Comment = CommentFromPath;
                         msr_db.StateFlag = StateFlag;
 
                         context.SaveChanges();
@@ -236,14 +251,14 @@ namespace MSR.BusinessAPI
                 }
 
             }
-            else if (ApproveButton.Equals("Decline"))
+            else if (Path.Equals("Decline"))
             {
                 using (var context = new MSR_Max_V2Entities())
                 {
                     var msr_db = context.MSRs.Find(MSRId);
                     if (msr_db != null)
                     {
-                        msr_db.Decline_Comment = CommentFromApproveButton;
+                        msr_db.Decline_Comment = CommentFromPath;
                         msr_db.StateFlag = StateFlag;
 
                         context.SaveChanges();

@@ -43,8 +43,8 @@ namespace MSR
         public virtual BudgetPool BudgetPool { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FormItem> FormItems { get; set; }
-        public virtual Usr Usr { get; set; }
-        public virtual Usr Usr1 { get; set; }
-        public virtual Usr Usr2 { get; set; }
+        public virtual Usr Usr_CA { get; set; }
+        public virtual Usr Usr_RecieveBy { get; set; }
+        public virtual Usr Usr_RO { get; set; }
     }
 }

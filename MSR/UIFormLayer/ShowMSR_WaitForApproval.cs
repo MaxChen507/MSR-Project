@@ -56,8 +56,8 @@ namespace MSR.UIFormLayer
             vendorContact_showMSR_textBox.Text = MSRInfo.ContactVendor;
 
             //Initialize Approve GroupBox
-            originator_showMSR_textBox.Text = MSRInfo.Usr2.FullName;
-            compApproval_showMSR_textBox.Text = MSRInfo.Usr.FullName;
+            originator_showMSR_textBox.Text = MSRInfo.Usr_RO.FullName;
+            compApproval_showMSR_textBox.Text = MSRInfo.Usr_CA.FullName;
             changeDate_showMSR_dateTimePicker.Value = BusinessAPI.BusinessSingleton.Instance.GetDateTime();
 
             ShowMSR_DGV_Load();
@@ -200,7 +200,7 @@ namespace MSR.UIFormLayer
             //Save state of DGV
             BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
 
-            AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.waitForApproval);
+            AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.waitForApprovalMSR);
             fAddStockItem.ShowDialog();
 
             //Update state of DGV
@@ -216,7 +216,7 @@ namespace MSR.UIFormLayer
             //Save state of DGV
             BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
 
-            AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.waitForApproval);
+            AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.waitForApprovalMSR);
             fAddNonStockItem.ShowDialog();
 
             //Update state of DGV
@@ -261,7 +261,7 @@ namespace MSR.UIFormLayer
                 BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.InsertInitialFormItems(BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval, Convert.ToInt32(MSRInfo.MSRId));
 
                 //Update MSR States and Approve Dates
-                BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.UpdateMSR_ApproveButton(Convert.ToInt32(MSRInfo.MSRId), approve_showMSR_Button.Text.ToString(), "Approved_NA", changeDate_showMSR_dateTimePicker.Value, Domain.WorkFlowTrace.APPROVED);
+                BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.UpdateMSR_WaitForApproval(Convert.ToInt32(MSRInfo.MSRId), approve_showMSR_Button.Text.ToString(), "Approved_NA", changeDate_showMSR_dateTimePicker.Value, Domain.WorkFlowTrace.APPROVED);
 
             }
             else if (approve_showMSR_Button.Text.ToString().Equals("Send for Review"))
@@ -298,7 +298,7 @@ namespace MSR.UIFormLayer
                 BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.InsertInitialFormItems(BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval, Convert.ToInt32(MSRInfo.MSRId));
 
                 //Update MSR
-                BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.UpdateMSR_ApproveButton(Convert.ToInt32(MSRInfo.MSRId), approve_showMSR_Button.Text.ToString(), reason_showMSR_richTextBox.Text.ToString(), BusinessAPI.BusinessSingleton.Instance.GetDateTime(), Domain.WorkFlowTrace.NEED_REVIEW);
+                BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.UpdateMSR_WaitForApproval(Convert.ToInt32(MSRInfo.MSRId), approve_showMSR_Button.Text.ToString(), reason_showMSR_richTextBox.Text.ToString(), BusinessAPI.BusinessSingleton.Instance.GetDateTime(), Domain.WorkFlowTrace.NEED_REVIEW);
             }
             else if (approve_showMSR_Button.Text.ToString().Equals("Decline"))
             {
@@ -318,7 +318,7 @@ namespace MSR.UIFormLayer
                 }
 
                 //Update MSR
-                BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.UpdateMSR_ApproveButton(Convert.ToInt32(MSRInfo.MSRId), approve_showMSR_Button.Text.ToString(), reason_showMSR_richTextBox.Text.ToString(), BusinessAPI.BusinessSingleton.Instance.GetDateTime(), Domain.WorkFlowTrace.DECLINED);
+                BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.UpdateMSR_WaitForApproval(Convert.ToInt32(MSRInfo.MSRId), approve_showMSR_Button.Text.ToString(), reason_showMSR_richTextBox.Text.ToString(), BusinessAPI.BusinessSingleton.Instance.GetDateTime(), Domain.WorkFlowTrace.DECLINED);
             }
             else
             {
@@ -329,42 +329,6 @@ namespace MSR.UIFormLayer
 
         }
 
-        private void SubmitReview_showMSR_button_Click(object sender, EventArgs e)
-        {
-            if (CheckShowMSRDGV() == false)
-            {
-                return;
-            }
-
-            //To confirm if you want to submit MSR edits
-            DialogResult result = MessageBox.Show("Are you sure you want to submit the MSR edits?", "Confirmation", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-
-            }
-            else if (result == DialogResult.No)
-            {
-                return;
-            }
-            else
-            {
-                return;
-            }
-
-            //Save state of DGV
-            BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
-
-            //DELETE from FormItems
-            BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.DeleteFormItemsByMSRId(MSRInfo.MSRId.ToString());
-
-            //INSERT into FormItems
-            BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.InsertInitialFormItems(BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview, Convert.ToInt32(MSRInfo.MSRId));
-
-            //Update MSR States and Approve Dates
-            BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.UpdateMSR_ApproveButton(Convert.ToInt32(MSRInfo.MSRId), approve_showMSR_Button.Text.ToString(), "Approved_NA", changeDate_showMSR_dateTimePicker.Value, Domain.WorkFlowTrace.APPROVED);
-
-            this.Close();
-        }
 
         private Boolean CheckShowMSRDGV()
         {

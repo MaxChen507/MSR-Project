@@ -65,11 +65,11 @@ namespace MSR
             {
                 AddListDGV_Load_CreateMSR();
             }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApprovalMSR))
             {
                 AddListDGV_Load_WaitForApproval();
             }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReviewMSR))
             {
                 AddListDGV_Load_NeedReview();
             }
@@ -123,12 +123,12 @@ namespace MSR
                 //Save state of DGV to CreateMSR
                 BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(addList_addNonStock_dataGridView);
             }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApprovalMSR))
             {
                 //Save state of DGV to WaitForApproval
                 BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(addList_addNonStock_dataGridView);
             }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReviewMSR))
             {
                 //Save state of DGV to WaitForApproval
                 BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(addList_addNonStock_dataGridView);

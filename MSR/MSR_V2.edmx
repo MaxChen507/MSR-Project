@@ -591,9 +591,9 @@ warning 6002: The table/view 'MSR_Max_V2.dbo.V_StockItem_BudgetInfo' does not ha
           <Property Name="StateFlag" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="BudgetPool" Relationship="Self.FK_MSR_BudgetPool" FromRole="MSR" ToRole="BudgetPool" />
           <NavigationProperty Name="FormItems" Relationship="Self.FK_FormItems_MSR" FromRole="MSR" ToRole="FormItems" />
-          <NavigationProperty Name="Usr" Relationship="Self.FK_MSR_Usr_CA" FromRole="MSR" ToRole="Usr" />
-          <NavigationProperty Name="Usr1" Relationship="Self.FK_MSR_Usr_ReciveBy" FromRole="MSR" ToRole="Usr" />
-          <NavigationProperty Name="Usr2" Relationship="Self.FK_MSR_Usr_RO" FromRole="MSR" ToRole="Usr" />
+          <NavigationProperty Name="Usr_CA" Relationship="Self.FK_MSR_Usr_CA" FromRole="MSR" ToRole="Usr" />
+          <NavigationProperty Name="Usr_RecieveBy" Relationship="Self.FK_MSR_Usr_ReciveBy" FromRole="MSR" ToRole="Usr" />
+          <NavigationProperty Name="Usr_RO" Relationship="Self.FK_MSR_Usr_RO" FromRole="MSR" ToRole="Usr" />
         </EntityType>
         <EntityType Name="StockItem">
           <Key>

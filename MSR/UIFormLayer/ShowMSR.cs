@@ -37,7 +37,7 @@ namespace MSR
 
             OriginatorId = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetOriginatorID(MSRId);
 
-            if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
+            if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApprovalMSR))
             {
                 BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = dbFormItems;
             }
@@ -45,7 +45,7 @@ namespace MSR
             {
                 BusinessAPI.BusinessSingleton.Instance.formItemList_Approved = dbFormItems;
             }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReviewMSR))
             {
                 BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview = dbFormItems;
             }
@@ -55,7 +55,7 @@ namespace MSR
 
             InitalizeStartingFields();
 
-            if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
+            if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApprovalMSR))
             {
                 //MessageBox.Show("Came from waitForApproval");
 
@@ -90,7 +90,7 @@ namespace MSR
                 approve_showMSR_Button.Hide();
 
             }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReviewMSR))
             {
                 //MessageBox.Show("Came from needReview");
 
@@ -166,7 +166,7 @@ namespace MSR
             //DGV clear
             UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(showMSR_dataGridView);
 
-            if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
+            if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApprovalMSR))
             {
                 //Populate showMSR_dataGridView from Business Singleton List
                 foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval)
@@ -182,7 +182,7 @@ namespace MSR
                     showMSR_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
                 }
             }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReviewMSR))
             {
                 //Populate showMSR_dataGridView from Business Singleton List
                 foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview)
@@ -281,20 +281,20 @@ namespace MSR
         {
             this.Hide();
 
-            if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
+            if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApprovalMSR))
             {
                 //Save state of DGV
                 BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
 
-                AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.waitForApproval);
+                AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.waitForApprovalMSR);
                 fAddStockItem.ShowDialog();
             }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReviewMSR))
             {
                 //Save state of DGV
                 BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
 
-                AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.needReview);
+                AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.needReviewMSR);
                 fAddStockItem.ShowDialog();
             }
 
@@ -308,20 +308,20 @@ namespace MSR
         {
             this.Hide();
 
-            if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApproval))
+            if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApprovalMSR))
             {
                 //Save state of DGV
                 BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
 
-                AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.waitForApproval);
+                AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.waitForApprovalMSR);
                 fAddNonStockItem.ShowDialog();
             }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReview))
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReviewMSR))
             {
                 //Save state of DGV
                 BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
 
-                AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.needReview);
+                AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.needReviewMSR);
                 fAddNonStockItem.ShowDialog();
             }
             
@@ -483,7 +483,7 @@ namespace MSR
             }
 
             //Update MSR States and Approve Dates
-            DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.UpdateMSR_SubmitReview(Convert.ToInt32(MSRInfo.MSRId), Domain.WorkFlowTrace.CREATED);
+            DatabaseAPI.DBAccessSingleton.Instance.MSRInfoAPI.UpdateMSR_SubmitReview(Convert.ToInt32(MSRInfo.MSRId), Domain.WorkFlowTrace.WAIT_FOR_APPROVAL);
 
             this.Close();
         }

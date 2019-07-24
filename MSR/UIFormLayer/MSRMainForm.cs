@@ -67,7 +67,7 @@ namespace MSR
             }
 
             //Populate waitApprovalTab_dataGridView from BusinessAPI
-            waitApprovalTabDGV_source.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId, Domain.WorkFlowTrace.CREATED);
+            waitApprovalTabDGV_source.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId, Domain.WorkFlowTrace.WAIT_FOR_APPROVAL);
             waitApprovalTab_dataGridView.DataSource = waitApprovalTabDGV_source;
             waitApprovalTab_dataGridView.ClearSelection();
 
@@ -343,7 +343,7 @@ namespace MSR
         
         private void PopulateFilteredShowMSRItemListDGV()
         {
-            ICollection<Domain.ShowMSRItem> showMSRItemData = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId, Domain.WorkFlowTrace.CREATED);
+            ICollection<Domain.ShowMSRItem> showMSRItemData = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo.DeptId, Domain.WorkFlowTrace.WAIT_FOR_APPROVAL);
 
             ICollection<Domain.ShowMSRItem> showMSRItemDatafilter = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetFiltershowMSR_List(showMSRItemData, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text);
 
@@ -426,7 +426,7 @@ namespace MSR
 
             this.Hide();
 
-            ShowMSR fShowMSR = new ShowMSR(needReviewTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString(), Domain.WorkFlowTrace.needReview);
+            UIFormLayer.ShowMSR_NeedReview fShowMSR = new UIFormLayer.ShowMSR_NeedReview(needReviewTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
 
             fShowMSR.ShowDialog();
 
