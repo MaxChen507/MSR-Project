@@ -407,7 +407,7 @@ namespace MSR
 
             this.Hide();
 
-            ShowMSR fShowMSR = new ShowMSR(approvedTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString(), Domain.WorkFlowTrace.approvedMSR);
+            UIFormLayer.ShowMSR_Approved fShowMSR = new UIFormLayer.ShowMSR_Approved(approvedTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
 
             fShowMSR.ShowDialog();
 

@@ -124,6 +124,12 @@
     <Compile Include="Domain\ApproverInfo.cs" />
     <Compile Include="Domain\BudgetInfo.cs" />
     <Compile Include="DatabaseAPI\DBAccessSingleton.cs" />
+    <Compile Include="UIFormLayer\ShowMSR_Approved.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIFormLayer\ShowMSR_Approved.Designer.cs">
+      <DependentUpon>ShowMSR_Approved.cs</DependentUpon>
+    </Compile>
     <Compile Include="UIFormLayer\ShowMSR_NeedReview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,12 +174,6 @@
     <Compile Include="UIFormLayer\ShowMSR.Designer.cs">
       <DependentUpon>ShowMSR.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIFormLayer\ShowMSR_Procure.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UIFormLayer\ShowMSR_Procure.Designer.cs">
-      <DependentUpon>ShowMSR_Procure.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserInterfaceAPI\UserInterfaceSingleton.cs" />
     <Compile Include="Usr.cs">
       <DependentUpon>MSR_V2.tt</DependentUpon>
@@ -217,11 +217,11 @@
     <EmbeddedResource Include="UIFormLayer\ShowMSR.resx">
       <DependentUpon>ShowMSR.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIFormLayer\ShowMSR_Approved.resx">
+      <DependentUpon>ShowMSR_Approved.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIFormLayer\ShowMSR_NeedReview.resx">
       <DependentUpon>ShowMSR_NeedReview.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UIFormLayer\ShowMSR_Procure.resx">
-      <DependentUpon>ShowMSR_Procure.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIFormLayer\ShowMSR_WaitForApproval.resx">
       <DependentUpon>ShowMSR_WaitForApproval.cs</DependentUpon>
