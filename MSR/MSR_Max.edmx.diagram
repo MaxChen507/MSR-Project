@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7c8905371c1043bfb4e86eb79629a81e" Name="Diagram1">
+        <EntityTypeShape EntityType="MSR_MaxModel.ActivityCode" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSR_MaxModel.BudgetInfo" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSR_MaxModel.BudgetPool" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSR_MaxModel.Department" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSR_MaxModel.FormItem" Width="1.5" PointX="9.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSR_MaxModel.Group" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSR_MaxModel.MSR" Width="1.5" PointX="7.5" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSR_MaxModel.StockItem" Width="1.5" PointX="2.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSR_MaxModel.Usr" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSR_MaxModel.V_Approver_BP" Width="1.5" PointX="4.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSR_MaxModel.V_BP_AC_DEPT" Width="1.5" PointX="6.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSR_MaxModel.V_ShowMSR" Width="1.5" PointX="8.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSR_MaxModel.V_StockItem_BudgetInfo" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <AssociationConnector Association="MSR_MaxModel.FK_BudgetInfo_ActivityCode" ManuallyRouted="false" />
+        <AssociationConnector Association="MSR_MaxModel.FK_FormItems_ActivityCode" ManuallyRouted="false" />
+        <AssociationConnector Association="MSR_MaxModel.FK_BudgetInfo_BudgetPool" ManuallyRouted="false" />
+        <AssociationConnector Association="MSR_MaxModel.FK_MSR_BudgetPool" ManuallyRouted="false" />
+        <AssociationConnector Association="MSR_MaxModel.FK_Usr_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="MSR_MaxModel.FK_FormItems_MSR" ManuallyRouted="false" />
+        <AssociationConnector Association="MSR_MaxModel.FK_Usr_Groups" ManuallyRouted="false" />
+        <AssociationConnector Association="MSR_MaxModel.FK_MSR_Usr_CA" ManuallyRouted="false" />
+        <AssociationConnector Association="MSR_MaxModel.FK_MSR_Usr_ReciveBy" ManuallyRouted="false" />
+        <AssociationConnector Association="MSR_MaxModel.FK_MSR_Usr_RO" ManuallyRouted="false" />
+        <AssociationConnector Association="MSR_MaxModel.BudgetHolder" ManuallyRouted="false" />
+        <AssociationConnector Association="MSR_MaxModel.Department_BudgetInfo" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

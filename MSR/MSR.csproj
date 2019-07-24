@@ -56,13 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityCode.cs">
-      <DependentUpon>MSR_V2.tt</DependentUpon>
+      <DependentUpon>MSR_Max.tt</DependentUpon>
     </Compile>
     <Compile Include="BudgetInfo.cs">
-      <DependentUpon>MSR_V2.tt</DependentUpon>
+      <DependentUpon>MSR_Max.tt</DependentUpon>
     </Compile>
     <Compile Include="BudgetPool.cs">
-      <DependentUpon>MSR_V2.tt</DependentUpon>
+      <DependentUpon>MSR_Max.tt</DependentUpon>
     </Compile>
     <Compile Include="BusinessAPI\BudgetInfoAPI_B.cs" />
     <Compile Include="BusinessAPI\LoginAPI_B.cs" />
@@ -70,34 +70,34 @@
     <Compile Include="BusinessAPI\NonStockItemsAPI_B.cs" />
     <Compile Include="BusinessAPI\StockItemsAPI_B.cs" />
     <Compile Include="Department.cs">
-      <DependentUpon>MSR_V2.tt</DependentUpon>
+      <DependentUpon>MSR_Max.tt</DependentUpon>
     </Compile>
     <Compile Include="FormItem.cs">
-      <DependentUpon>MSR_V2.tt</DependentUpon>
+      <DependentUpon>MSR_Max.tt</DependentUpon>
     </Compile>
     <Compile Include="Group.cs">
-      <DependentUpon>MSR_V2.tt</DependentUpon>
+      <DependentUpon>MSR_Max.tt</DependentUpon>
     </Compile>
     <Compile Include="MSR.cs">
-      <DependentUpon>MSR_V2.tt</DependentUpon>
+      <DependentUpon>MSR_Max.tt</DependentUpon>
     </Compile>
-    <Compile Include="MSR_V2.Context.cs">
+    <Compile Include="MSR_Max.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MSR_V2.Context.tt</DependentUpon>
+      <DependentUpon>MSR_Max.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="MSR_V2.cs">
+    <Compile Include="MSR_Max.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MSR_V2.tt</DependentUpon>
+      <DependentUpon>MSR_Max.tt</DependentUpon>
     </Compile>
-    <Compile Include="MSR_V2.Designer.cs">
+    <Compile Include="MSR_Max.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MSR_V2.edmx</DependentUpon>
+      <DependentUpon>MSR_Max.edmx</DependentUpon>
     </Compile>
     <Compile Include="StockItem.cs">
-      <DependentUpon>MSR_V2.tt</DependentUpon>
+      <DependentUpon>MSR_Max.tt</DependentUpon>
     </Compile>
     <Compile Include="UIFormLayer\AddNonStockItemForm.cs">
       <SubType>Form</SubType>
@@ -166,19 +166,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserInterfaceAPI\UserInterfaceSingleton.cs" />
     <Compile Include="Usr.cs">
-      <DependentUpon>MSR_V2.tt</DependentUpon>
+      <DependentUpon>MSR_Max.tt</DependentUpon>
     </Compile>
     <Compile Include="V_Approver_BP.cs">
-      <DependentUpon>MSR_V2.tt</DependentUpon>
+      <DependentUpon>MSR_Max.tt</DependentUpon>
     </Compile>
     <Compile Include="V_BP_AC_DEPT.cs">
-      <DependentUpon>MSR_V2.tt</DependentUpon>
+      <DependentUpon>MSR_Max.tt</DependentUpon>
     </Compile>
     <Compile Include="V_ShowMSR.cs">
-      <DependentUpon>MSR_V2.tt</DependentUpon>
+      <DependentUpon>MSR_Max.tt</DependentUpon>
     </Compile>
     <Compile Include="V_StockItem_BudgetInfo.cs">
-      <DependentUpon>MSR_V2.tt</DependentUpon>
+      <DependentUpon>MSR_Max.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="UIFormLayer\AddNonStockItemForm.resx">
       <DependentUpon>AddNonStockItemForm.cs</DependentUpon>
@@ -213,12 +213,12 @@
     <EmbeddedResource Include="UIFormLayer\ShowMSR_WaitForApproval.resx">
       <DependentUpon>ShowMSR_WaitForApproval.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="MSR_V2.edmx">
+    <EntityDeploy Include="MSR_Max.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MSR_V2.Designer.cs</LastGenOutput>
+      <LastGenOutput>MSR_Max.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="MSR_V2.edmx.diagram">
-      <DependentUpon>MSR_V2.edmx</DependentUpon>
+    <None Include="MSR_Max.edmx.diagram">
+      <DependentUpon>MSR_Max.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -238,15 +238,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MSR_V2.Context.tt">
+    <Content Include="MSR_Max.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MSR_V2.edmx</DependentUpon>
-      <LastGenOutput>MSR_V2.Context.cs</LastGenOutput>
+      <DependentUpon>MSR_Max.edmx</DependentUpon>
+      <LastGenOutput>MSR_Max.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="MSR_V2.tt">
+    <Content Include="MSR_Max.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MSR_V2.edmx</DependentUpon>
-      <LastGenOutput>MSR_V2.cs</LastGenOutput>
+      <DependentUpon>MSR_Max.edmx</DependentUpon>
+      <LastGenOutput>MSR_Max.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

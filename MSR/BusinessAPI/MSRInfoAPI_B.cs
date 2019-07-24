@@ -13,7 +13,7 @@ namespace MSR.BusinessAPI
         {
             ICollection<Domain.ShowMSRItem> showMSRData = null;
 
-            using (var context = new MSR_Max_V2Entities())
+            using (var context = new MSR_MaxEntities())
             {
                 //Log DB commands to console
                 context.Database.Log = Console.WriteLine;
@@ -75,7 +75,7 @@ namespace MSR.BusinessAPI
         {
             MSR msr = null;
 
-            using (var context = new MSR_Max_V2Entities())
+            using (var context = new MSR_MaxEntities())
             {
                 //Log DB commands to console
                 context.Database.Log = Console.WriteLine;
@@ -96,7 +96,7 @@ namespace MSR.BusinessAPI
 
         public void DeleteFormItemsByMSRId(String MSRId)
         {
-            using (var context = new MSR_Max_V2Entities())
+            using (var context = new MSR_MaxEntities())
             {
                 //Log DB commands to console
                 context.Database.Log = Console.WriteLine;
@@ -116,7 +116,7 @@ namespace MSR.BusinessAPI
         {
             String OgId = null;
 
-            using (var context = new MSR_Max_V2Entities())
+            using (var context = new MSR_MaxEntities())
             {
                 //Log DB commands to console
                 context.Database.Log = Console.WriteLine;
@@ -131,7 +131,7 @@ namespace MSR.BusinessAPI
 
         public void InsertInitialFormItems(ICollection<FormItems> formItemList, int MSRId)
         {
-            using (var context = new MSR_Max_V2Entities())
+            using (var context = new MSR_MaxEntities())
             {
                 foreach (Domain.FormItems item in formItemList)
                 {
@@ -161,7 +161,7 @@ namespace MSR.BusinessAPI
 
         public void InsertIntialMSR(Domain.ApproverInfo approverInfo, String Project, String VWL, String Comments, String BudgetYear, String BP_No, String AFE, String SugVendor, String ContactVendor, DateTime Req_Date)
         {
-            using (var context = new MSR_Max_V2Entities())
+            using (var context = new MSR_MaxEntities())
             {
                 //Log DB commands to console
                 context.Database.Log = Console.WriteLine;
@@ -204,7 +204,7 @@ namespace MSR.BusinessAPI
 
         internal void UpdateMSR_NeedReview(int MSRId, String StateFlag)
         {
-            using (var context = new MSR_Max_V2Entities())
+            using (var context = new MSR_MaxEntities())
             {
                 var msr_db = context.MSRs.Find(MSRId);
                 if (msr_db != null)
@@ -221,7 +221,7 @@ namespace MSR.BusinessAPI
         {
             if (Path.Equals("Approve"))
             {
-                using (var context = new MSR_Max_V2Entities())
+                using (var context = new MSR_MaxEntities())
                 {
                     var msr_db = context.MSRs.Find(MSRId);
                     if (msr_db != null)
@@ -237,7 +237,7 @@ namespace MSR.BusinessAPI
             }
             else if (Path.Equals("Send for Review"))
             {
-                using (var context = new MSR_Max_V2Entities())
+                using (var context = new MSR_MaxEntities())
                 {
                     var msr_db = context.MSRs.Find(MSRId);
                     if (msr_db != null)
@@ -253,7 +253,7 @@ namespace MSR.BusinessAPI
             }
             else if (Path.Equals("Decline"))
             {
-                using (var context = new MSR_Max_V2Entities())
+                using (var context = new MSR_MaxEntities())
                 {
                     var msr_db = context.MSRs.Find(MSRId);
                     if (msr_db != null)

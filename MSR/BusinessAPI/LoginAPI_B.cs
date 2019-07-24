@@ -12,7 +12,7 @@ namespace MSR.BusinessAPI
         {
             Boolean loginFlag = false;
 
-            using (var context = new MSR_Max_V2Entities())
+            using (var context = new MSR_MaxEntities())
             {
                 //Log DB commands to console
                 context.Database.Log = Console.WriteLine;
@@ -39,7 +39,7 @@ namespace MSR.BusinessAPI
         {
             Usr usr = null;
 
-            using (var context = new MSR_Max_V2Entities())
+            using (var context = new MSR_MaxEntities())
             {
                 //Log DB commands to console
                 context.Database.Log = Console.WriteLine;
@@ -64,7 +64,7 @@ namespace MSR.BusinessAPI
         {
             ICollection<V_BP_AC_DEPT> v_BP_DEPT_List = null;
 
-            using (var context = new MSR_Max_V2Entities())
+            using (var context = new MSR_MaxEntities())
             {
                 //Log DB commands to console
                 context.Database.Log = Console.WriteLine;

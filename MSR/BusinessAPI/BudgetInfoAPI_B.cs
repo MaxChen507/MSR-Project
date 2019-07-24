@@ -12,7 +12,7 @@ namespace MSR.BusinessAPI
         {
             ICollection<Domain.ApproverInfo> budgetHolderData = null;
 
-            using (var context = new MSR_Max_V2Entities())
+            using (var context = new MSR_MaxEntities())
             {
                 //Log DB commands to console
                 context.Database.Log = Console.WriteLine;

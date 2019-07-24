@@ -13,10 +13,10 @@ namespace MSR
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MSR_Max_V2Entities : DbContext
+    public partial class MSR_MaxEntities : DbContext
     {
-        public MSR_Max_V2Entities()
-            : base("name=MSR_Max_V2Entities")
+        public MSR_MaxEntities()
+            : base("name=MSR_MaxEntities")
         {
         }
     
@@ -34,9 +34,9 @@ namespace MSR
         public virtual DbSet<MSR> MSRs { get; set; }
         public virtual DbSet<StockItem> StockItems { get; set; }
         public virtual DbSet<Usr> Usrs { get; set; }
+        public virtual DbSet<V_Approver_BP> V_Approver_BP { get; set; }
         public virtual DbSet<V_BP_AC_DEPT> V_BP_AC_DEPT { get; set; }
         public virtual DbSet<V_ShowMSR> V_ShowMSR { get; set; }
         public virtual DbSet<V_StockItem_BudgetInfo> V_StockItem_BudgetInfo { get; set; }
-        public virtual DbSet<V_Approver_BP> V_Approver_BP { get; set; }
     }
 }

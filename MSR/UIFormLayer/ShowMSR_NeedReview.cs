@@ -82,12 +82,15 @@ namespace MSR.UIFormLayer
                 reason_showMSR_groupBox.Enabled = false;
                 reason_showMSR_richTextBox.Text = MSRInfo.Review_Comment;
 
-                //Enable Add Delete Items
+                //Disable Add Delete Items
                 edit_showMSR_groupBox.Enabled = false;
 
-                //Enable editing for quantity and comments
+                //Disable editing for quantity and comments
                 showMSR_dataGridView.Columns[3].ReadOnly = true;
                 showMSR_dataGridView.Columns[8].ReadOnly = true;
+
+                //Disable Review Button
+                submitReview_showMSR_Button.Enabled = false;
             }
 
         }
