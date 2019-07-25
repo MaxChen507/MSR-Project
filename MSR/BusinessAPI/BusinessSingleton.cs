@@ -15,6 +15,7 @@ namespace MSR.BusinessAPI
         //New Variables
         public Usr userInfo_EF { get; set; }
         public ICollection<V_BP_AC_DEPT> v_bp_dept_access_EF { get; set; }
+        public ICollection<V_BH_BI> v_bp_bi_access_EF { get; set; }
 
         // Shared Data of FormItemList
         public ICollection<Domain.FormItems> formItemList_CreateMSR { get; set; }
@@ -69,7 +70,8 @@ namespace MSR.BusinessAPI
             //Sets the BPInfo User can access
             v_bp_dept_access_EF = LoginAPI_B.GetBudgetInfo_AccessByDeptId(userInfo_EF.DeptId);
 
-            //Sets the 
+            //Sets the AC Holders of BPInfo User can access
+            v_bp_bi_access_EF = LoginAPI_B.GetAC_AccessByBPList(v_bp_dept_access_EF);
 
         }
 
@@ -115,6 +117,24 @@ namespace MSR.BusinessAPI
 
             return groupsInfo;
         }
+
+        public bool CheckACNo_CAId_Match(String AC_No, String ApproverId)
+        {
+            bool matchFlag = false;
+
+            try
+            {
+                V_BH_BI result = v_bp_bi_access_EF.Single(x => x.AC_No.Equals(AC_No) && x.UserId == Int32.Parse(ApproverId));
+                matchFlag = true;
+            }
+            catch
+            {
+                matchFlag = false;
+            }
+
+            return matchFlag;
+        }
+        
 
     }
 }

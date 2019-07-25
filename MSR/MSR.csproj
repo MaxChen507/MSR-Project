@@ -145,10 +145,8 @@
     </Compile>
     <Compile Include="Domain\FormItems.cs" />
     <Compile Include="Domain\GroupsInfo.cs" />
-    <Compile Include="Domain\MSRInfo.cs" />
     <Compile Include="Domain\ShowMSRItem.cs" />
     <Compile Include="Domain\StockItems.cs" />
-    <Compile Include="Domain\UserInfo.cs" />
     <Compile Include="Domain\WorkFlowTrace.cs" />
     <Compile Include="UIFormLayer\LoginForm.cs">
       <SubType>Form</SubType>
@@ -169,6 +167,9 @@
       <DependentUpon>MSR_Max.tt</DependentUpon>
     </Compile>
     <Compile Include="V_Approver_BP.cs">
+      <DependentUpon>MSR_Max.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_BH_BI.cs">
       <DependentUpon>MSR_Max.tt</DependentUpon>
     </Compile>
     <Compile Include="V_BP_AC_DEPT.cs">

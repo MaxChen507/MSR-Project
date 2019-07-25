@@ -17,7 +17,7 @@
         <EntityTypeShape EntityType="MSR_MaxModel.V_Approver_BP" Width="1.5" PointX="4.75" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="MSR_MaxModel.V_BP_AC_DEPT" Width="1.5" PointX="6.75" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="MSR_MaxModel.V_ShowMSR" Width="1.5" PointX="8.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="MSR_MaxModel.V_StockItem_BudgetInfo" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSR_MaxModel.V_StockItem_BudgetInfo" Width="1.5" PointX="0.875" PointY="10.5" IsExpanded="true" />
         <AssociationConnector Association="MSR_MaxModel.FK_BudgetInfo_ActivityCode" ManuallyRouted="false" />
         <AssociationConnector Association="MSR_MaxModel.FK_FormItems_ActivityCode" ManuallyRouted="false" />
         <AssociationConnector Association="MSR_MaxModel.FK_BudgetInfo_BudgetPool" ManuallyRouted="false" />
@@ -30,6 +30,7 @@
         <AssociationConnector Association="MSR_MaxModel.FK_MSR_Usr_RO" ManuallyRouted="false" />
         <AssociationConnector Association="MSR_MaxModel.BudgetHolder" ManuallyRouted="false" />
         <AssociationConnector Association="MSR_MaxModel.Department_BudgetInfo" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MSR_MaxModel.V_BH_BI" Width="1.5" PointX="10.75" PointY="9.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

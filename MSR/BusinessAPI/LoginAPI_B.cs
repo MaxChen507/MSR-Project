@@ -59,7 +59,6 @@ namespace MSR.BusinessAPI
             return usr;
         }
 
-        //internal: access what does it mean?
         public ICollection<V_BP_AC_DEPT> GetBudgetInfo_AccessByDeptId(int deptId)
         {
             ICollection<V_BP_AC_DEPT> v_BP_DEPT_List = null;
@@ -77,6 +76,28 @@ namespace MSR.BusinessAPI
             }
 
             return v_BP_DEPT_List;
+        }
+
+        public ICollection<V_BH_BI> GetAC_AccessByBPList(ICollection<V_BP_AC_DEPT> v_BP_DEPT_List)
+        {
+            ICollection<V_BH_BI> v_BH_BI_Access_List = null;
+
+            using (var context = new MSR_MaxEntities())
+            {
+                //Log DB commands to console
+                context.Database.Log = Console.WriteLine;
+
+                //Grab the list from context first
+                ICollection<V_BH_BI> v_BH_BI_db = context.V_BH_BI.ToList();
+
+                //Perform the match between two lists
+                ICollection<V_BH_BI> v_BH_BI_Access_temp = v_BH_BI_db.Where(x =>
+                                            v_BP_DEPT_List.Any(y => y.BP_No.Equals(x.BP_No))).ToList();
+
+                v_BH_BI_Access_List = v_BH_BI_Access_temp;
+            }
+
+            return v_BH_BI_Access_List;
         }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MSR_MaxModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MSR_MaxModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ActivityCode">
           <Key>
             <PropertyRef Name="AC_No" />
@@ -145,6 +145,20 @@ warning 6002: The table/view 'MSR_Max.dbo.V_Approver_BP' does not have a primary
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DeptId" Type="int" Nullable="false" />
           <Property Name="BP_No" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MSR_Max.dbo.V_BH_BI' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_BH_BI">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="BP_No" />
+            <PropertyRef Name="AC_No" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BP_No" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="AC_No" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'MSR_Max.dbo.V_BP_AC_DEPT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -398,6 +412,14 @@ warning 6002: The table/view 'MSR_Max.dbo.V_StockItem_BudgetInfo' does not have 
     [V_Approver_BP].[BP_No] AS [BP_No]
     FROM [dbo].[V_Approver_BP] AS [V_Approver_BP]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="V_BH_BI" EntityType="Self.V_BH_BI" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_BH_BI].[UserId] AS [UserId], 
+    [V_BH_BI].[Username] AS [Username], 
+    [V_BH_BI].[BP_No] AS [BP_No], 
+    [V_BH_BI].[AC_No] AS [AC_No]
+    FROM [dbo].[V_BH_BI] AS [V_BH_BI]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="V_BP_AC_DEPT" EntityType="Self.V_BP_AC_DEPT" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [V_BP_AC_DEPT].[BudgetInfoId] AS [BudgetInfoId], 
@@ -492,8 +514,7 @@ warning 6002: The table/view 'MSR_Max.dbo.V_StockItem_BudgetInfo' does not have 
             <End Role="Usr" EntitySet="Usr" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MSR_MaxModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -890,7 +911,20 @@ warning 6002: The table/view 'MSR_Max.dbo.V_StockItem_BudgetInfo' does not have 
             <End Role="Department" EntitySet="Departments" />
             <End Role="BudgetInfo" EntitySet="BudgetInfoes" />
           </AssociationSet>
+          <EntitySet Name="V_BH_BI" EntityType="MSR_MaxModel.V_BH_BI" />
         </EntityContainer>
+        <EntityType Name="V_BH_BI">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="BP_No" />
+            <PropertyRef Name="AC_No" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BP_No" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AC_No" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1084,6 +1118,16 @@ warning 6002: The table/view 'MSR_Max.dbo.V_StockItem_BudgetInfo' does not have 
               <ScalarProperty Name="BudgetInfoId" ColumnName="BudgetInfoId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="V_BH_BI">
+            <EntityTypeMapping TypeName="MSR_MaxModel.V_BH_BI">
+              <MappingFragment StoreEntitySet="V_BH_BI">
+                <ScalarProperty Name="AC_No" ColumnName="AC_No" />
+                <ScalarProperty Name="BP_No" ColumnName="BP_No" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

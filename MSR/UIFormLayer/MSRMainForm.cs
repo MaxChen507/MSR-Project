@@ -154,6 +154,11 @@ namespace MSR
 
         private void Save_createTab_button_Click(object sender, EventArgs e)
         {
+            //Inital Variables:
+            //Obtain approver info of selected
+            Domain.ApproverInfo approverInfo = (Domain.ApproverInfo)approval_createTab_comboBox.SelectedItem;
+
+            //Validation:
             //Unselect DataGridView
             createTab_dataGridView.ClearSelection();
 
@@ -215,6 +220,34 @@ namespace MSR
                 MessageBox.Show("Highlighted item's budget pool doesn't match with selected Budget Pool.");
                 return;
             }
+
+
+            //Checking if all items's AC_No matches combobox approver
+            foreach (DataGridViewRow row in createTab_dataGridView.Rows)
+            {
+                //if (!(row.Cells["BudgetPool"].FormattedValue.ToString().Equals(budgetPool_createTab_comboBox.Text)))
+                if (!BusinessAPI.BusinessSingleton.Instance.CheckACNo_CAId_Match(row.Cells["AC_No"].FormattedValue.ToString(), approverInfo.UserId))
+                {
+                    Color lightRed = ControlPaint.Light(Color.Red);
+                    row.Cells["AC_No"].Style.BackColor = lightRed;
+                    itemsCorrectFlag = false;
+                }
+                else
+                {
+                    row.Cells["AC_No"].Style.BackColor = (Color)System.Drawing.SystemColors.Window;
+                }
+            }
+
+            if (itemsCorrectFlag)
+            {
+                MessageBox.Show("All item's AC_No match with selected Approver.");
+            }
+            else
+            {
+                MessageBox.Show("Highlighted item's AC_No doesn't match with selected Approver.");
+                return;
+            }
+
 
             //Checking if all numeric fields are numeric
             foreach (DataGridViewRow row in createTab_dataGridView.Rows)
@@ -295,13 +328,8 @@ namespace MSR
                 return;
             }
 
-            //return;
-
 
             //EF Workflow
-
-            //Obtain approver info of selected
-            Domain.ApproverInfo approverInfo = (Domain.ApproverInfo)approval_createTab_comboBox.SelectedItem;
 
             //Creates MSR with Associated FormItems
             BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.InsertIntialMSR(
