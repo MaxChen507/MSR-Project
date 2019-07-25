@@ -30,6 +30,26 @@ namespace MSR.BusinessAPI
             return showMSRData;
         }
 
+        public ICollection<Domain.ShowMSRItem> GetShowMSR_List_Procure(String StateFlag)
+        {
+            ICollection<Domain.ShowMSRItem> showMSRData = null;
+
+            using (var context = new MSR_MaxEntities())
+            {
+                //Log DB commands to console
+                context.Database.Log = Console.WriteLine;
+
+                showMSRData = new List<Domain.ShowMSRItem>();
+
+                var showMSRData_db = (from d in context.V_ShowMSR
+                                      where (d.StateFlag.Equals(StateFlag))
+                                      select new Domain.ShowMSRItem { MSRId = d.MSRId.ToString(), Bp_No = d.BP_No, DeptName = d.DeptName, Originator = d.Originator, Approver = d.Approver, Req_Date = d.Req_Date, Comments = d.Comments, Appr_Date = d.Appr_Date.ToString() }).ToList();
+
+                showMSRData = showMSRData_db;
+
+            }
+            return showMSRData;
+        }
 
         public ICollection<Domain.ShowMSRItem> GetFiltershowMSR_List(ICollection<Domain.ShowMSRItem> showMSRList, string searchMSRID, string searchDept, string searchOg, string searchAp)
         {

@@ -83,6 +83,49 @@ namespace MSR.UIFormLayer
 
         }
 
+        private void PopulateFilteredShowMSRItemListDGV(String workflowtrace, String idSearchText, String deptSearchText, String ogSearchText, String apSearchText, BindingSource TabDGV_source, DataGridView dataGridView)
+        {
+            ICollection<Domain.ShowMSRItem> showMSRItemData = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo_EF.DeptId.ToString(), workflowtrace);
+
+            ICollection<Domain.ShowMSRItem> showMSRItemDatafilter = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetFiltershowMSR_List(showMSRItemData, idSearchText, deptSearchText, ogSearchText, apSearchText);
+
+            if (showMSRItemDatafilter == null)
+            {
+                MessageBox.Show("DB error");
+                return;
+            }
+
+            TabDGV_source.DataSource = showMSRItemDatafilter;
+            dataGridView.DataSource = TabDGV_source;
+            dataGridView.ClearSelection();
+        }
+
+
+        #region CreateTab Code Block
+
+        private void BudgetPool_createTab_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Check if reseting
+            if(budgetPool_createTab_comboBox.SelectedIndex == -1)
+            {
+                return;
+            }
+
+            //Clear then Populate Approval Combobox
+            //approval_createTab_comboBox.Items.Clear();
+            approval_createTab_comboBox.DataSource = null;
+            approval_createTab_comboBox.Enabled = true;
+            approval_createTab_comboBox.DataSource =  BusinessAPI.BusinessSingleton.Instance.BudgetInfoAPI_B.GetBudgetHolder_List_EF(budgetPool_createTab_comboBox.Text);
+
+            //Change Display of combobox
+            approval_createTab_comboBox.DisplayMember = "FullName";
+            approval_createTab_comboBox.SelectedIndex = -1;
+
+            //Enable Stock Buttons
+            addStock_createTab_button.Enabled = true;
+            addNonStock_createTab_button.Enabled = true;
+        }
+
         private void AddStock_createTab_button_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -113,29 +156,6 @@ namespace MSR.UIFormLayer
             RefreshDataGridViews();
 
             this.Show();
-        }
-
-        private void BudgetPool_createTab_comboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //Check if reseting
-            if(budgetPool_createTab_comboBox.SelectedIndex == -1)
-            {
-                return;
-            }
-
-            //Clear then Populate Approval Combobox
-            //approval_createTab_comboBox.Items.Clear();
-            approval_createTab_comboBox.DataSource = null;
-            approval_createTab_comboBox.Enabled = true;
-            approval_createTab_comboBox.DataSource =  BusinessAPI.BusinessSingleton.Instance.BudgetInfoAPI_B.GetBudgetHolder_List_EF(budgetPool_createTab_comboBox.Text);
-
-            //Change Display of combobox
-            approval_createTab_comboBox.DisplayMember = "FullName";
-            approval_createTab_comboBox.SelectedIndex = -1;
-
-            //Enable Stock Buttons
-            addStock_createTab_button.Enabled = true;
-            addNonStock_createTab_button.Enabled = true;
         }
 
         private void ChangeDate_createTab_checkBox_CheckedChanged(object sender, EventArgs e)
@@ -235,101 +255,6 @@ namespace MSR.UIFormLayer
             addStock_createTab_button.Enabled = false;
             addNonStock_createTab_button.Enabled = false;
         }
-        
-        private void PopulateFilteredShowMSRItemListDGV()
-        {
-            ICollection<Domain.ShowMSRItem> showMSRItemData = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo_EF.DeptId.ToString(), Domain.WorkFlowTrace.WAIT_FOR_APPROVAL);
-
-            ICollection<Domain.ShowMSRItem> showMSRItemDatafilter = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetFiltershowMSR_List(showMSRItemData, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text);
-
-            if (showMSRItemDatafilter == null)
-            {
-                MessageBox.Show("DB error");
-                return;
-            }
-
-            waitApprovalTabDGV_source.DataSource = showMSRItemDatafilter;
-            waitApprovalTab_dataGridView.DataSource = waitApprovalTabDGV_source;
-            waitApprovalTab_dataGridView.ClearSelection();
-        }
-
-        private void IdSearch_waitApprovalTab_textBox_TextChanged(object sender, EventArgs e)
-        {
-            PopulateFilteredShowMSRItemListDGV();
-        }
-
-        private void DeptSearch_waitApprovalTab_textBox_TextChanged(object sender, EventArgs e)
-        {
-            PopulateFilteredShowMSRItemListDGV();
-        }
-
-        private void OgSearch_waitApprovalTab_textBox_TextChanged(object sender, EventArgs e)
-        {
-            PopulateFilteredShowMSRItemListDGV();
-        }
-
-        private void ApSearch_waitApprovalTab_textBox_TextChanged(object sender, EventArgs e)
-        {
-            PopulateFilteredShowMSRItemListDGV();
-        }
-
-        private void WaitApprovalTab_dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //MessageBox.Show(waitApprovalTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
-
-            //Check if header is selected
-            if (e.RowIndex == -1) return;
-
-            this.Hide();
-            
-            UIFormLayer.ShowMSR_WaitForApproval fShowMSR = new UIFormLayer.ShowMSR_WaitForApproval(waitApprovalTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
-
-            fShowMSR.ShowDialog();
-
-            //Update state of DGV
-            RefreshDataGridViews();
-
-            this.Show();
-
-        }
-
-        private void ApprovedTab_dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //MessageBox.Show(approvedTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
-
-            //Check if header is selected
-            if (e.RowIndex == -1) return;
-
-            this.Hide();
-
-            UIFormLayer.ShowMSR_Approved fShowMSR = new UIFormLayer.ShowMSR_Approved(approvedTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
-
-            fShowMSR.ShowDialog();
-
-            //Update state of DGV
-            RefreshDataGridViews();
-
-            this.Show();
-        }
-        
-        private void NeedReviewTab_dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //MessageBox.Show(needReviewTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
-
-            //Check if header is selected
-            if (e.RowIndex == -1) return;
-
-            this.Hide();
-
-            UIFormLayer.ShowMSR_NeedReview fShowMSR = new UIFormLayer.ShowMSR_NeedReview(needReviewTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
-
-            fShowMSR.ShowDialog();
-
-            //Update state of DGV
-            RefreshDataGridViews();
-
-            this.Show();
-        }
 
         private Boolean CheckCreateMSRFields()
         {
@@ -367,6 +292,142 @@ namespace MSR.UIFormLayer
 
             return checkFieldFlag;
         }
+
+        #endregion
+
+
+        #region WaitApprovalTab Code Block
+
+        private void IdSearch_waitApprovalTab_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.WAIT_FOR_APPROVAL, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text, waitApprovalTabDGV_source, waitApprovalTab_dataGridView);
+        }
+
+        private void DeptSearch_waitApprovalTab_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.WAIT_FOR_APPROVAL, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text, waitApprovalTabDGV_source, waitApprovalTab_dataGridView);
+        }
+
+        private void OgSearch_waitApprovalTab_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.WAIT_FOR_APPROVAL, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text, waitApprovalTabDGV_source, waitApprovalTab_dataGridView);
+        }
+
+        private void ApSearch_waitApprovalTab_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.WAIT_FOR_APPROVAL, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text, waitApprovalTabDGV_source, waitApprovalTab_dataGridView);
+        }
+      
+        private void WaitApprovalTab_dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //MessageBox.Show(waitApprovalTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
+
+            //Check if header is selected
+            if (e.RowIndex == -1) return;
+
+            this.Hide();
+            
+            UIFormLayer.ShowMSR_WaitForApproval fShowMSR = new UIFormLayer.ShowMSR_WaitForApproval(waitApprovalTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
+
+            fShowMSR.ShowDialog();
+
+            //Update state of DGV
+            RefreshDataGridViews();
+
+            this.Show();
+
+        }
+
+        #endregion
+
+
+        #region NeedReviewTab Code Block
+
+        private void IdSearch_needReview_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.NEED_REVIEW, idSearch_needReviewTab_textBox.Text, deptSearch_needReviewTab_textBox.Text, ogSearch_needReviewTab_textBox.Text, apSearch_needReviewTab_textBox.Text, needReviewTabDGV_source, needReviewTab_dataGridView);
+        }
+
+        private void DeptSearch_needReviewTab_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.NEED_REVIEW, idSearch_needReviewTab_textBox.Text, deptSearch_needReviewTab_textBox.Text, ogSearch_needReviewTab_textBox.Text, apSearch_needReviewTab_textBox.Text, needReviewTabDGV_source, needReviewTab_dataGridView);
+        }
+
+        private void OgSearch_needReviewTab_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.NEED_REVIEW, idSearch_needReviewTab_textBox.Text, deptSearch_needReviewTab_textBox.Text, ogSearch_needReviewTab_textBox.Text, apSearch_needReviewTab_textBox.Text, needReviewTabDGV_source, needReviewTab_dataGridView);
+        }
+
+        private void ApSearch_needReviewTab_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.NEED_REVIEW, idSearch_needReviewTab_textBox.Text, deptSearch_needReviewTab_textBox.Text, ogSearch_needReviewTab_textBox.Text, apSearch_needReviewTab_textBox.Text, needReviewTabDGV_source, needReviewTab_dataGridView);
+        }
+        
+        private void NeedReviewTab_dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //MessageBox.Show(needReviewTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
+
+            //Check if header is selected
+            if (e.RowIndex == -1) return;
+
+            this.Hide();
+
+            UIFormLayer.ShowMSR_NeedReview fShowMSR = new UIFormLayer.ShowMSR_NeedReview(needReviewTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
+
+            fShowMSR.ShowDialog();
+
+            //Update state of DGV
+            RefreshDataGridViews();
+
+            this.Show();
+        }
+        
+        #endregion
+
+
+        #region ApprovedTab Code Block
+
+        private void IdSearch_approvedTab_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.APPROVED, idSearch_approvedTab_textBox.Text, deptSearch_approvedTab_textBox.Text, ogSearch_approvedTab_textBox.Text, apSearch_approvedTab_textBox.Text, approvedTabDGV_source, approvedTab_dataGridView);
+        }
+
+        private void DeptSearch_approvedTab_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.APPROVED, idSearch_approvedTab_textBox.Text, deptSearch_approvedTab_textBox.Text, ogSearch_approvedTab_textBox.Text, apSearch_approvedTab_textBox.Text, approvedTabDGV_source, approvedTab_dataGridView);
+        }
+
+        private void OgSearch_approvedTab_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.APPROVED, idSearch_approvedTab_textBox.Text, deptSearch_approvedTab_textBox.Text, ogSearch_approvedTab_textBox.Text, apSearch_approvedTab_textBox.Text, approvedTabDGV_source, approvedTab_dataGridView);
+        }
+
+        private void ApSearch_approvedTab_textBox_TextChanged(object sender, EventArgs e)
+        {
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.APPROVED, idSearch_approvedTab_textBox.Text, deptSearch_approvedTab_textBox.Text, ogSearch_approvedTab_textBox.Text, apSearch_approvedTab_textBox.Text, approvedTabDGV_source, approvedTab_dataGridView);
+        }
+        
+        private void ApprovedTab_dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //MessageBox.Show(approvedTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
+
+            //Check if header is selected
+            if (e.RowIndex == -1) return;
+
+            this.Hide();
+
+            UIFormLayer.ShowMSR_Approved fShowMSR = new UIFormLayer.ShowMSR_Approved(approvedTab_dataGridView.SelectedRows[0].Cells["MSRId"].FormattedValue.ToString());
+
+            fShowMSR.ShowDialog();
+
+            //Update state of DGV
+            RefreshDataGridViews();
+
+            this.Show();
+        }
+        
+        #endregion
+
 
     }
 }

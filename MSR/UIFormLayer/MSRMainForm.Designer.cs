@@ -92,7 +92,7 @@
             this.ogSearch_needReviewTab_label = new System.Windows.Forms.Label();
             this.deptSearch_needReviewTab_textBox = new System.Windows.Forms.TextBox();
             this.deptSearch_needReviewTab_label = new System.Windows.Forms.Label();
-            this.idSearch_needReview_textBox = new System.Windows.Forms.TextBox();
+            this.idSearch_needReviewTab_textBox = new System.Windows.Forms.TextBox();
             this.idSearch_needReview_label = new System.Windows.Forms.Label();
             this.approved_tabPage = new System.Windows.Forms.TabPage();
             this.approvedTab_dataGridView = new System.Windows.Forms.DataGridView();
@@ -716,7 +716,7 @@
             this.search_needReviewTab_groupBox.Controls.Add(this.ogSearch_needReviewTab_label);
             this.search_needReviewTab_groupBox.Controls.Add(this.deptSearch_needReviewTab_textBox);
             this.search_needReviewTab_groupBox.Controls.Add(this.deptSearch_needReviewTab_label);
-            this.search_needReviewTab_groupBox.Controls.Add(this.idSearch_needReview_textBox);
+            this.search_needReviewTab_groupBox.Controls.Add(this.idSearch_needReviewTab_textBox);
             this.search_needReviewTab_groupBox.Controls.Add(this.idSearch_needReview_label);
             this.search_needReviewTab_groupBox.Location = new System.Drawing.Point(19, 18);
             this.search_needReviewTab_groupBox.Name = "search_needReviewTab_groupBox";
@@ -731,6 +731,7 @@
             this.apSearch_needReviewTab_textBox.Name = "apSearch_needReviewTab_textBox";
             this.apSearch_needReviewTab_textBox.Size = new System.Drawing.Size(100, 20);
             this.apSearch_needReviewTab_textBox.TabIndex = 7;
+            this.apSearch_needReviewTab_textBox.TextChanged += new System.EventHandler(this.ApSearch_needReviewTab_textBox_TextChanged);
             // 
             // apSearch_needReviewTab_label
             // 
@@ -747,6 +748,7 @@
             this.ogSearch_needReviewTab_textBox.Name = "ogSearch_needReviewTab_textBox";
             this.ogSearch_needReviewTab_textBox.Size = new System.Drawing.Size(100, 20);
             this.ogSearch_needReviewTab_textBox.TabIndex = 5;
+            this.ogSearch_needReviewTab_textBox.TextChanged += new System.EventHandler(this.OgSearch_needReviewTab_textBox_TextChanged);
             // 
             // ogSearch_needReviewTab_label
             // 
@@ -763,6 +765,7 @@
             this.deptSearch_needReviewTab_textBox.Name = "deptSearch_needReviewTab_textBox";
             this.deptSearch_needReviewTab_textBox.Size = new System.Drawing.Size(100, 20);
             this.deptSearch_needReviewTab_textBox.TabIndex = 3;
+            this.deptSearch_needReviewTab_textBox.TextChanged += new System.EventHandler(this.DeptSearch_needReviewTab_textBox_TextChanged);
             // 
             // deptSearch_needReviewTab_label
             // 
@@ -773,12 +776,13 @@
             this.deptSearch_needReviewTab_label.TabIndex = 2;
             this.deptSearch_needReviewTab_label.Text = "Department";
             // 
-            // idSearch_needReview_textBox
+            // idSearch_needReviewTab_textBox
             // 
-            this.idSearch_needReview_textBox.Location = new System.Drawing.Point(31, 53);
-            this.idSearch_needReview_textBox.Name = "idSearch_needReview_textBox";
-            this.idSearch_needReview_textBox.Size = new System.Drawing.Size(100, 20);
-            this.idSearch_needReview_textBox.TabIndex = 1;
+            this.idSearch_needReviewTab_textBox.Location = new System.Drawing.Point(31, 53);
+            this.idSearch_needReviewTab_textBox.Name = "idSearch_needReviewTab_textBox";
+            this.idSearch_needReviewTab_textBox.Size = new System.Drawing.Size(100, 20);
+            this.idSearch_needReviewTab_textBox.TabIndex = 1;
+            this.idSearch_needReviewTab_textBox.TextChanged += new System.EventHandler(this.IdSearch_needReview_textBox_TextChanged);
             // 
             // idSearch_needReview_label
             // 
@@ -839,6 +843,7 @@
             this.apSearch_approvedTab_textBox.Name = "apSearch_approvedTab_textBox";
             this.apSearch_approvedTab_textBox.Size = new System.Drawing.Size(100, 20);
             this.apSearch_approvedTab_textBox.TabIndex = 7;
+            this.apSearch_approvedTab_textBox.TextChanged += new System.EventHandler(this.ApSearch_approvedTab_textBox_TextChanged);
             // 
             // apSearch_approvedTab_label
             // 
@@ -855,6 +860,7 @@
             this.ogSearch_approvedTab_textBox.Name = "ogSearch_approvedTab_textBox";
             this.ogSearch_approvedTab_textBox.Size = new System.Drawing.Size(100, 20);
             this.ogSearch_approvedTab_textBox.TabIndex = 5;
+            this.ogSearch_approvedTab_textBox.TextChanged += new System.EventHandler(this.OgSearch_approvedTab_textBox_TextChanged);
             // 
             // ogSearch_approvedTab_label
             // 
@@ -871,6 +877,7 @@
             this.deptSearch_approvedTab_textBox.Name = "deptSearch_approvedTab_textBox";
             this.deptSearch_approvedTab_textBox.Size = new System.Drawing.Size(100, 20);
             this.deptSearch_approvedTab_textBox.TabIndex = 3;
+            this.deptSearch_approvedTab_textBox.TextChanged += new System.EventHandler(this.DeptSearch_approvedTab_textBox_TextChanged);
             // 
             // deptSearch_approvedTab_label
             // 
@@ -887,6 +894,7 @@
             this.idSearch_approvedTab_textBox.Name = "idSearch_approvedTab_textBox";
             this.idSearch_approvedTab_textBox.Size = new System.Drawing.Size(100, 20);
             this.idSearch_approvedTab_textBox.TabIndex = 1;
+            this.idSearch_approvedTab_textBox.TextChanged += new System.EventHandler(this.IdSearch_approvedTab_textBox_TextChanged);
             // 
             // idSearch_approvedTab_label
             // 
@@ -1099,7 +1107,7 @@
         private System.Windows.Forms.Label ogSearch_needReviewTab_label;
         private System.Windows.Forms.TextBox deptSearch_needReviewTab_textBox;
         private System.Windows.Forms.Label deptSearch_needReviewTab_label;
-        private System.Windows.Forms.TextBox idSearch_needReview_textBox;
+        private System.Windows.Forms.TextBox idSearch_needReviewTab_textBox;
         private System.Windows.Forms.Label idSearch_needReview_label;
         private UIFormLayer.MainMenuUserControl mainMenuUserControl1;
     }

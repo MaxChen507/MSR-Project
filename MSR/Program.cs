@@ -32,8 +32,7 @@ namespace MSR
                 }
                 else
                 {
-                    MessageBox.Show("Error you do not belong to correct group!");
-                    Application.Exit();
+                    MessageBox.Show("Error! You do not belong to a correct group.");
                 }
                 
             }
