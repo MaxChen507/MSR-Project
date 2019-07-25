@@ -17,10 +17,25 @@ namespace MSR
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            LoginForm fLogin = new LoginForm();
+            UIFormLayer.LoginForm fLogin = new UIFormLayer.LoginForm();
             if (fLogin.ShowDialog() == DialogResult.OK)
             {
-                Application.Run(new MSRMainForm());
+                //User is from a standard dept
+                if (BusinessAPI.BusinessSingleton.Instance.userInfo_EF.Group.GroupsName.Equals(Domain.WorkFlowTrace.StandUser) || BusinessAPI.BusinessSingleton.Instance.userInfo_EF.Group.GroupsName.Equals(Domain.WorkFlowTrace.StandBH))
+                {
+                    Application.Run(new UIFormLayer.MSRMainForm());
+                }
+                //User is from procurement dept
+                else if (BusinessAPI.BusinessSingleton.Instance.userInfo_EF.Group.GroupsName.Equals(Domain.WorkFlowTrace.StandProcurement))
+                {
+                    Application.Run(new UIFormLayer.MSRMain_ProcurementForm());
+                }
+                else
+                {
+                    MessageBox.Show("Error you do not belong to correct group!");
+                    Application.Exit();
+                }
+                
             }
             else
             {

@@ -1,4 +1,4 @@
-﻿namespace MSR
+﻿namespace MSR.UIFormLayer
 {
     partial class AddNonStockItemForm
     {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MSR
+namespace MSR.UIFormLayer
 {
     public partial class MSRMainForm : Form
     {

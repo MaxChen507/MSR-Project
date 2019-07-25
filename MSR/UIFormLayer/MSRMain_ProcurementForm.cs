@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace MSR.UIFormLayer
 {
-    public partial class AssignMSR : Form
+    public partial class MSRMain_ProcurementForm : Form
     {
-        public AssignMSR()
+        public MSRMain_ProcurementForm()
         {
             InitializeComponent();
+        }
+
+        private void ApprovedTab_dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

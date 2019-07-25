@@ -67,11 +67,28 @@ namespace MSR.BusinessAPI
             //Sets the UserInfo
             userInfo_EF = LoginAPI_B.GetUsrByUsername(username);
 
-            //Sets the BPInfo User can access
-            v_bp_dept_access_EF = LoginAPI_B.GetBudgetInfo_AccessByDeptId(userInfo_EF.DeptId);
+            //User is from a standard dept
+            if (userInfo_EF.Group.GroupsName.Equals(Domain.WorkFlowTrace.StandUser) || userInfo_EF.Group.GroupsName.Equals(Domain.WorkFlowTrace.StandBH))
+            {
+                //Initalize shared FormItems Data List to Business Singleton
+                BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = new List<Domain.FormItems>();
 
-            //Sets the AC Holders of BPInfo User can access
-            v_bp_bi_access_EF = LoginAPI_B.GetAC_AccessByBPList(v_bp_dept_access_EF);
+                //Sets the BPInfo User can access
+                v_bp_dept_access_EF = LoginAPI_B.GetBudgetInfo_AccessByDeptId(userInfo_EF.DeptId);
+
+                //Sets the AC Holders of BPInfo User can access
+                v_bp_bi_access_EF = LoginAPI_B.GetAC_AccessByBPList(v_bp_dept_access_EF);
+            }
+            //User is from procurement dept
+            else if (userInfo_EF.Group.GroupsName.Equals(Domain.WorkFlowTrace.StandProcurement))
+            {
+
+            }
+            else
+            {
+                
+            }
+
 
         }
 

@@ -1,4 +1,4 @@
-﻿namespace MSR
+﻿namespace MSR.UIFormLayer
 {
     partial class MSRMainForm
     {
@@ -105,8 +105,6 @@
             this.deptSearch_approvedTab_label = new System.Windows.Forms.Label();
             this.idSearch_approvedTab_textBox = new System.Windows.Forms.TextBox();
             this.idSearch_approvedTab_label = new System.Windows.Forms.Label();
-            this.MSRMain_menuStrip = new System.Windows.Forms.MenuStrip();
-            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -117,6 +115,7 @@
             this.calendarColumn1 = new UserInterfaceAPI.CalendarColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainMenuUserControl1 = new UIFormLayer.MainMenuUserControl();
             this.mainMSR_tabControl.SuspendLayout();
             this.createNewMSR_tabPage.SuspendLayout();
             this.signDate_createTab_groupBox.SuspendLayout();
@@ -134,7 +133,6 @@
             this.approved_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.approvedTab_dataGridView)).BeginInit();
             this.search_approvedTab_groupBox.SuspendLayout();
-            this.MSRMain_menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMSR_tabControl
@@ -143,7 +141,7 @@
             this.mainMSR_tabControl.Controls.Add(this.waitApproval_tabPage);
             this.mainMSR_tabControl.Controls.Add(this.needReview_tabPage);
             this.mainMSR_tabControl.Controls.Add(this.approved_tabPage);
-            this.mainMSR_tabControl.Location = new System.Drawing.Point(12, 27);
+            this.mainMSR_tabControl.Location = new System.Drawing.Point(12, 25);
             this.mainMSR_tabControl.Name = "mainMSR_tabControl";
             this.mainMSR_tabControl.SelectedIndex = 0;
             this.mainMSR_tabControl.Size = new System.Drawing.Size(1160, 812);
@@ -899,22 +897,6 @@
             this.idSearch_approvedTab_label.TabIndex = 0;
             this.idSearch_approvedTab_label.Text = "MSR ID";
             // 
-            // MSRMain_menuStrip
-            // 
-            this.MSRMain_menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuToolStripMenuItem});
-            this.MSRMain_menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.MSRMain_menuStrip.Name = "MSRMain_menuStrip";
-            this.MSRMain_menuStrip.Size = new System.Drawing.Size(1181, 24);
-            this.MSRMain_menuStrip.TabIndex = 1;
-            this.MSRMain_menuStrip.Text = "menuStrip1";
-            // 
-            // menuToolStripMenuItem
-            // 
-            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.menuToolStripMenuItem.Text = "Menu";
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "BudgetPool";
@@ -982,14 +964,21 @@
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             this.dataGridViewTextBoxColumn9.Width = 96;
             // 
+            // mainMenuUserControl1
+            // 
+            this.mainMenuUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.mainMenuUserControl1.Name = "mainMenuUserControl1";
+            this.mainMenuUserControl1.Size = new System.Drawing.Size(1181, 24);
+            this.mainMenuUserControl1.TabIndex = 15;
+            // 
             // MSRMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1181, 847);
+            this.Controls.Add(this.mainMenuUserControl1);
             this.Controls.Add(this.mainMSR_tabControl);
-            this.Controls.Add(this.MSRMain_menuStrip);
             this.Name = "MSRMainForm";
             this.Text = "MSR Main Form";
             this.Load += new System.EventHandler(this.MSRMainForm_Load);
@@ -1019,10 +1008,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.approvedTab_dataGridView)).EndInit();
             this.search_approvedTab_groupBox.ResumeLayout(false);
             this.search_approvedTab_groupBox.PerformLayout();
-            this.MSRMain_menuStrip.ResumeLayout(false);
-            this.MSRMain_menuStrip.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -1031,8 +1017,6 @@
         private System.Windows.Forms.TabControl mainMSR_tabControl;
         private System.Windows.Forms.TabPage createNewMSR_tabPage;
         private System.Windows.Forms.TabPage waitApproval_tabPage;
-        private System.Windows.Forms.MenuStrip MSRMain_menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.GroupBox project_createTab_groupBox;
         private System.Windows.Forms.GroupBox budget_createTab_groupBox;
         private System.Windows.Forms.Label comments_createTab_label;
@@ -1117,6 +1101,7 @@
         private System.Windows.Forms.Label deptSearch_needReviewTab_label;
         private System.Windows.Forms.TextBox idSearch_needReview_textBox;
         private System.Windows.Forms.Label idSearch_needReview_label;
+        private UIFormLayer.MainMenuUserControl mainMenuUserControl1;
     }
 }
 

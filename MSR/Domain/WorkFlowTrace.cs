@@ -15,6 +15,7 @@ namespace MSR.Domain
 
         public static String StandUser = "StandUser";
         public static String StandBH = "StandBH";
+        public static String StandProcurement = "StandProcurement";
 
         public static String WAIT_FOR_APPROVAL = "WAIT_FOR_APPROVAL";
         public static String APPROVED = "APPROVED";

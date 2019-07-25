@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MSR
+namespace MSR.UIFormLayer
 {
     public partial class LoginForm : Form
     {
@@ -39,12 +39,7 @@ namespace MSR
 
         private void SetUserSession(String username)
         {
-            //Initalize shared FormItems Data List to Business Singleton
-            BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = new List<Domain.FormItems>();
-
             BusinessAPI.BusinessSingleton.Instance.SetUsrLoginSessionVariables(username);
-
-            //Usr testUsr = BusinessAPI.BusinessSingleton.Instance.userInfo_EF;
         }
 
         private void Password_Login_textBox_KeyDown(object sender, KeyEventArgs e)
