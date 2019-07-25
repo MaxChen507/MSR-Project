@@ -212,7 +212,7 @@ namespace MSR.UserInterfaceAPI
             }
             else
             {
-                MessageBox.Show("Highlighted items' fields must be corrected to double.");
+                MessageBox.Show("Highlighted items' fields must be corrected to a (decimal) number.");
                 return false;
             }
 
@@ -237,7 +237,7 @@ namespace MSR.UserInterfaceAPI
             }
             else
             {
-                MessageBox.Show("Highlighted items' fields must be filled");
+                MessageBox.Show("Highlighted items' fields must be filled.");
                 return false;
             }
 

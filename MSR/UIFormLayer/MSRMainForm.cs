@@ -161,35 +161,10 @@ namespace MSR
             //Validation:
             //Unselect DataGridView
             createTab_dataGridView.ClearSelection();
-
+            
             //Checking all required fields
-            if (budgetYear_createTab_comboBox.SelectedIndex == -1)
+            if (CheckCreateMSRFields() == false)
             {
-                MessageBox.Show("Please select a budget year.");
-                return;
-            }
-
-            if (budgetPool_createTab_comboBox.SelectedIndex == -1)
-            {
-                MessageBox.Show("Please select a budget pool.");
-                return;
-            }
-
-            if (originator_createTab_comboBox.SelectedIndex == -1)
-            {
-                MessageBox.Show("Please select an originator.");
-                return;
-            }
-
-            if (createTab_dataGridView.Rows.Count == 0)
-            {
-                MessageBox.Show("Please add an item.");
-                return;
-            }
-
-            if (approval_createTab_comboBox.SelectedIndex == -1)
-            {
-                MessageBox.Show("Please select an approver.");
                 return;
             }
 
@@ -354,6 +329,43 @@ namespace MSR
             RefreshDataGridViews();
 
             this.Show();
+        }
+
+        private Boolean CheckCreateMSRFields()
+        {
+            Boolean checkFieldFlag = false;
+
+            if (budgetYear_createTab_comboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a budget year.");
+                checkFieldFlag = false;
+            }
+            else if (budgetPool_createTab_comboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a budget pool.");
+                checkFieldFlag = false;
+            }
+            else if (originator_createTab_comboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select an originator.");
+                checkFieldFlag = false;
+            }
+            else if (createTab_dataGridView.Rows.Count == 0)
+            {
+                MessageBox.Show("Please add an item.");
+                checkFieldFlag = false;
+            }
+            else if (approval_createTab_comboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select an approver.");
+                checkFieldFlag = false;
+            }
+            else
+            {
+                checkFieldFlag = true;
+            }
+
+            return checkFieldFlag;
         }
 
     }
