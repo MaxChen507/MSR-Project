@@ -55,7 +55,7 @@ namespace MSR.UIFormLayer
             //Initialize Approve GroupBox
             originator_showMSR_textBox.Text = MSRInfo.Usr_RO.FullName;
             compApproval_showMSR_textBox.Text = MSRInfo.Usr_CA.FullName;
-
+                       
             ShowMSR_DGV_Load();
 
             //Depending on the type of User, different controls will change
@@ -236,6 +236,31 @@ namespace MSR.UIFormLayer
             else
             {
                 MessageBox.Show("Highlighted item's budget pool doesn't match with selected Budget Pool.");
+                return false;
+            }
+
+            //Checking if all items's AC_No matches combobox approver
+            foreach (DataGridViewRow row in showMSR_dataGridView.Rows)
+            {
+                if (!BusinessAPI.BusinessSingleton.Instance.CheckACNo_CAId_Match(row.Cells["AC_No"].FormattedValue.ToString(), MSRInfo.Usr_CA.UserId.ToString()))
+                {
+                    Color lightRed = ControlPaint.Light(Color.Red);
+                    row.Cells["AC_No"].Style.BackColor = lightRed;
+                    itemsCorrectFlag = false;
+                }
+                else
+                {
+                    row.Cells["AC_No"].Style.BackColor = (Color)System.Drawing.SystemColors.Window;
+                }
+            }
+
+            if (itemsCorrectFlag)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Highlighted item's AC_No doesn't match with selected Approver.");
                 return false;
             }
 

@@ -135,6 +135,27 @@ namespace MSR.BusinessAPI
             return matchFlag;
         }
         
+        public Domain.ApproverInfo GetApproverInfoByUsername(String username)
+        {
+            Domain.ApproverInfo approverInfo = null;
 
+            using (var context = new MSR_MaxEntities())
+            {
+                Usr usr_db = context.Usrs.SingleOrDefault(u => u.Username.Equals(username));
+                
+                Domain.ApproverInfo approverInfoTemp = new Domain.ApproverInfo
+                {
+                    UserId = usr_db.UserId.ToString(),
+                    Username = usr_db.Username,
+                    FullName = usr_db.FullName,
+                    Email = usr_db.Email,
+                    DeptId = usr_db.DeptId.ToString()
+                };
+
+                approverInfo = approverInfoTemp;
+            }
+
+            return approverInfo;
+        }
     }
 }

@@ -366,6 +366,31 @@ namespace MSR.UIFormLayer
                 return false;
             }
 
+            //Checking if all items's AC_No matches combobox approver
+            foreach (DataGridViewRow row in showMSR_dataGridView.Rows)
+            {
+                if (!BusinessAPI.BusinessSingleton.Instance.CheckACNo_CAId_Match(row.Cells["AC_No"].FormattedValue.ToString(), MSRInfo.Usr_CA.UserId.ToString()))
+                {
+                    Color lightRed = ControlPaint.Light(Color.Red);
+                    row.Cells["AC_No"].Style.BackColor = lightRed;
+                    itemsCorrectFlag = false;
+                }
+                else
+                {
+                    row.Cells["AC_No"].Style.BackColor = (Color)System.Drawing.SystemColors.Window;
+                }
+            }
+
+            if (itemsCorrectFlag)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Highlighted item's AC_No doesn't match with selected Approver.");
+                return false;
+            }
+
             //Checking if all numeric fields are numeric
             foreach (DataGridViewRow row in showMSR_dataGridView.Rows)
             {

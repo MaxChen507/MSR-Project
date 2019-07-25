@@ -240,7 +240,7 @@ namespace MSR
 
             if (itemsCorrectFlag)
             {
-                MessageBox.Show("All item's AC_No match with selected Approver.");
+
             }
             else
             {
