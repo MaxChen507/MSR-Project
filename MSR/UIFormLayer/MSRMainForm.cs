@@ -183,13 +183,7 @@ namespace MSR.UIFormLayer
             createTab_dataGridView.ClearSelection();
             
             //Checking all required fields
-            if (CheckCreateMSRFields() == false)
-            {
-                return;
-            }
-
-            //Checking if all item's fields are correct
-            if (UserInterfaceAPI.UserInterfaceSIngleton.Instance.CheckMSRFormItemsDGV(createTab_dataGridView, budgetPool_createTab_comboBox.Text, approverInfo.UserId) == false)
+            if (CheckCreateMSRFields(approverInfo) == false)
             {
                 return;
             }
@@ -239,24 +233,7 @@ namespace MSR.UIFormLayer
             clearAllFields_createTab_button.PerformClick();
         }
 
-        private void ClearAllFields_createTab_button_Click(object sender, EventArgs e)
-        {
-            //First Basic Reset
-            UserInterfaceAPI.UserInterfaceSIngleton.Instance.ResetAllControls(createNewMSR_tabPage);
-
-            //Reset Budget GroupBox
-            budgetYear_createTab_comboBox.SelectedIndex = -1;
-            budgetPool_createTab_comboBox.SelectedIndex = -1;
-
-            //Reset SignDate GroupBox
-            approval_createTab_comboBox.SelectedIndex = -1;
-
-            //Reset Buttons
-            addStock_createTab_button.Enabled = false;
-            addNonStock_createTab_button.Enabled = false;
-        }
-
-        private Boolean CheckCreateMSRFields()
+        private Boolean CheckCreateMSRFields(Domain.ApproverInfo approverInfo)
         {
             Boolean checkFieldFlag = false;
 
@@ -285,12 +262,39 @@ namespace MSR.UIFormLayer
                 MessageBox.Show("Please select an approver.");
                 checkFieldFlag = false;
             }
+            else if (BusinessAPI.BusinessSingleton.Instance.userInfo_EF.UserId == Int32.Parse(approverInfo.UserId))
+            {
+                MessageBox.Show("You can not approve yourself. Please select a different approver.");
+                checkFieldFlag = false;
+            }
+            // Checking if all item's fields are correct
+            else if (UserInterfaceAPI.UserInterfaceSIngleton.Instance.CheckMSRFormItemsDGV(createTab_dataGridView, budgetPool_createTab_comboBox.Text, approverInfo.UserId) == false)
+            {
+                checkFieldFlag = false;
+            }
             else
             {
                 checkFieldFlag = true;
             }
 
             return checkFieldFlag;
+        }
+
+        private void ClearAllFields_createTab_button_Click(object sender, EventArgs e)
+        {
+            //First Basic Reset
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.ResetAllControls(createNewMSR_tabPage);
+
+            //Reset Budget GroupBox
+            budgetYear_createTab_comboBox.SelectedIndex = -1;
+            budgetPool_createTab_comboBox.SelectedIndex = -1;
+
+            //Reset SignDate GroupBox
+            approval_createTab_comboBox.SelectedIndex = -1;
+
+            //Reset Buttons
+            addStock_createTab_button.Enabled = false;
+            addNonStock_createTab_button.Enabled = false;
         }
 
         #endregion

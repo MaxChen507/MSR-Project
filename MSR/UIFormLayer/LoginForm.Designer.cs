@@ -51,6 +51,7 @@
             this.username_Login_textBox.Name = "username_Login_textBox";
             this.username_Login_textBox.Size = new System.Drawing.Size(221, 20);
             this.username_Login_textBox.TabIndex = 1;
+            this.username_Login_textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Username_Login_textBox_KeyDown);
             // 
             // password_Login_textBox
             // 

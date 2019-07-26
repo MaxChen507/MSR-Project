@@ -49,5 +49,13 @@ namespace MSR.UIFormLayer
                 ok_Login_button.PerformClick();
             }
         }
+
+        private void Username_Login_textBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ok_Login_button.PerformClick();
+            }
+        }
     }
 }
