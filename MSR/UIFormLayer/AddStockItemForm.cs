@@ -180,7 +180,7 @@ namespace MSR.UIFormLayer
                 String Currency = "";
                 String ROS_Date = BusinessAPI.BusinessSingleton.Instance.GetDateTime().AddDays(14).ToString("MM/dd/yyyy");
                 String Comments = "";
-                String AC_No = itemList_addStock_dataGridView.SelectedRows[0].Cells["AC_No"].FormattedValue.ToString();
+                String AC_No = itemList_addStock_dataGridView.SelectedRows[0].Cells["AcNo"].FormattedValue.ToString();
 
                 addList_addStock_dataGridView.Rows.Add(BudgetPool, ItemCode, ItemDesc, Quantity, Unit, UnitPrice, Currency, ROS_Date, Comments, AC_No);
             }

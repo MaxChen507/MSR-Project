@@ -64,11 +64,11 @@
     <Compile Include="BudgetPool.cs">
       <DependentUpon>MSR_Max.tt</DependentUpon>
     </Compile>
-    <Compile Include="BusinessAPI\BudgetInfoAPI_B.cs" />
-    <Compile Include="BusinessAPI\LoginAPI_B.cs" />
-    <Compile Include="BusinessAPI\MSRInfoAPI_B.cs" />
-    <Compile Include="BusinessAPI\NonStockItemsAPI_B.cs" />
-    <Compile Include="BusinessAPI\StockItemsAPI_B.cs" />
+    <Compile Include="BusinessAPI\BudgetInfoAPI.cs" />
+    <Compile Include="BusinessAPI\LoginAPI.cs" />
+    <Compile Include="BusinessAPI\MSRInfoAPI.cs" />
+    <Compile Include="BusinessAPI\NonStockItemsAPI.cs" />
+    <Compile Include="BusinessAPI\StockItemsAPI.cs" />
     <Compile Include="Department.cs">
       <DependentUpon>MSR_Max.tt</DependentUpon>
     </Compile>

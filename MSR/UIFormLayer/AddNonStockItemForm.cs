@@ -174,7 +174,7 @@ namespace MSR.UIFormLayer
             }
             else
             {
-                String BudgetPool = budgetInfo_addNonStock_dataGridView.SelectedRows[0].Cells["BP_No"].FormattedValue.ToString();
+                String BudgetPool = budgetInfo_addNonStock_dataGridView.SelectedRows[0].Cells["BpNo"].FormattedValue.ToString();
                 String ItemCode = "[NonStock]";
                 String ItemDesc = itemDesc_addNonStock_richTextBox.Text;
                 String Quantity = "1";
@@ -183,7 +183,7 @@ namespace MSR.UIFormLayer
                 String Currency = "";
                 String ROS_Date = BusinessAPI.BusinessSingleton.Instance.GetDateTime().AddDays(14).ToString("MM/dd/yyyy");
                 String Comments = "";
-                String AC_No = budgetInfo_addNonStock_dataGridView.SelectedRows[0].Cells["AC_No"].FormattedValue.ToString();
+                String AC_No = budgetInfo_addNonStock_dataGridView.SelectedRows[0].Cells["AcNo"].FormattedValue.ToString();
 
                 addList_addNonStock_dataGridView.Rows.Add(BudgetPool, ItemCode, ItemDesc, Quantity, Unit, UnitPrice, Currency, ROS_Date, Comments, AC_No);
             }
