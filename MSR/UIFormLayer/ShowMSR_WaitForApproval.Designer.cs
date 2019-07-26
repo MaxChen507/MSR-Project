@@ -158,7 +158,7 @@
             this.approve_showMSR_groupBox.Controls.Add(this.changeDate_showMSR_checkBox);
             this.approve_showMSR_groupBox.Controls.Add(this.compApproval_showMSR_label);
             this.approve_showMSR_groupBox.Controls.Add(this.originator_showMSR_label);
-            this.approve_showMSR_groupBox.Location = new System.Drawing.Point(12, 615);
+            this.approve_showMSR_groupBox.Location = new System.Drawing.Point(12, 614);
             this.approve_showMSR_groupBox.Name = "approve_showMSR_groupBox";
             this.approve_showMSR_groupBox.Size = new System.Drawing.Size(329, 198);
             this.approve_showMSR_groupBox.TabIndex = 33;
@@ -270,7 +270,7 @@
             this.edit_showMSR_groupBox.Controls.Add(this.addStock_showMSR_button);
             this.edit_showMSR_groupBox.Controls.Add(this.deleteItem_showMSR_button);
             this.edit_showMSR_groupBox.Enabled = false;
-            this.edit_showMSR_groupBox.Location = new System.Drawing.Point(1035, 209);
+            this.edit_showMSR_groupBox.Location = new System.Drawing.Point(1035, 208);
             this.edit_showMSR_groupBox.Name = "edit_showMSR_groupBox";
             this.edit_showMSR_groupBox.Size = new System.Drawing.Size(251, 400);
             this.edit_showMSR_groupBox.TabIndex = 32;
@@ -281,7 +281,7 @@
             // 
             this.reason_showMSR_groupBox.Controls.Add(this.reason_showMSR_richTextBox);
             this.reason_showMSR_groupBox.Controls.Add(this.reason_showMSR_label);
-            this.reason_showMSR_groupBox.Location = new System.Drawing.Point(347, 615);
+            this.reason_showMSR_groupBox.Location = new System.Drawing.Point(347, 614);
             this.reason_showMSR_groupBox.Name = "reason_showMSR_groupBox";
             this.reason_showMSR_groupBox.Size = new System.Drawing.Size(365, 198);
             this.reason_showMSR_groupBox.TabIndex = 34;
@@ -310,7 +310,7 @@
             // 
             // print_showMSR_button
             // 
-            this.print_showMSR_button.Location = new System.Drawing.Point(1064, 627);
+            this.print_showMSR_button.Location = new System.Drawing.Point(1064, 626);
             this.print_showMSR_button.Name = "print_showMSR_button";
             this.print_showMSR_button.Size = new System.Drawing.Size(200, 40);
             this.print_showMSR_button.TabIndex = 35;
@@ -384,7 +384,7 @@
             // 
             // info_showMSR_groupBox
             // 
-            this.info_showMSR_groupBox.Location = new System.Drawing.Point(1035, 13);
+            this.info_showMSR_groupBox.Location = new System.Drawing.Point(1035, 12);
             this.info_showMSR_groupBox.Name = "info_showMSR_groupBox";
             this.info_showMSR_groupBox.Size = new System.Drawing.Size(251, 100);
             this.info_showMSR_groupBox.TabIndex = 31;
@@ -407,7 +407,7 @@
             this.ROS_Date,
             this.Comments,
             this.AC_No});
-            this.showMSR_dataGridView.Location = new System.Drawing.Point(12, 209);
+            this.showMSR_dataGridView.Location = new System.Drawing.Point(12, 208);
             this.showMSR_dataGridView.MultiSelect = false;
             this.showMSR_dataGridView.Name = "showMSR_dataGridView";
             this.showMSR_dataGridView.Size = new System.Drawing.Size(1006, 400);
@@ -489,7 +489,7 @@
             // 
             this.vendorContact_showMSR_groupBox.Controls.Add(this.vendorContact_showMSR_textBox);
             this.vendorContact_showMSR_groupBox.Controls.Add(this.vendorContact_showMSR_label);
-            this.vendorContact_showMSR_groupBox.Location = new System.Drawing.Point(518, 119);
+            this.vendorContact_showMSR_groupBox.Location = new System.Drawing.Point(518, 118);
             this.vendorContact_showMSR_groupBox.Name = "vendorContact_showMSR_groupBox";
             this.vendorContact_showMSR_groupBox.Size = new System.Drawing.Size(500, 75);
             this.vendorContact_showMSR_groupBox.TabIndex = 29;
@@ -527,7 +527,7 @@
             // 
             this.suggVendor_showMSR_groupBox.Controls.Add(this.suggVendor_showMSR_textBox);
             this.suggVendor_showMSR_groupBox.Controls.Add(this.suggVendor_showMSR_label);
-            this.suggVendor_showMSR_groupBox.Location = new System.Drawing.Point(12, 119);
+            this.suggVendor_showMSR_groupBox.Location = new System.Drawing.Point(12, 118);
             this.suggVendor_showMSR_groupBox.Name = "suggVendor_showMSR_groupBox";
             this.suggVendor_showMSR_groupBox.Size = new System.Drawing.Size(500, 75);
             this.suggVendor_showMSR_groupBox.TabIndex = 28;
@@ -560,7 +560,7 @@
             this.budget_showMSR_groupBox.Controls.Add(this.AFE_showMSR_textBox);
             this.budget_showMSR_groupBox.Controls.Add(this.budgetPool_showMSR_label);
             this.budget_showMSR_groupBox.Controls.Add(this.budgetYear_showMSR_label);
-            this.budget_showMSR_groupBox.Location = new System.Drawing.Point(518, 13);
+            this.budget_showMSR_groupBox.Location = new System.Drawing.Point(518, 12);
             this.budget_showMSR_groupBox.Name = "budget_showMSR_groupBox";
             this.budget_showMSR_groupBox.Size = new System.Drawing.Size(500, 100);
             this.budget_showMSR_groupBox.TabIndex = 27;
@@ -570,7 +570,7 @@
             // 
             this.budgetPool_showMSR_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.budgetPool_showMSR_textBox.Location = new System.Drawing.Point(123, 39);
+            this.budgetPool_showMSR_textBox.Location = new System.Drawing.Point(99, 39);
             this.budgetPool_showMSR_textBox.Name = "budgetPool_showMSR_textBox";
             this.budgetPool_showMSR_textBox.ReadOnly = true;
             this.budgetPool_showMSR_textBox.Size = new System.Drawing.Size(121, 20);
@@ -580,7 +580,7 @@
             // 
             this.budgetYear_showMSR_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.budgetYear_showMSR_textBox.Location = new System.Drawing.Point(123, 13);
+            this.budgetYear_showMSR_textBox.Location = new System.Drawing.Point(99, 13);
             this.budgetYear_showMSR_textBox.Name = "budgetYear_showMSR_textBox";
             this.budgetYear_showMSR_textBox.ReadOnly = true;
             this.budgetYear_showMSR_textBox.Size = new System.Drawing.Size(121, 20);
@@ -589,7 +589,7 @@
             // AFE_showMSR_label
             // 
             this.AFE_showMSR_label.AutoSize = true;
-            this.AFE_showMSR_label.Location = new System.Drawing.Point(87, 68);
+            this.AFE_showMSR_label.Location = new System.Drawing.Point(63, 68);
             this.AFE_showMSR_label.Name = "AFE_showMSR_label";
             this.AFE_showMSR_label.Size = new System.Drawing.Size(30, 13);
             this.AFE_showMSR_label.TabIndex = 7;
@@ -599,7 +599,7 @@
             // 
             this.AFE_showMSR_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AFE_showMSR_textBox.Location = new System.Drawing.Point(123, 65);
+            this.AFE_showMSR_textBox.Location = new System.Drawing.Point(99, 65);
             this.AFE_showMSR_textBox.Name = "AFE_showMSR_textBox";
             this.AFE_showMSR_textBox.ReadOnly = true;
             this.AFE_showMSR_textBox.Size = new System.Drawing.Size(121, 20);
@@ -608,7 +608,7 @@
             // budgetPool_showMSR_label
             // 
             this.budgetPool_showMSR_label.AutoSize = true;
-            this.budgetPool_showMSR_label.Location = new System.Drawing.Point(30, 42);
+            this.budgetPool_showMSR_label.Location = new System.Drawing.Point(6, 42);
             this.budgetPool_showMSR_label.Name = "budgetPool_showMSR_label";
             this.budgetPool_showMSR_label.Size = new System.Drawing.Size(87, 13);
             this.budgetPool_showMSR_label.TabIndex = 7;
@@ -617,7 +617,7 @@
             // budgetYear_showMSR_label
             // 
             this.budgetYear_showMSR_label.AutoSize = true;
-            this.budgetYear_showMSR_label.Location = new System.Drawing.Point(30, 16);
+            this.budgetYear_showMSR_label.Location = new System.Drawing.Point(6, 16);
             this.budgetYear_showMSR_label.Name = "budgetYear_showMSR_label";
             this.budgetYear_showMSR_label.Size = new System.Drawing.Size(87, 13);
             this.budgetYear_showMSR_label.TabIndex = 6;
@@ -631,7 +631,7 @@
             this.project_showMSR_groupBox.Controls.Add(this.project_showMSR_textBox);
             this.project_showMSR_groupBox.Controls.Add(this.wellVL_showMSR_label);
             this.project_showMSR_groupBox.Controls.Add(this.project_showMSR_label);
-            this.project_showMSR_groupBox.Location = new System.Drawing.Point(12, 13);
+            this.project_showMSR_groupBox.Location = new System.Drawing.Point(12, 12);
             this.project_showMSR_groupBox.Name = "project_showMSR_groupBox";
             this.project_showMSR_groupBox.Size = new System.Drawing.Size(500, 100);
             this.project_showMSR_groupBox.TabIndex = 26;
@@ -653,7 +653,7 @@
             this.comments_showMSR_textBox.Location = new System.Drawing.Point(85, 65);
             this.comments_showMSR_textBox.Name = "comments_showMSR_textBox";
             this.comments_showMSR_textBox.ReadOnly = true;
-            this.comments_showMSR_textBox.Size = new System.Drawing.Size(385, 20);
+            this.comments_showMSR_textBox.Size = new System.Drawing.Size(409, 20);
             this.comments_showMSR_textBox.TabIndex = 4;
             // 
             // wellVL_showMSR_textBox
@@ -663,7 +663,7 @@
             this.wellVL_showMSR_textBox.Location = new System.Drawing.Point(162, 39);
             this.wellVL_showMSR_textBox.Name = "wellVL_showMSR_textBox";
             this.wellVL_showMSR_textBox.ReadOnly = true;
-            this.wellVL_showMSR_textBox.Size = new System.Drawing.Size(308, 20);
+            this.wellVL_showMSR_textBox.Size = new System.Drawing.Size(332, 20);
             this.wellVL_showMSR_textBox.TabIndex = 3;
             // 
             // project_showMSR_textBox
@@ -673,7 +673,7 @@
             this.project_showMSR_textBox.Location = new System.Drawing.Point(70, 13);
             this.project_showMSR_textBox.Name = "project_showMSR_textBox";
             this.project_showMSR_textBox.ReadOnly = true;
-            this.project_showMSR_textBox.Size = new System.Drawing.Size(400, 20);
+            this.project_showMSR_textBox.Size = new System.Drawing.Size(424, 20);
             this.project_showMSR_textBox.TabIndex = 2;
             // 
             // wellVL_showMSR_label

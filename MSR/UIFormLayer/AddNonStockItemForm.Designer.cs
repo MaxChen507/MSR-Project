@@ -93,7 +93,7 @@
             // activityCode_addNonStock_label
             // 
             this.activityCode_addNonStock_label.AutoSize = true;
-            this.activityCode_addNonStock_label.Location = new System.Drawing.Point(553, 51);
+            this.activityCode_addNonStock_label.Location = new System.Drawing.Point(558, 51);
             this.activityCode_addNonStock_label.Name = "activityCode_addNonStock_label";
             this.activityCode_addNonStock_label.Size = new System.Drawing.Size(69, 13);
             this.activityCode_addNonStock_label.TabIndex = 4;
@@ -101,7 +101,7 @@
             // 
             // activityCode_addNonStock_textBox
             // 
-            this.activityCode_addNonStock_textBox.Location = new System.Drawing.Point(556, 67);
+            this.activityCode_addNonStock_textBox.Location = new System.Drawing.Point(561, 67);
             this.activityCode_addNonStock_textBox.Name = "activityCode_addNonStock_textBox";
             this.activityCode_addNonStock_textBox.ReadOnly = true;
             this.activityCode_addNonStock_textBox.Size = new System.Drawing.Size(100, 20);
@@ -109,7 +109,7 @@
             // 
             // unit_addNonStock_textBox
             // 
-            this.unit_addNonStock_textBox.Location = new System.Drawing.Point(675, 67);
+            this.unit_addNonStock_textBox.Location = new System.Drawing.Point(691, 67);
             this.unit_addNonStock_textBox.Name = "unit_addNonStock_textBox";
             this.unit_addNonStock_textBox.Size = new System.Drawing.Size(100, 20);
             this.unit_addNonStock_textBox.TabIndex = 7;
@@ -117,7 +117,7 @@
             // unit_addNonStock_label
             // 
             this.unit_addNonStock_label.AutoSize = true;
-            this.unit_addNonStock_label.Location = new System.Drawing.Point(672, 51);
+            this.unit_addNonStock_label.Location = new System.Drawing.Point(688, 51);
             this.unit_addNonStock_label.Name = "unit_addNonStock_label";
             this.unit_addNonStock_label.Size = new System.Drawing.Size(26, 13);
             this.unit_addNonStock_label.TabIndex = 6;
@@ -126,7 +126,7 @@
             // itemDesc_AddNonStock_label
             // 
             this.itemDesc_AddNonStock_label.AutoSize = true;
-            this.itemDesc_AddNonStock_label.Location = new System.Drawing.Point(433, 124);
+            this.itemDesc_AddNonStock_label.Location = new System.Drawing.Point(433, 99);
             this.itemDesc_AddNonStock_label.Name = "itemDesc_AddNonStock_label";
             this.itemDesc_AddNonStock_label.Size = new System.Drawing.Size(83, 13);
             this.itemDesc_AddNonStock_label.TabIndex = 8;
@@ -134,16 +134,16 @@
             // 
             // itemDesc_addNonStock_richTextBox
             // 
-            this.itemDesc_addNonStock_richTextBox.Location = new System.Drawing.Point(436, 140);
+            this.itemDesc_addNonStock_richTextBox.Location = new System.Drawing.Point(436, 115);
             this.itemDesc_addNonStock_richTextBox.Name = "itemDesc_addNonStock_richTextBox";
-            this.itemDesc_addNonStock_richTextBox.Size = new System.Drawing.Size(339, 110);
+            this.itemDesc_addNonStock_richTextBox.Size = new System.Drawing.Size(355, 130);
             this.itemDesc_addNonStock_richTextBox.TabIndex = 9;
             this.itemDesc_addNonStock_richTextBox.Text = "";
             // 
             // addItem_addNonStock_button
             // 
             this.addItem_addNonStock_button.AutoSize = true;
-            this.addItem_addNonStock_button.Location = new System.Drawing.Point(436, 272);
+            this.addItem_addNonStock_button.Location = new System.Drawing.Point(436, 261);
             this.addItem_addNonStock_button.Name = "addItem_addNonStock_button";
             this.addItem_addNonStock_button.Size = new System.Drawing.Size(100, 40);
             this.addItem_addNonStock_button.TabIndex = 10;
@@ -154,7 +154,7 @@
             // applyClose_addNonStock_button
             // 
             this.applyClose_addNonStock_button.AutoSize = true;
-            this.applyClose_addNonStock_button.Location = new System.Drawing.Point(655, 272);
+            this.applyClose_addNonStock_button.Location = new System.Drawing.Point(671, 261);
             this.applyClose_addNonStock_button.Name = "applyClose_addNonStock_button";
             this.applyClose_addNonStock_button.Size = new System.Drawing.Size(120, 40);
             this.applyClose_addNonStock_button.TabIndex = 11;

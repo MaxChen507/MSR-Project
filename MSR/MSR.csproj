@@ -111,12 +111,6 @@
     <Compile Include="UIFormLayer\AddStockItemForm.Designer.cs">
       <DependentUpon>AddStockItemForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIFormLayer\AssignMSR.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UIFormLayer\AssignMSR.Designer.cs">
-      <DependentUpon>AssignMSR.cs</DependentUpon>
-    </Compile>
     <Compile Include="BusinessAPI\BusinessSingleton.cs" />
     <Compile Include="Domain\ApproverInfo.cs" />
     <Compile Include="Domain\BudgetInfo.cs" />
@@ -198,9 +192,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UIFormLayer\AddStockItemForm.resx">
       <DependentUpon>AddStockItemForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UIFormLayer\AssignMSR.resx">
-      <DependentUpon>AssignMSR.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIFormLayer\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

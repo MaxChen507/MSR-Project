@@ -429,9 +429,9 @@ namespace MSR.UIFormLayer
 
             this.Show();
         }
-        
-        #endregion
 
+
+        #endregion
 
     }
 }

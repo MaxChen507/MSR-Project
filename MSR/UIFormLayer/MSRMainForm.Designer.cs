@@ -115,7 +115,7 @@
             this.calendarColumn1 = new UserInterfaceAPI.CalendarColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mainMenuUserControl1 = new UIFormLayer.MainMenuUserControl();
+            this.mainMenuUserControl = new UIFormLayer.MainMenuUserControl();
             this.mainMSR_tabControl.SuspendLayout();
             this.createNewMSR_tabPage.SuspendLayout();
             this.signDate_createTab_groupBox.SuspendLayout();
@@ -137,14 +137,17 @@
             // 
             // mainMSR_tabControl
             // 
+            this.mainMSR_tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.mainMSR_tabControl.Controls.Add(this.createNewMSR_tabPage);
             this.mainMSR_tabControl.Controls.Add(this.waitApproval_tabPage);
             this.mainMSR_tabControl.Controls.Add(this.needReview_tabPage);
             this.mainMSR_tabControl.Controls.Add(this.approved_tabPage);
-            this.mainMSR_tabControl.Location = new System.Drawing.Point(12, 25);
+            this.mainMSR_tabControl.Location = new System.Drawing.Point(15, 25);
             this.mainMSR_tabControl.Name = "mainMSR_tabControl";
             this.mainMSR_tabControl.SelectedIndex = 0;
-            this.mainMSR_tabControl.Size = new System.Drawing.Size(1160, 812);
+            this.mainMSR_tabControl.Size = new System.Drawing.Size(1397, 869);
             this.mainMSR_tabControl.TabIndex = 0;
             // 
             // createNewMSR_tabPage
@@ -162,15 +165,16 @@
             this.createNewMSR_tabPage.Location = new System.Drawing.Point(4, 22);
             this.createNewMSR_tabPage.Name = "createNewMSR_tabPage";
             this.createNewMSR_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.createNewMSR_tabPage.Size = new System.Drawing.Size(1152, 786);
+            this.createNewMSR_tabPage.Size = new System.Drawing.Size(1389, 843);
             this.createNewMSR_tabPage.TabIndex = 0;
             this.createNewMSR_tabPage.Text = "Create New MSR";
             this.createNewMSR_tabPage.UseVisualStyleBackColor = true;
             // 
             // clearAllFields_createTab_button
             // 
+            this.clearAllFields_createTab_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.clearAllFields_createTab_button.AutoSize = true;
-            this.clearAllFields_createTab_button.Location = new System.Drawing.Point(1026, 730);
+            this.clearAllFields_createTab_button.Location = new System.Drawing.Point(1254, 777);
             this.clearAllFields_createTab_button.Name = "clearAllFields_createTab_button";
             this.clearAllFields_createTab_button.Size = new System.Drawing.Size(120, 50);
             this.clearAllFields_createTab_button.TabIndex = 14;
@@ -180,8 +184,9 @@
             // 
             // submit_createTab_button
             // 
+            this.submit_createTab_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.submit_createTab_button.AutoSize = true;
-            this.submit_createTab_button.Location = new System.Drawing.Point(436, 730);
+            this.submit_createTab_button.Location = new System.Drawing.Point(436, 777);
             this.submit_createTab_button.Name = "submit_createTab_button";
             this.submit_createTab_button.Size = new System.Drawing.Size(120, 50);
             this.submit_createTab_button.TabIndex = 13;
@@ -191,9 +196,10 @@
             // 
             // addNonStock_createTab_button
             // 
+            this.addNonStock_createTab_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.addNonStock_createTab_button.AutoSize = true;
             this.addNonStock_createTab_button.Enabled = false;
-            this.addNonStock_createTab_button.Location = new System.Drawing.Point(436, 676);
+            this.addNonStock_createTab_button.Location = new System.Drawing.Point(436, 721);
             this.addNonStock_createTab_button.Name = "addNonStock_createTab_button";
             this.addNonStock_createTab_button.Size = new System.Drawing.Size(120, 50);
             this.addNonStock_createTab_button.TabIndex = 12;
@@ -203,9 +209,10 @@
             // 
             // addStock_createTab_button
             // 
+            this.addStock_createTab_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.addStock_createTab_button.AutoSize = true;
             this.addStock_createTab_button.Enabled = false;
-            this.addStock_createTab_button.Location = new System.Drawing.Point(436, 620);
+            this.addStock_createTab_button.Location = new System.Drawing.Point(436, 665);
             this.addStock_createTab_button.Name = "addStock_createTab_button";
             this.addStock_createTab_button.Size = new System.Drawing.Size(120, 50);
             this.addStock_createTab_button.TabIndex = 11;
@@ -215,15 +222,16 @@
             // 
             // signDate_createTab_groupBox
             // 
+            this.signDate_createTab_groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.signDate_createTab_groupBox.Controls.Add(this.changeDate_createTab_dateTimePicker);
             this.signDate_createTab_groupBox.Controls.Add(this.changeDate_createTab_checkBox);
             this.signDate_createTab_groupBox.Controls.Add(this.approval_createTab_comboBox);
             this.signDate_createTab_groupBox.Controls.Add(this.approval_createTab_label);
             this.signDate_createTab_groupBox.Controls.Add(this.originator_createTab_comboBox);
             this.signDate_createTab_groupBox.Controls.Add(this.originator_createTab_label);
-            this.signDate_createTab_groupBox.Location = new System.Drawing.Point(17, 621);
+            this.signDate_createTab_groupBox.Location = new System.Drawing.Point(17, 665);
             this.signDate_createTab_groupBox.Name = "signDate_createTab_groupBox";
-            this.signDate_createTab_groupBox.Size = new System.Drawing.Size(413, 161);
+            this.signDate_createTab_groupBox.Size = new System.Drawing.Size(413, 158);
             this.signDate_createTab_groupBox.TabIndex = 10;
             this.signDate_createTab_groupBox.TabStop = false;
             // 
@@ -290,6 +298,8 @@
             // createTab_dataGridView
             // 
             this.createTab_dataGridView.AllowUserToAddRows = false;
+            this.createTab_dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.createTab_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.createTab_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.BudgetPool,
@@ -302,9 +312,10 @@
             this.ROS_Date,
             this.Comments,
             this.AC_No});
-            this.createTab_dataGridView.Location = new System.Drawing.Point(17, 214);
+            this.createTab_dataGridView.Location = new System.Drawing.Point(15, 200);
             this.createTab_dataGridView.Name = "createTab_dataGridView";
-            this.createTab_dataGridView.Size = new System.Drawing.Size(1006, 400);
+            this.createTab_dataGridView.RowTemplate.Height = 30;
+            this.createTab_dataGridView.Size = new System.Drawing.Size(1359, 459);
             this.createTab_dataGridView.TabIndex = 8;
             // 
             // BudgetPool
@@ -312,46 +323,46 @@
             this.BudgetPool.HeaderText = "BudgetPool";
             this.BudgetPool.Name = "BudgetPool";
             this.BudgetPool.ReadOnly = true;
-            this.BudgetPool.Width = 96;
+            this.BudgetPool.Width = 132;
             // 
             // ItemCode
             // 
             this.ItemCode.HeaderText = "ItemCode";
             this.ItemCode.Name = "ItemCode";
             this.ItemCode.ReadOnly = true;
-            this.ItemCode.Width = 97;
+            this.ItemCode.Width = 131;
             // 
             // ItemDesc
             // 
             this.ItemDesc.HeaderText = "ItemDesc";
             this.ItemDesc.Name = "ItemDesc";
             this.ItemDesc.ReadOnly = true;
-            this.ItemDesc.Width = 96;
+            this.ItemDesc.Width = 132;
             // 
             // Quantity
             // 
             this.Quantity.HeaderText = "Quantity";
             this.Quantity.Name = "Quantity";
-            this.Quantity.Width = 96;
+            this.Quantity.Width = 131;
             // 
             // Unit
             // 
             this.Unit.HeaderText = "Unit";
             this.Unit.Name = "Unit";
             this.Unit.ReadOnly = true;
-            this.Unit.Width = 97;
+            this.Unit.Width = 132;
             // 
             // UnitPrice
             // 
             this.UnitPrice.HeaderText = "UnitPrice";
             this.UnitPrice.Name = "UnitPrice";
-            this.UnitPrice.Width = 96;
+            this.UnitPrice.Width = 132;
             // 
             // Currency
             // 
             this.Currency.HeaderText = "Currency";
             this.Currency.Name = "Currency";
-            this.Currency.Width = 96;
+            this.Currency.Width = 131;
             // 
             // ROS_Date
             // 
@@ -359,28 +370,28 @@
             this.ROS_Date.Name = "ROS_Date";
             this.ROS_Date.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ROS_Date.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ROS_Date.Width = 96;
+            this.ROS_Date.Width = 132;
             // 
             // Comments
             // 
             this.Comments.HeaderText = "Comments";
             this.Comments.Name = "Comments";
-            this.Comments.Width = 97;
+            this.Comments.Width = 131;
             // 
             // AC_No
             // 
             this.AC_No.HeaderText = "AC_No";
             this.AC_No.Name = "AC_No";
             this.AC_No.ReadOnly = true;
-            this.AC_No.Width = 96;
+            this.AC_No.Width = 132;
             // 
             // vendorContact_createTab_groupBox
             // 
             this.vendorContact_createTab_groupBox.Controls.Add(this.vendorContact_createTab_textBox);
             this.vendorContact_createTab_groupBox.Controls.Add(this.vendorContact_createTab_label);
-            this.vendorContact_createTab_groupBox.Location = new System.Drawing.Point(523, 124);
+            this.vendorContact_createTab_groupBox.Location = new System.Drawing.Point(705, 121);
             this.vendorContact_createTab_groupBox.Name = "vendorContact_createTab_groupBox";
-            this.vendorContact_createTab_groupBox.Size = new System.Drawing.Size(500, 75);
+            this.vendorContact_createTab_groupBox.Size = new System.Drawing.Size(669, 70);
             this.vendorContact_createTab_groupBox.TabIndex = 7;
             this.vendorContact_createTab_groupBox.TabStop = false;
             // 
@@ -390,7 +401,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.vendorContact_createTab_textBox.Location = new System.Drawing.Point(9, 32);
             this.vendorContact_createTab_textBox.Name = "vendorContact_createTab_textBox";
-            this.vendorContact_createTab_textBox.Size = new System.Drawing.Size(485, 20);
+            this.vendorContact_createTab_textBox.Size = new System.Drawing.Size(654, 20);
             this.vendorContact_createTab_textBox.TabIndex = 2;
             // 
             // vendorContact_createTab_label
@@ -406,9 +417,9 @@
             // 
             this.suggVendor_createTab_groupBox.Controls.Add(this.suggVendor_createTab_textBox);
             this.suggVendor_createTab_groupBox.Controls.Add(this.suggVendor_createTab_label);
-            this.suggVendor_createTab_groupBox.Location = new System.Drawing.Point(17, 124);
+            this.suggVendor_createTab_groupBox.Location = new System.Drawing.Point(15, 121);
             this.suggVendor_createTab_groupBox.Name = "suggVendor_createTab_groupBox";
-            this.suggVendor_createTab_groupBox.Size = new System.Drawing.Size(500, 75);
+            this.suggVendor_createTab_groupBox.Size = new System.Drawing.Size(675, 70);
             this.suggVendor_createTab_groupBox.TabIndex = 6;
             this.suggVendor_createTab_groupBox.TabStop = false;
             // 
@@ -418,7 +429,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.suggVendor_createTab_textBox.Location = new System.Drawing.Point(9, 32);
             this.suggVendor_createTab_textBox.Name = "suggVendor_createTab_textBox";
-            this.suggVendor_createTab_textBox.Size = new System.Drawing.Size(485, 20);
+            this.suggVendor_createTab_textBox.Size = new System.Drawing.Size(660, 20);
             this.suggVendor_createTab_textBox.TabIndex = 2;
             // 
             // suggVendor_createTab_label
@@ -438,16 +449,16 @@
             this.budget_createTab_groupBox.Controls.Add(this.budgetYear_createTab_comboBox);
             this.budget_createTab_groupBox.Controls.Add(this.budgetPool_createTab_label);
             this.budget_createTab_groupBox.Controls.Add(this.budgetYear_createTab_label);
-            this.budget_createTab_groupBox.Location = new System.Drawing.Point(523, 18);
+            this.budget_createTab_groupBox.Location = new System.Drawing.Point(705, 15);
             this.budget_createTab_groupBox.Name = "budget_createTab_groupBox";
-            this.budget_createTab_groupBox.Size = new System.Drawing.Size(500, 100);
+            this.budget_createTab_groupBox.Size = new System.Drawing.Size(669, 100);
             this.budget_createTab_groupBox.TabIndex = 1;
             this.budget_createTab_groupBox.TabStop = false;
             // 
             // AFE_createTab_label
             // 
             this.AFE_createTab_label.AutoSize = true;
-            this.AFE_createTab_label.Location = new System.Drawing.Point(87, 68);
+            this.AFE_createTab_label.Location = new System.Drawing.Point(63, 68);
             this.AFE_createTab_label.Name = "AFE_createTab_label";
             this.AFE_createTab_label.Size = new System.Drawing.Size(30, 13);
             this.AFE_createTab_label.TabIndex = 7;
@@ -458,7 +469,7 @@
             this.budgetPool_createTab_comboBox.BackColor = System.Drawing.SystemColors.Window;
             this.budgetPool_createTab_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.budgetPool_createTab_comboBox.FormattingEnabled = true;
-            this.budgetPool_createTab_comboBox.Location = new System.Drawing.Point(123, 40);
+            this.budgetPool_createTab_comboBox.Location = new System.Drawing.Point(99, 38);
             this.budgetPool_createTab_comboBox.Name = "budgetPool_createTab_comboBox";
             this.budgetPool_createTab_comboBox.Size = new System.Drawing.Size(121, 21);
             this.budgetPool_createTab_comboBox.TabIndex = 9;
@@ -468,7 +479,7 @@
             // 
             this.AFE_createTab_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AFE_createTab_textBox.Location = new System.Drawing.Point(123, 65);
+            this.AFE_createTab_textBox.Location = new System.Drawing.Point(99, 65);
             this.AFE_createTab_textBox.Name = "AFE_createTab_textBox";
             this.AFE_createTab_textBox.Size = new System.Drawing.Size(121, 20);
             this.AFE_createTab_textBox.TabIndex = 6;
@@ -478,7 +489,7 @@
             this.budgetYear_createTab_comboBox.BackColor = System.Drawing.SystemColors.Window;
             this.budgetYear_createTab_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.budgetYear_createTab_comboBox.FormattingEnabled = true;
-            this.budgetYear_createTab_comboBox.Location = new System.Drawing.Point(123, 13);
+            this.budgetYear_createTab_comboBox.Location = new System.Drawing.Point(99, 12);
             this.budgetYear_createTab_comboBox.Name = "budgetYear_createTab_comboBox";
             this.budgetYear_createTab_comboBox.Size = new System.Drawing.Size(121, 21);
             this.budgetYear_createTab_comboBox.TabIndex = 8;
@@ -486,7 +497,7 @@
             // budgetPool_createTab_label
             // 
             this.budgetPool_createTab_label.AutoSize = true;
-            this.budgetPool_createTab_label.Location = new System.Drawing.Point(30, 42);
+            this.budgetPool_createTab_label.Location = new System.Drawing.Point(6, 42);
             this.budgetPool_createTab_label.Name = "budgetPool_createTab_label";
             this.budgetPool_createTab_label.Size = new System.Drawing.Size(87, 13);
             this.budgetPool_createTab_label.TabIndex = 7;
@@ -495,7 +506,7 @@
             // budgetYear_createTab_label
             // 
             this.budgetYear_createTab_label.AutoSize = true;
-            this.budgetYear_createTab_label.Location = new System.Drawing.Point(30, 16);
+            this.budgetYear_createTab_label.Location = new System.Drawing.Point(6, 16);
             this.budgetYear_createTab_label.Name = "budgetYear_createTab_label";
             this.budgetYear_createTab_label.Size = new System.Drawing.Size(87, 13);
             this.budgetYear_createTab_label.TabIndex = 6;
@@ -509,9 +520,9 @@
             this.project_createTab_groupBox.Controls.Add(this.project_createTab_textBox);
             this.project_createTab_groupBox.Controls.Add(this.wellVL_createTab_label);
             this.project_createTab_groupBox.Controls.Add(this.project_createTab_label);
-            this.project_createTab_groupBox.Location = new System.Drawing.Point(17, 18);
+            this.project_createTab_groupBox.Location = new System.Drawing.Point(15, 15);
             this.project_createTab_groupBox.Name = "project_createTab_groupBox";
-            this.project_createTab_groupBox.Size = new System.Drawing.Size(500, 100);
+            this.project_createTab_groupBox.Size = new System.Drawing.Size(675, 100);
             this.project_createTab_groupBox.TabIndex = 0;
             this.project_createTab_groupBox.TabStop = false;
             // 
@@ -530,7 +541,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comments_createTab_textBox.Location = new System.Drawing.Point(85, 65);
             this.comments_createTab_textBox.Name = "comments_createTab_textBox";
-            this.comments_createTab_textBox.Size = new System.Drawing.Size(385, 20);
+            this.comments_createTab_textBox.Size = new System.Drawing.Size(584, 20);
             this.comments_createTab_textBox.TabIndex = 4;
             // 
             // wellVL_createTab_textBox
@@ -539,7 +550,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.wellVL_createTab_textBox.Location = new System.Drawing.Point(162, 39);
             this.wellVL_createTab_textBox.Name = "wellVL_createTab_textBox";
-            this.wellVL_createTab_textBox.Size = new System.Drawing.Size(308, 20);
+            this.wellVL_createTab_textBox.Size = new System.Drawing.Size(507, 20);
             this.wellVL_createTab_textBox.TabIndex = 3;
             // 
             // project_createTab_textBox
@@ -548,7 +559,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.project_createTab_textBox.Location = new System.Drawing.Point(70, 13);
             this.project_createTab_textBox.Name = "project_createTab_textBox";
-            this.project_createTab_textBox.Size = new System.Drawing.Size(400, 20);
+            this.project_createTab_textBox.Size = new System.Drawing.Size(599, 20);
             this.project_createTab_textBox.TabIndex = 2;
             // 
             // wellVL_createTab_label
@@ -576,7 +587,7 @@
             this.waitApproval_tabPage.Location = new System.Drawing.Point(4, 22);
             this.waitApproval_tabPage.Name = "waitApproval_tabPage";
             this.waitApproval_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.waitApproval_tabPage.Size = new System.Drawing.Size(1152, 786);
+            this.waitApproval_tabPage.Size = new System.Drawing.Size(1389, 843);
             this.waitApproval_tabPage.TabIndex = 1;
             this.waitApproval_tabPage.Text = "MSRs Waiting for Approval";
             this.waitApproval_tabPage.UseVisualStyleBackColor = true;
@@ -587,12 +598,13 @@
             this.waitApprovalTab_dataGridView.AllowUserToDeleteRows = false;
             this.waitApprovalTab_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.waitApprovalTab_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.waitApprovalTab_dataGridView.Location = new System.Drawing.Point(19, 113);
+            this.waitApprovalTab_dataGridView.Location = new System.Drawing.Point(15, 110);
             this.waitApprovalTab_dataGridView.MultiSelect = false;
             this.waitApprovalTab_dataGridView.Name = "waitApprovalTab_dataGridView";
             this.waitApprovalTab_dataGridView.ReadOnly = true;
+            this.waitApprovalTab_dataGridView.RowTemplate.Height = 30;
             this.waitApprovalTab_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.waitApprovalTab_dataGridView.Size = new System.Drawing.Size(930, 450);
+            this.waitApprovalTab_dataGridView.Size = new System.Drawing.Size(1359, 718);
             this.waitApprovalTab_dataGridView.TabIndex = 1;
             this.waitApprovalTab_dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.WaitApprovalTab_dataGridView_CellDoubleClick);
             // 
@@ -606,9 +618,9 @@
             this.search_waitApprovalTab_groupBox.Controls.Add(this.deptSearch_waitApprovalTab_label);
             this.search_waitApprovalTab_groupBox.Controls.Add(this.idSearch_waitApprovalTab_textBox);
             this.search_waitApprovalTab_groupBox.Controls.Add(this.idSearch_waitApprovalTab_label);
-            this.search_waitApprovalTab_groupBox.Location = new System.Drawing.Point(19, 18);
+            this.search_waitApprovalTab_groupBox.Location = new System.Drawing.Point(15, 15);
             this.search_waitApprovalTab_groupBox.Name = "search_waitApprovalTab_groupBox";
-            this.search_waitApprovalTab_groupBox.Size = new System.Drawing.Size(930, 89);
+            this.search_waitApprovalTab_groupBox.Size = new System.Drawing.Size(1359, 89);
             this.search_waitApprovalTab_groupBox.TabIndex = 0;
             this.search_waitApprovalTab_groupBox.TabStop = false;
             this.search_waitApprovalTab_groupBox.Text = "Search";
@@ -688,7 +700,7 @@
             this.needReview_tabPage.Location = new System.Drawing.Point(4, 22);
             this.needReview_tabPage.Name = "needReview_tabPage";
             this.needReview_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.needReview_tabPage.Size = new System.Drawing.Size(1152, 786);
+            this.needReview_tabPage.Size = new System.Drawing.Size(1389, 843);
             this.needReview_tabPage.TabIndex = 4;
             this.needReview_tabPage.Text = "MSRs Need Review";
             this.needReview_tabPage.UseVisualStyleBackColor = true;
@@ -699,12 +711,13 @@
             this.needReviewTab_dataGridView.AllowUserToDeleteRows = false;
             this.needReviewTab_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.needReviewTab_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.needReviewTab_dataGridView.Location = new System.Drawing.Point(19, 113);
+            this.needReviewTab_dataGridView.Location = new System.Drawing.Point(15, 110);
             this.needReviewTab_dataGridView.MultiSelect = false;
             this.needReviewTab_dataGridView.Name = "needReviewTab_dataGridView";
             this.needReviewTab_dataGridView.ReadOnly = true;
+            this.needReviewTab_dataGridView.RowTemplate.Height = 30;
             this.needReviewTab_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.needReviewTab_dataGridView.Size = new System.Drawing.Size(930, 450);
+            this.needReviewTab_dataGridView.Size = new System.Drawing.Size(1359, 718);
             this.needReviewTab_dataGridView.TabIndex = 1;
             this.needReviewTab_dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.NeedReviewTab_dataGridView_CellDoubleClick);
             // 
@@ -718,9 +731,9 @@
             this.search_needReviewTab_groupBox.Controls.Add(this.deptSearch_needReviewTab_label);
             this.search_needReviewTab_groupBox.Controls.Add(this.idSearch_needReviewTab_textBox);
             this.search_needReviewTab_groupBox.Controls.Add(this.idSearch_needReview_label);
-            this.search_needReviewTab_groupBox.Location = new System.Drawing.Point(19, 18);
+            this.search_needReviewTab_groupBox.Location = new System.Drawing.Point(15, 15);
             this.search_needReviewTab_groupBox.Name = "search_needReviewTab_groupBox";
-            this.search_needReviewTab_groupBox.Size = new System.Drawing.Size(930, 89);
+            this.search_needReviewTab_groupBox.Size = new System.Drawing.Size(1359, 89);
             this.search_needReviewTab_groupBox.TabIndex = 0;
             this.search_needReviewTab_groupBox.TabStop = false;
             this.search_needReviewTab_groupBox.Text = "Search";
@@ -800,7 +813,7 @@
             this.approved_tabPage.Location = new System.Drawing.Point(4, 22);
             this.approved_tabPage.Name = "approved_tabPage";
             this.approved_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.approved_tabPage.Size = new System.Drawing.Size(1152, 786);
+            this.approved_tabPage.Size = new System.Drawing.Size(1389, 843);
             this.approved_tabPage.TabIndex = 3;
             this.approved_tabPage.Text = "Approved MSRs";
             this.approved_tabPage.UseVisualStyleBackColor = true;
@@ -811,12 +824,13 @@
             this.approvedTab_dataGridView.AllowUserToDeleteRows = false;
             this.approvedTab_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.approvedTab_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.approvedTab_dataGridView.Location = new System.Drawing.Point(19, 113);
+            this.approvedTab_dataGridView.Location = new System.Drawing.Point(15, 110);
             this.approvedTab_dataGridView.MultiSelect = false;
             this.approvedTab_dataGridView.Name = "approvedTab_dataGridView";
             this.approvedTab_dataGridView.ReadOnly = true;
+            this.approvedTab_dataGridView.RowTemplate.Height = 30;
             this.approvedTab_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.approvedTab_dataGridView.Size = new System.Drawing.Size(930, 450);
+            this.approvedTab_dataGridView.Size = new System.Drawing.Size(1359, 718);
             this.approvedTab_dataGridView.TabIndex = 1;
             this.approvedTab_dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ApprovedTab_dataGridView_CellDoubleClick);
             // 
@@ -830,9 +844,9 @@
             this.search_approvedTab_groupBox.Controls.Add(this.deptSearch_approvedTab_label);
             this.search_approvedTab_groupBox.Controls.Add(this.idSearch_approvedTab_textBox);
             this.search_approvedTab_groupBox.Controls.Add(this.idSearch_approvedTab_label);
-            this.search_approvedTab_groupBox.Location = new System.Drawing.Point(19, 18);
+            this.search_approvedTab_groupBox.Location = new System.Drawing.Point(15, 15);
             this.search_approvedTab_groupBox.Name = "search_approvedTab_groupBox";
-            this.search_approvedTab_groupBox.Size = new System.Drawing.Size(930, 89);
+            this.search_approvedTab_groupBox.Size = new System.Drawing.Size(1359, 89);
             this.search_approvedTab_groupBox.TabIndex = 0;
             this.search_approvedTab_groupBox.TabStop = false;
             this.search_approvedTab_groupBox.Text = "Search";
@@ -972,20 +986,22 @@
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             this.dataGridViewTextBoxColumn9.Width = 96;
             // 
-            // mainMenuUserControl1
+            // mainMenuUserControl
             // 
-            this.mainMenuUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.mainMenuUserControl1.Name = "mainMenuUserControl1";
-            this.mainMenuUserControl1.Size = new System.Drawing.Size(1181, 24);
-            this.mainMenuUserControl1.TabIndex = 15;
+            this.mainMenuUserControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainMenuUserControl.Location = new System.Drawing.Point(0, 0);
+            this.mainMenuUserControl.Name = "mainMenuUserControl";
+            this.mainMenuUserControl.Size = new System.Drawing.Size(1424, 25);
+            this.mainMenuUserControl.TabIndex = 15;
             // 
             // MSRMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1181, 847);
-            this.Controls.Add(this.mainMenuUserControl1);
+            this.ClientSize = new System.Drawing.Size(1424, 906);
+            this.Controls.Add(this.mainMenuUserControl);
             this.Controls.Add(this.mainMSR_tabControl);
             this.Name = "MSRMainForm";
             this.Text = "MSR Main Form";
@@ -1109,7 +1125,7 @@
         private System.Windows.Forms.Label deptSearch_needReviewTab_label;
         private System.Windows.Forms.TextBox idSearch_needReviewTab_textBox;
         private System.Windows.Forms.Label idSearch_needReview_label;
-        private UIFormLayer.MainMenuUserControl mainMenuUserControl1;
+        private UIFormLayer.MainMenuUserControl mainMenuUserControl;
     }
 }
 

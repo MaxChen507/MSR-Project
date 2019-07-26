@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.mainMenuUserControl1 = new UIFormLayer.MainMenuUserControl();
+            this.mainMenuUserControl = new UIFormLayer.MainMenuUserControl();
             this.approved_tabPage = new System.Windows.Forms.TabPage();
             this.approvedTab_dataGridView = new System.Windows.Forms.DataGridView();
             this.search_approvedTab_groupBox = new System.Windows.Forms.GroupBox();
@@ -47,12 +47,14 @@
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // mainMenuUserControl1
+            // mainMenuUserControl
             // 
-            this.mainMenuUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.mainMenuUserControl1.Name = "mainMenuUserControl1";
-            this.mainMenuUserControl1.Size = new System.Drawing.Size(1181, 24);
-            this.mainMenuUserControl1.TabIndex = 0;
+            this.mainMenuUserControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainMenuUserControl.Location = new System.Drawing.Point(0, 0);
+            this.mainMenuUserControl.Name = "mainMenuUserControl";
+            this.mainMenuUserControl.Size = new System.Drawing.Size(1424, 25);
+            this.mainMenuUserControl.TabIndex = 0;
             // 
             // approved_tabPage
             // 
@@ -61,7 +63,7 @@
             this.approved_tabPage.Location = new System.Drawing.Point(4, 22);
             this.approved_tabPage.Name = "approved_tabPage";
             this.approved_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.approved_tabPage.Size = new System.Drawing.Size(1152, 786);
+            this.approved_tabPage.Size = new System.Drawing.Size(1389, 843);
             this.approved_tabPage.TabIndex = 4;
             this.approved_tabPage.Text = "Approved MSRs";
             this.approved_tabPage.UseVisualStyleBackColor = true;
@@ -72,12 +74,12 @@
             this.approvedTab_dataGridView.AllowUserToDeleteRows = false;
             this.approvedTab_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.approvedTab_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.approvedTab_dataGridView.Location = new System.Drawing.Point(19, 113);
+            this.approvedTab_dataGridView.Location = new System.Drawing.Point(15, 110);
             this.approvedTab_dataGridView.MultiSelect = false;
             this.approvedTab_dataGridView.Name = "approvedTab_dataGridView";
             this.approvedTab_dataGridView.ReadOnly = true;
             this.approvedTab_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.approvedTab_dataGridView.Size = new System.Drawing.Size(930, 450);
+            this.approvedTab_dataGridView.Size = new System.Drawing.Size(1359, 718);
             this.approvedTab_dataGridView.TabIndex = 1;
             this.approvedTab_dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ApprovedTab_dataGridView_CellDoubleClick);
             // 
@@ -91,9 +93,9 @@
             this.search_approvedTab_groupBox.Controls.Add(this.deptSearch_approvedTab_label);
             this.search_approvedTab_groupBox.Controls.Add(this.idSearch_approvedTab_textBox);
             this.search_approvedTab_groupBox.Controls.Add(this.idSearch_approvedTab_label);
-            this.search_approvedTab_groupBox.Location = new System.Drawing.Point(19, 18);
+            this.search_approvedTab_groupBox.Location = new System.Drawing.Point(15, 15);
             this.search_approvedTab_groupBox.Name = "search_approvedTab_groupBox";
-            this.search_approvedTab_groupBox.Size = new System.Drawing.Size(930, 89);
+            this.search_approvedTab_groupBox.Size = new System.Drawing.Size(1359, 89);
             this.search_approvedTab_groupBox.TabIndex = 0;
             this.search_approvedTab_groupBox.TabStop = false;
             this.search_approvedTab_groupBox.Text = "Search";
@@ -168,20 +170,23 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.approved_tabPage);
-            this.tabControl1.Location = new System.Drawing.Point(12, 25);
+            this.tabControl1.Location = new System.Drawing.Point(15, 25);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1160, 812);
+            this.tabControl1.Size = new System.Drawing.Size(1397, 869);
             this.tabControl1.TabIndex = 1;
             // 
             // MSRMain_ProcurementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1181, 847);
+            this.ClientSize = new System.Drawing.Size(1424, 906);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.mainMenuUserControl1);
+            this.Controls.Add(this.mainMenuUserControl);
             this.Name = "MSRMain_ProcurementForm";
             this.Text = "MSRMain_ProcurementForm";
             this.Load += new System.EventHandler(this.MSRMain_ProcurementForm_Load);
@@ -196,7 +201,7 @@
 
         #endregion
 
-        private UIFormLayer.MainMenuUserControl mainMenuUserControl1;
+        private UIFormLayer.MainMenuUserControl mainMenuUserControl;
         private System.Windows.Forms.TabPage approved_tabPage;
         private System.Windows.Forms.DataGridView approvedTab_dataGridView;
         private System.Windows.Forms.GroupBox search_approvedTab_groupBox;
