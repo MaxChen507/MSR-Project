@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MSR.BusinessAPI
 {
-    class LoginAPI_B
+    class LoginAPI
     {
         public Boolean ValidateLogin(String username, String password)
         {
@@ -59,7 +59,7 @@ namespace MSR.BusinessAPI
             return usr;
         }
 
-        public ICollection<V_BP_AC_DEPT> GetBudgetInfo_AccessByDeptId(int deptId)
+        public ICollection<V_BP_AC_DEPT> GetBudgetInfoAccessByDeptId(int deptId)
         {
             ICollection<V_BP_AC_DEPT> v_BP_DEPT_List = null;
 
@@ -78,7 +78,7 @@ namespace MSR.BusinessAPI
             return v_BP_DEPT_List;
         }
 
-        public ICollection<V_BH_BI> GetAC_AccessByBPList(ICollection<V_BP_AC_DEPT> v_BP_DEPT_List)
+        public ICollection<V_BH_BI> GetACAccessByBPList(ICollection<V_BP_AC_DEPT> v_BP_DEPT_List)
         {
             ICollection<V_BH_BI> v_BH_BI_Access_List = null;
 

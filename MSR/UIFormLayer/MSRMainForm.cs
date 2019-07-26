@@ -13,9 +13,9 @@ namespace MSR.UIFormLayer
     public partial class MSRMainForm : Form
     {
         //Binding Source Variables
-        BindingSource waitApprovalTabDGV_source = new BindingSource();
-        BindingSource needReviewTabDGV_source = new BindingSource();
-        BindingSource approvedTabDGV_source = new BindingSource();
+        BindingSource waitApprovalTabDGVSource = new BindingSource();
+        BindingSource needReviewTabDGVSource = new BindingSource();
+        BindingSource approvedTabDGVSource = new BindingSource();
         
         public MSRMainForm()
         {
@@ -37,7 +37,7 @@ namespace MSR.UIFormLayer
             budgetYear_createTab_comboBox.Items.Add((currentYear + 1).ToString());
 
             //Initialize BP ComboBox
-            foreach (String item in BusinessAPI.BusinessSingleton.Instance.GetUniqueBP_Access_List())
+            foreach (String item in BusinessAPI.BusinessSingleton.Instance.GetUniqueBPAccessList())
             {
                 budgetPool_createTab_comboBox.Items.Add(item);
             }
@@ -61,33 +61,33 @@ namespace MSR.UIFormLayer
             UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(approvedTab_dataGridView);
 
             //Populate createTab_dataGridView from Business Singleton List
-            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR)
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemListCreateMSR)
             {
-                createTab_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
+                createTab_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROSDate, item.Comments, item.ACNo);
             }
 
             //Populate waitApprovalTab_dataGridView from BusinessAPI
-            waitApprovalTabDGV_source.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo_EF.DeptId.ToString(), Domain.WorkFlowTrace.WAIT_FOR_APPROVAL);
-            waitApprovalTab_dataGridView.DataSource = waitApprovalTabDGV_source;
+            waitApprovalTabDGVSource.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI.GetShowMSRList(BusinessAPI.BusinessSingleton.Instance.userInfo_EF.DeptId.ToString(), Domain.WorkFlowTrace.WAIT_FOR_APPROVAL);
+            waitApprovalTab_dataGridView.DataSource = waitApprovalTabDGVSource;
             waitApprovalTab_dataGridView.ClearSelection();
 
             //Populate approvedTab_dataGridView from BusinessAPI
-            approvedTabDGV_source.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo_EF.DeptId.ToString(), Domain.WorkFlowTrace.APPROVED);
-            approvedTab_dataGridView.DataSource = approvedTabDGV_source;
+            approvedTabDGVSource.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI.GetShowMSRList(BusinessAPI.BusinessSingleton.Instance.userInfo_EF.DeptId.ToString(), Domain.WorkFlowTrace.APPROVED);
+            approvedTab_dataGridView.DataSource = approvedTabDGVSource;
             approvedTab_dataGridView.ClearSelection();
 
             //Populate needReviewTab_dataGridView from BusinessAPI
-            needReviewTabDGV_source.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo_EF.DeptId.ToString(), Domain.WorkFlowTrace.NEED_REVIEW);
-            needReviewTab_dataGridView.DataSource = needReviewTabDGV_source;
+            needReviewTabDGVSource.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI.GetShowMSRList(BusinessAPI.BusinessSingleton.Instance.userInfo_EF.DeptId.ToString(), Domain.WorkFlowTrace.NEED_REVIEW);
+            needReviewTab_dataGridView.DataSource = needReviewTabDGVSource;
             needReviewTab_dataGridView.ClearSelection();
 
         }
 
-        private void PopulateFilteredShowMSRItemListDGV(String workflowtrace, String idSearchText, String deptSearchText, String ogSearchText, String apSearchText, BindingSource TabDGV_source, DataGridView dataGridView)
+        private void PopulateFilteredShowMSRItemListDGV(String workFlowTrace, String idSearchText, String deptSearchText, String ogSearchText, String apSearchText, BindingSource tabDGVSource, DataGridView dataGridView)
         {
-            ICollection<Domain.ShowMSRItem> showMSRItemData = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetShowMSR_List(BusinessAPI.BusinessSingleton.Instance.userInfo_EF.DeptId.ToString(), workflowtrace);
+            ICollection<Domain.ShowMSRItem> showMSRItemData = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI.GetShowMSRList(BusinessAPI.BusinessSingleton.Instance.userInfo_EF.DeptId.ToString(), workFlowTrace);
 
-            ICollection<Domain.ShowMSRItem> showMSRItemDatafilter = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetFiltershowMSR_List(showMSRItemData, idSearchText, deptSearchText, ogSearchText, apSearchText);
+            ICollection<Domain.ShowMSRItem> showMSRItemDatafilter = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI.GetFilterShowMSRList(showMSRItemData, idSearchText, deptSearchText, ogSearchText, apSearchText);
 
             if (showMSRItemDatafilter == null)
             {
@@ -95,8 +95,8 @@ namespace MSR.UIFormLayer
                 return;
             }
 
-            TabDGV_source.DataSource = showMSRItemDatafilter;
-            dataGridView.DataSource = TabDGV_source;
+            tabDGVSource.DataSource = showMSRItemDatafilter;
+            dataGridView.DataSource = tabDGVSource;
             dataGridView.ClearSelection();
         }
 
@@ -115,7 +115,7 @@ namespace MSR.UIFormLayer
             //approval_createTab_comboBox.Items.Clear();
             approval_createTab_comboBox.DataSource = null;
             approval_createTab_comboBox.Enabled = true;
-            approval_createTab_comboBox.DataSource =  BusinessAPI.BusinessSingleton.Instance.BudgetInfoAPI_B.GetBudgetHolder_List_EF(budgetPool_createTab_comboBox.Text);
+            approval_createTab_comboBox.DataSource =  BusinessAPI.BusinessSingleton.Instance.BudgetInfoAPI.GetBudgetHolderList(budgetPool_createTab_comboBox.Text);
 
             //Change Display of combobox
             approval_createTab_comboBox.DisplayMember = "FullName";
@@ -131,9 +131,9 @@ namespace MSR.UIFormLayer
             this.Hide();
 
             //Save state of DGV
-            BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(createTab_dataGridView);
+            BusinessAPI.BusinessSingleton.Instance.formItemListCreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(createTab_dataGridView);
 
-            AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_createTab_comboBox.Text, Domain.WorkFlowTrace.createMSR);
+            AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_createTab_comboBox.Text, Domain.WorkFlowTrace.CreateMSR);
             fAddStockItem.ShowDialog();
 
             //Update state of DGV
@@ -147,9 +147,9 @@ namespace MSR.UIFormLayer
             this.Hide();
 
             //Save state of DGV
-            BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(createTab_dataGridView);
+            BusinessAPI.BusinessSingleton.Instance.formItemListCreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(createTab_dataGridView);
 
-            AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_createTab_comboBox.Text, Domain.WorkFlowTrace.createMSR);
+            AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_createTab_comboBox.Text, Domain.WorkFlowTrace.CreateMSR);
             fAddNonStockItem.ShowDialog();
 
             //Update state of DGV
@@ -210,7 +210,7 @@ namespace MSR.UIFormLayer
             //EF Workflow
 
             //Creates MSR with Associated FormItems
-            BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.InsertIntialMSR(
+            BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI.InsertIntialMSR(
                 approverInfo, 
                 project_createTab_textBox.Text, 
                 wellVL_createTab_textBox.Text, 
@@ -224,7 +224,7 @@ namespace MSR.UIFormLayer
                 );
 
             //Clears the Business formItemList_CreateMSR
-            BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR.Clear();
+            BusinessAPI.BusinessSingleton.Instance.formItemListCreateMSR.Clear();
 
             //Refresh all the DataGridViews
             RefreshDataGridViews();
@@ -304,22 +304,22 @@ namespace MSR.UIFormLayer
 
         private void IdSearch_waitApprovalTab_textBox_TextChanged(object sender, EventArgs e)
         {
-            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.WAIT_FOR_APPROVAL, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text, waitApprovalTabDGV_source, waitApprovalTab_dataGridView);
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.WAIT_FOR_APPROVAL, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text, waitApprovalTabDGVSource, waitApprovalTab_dataGridView);
         }
 
         private void DeptSearch_waitApprovalTab_textBox_TextChanged(object sender, EventArgs e)
         {
-            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.WAIT_FOR_APPROVAL, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text, waitApprovalTabDGV_source, waitApprovalTab_dataGridView);
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.WAIT_FOR_APPROVAL, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text, waitApprovalTabDGVSource, waitApprovalTab_dataGridView);
         }
 
         private void OgSearch_waitApprovalTab_textBox_TextChanged(object sender, EventArgs e)
         {
-            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.WAIT_FOR_APPROVAL, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text, waitApprovalTabDGV_source, waitApprovalTab_dataGridView);
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.WAIT_FOR_APPROVAL, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text, waitApprovalTabDGVSource, waitApprovalTab_dataGridView);
         }
 
         private void ApSearch_waitApprovalTab_textBox_TextChanged(object sender, EventArgs e)
         {
-            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.WAIT_FOR_APPROVAL, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text, waitApprovalTabDGV_source, waitApprovalTab_dataGridView);
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.WAIT_FOR_APPROVAL, idSearch_waitApprovalTab_textBox.Text, deptSearch_waitApprovalTab_textBox.Text, ogSearch_waitApprovalTab_textBox.Text, apSearch_waitApprovalTab_textBox.Text, waitApprovalTabDGVSource, waitApprovalTab_dataGridView);
         }
       
         private void WaitApprovalTab_dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -349,22 +349,22 @@ namespace MSR.UIFormLayer
 
         private void IdSearch_needReview_textBox_TextChanged(object sender, EventArgs e)
         {
-            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.NEED_REVIEW, idSearch_needReviewTab_textBox.Text, deptSearch_needReviewTab_textBox.Text, ogSearch_needReviewTab_textBox.Text, apSearch_needReviewTab_textBox.Text, needReviewTabDGV_source, needReviewTab_dataGridView);
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.NEED_REVIEW, idSearch_needReviewTab_textBox.Text, deptSearch_needReviewTab_textBox.Text, ogSearch_needReviewTab_textBox.Text, apSearch_needReviewTab_textBox.Text, needReviewTabDGVSource, needReviewTab_dataGridView);
         }
 
         private void DeptSearch_needReviewTab_textBox_TextChanged(object sender, EventArgs e)
         {
-            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.NEED_REVIEW, idSearch_needReviewTab_textBox.Text, deptSearch_needReviewTab_textBox.Text, ogSearch_needReviewTab_textBox.Text, apSearch_needReviewTab_textBox.Text, needReviewTabDGV_source, needReviewTab_dataGridView);
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.NEED_REVIEW, idSearch_needReviewTab_textBox.Text, deptSearch_needReviewTab_textBox.Text, ogSearch_needReviewTab_textBox.Text, apSearch_needReviewTab_textBox.Text, needReviewTabDGVSource, needReviewTab_dataGridView);
         }
 
         private void OgSearch_needReviewTab_textBox_TextChanged(object sender, EventArgs e)
         {
-            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.NEED_REVIEW, idSearch_needReviewTab_textBox.Text, deptSearch_needReviewTab_textBox.Text, ogSearch_needReviewTab_textBox.Text, apSearch_needReviewTab_textBox.Text, needReviewTabDGV_source, needReviewTab_dataGridView);
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.NEED_REVIEW, idSearch_needReviewTab_textBox.Text, deptSearch_needReviewTab_textBox.Text, ogSearch_needReviewTab_textBox.Text, apSearch_needReviewTab_textBox.Text, needReviewTabDGVSource, needReviewTab_dataGridView);
         }
 
         private void ApSearch_needReviewTab_textBox_TextChanged(object sender, EventArgs e)
         {
-            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.NEED_REVIEW, idSearch_needReviewTab_textBox.Text, deptSearch_needReviewTab_textBox.Text, ogSearch_needReviewTab_textBox.Text, apSearch_needReviewTab_textBox.Text, needReviewTabDGV_source, needReviewTab_dataGridView);
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.NEED_REVIEW, idSearch_needReviewTab_textBox.Text, deptSearch_needReviewTab_textBox.Text, ogSearch_needReviewTab_textBox.Text, apSearch_needReviewTab_textBox.Text, needReviewTabDGVSource, needReviewTab_dataGridView);
         }
         
         private void NeedReviewTab_dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -393,22 +393,22 @@ namespace MSR.UIFormLayer
 
         private void IdSearch_approvedTab_textBox_TextChanged(object sender, EventArgs e)
         {
-            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.APPROVED, idSearch_approvedTab_textBox.Text, deptSearch_approvedTab_textBox.Text, ogSearch_approvedTab_textBox.Text, apSearch_approvedTab_textBox.Text, approvedTabDGV_source, approvedTab_dataGridView);
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.APPROVED, idSearch_approvedTab_textBox.Text, deptSearch_approvedTab_textBox.Text, ogSearch_approvedTab_textBox.Text, apSearch_approvedTab_textBox.Text, approvedTabDGVSource, approvedTab_dataGridView);
         }
 
         private void DeptSearch_approvedTab_textBox_TextChanged(object sender, EventArgs e)
         {
-            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.APPROVED, idSearch_approvedTab_textBox.Text, deptSearch_approvedTab_textBox.Text, ogSearch_approvedTab_textBox.Text, apSearch_approvedTab_textBox.Text, approvedTabDGV_source, approvedTab_dataGridView);
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.APPROVED, idSearch_approvedTab_textBox.Text, deptSearch_approvedTab_textBox.Text, ogSearch_approvedTab_textBox.Text, apSearch_approvedTab_textBox.Text, approvedTabDGVSource, approvedTab_dataGridView);
         }
 
         private void OgSearch_approvedTab_textBox_TextChanged(object sender, EventArgs e)
         {
-            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.APPROVED, idSearch_approvedTab_textBox.Text, deptSearch_approvedTab_textBox.Text, ogSearch_approvedTab_textBox.Text, apSearch_approvedTab_textBox.Text, approvedTabDGV_source, approvedTab_dataGridView);
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.APPROVED, idSearch_approvedTab_textBox.Text, deptSearch_approvedTab_textBox.Text, ogSearch_approvedTab_textBox.Text, apSearch_approvedTab_textBox.Text, approvedTabDGVSource, approvedTab_dataGridView);
         }
 
         private void ApSearch_approvedTab_textBox_TextChanged(object sender, EventArgs e)
         {
-            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.APPROVED, idSearch_approvedTab_textBox.Text, deptSearch_approvedTab_textBox.Text, ogSearch_approvedTab_textBox.Text, apSearch_approvedTab_textBox.Text, approvedTabDGV_source, approvedTab_dataGridView);
+            PopulateFilteredShowMSRItemListDGV(Domain.WorkFlowTrace.APPROVED, idSearch_approvedTab_textBox.Text, deptSearch_approvedTab_textBox.Text, ogSearch_approvedTab_textBox.Text, apSearch_approvedTab_textBox.Text, approvedTabDGVSource, approvedTab_dataGridView);
         }
         
         private void ApprovedTab_dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -432,6 +432,7 @@ namespace MSR.UIFormLayer
 
 
         #endregion
+
 
     }
 }

@@ -18,18 +18,18 @@ namespace MSR.BusinessAPI
         public ICollection<V_BH_BI> v_bp_bi_access_EF { get; set; }
 
         // Shared Data of FormItemList
-        public ICollection<Domain.FormItems> formItemList_CreateMSR { get; set; }
-        public ICollection<Domain.FormItems> formItemList_WaitForApproval { get; set; }
-        public ICollection<Domain.FormItems> formItemList_NeedReview { get; set; }
-        public ICollection<Domain.FormItems> formItemList_Approved { get; set; }
+        public ICollection<Domain.FormItems> formItemListCreateMSR { get; set; }
+        public ICollection<Domain.FormItems> formItemListWaitForApproval { get; set; }
+        public ICollection<Domain.FormItems> formItemListNeedReview { get; set; }
+        public ICollection<Domain.FormItems> formItemListApproved { get; set; }
 
         private BusinessSingleton()
         {
-            LoginAPI_B = new LoginAPI_B();
-            MSRInfoAPI_B = new MSRInfoAPI_B();
-            StockItemsAPI_B = new StockItemsAPI_B();
-            NonStockItemsAPI_B = new NonStockItemsAPI_B();
-            BudgetInfoAPI_B = new BudgetInfoAPI_B();
+            LoginAPI = new LoginAPI();
+            MSRInfoAPI = new MSRInfoAPI();
+            StockItemsAPI = new StockItemsAPI();
+            NonStockItemsAPI = new NonStockItemsAPI();
+            BudgetInfoAPI = new BudgetInfoAPI();
         }
 
         public static BusinessSingleton Instance
@@ -45,18 +45,18 @@ namespace MSR.BusinessAPI
             }
         }
 
-        public LoginAPI_B LoginAPI_B { get; private set; }
-        public MSRInfoAPI_B MSRInfoAPI_B { get; private set; }
-        public StockItemsAPI_B StockItemsAPI_B { get; private set; }
-        public NonStockItemsAPI_B NonStockItemsAPI_B { get; private set; }
-        public BudgetInfoAPI_B BudgetInfoAPI_B { get; private set; }
+        public LoginAPI LoginAPI { get; private set; }
+        public MSRInfoAPI MSRInfoAPI { get; private set; }
+        public StockItemsAPI StockItemsAPI { get; private set; }
+        public NonStockItemsAPI NonStockItemsAPI { get; private set; }
+        public BudgetInfoAPI BudgetInfoAPI { get; private set; }
 
 
-        public Boolean IsNumeric(object Expression)
+        public Boolean IsNumeric(object expression)
         {
             double retNum;
 
-            Boolean isNum = Double.TryParse(Convert.ToString(Expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out retNum);
+            Boolean isNum = Double.TryParse(Convert.ToString(expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out retNum);
             return isNum;
         }
 
@@ -65,19 +65,19 @@ namespace MSR.BusinessAPI
         public void SetUsrLoginSessionVariables(string username)
         {
             //Sets the UserInfo
-            userInfo_EF = LoginAPI_B.GetUsrByUsername(username);
+            userInfo_EF = LoginAPI.GetUsrByUsername(username);
 
             //User is from a standard dept
             if (userInfo_EF.Group.GroupsName.Equals(Domain.WorkFlowTrace.StandUser) || userInfo_EF.Group.GroupsName.Equals(Domain.WorkFlowTrace.StandBH))
             {
                 //Initalize shared FormItems Data List to Business Singleton
-                BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = new List<Domain.FormItems>();
+                BusinessAPI.BusinessSingleton.Instance.formItemListCreateMSR = new List<Domain.FormItems>();
 
                 //Sets the BPInfo User can access
-                v_bp_dept_access_EF = LoginAPI_B.GetBudgetInfo_AccessByDeptId(userInfo_EF.DeptId);
+                v_bp_dept_access_EF = LoginAPI.GetBudgetInfoAccessByDeptId(userInfo_EF.DeptId);
 
                 //Sets the AC Holders of BPInfo User can access
-                v_bp_bi_access_EF = LoginAPI_B.GetAC_AccessByBPList(v_bp_dept_access_EF);
+                v_bp_bi_access_EF = LoginAPI.GetACAccessByBPList(v_bp_dept_access_EF);
             }
             //User is from procurement dept
             else if (userInfo_EF.Group.GroupsName.Equals(Domain.WorkFlowTrace.StandProcurement))
@@ -110,19 +110,19 @@ namespace MSR.BusinessAPI
             return dateTime;
         }
 
-        public ICollection<String> GetUniqueBP_Access_List()
+        public ICollection<String> GetUniqueBPAccessList()
         {
             ICollection<String> results = v_bp_dept_access_EF.Select(x => x.BP_No).Distinct().ToList();
 
             return results;
         }
 
-        public ICollection<Domain.BudgetInfo> GetFilterBudgetInfo(string Bp_No)
+        public ICollection<Domain.BudgetInfo> GetFilterBudgetInfo(string bpNo)
         {
             ICollection<Domain.BudgetInfo> results = (
                                            from item in v_bp_dept_access_EF
-                                           where item.BP_No.Equals(Bp_No)
-                                           select new Domain.BudgetInfo { Bp_No = item.BP_No, AC_No = item.AC_No, AC_Desc = item.AC_Desc}
+                                           where item.BP_No.Equals(bpNo)
+                                           select new Domain.BudgetInfo { BpNo = item.BP_No, ACNo = item.AC_No, ACDesc = item.AC_Desc}
                                            ).ToList();
 
             return results;
@@ -135,13 +135,13 @@ namespace MSR.BusinessAPI
             return groupsInfo;
         }
 
-        public bool CheckACNo_CAId_Match(String AC_No, String ApproverId)
+        public bool CheckACNoCAIdMatch(String acNo, String approverId)
         {
             bool matchFlag = false;
 
             try
             {
-                V_BH_BI result = v_bp_bi_access_EF.Single(x => x.AC_No.Equals(AC_No) && x.UserId == Int32.Parse(ApproverId));
+                V_BH_BI result = v_bp_bi_access_EF.Single(x => x.AC_No.Equals(acNo) && x.UserId == Int32.Parse(approverId));
                 matchFlag = true;
             }
             catch

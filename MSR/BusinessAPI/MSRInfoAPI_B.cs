@@ -7,9 +7,9 @@ using MSR.Domain;
 
 namespace MSR.BusinessAPI
 {
-    class MSRInfoAPI_B
+    class MSRInfoAPI
     {
-        public ICollection<Domain.ShowMSRItem> GetShowMSR_List(String DeptId, String StateFlag)
+        public ICollection<Domain.ShowMSRItem> GetShowMSRList(String deptId, String stateFlag)
         {
             ICollection<Domain.ShowMSRItem> showMSRData = null;
 
@@ -21,8 +21,8 @@ namespace MSR.BusinessAPI
                 showMSRData = new List<Domain.ShowMSRItem>();
 
                 var showMSRData_db = (from d in context.V_ShowMSR
-                            where (((d.DeptId_Og.ToString().Equals(DeptId)) || (d.DeptId_Ap.ToString().Equals(DeptId))) && d.StateFlag.Equals(StateFlag))
-                            select new Domain.ShowMSRItem { MSRId = d.MSRId.ToString(), Bp_No = d.BP_No, DeptName = d.DeptName, Originator = d.Originator, Approver = d.Approver, Req_Date = d.Req_Date, Comments = d.Comments, Appr_Date = d.Appr_Date.ToString() } ).ToList();
+                            where (((d.DeptId_Og.ToString().Equals(deptId)) || (d.DeptId_Ap.ToString().Equals(deptId))) && d.StateFlag.Equals(stateFlag))
+                            select new Domain.ShowMSRItem { MSRId = d.MSRId.ToString(), BpNo = d.BP_No, DeptName = d.DeptName, Originator = d.Originator, Approver = d.Approver, ReqDate = d.Req_Date, Comments = d.Comments, ApprDate = d.Appr_Date.ToString() } ).ToList();
 
                 showMSRData = showMSRData_db;
 
@@ -30,7 +30,7 @@ namespace MSR.BusinessAPI
             return showMSRData;
         }
 
-        public ICollection<Domain.ShowMSRItem> GetShowMSR_List_Procure(String StateFlag)
+        public ICollection<Domain.ShowMSRItem> GetShowMSRListProcure(String stateFlag)
         {
             ICollection<Domain.ShowMSRItem> showMSRData = null;
 
@@ -42,8 +42,8 @@ namespace MSR.BusinessAPI
                 showMSRData = new List<Domain.ShowMSRItem>();
 
                 var showMSRData_db = (from d in context.V_ShowMSR
-                                      where (d.StateFlag.Equals(StateFlag))
-                                      select new Domain.ShowMSRItem { MSRId = d.MSRId.ToString(), Bp_No = d.BP_No, DeptName = d.DeptName, Originator = d.Originator, Approver = d.Approver, Req_Date = d.Req_Date, Comments = d.Comments, Appr_Date = d.Appr_Date.ToString() }).ToList();
+                                      where (d.StateFlag.Equals(stateFlag))
+                                      select new Domain.ShowMSRItem { MSRId = d.MSRId.ToString(), BpNo = d.BP_No, DeptName = d.DeptName, Originator = d.Originator, Approver = d.Approver, ReqDate = d.Req_Date, Comments = d.Comments, ApprDate = d.Appr_Date.ToString() }).ToList();
 
                 showMSRData = showMSRData_db;
 
@@ -51,7 +51,7 @@ namespace MSR.BusinessAPI
             return showMSRData;
         }
 
-        public ICollection<Domain.ShowMSRItem> GetFiltershowMSR_List(ICollection<Domain.ShowMSRItem> showMSRList, string searchMSRID, string searchDept, string searchOg, string searchAp)
+        public ICollection<Domain.ShowMSRItem> GetFilterShowMSRList(ICollection<Domain.ShowMSRItem> showMSRList, string searchMSRID, string searchDept, string searchOg, string searchAp)
         {
 
             List<string> searchMSRIDList = searchMSRID.Split(' ').ToList();
@@ -78,20 +78,20 @@ namespace MSR.BusinessAPI
             return results;
         }
         
-        public ICollection<Domain.FormItems> GetDomain_FormItems(ICollection<FormItem> formItems, String BP_No)
+        public ICollection<Domain.FormItems> GetDomainFormItems(ICollection<FormItem> formItems, String bpNo)
         {
             ICollection<Domain.FormItems> formItemsData = new List<Domain.FormItems>();
 
             foreach (FormItem item in formItems)
             {
-                Domain.FormItems temp = new Domain.FormItems(BP_No, item.ItemCode, item.ItemDesc, item.Quantity.ToString(), item.Unit, item.UnitPrice.ToString(), item.Currency, item.ROS_Date, item.Comments, item.AC_No);
+                Domain.FormItems temp = new Domain.FormItems(bpNo, item.ItemCode, item.ItemDesc, item.Quantity.ToString(), item.Unit, item.UnitPrice.ToString(), item.Currency, item.ROS_Date, item.Comments, item.AC_No);
                 formItemsData.Add(temp);
             }
             
             return formItemsData;
         }
 
-        public MSR GetMSRByMSRId(String MSRId)
+        public MSR GetMSRByMSRId(String msrId)
         {
             MSR msr = null;
 
@@ -105,7 +105,7 @@ namespace MSR.BusinessAPI
                     .Include("Usr_RO")
                     .Include("Usr_CA")
                     .Include("Usr_RecieveBy")
-                    .Where(x => x.MSRId.ToString().Equals(MSRId))
+                    .Where(x => x.MSRId.ToString().Equals(msrId))
                     .First();
 
                 msr = msr_db;
@@ -114,7 +114,7 @@ namespace MSR.BusinessAPI
             return msr;
         }
 
-        public void DeleteFormItemsByMSRId(String MSRId)
+        public void DeleteFormItemsByMSRId(String msrId)
         {
             using (var context = new MSR_MaxEntities())
             {
@@ -123,7 +123,7 @@ namespace MSR.BusinessAPI
 
                 var msr_db = context.MSRs
                     .Include("FormItems")
-                    .Where(x => x.MSRId.ToString().Equals(MSRId))
+                    .Where(x => x.MSRId.ToString().Equals(msrId))
                     .First();
 
                 var formItemsToDelete = msr_db.FormItems;
@@ -132,7 +132,7 @@ namespace MSR.BusinessAPI
             }
         }
 
-        public String GetOriginatorID(String MSRId)
+        public String GetOriginatorID(String msrId)
         {
             String OgId = null;
 
@@ -141,7 +141,7 @@ namespace MSR.BusinessAPI
                 //Log DB commands to console
                 context.Database.Log = Console.WriteLine;
 
-                var msr_db = context.MSRs.Find(Int32.Parse(MSRId));
+                var msr_db = context.MSRs.Find(Int32.Parse(msrId));
 
                 OgId = msr_db.Usr_RO.ToString();
             }
@@ -149,7 +149,7 @@ namespace MSR.BusinessAPI
             return OgId;
         }
 
-        public void InsertInitialFormItems(ICollection<FormItems> formItemList, int MSRId)
+        public void InsertInitialFormItems(ICollection<FormItems> formItemList, int msrId)
         {
             using (var context = new MSR_MaxEntities())
             {
@@ -163,10 +163,10 @@ namespace MSR.BusinessAPI
                         Unit = item.Unit,
                         UnitPrice = String.IsNullOrEmpty(item.UnitPrice) ? (double?)null : Convert.ToDouble(item.UnitPrice),
                         Currency = item.Currency,
-                        ROS_Date = item.ROS_Date,
+                        ROS_Date = item.ROSDate,
                         Comments = item.Comments,
-                        MSRId = MSRId,
-                        AC_No = item.AC_No
+                        MSRId = msrId,
+                        AC_No = item.ACNo
 
                     };
 
@@ -179,7 +179,7 @@ namespace MSR.BusinessAPI
 
         }
 
-        public void InsertIntialMSR(Domain.ApproverInfo approverInfo, String Project, String VWL, String Comments, String BudgetYear, String BP_No, String AFE, String SugVendor, String ContactVendor, DateTime Req_Date)
+        public void InsertIntialMSR(Domain.ApproverInfo approverInfo, String project, String vwl, String comments, String budgetYear, String bpNo, String afe, String sugVendor, String contactVendor, DateTime reqDate)
         {
             using (var context = new MSR_MaxEntities())
             {
@@ -193,17 +193,17 @@ namespace MSR.BusinessAPI
                 //Initialize new MSR
                 var tempMSR = new MSR
                 {
-                    Project = Project,
-                    WVL = VWL,
-                    Comments = Comments,
-                    BudgetYear = Int32.Parse(BudgetYear),
-                    BP_No = BP_No,
-                    AFE = AFE,
-                    SugVendor = SugVendor,
-                    ContactVendor = ContactVendor,
+                    Project = project,
+                    WVL = vwl,
+                    Comments = comments,
+                    BudgetYear = Int32.Parse(budgetYear),
+                    BP_No = bpNo,
+                    AFE = afe,
+                    SugVendor = sugVendor,
+                    ContactVendor = contactVendor,
                     Usr_RO = usr_RO,
                     Usr_CA = usr_CA,
-                    Req_Date = Req_Date,
+                    Req_Date = reqDate,
                     PUR_Comment = "",
                     Decline_Comment = "",
                     Review_Comment = "",
@@ -218,18 +218,18 @@ namespace MSR.BusinessAPI
                 int MSRId = tempMSR.MSRId;
 
                 //Attaches the FormItems to that MSR just created
-                InsertInitialFormItems(BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR, MSRId);
+                InsertInitialFormItems(BusinessAPI.BusinessSingleton.Instance.formItemListCreateMSR, MSRId);
             }
         }
 
-        internal void UpdateMSR_NeedReview(int MSRId, String StateFlag)
+        internal void UpdateMSRNeedReview(int msrId, String stateFlag)
         {
             using (var context = new MSR_MaxEntities())
             {
-                var msr_db = context.MSRs.Find(MSRId);
+                var msr_db = context.MSRs.Find(msrId);
                 if (msr_db != null)
                 {
-                    msr_db.StateFlag = StateFlag;
+                    msr_db.StateFlag = stateFlag;
 
                     context.SaveChanges();
                 }
@@ -237,17 +237,17 @@ namespace MSR.BusinessAPI
             }
         }
 
-        public void UpdateMSR_WaitForApproval(int MSRId, String Path, String CommentFromPath, DateTime ApprovalDate, String StateFlag)
+        public void UpdateMSRWaitForApproval(int msrId, String path, String commentFromPath, DateTime approvalDate, String stateFlag)
         {
-            if (Path.Equals("Approve"))
+            if (path.Equals("Approve"))
             {
                 using (var context = new MSR_MaxEntities())
                 {
-                    var msr_db = context.MSRs.Find(MSRId);
+                    var msr_db = context.MSRs.Find(msrId);
                     if (msr_db != null)
                     {
-                        msr_db.Appr_Date = ApprovalDate;
-                        msr_db.StateFlag = StateFlag;
+                        msr_db.Appr_Date = approvalDate;
+                        msr_db.StateFlag = stateFlag;
 
                         context.SaveChanges();
                     }
@@ -255,15 +255,15 @@ namespace MSR.BusinessAPI
                 }
 
             }
-            else if (Path.Equals("Send for Review"))
+            else if (path.Equals("Send for Review"))
             {
                 using (var context = new MSR_MaxEntities())
                 {
-                    var msr_db = context.MSRs.Find(MSRId);
+                    var msr_db = context.MSRs.Find(msrId);
                     if (msr_db != null)
                     {
-                        msr_db.Review_Comment = CommentFromPath;
-                        msr_db.StateFlag = StateFlag;
+                        msr_db.Review_Comment = commentFromPath;
+                        msr_db.StateFlag = stateFlag;
 
                         context.SaveChanges();
                     }
@@ -271,15 +271,15 @@ namespace MSR.BusinessAPI
                 }
 
             }
-            else if (Path.Equals("Decline"))
+            else if (path.Equals("Decline"))
             {
                 using (var context = new MSR_MaxEntities())
                 {
-                    var msr_db = context.MSRs.Find(MSRId);
+                    var msr_db = context.MSRs.Find(msrId);
                     if (msr_db != null)
                     {
-                        msr_db.Decline_Comment = CommentFromPath;
-                        msr_db.StateFlag = StateFlag;
+                        msr_db.Decline_Comment = commentFromPath;
+                        msr_db.StateFlag = stateFlag;
 
                         context.SaveChanges();
                     }

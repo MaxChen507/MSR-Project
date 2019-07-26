@@ -13,19 +13,19 @@ namespace MSR.UIFormLayer
     public partial class AddStockItemForm : Form
     {
         //Form Variables
-        String Bp_No;
+        String bpNo;
         String workFlowTrace;
 
         //Binding Source
-        BindingSource itemListDGV_source = new BindingSource();
+        BindingSource itemListDGVSource = new BindingSource();
 
         //Data List Initialization
         ICollection<Domain.StockItems> itemListData = null;
 
-        public AddStockItemForm(String Bp_No, String workFlowTrace)
+        public AddStockItemForm(String bpNo, String workFlowTrace)
         {
             InitializeComponent();
-            this.Bp_No = Bp_No;
+            this.bpNo = bpNo;
             this.workFlowTrace = workFlowTrace;
         }
 
@@ -39,7 +39,7 @@ namespace MSR.UIFormLayer
         {
             try
             {
-                itemListData = BusinessAPI.BusinessSingleton.Instance.StockItemsAPI_B.GetStockItem_List(Bp_No);
+                itemListData = BusinessAPI.BusinessSingleton.Instance.StockItemsAPI.GetStockItemList(bpNo);
             }
             catch (Exception ex)
             {
@@ -52,8 +52,8 @@ namespace MSR.UIFormLayer
                 return;
             }
 
-            itemListDGV_source.DataSource = itemListData;
-            itemList_addStock_dataGridView.DataSource = itemListDGV_source;
+            itemListDGVSource.DataSource = itemListData;
+            itemList_addStock_dataGridView.DataSource = itemListDGVSource;
             itemList_addStock_dataGridView.ClearSelection();
         }
 
@@ -61,21 +61,21 @@ namespace MSR.UIFormLayer
         {
             //Initialize LookUp ComboBox
             lookup_AddStock_comboBox.Items.Add("");
-            foreach (String item in BusinessAPI.BusinessSingleton.Instance.StockItemsAPI_B.GetLookUpCode_List(itemListData))
+            foreach (String item in BusinessAPI.BusinessSingleton.Instance.StockItemsAPI.GetLookUpCodeList(itemListData))
             {
                 lookup_AddStock_comboBox.Items.Add(item);
             }
             
             //WorkFlowTrace
-            if (workFlowTrace.Equals(Domain.WorkFlowTrace.createMSR))
+            if (workFlowTrace.Equals(Domain.WorkFlowTrace.CreateMSR))
             {
                 AddListDGV_Load_CreateMSR();
             }
-            else if(workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApprovalMSR))
+            else if(workFlowTrace.Equals(Domain.WorkFlowTrace.WaitForApprovalMSR))
             {
                 AddListDGV_Load_WaitForApproval();
             }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReviewMSR))
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.NeedReviewMSR))
             {
                 AddListDGV_Load_NeedReview();
             }
@@ -88,9 +88,9 @@ namespace MSR.UIFormLayer
             UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(addList_addStock_dataGridView);
 
             //Populate from Singleton List
-            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR)
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemListCreateMSR)
             {
-                addList_addStock_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
+                addList_addStock_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROSDate, item.Comments, item.ACNo);
             }
 
         }
@@ -101,9 +101,9 @@ namespace MSR.UIFormLayer
             UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(addList_addStock_dataGridView);
 
             //Populate from Singleton List
-            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval)
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemListWaitForApproval)
             {
-                addList_addStock_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
+                addList_addStock_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROSDate, item.Comments, item.ACNo);
             }
 
         }
@@ -114,29 +114,29 @@ namespace MSR.UIFormLayer
             UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(addList_addStock_dataGridView);
 
             //Populate from Singleton List
-            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview)
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemListNeedReview)
             {
-                addList_addStock_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
+                addList_addStock_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROSDate, item.Comments, item.ACNo);
             }
 
         }
 
         private void ApplyClose_AddStock_button_Click(object sender, EventArgs e)
         {
-            if (workFlowTrace.Equals(Domain.WorkFlowTrace.createMSR))
+            if (workFlowTrace.Equals(Domain.WorkFlowTrace.CreateMSR))
             {
                 //Save state of DGV to CreateMSR
-                BusinessAPI.BusinessSingleton.Instance.formItemList_CreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(addList_addStock_dataGridView);
+                BusinessAPI.BusinessSingleton.Instance.formItemListCreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(addList_addStock_dataGridView);
             }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.waitForApprovalMSR))
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.WaitForApprovalMSR))
             {
                 //Save state of DGV to WaitForApproval
-                BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(addList_addStock_dataGridView);
+                BusinessAPI.BusinessSingleton.Instance.formItemListWaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(addList_addStock_dataGridView);
             }
-            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.needReviewMSR))
+            else if (workFlowTrace.Equals(Domain.WorkFlowTrace.NeedReviewMSR))
             {
                 //Save state of DGV to WaitForApproval
-                BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(addList_addStock_dataGridView);
+                BusinessAPI.BusinessSingleton.Instance.formItemListNeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(addList_addStock_dataGridView);
             }
 
             this.Close();
@@ -189,7 +189,7 @@ namespace MSR.UIFormLayer
 
         private void PopulateFilteredItemListDGV()
         {
-            ICollection<Domain.StockItems> stockItemDatafilter = BusinessAPI.BusinessSingleton.Instance.StockItemsAPI_B.GetFilterStockItem_List(itemListData, search_AddStock_textBox.Text.ToString(), lookup_AddStock_comboBox.Text.ToString());
+            ICollection<Domain.StockItems> stockItemDatafilter = BusinessAPI.BusinessSingleton.Instance.StockItemsAPI.GetFilterStockItemList(itemListData, search_AddStock_textBox.Text.ToString(), lookup_AddStock_comboBox.Text.ToString());
             
             if (stockItemDatafilter == null)
             {
@@ -197,8 +197,8 @@ namespace MSR.UIFormLayer
                 return;
             }
 
-            itemListDGV_source.DataSource = stockItemDatafilter;
-            itemList_addStock_dataGridView.DataSource = itemListDGV_source;
+            itemListDGVSource.DataSource = stockItemDatafilter;
+            itemList_addStock_dataGridView.DataSource = itemListDGVSource;
 
             itemList_addStock_dataGridView.ClearSelection();
         }
@@ -212,6 +212,7 @@ namespace MSR.UIFormLayer
         {
             PopulateFilteredItemListDGV();
         }
+
 
     }
 }

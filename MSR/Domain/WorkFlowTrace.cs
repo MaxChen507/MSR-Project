@@ -8,10 +8,10 @@ namespace MSR.Domain
 {
     static class WorkFlowTrace
     {
-        public static String createMSR = "createMSR";
-        public static String waitForApprovalMSR = "waitForApprovalMSR";
-        public static String needReviewMSR = "needReviewMSR";
-        public static String approvedMSR = "approvedMSR";
+        public static String CreateMSR = "CreateMSR";
+        public static String WaitForApprovalMSR = "WaitForApprovalMSR";
+        public static String NeedReviewMSR = "NeedReviewMSR";
+        public static String ApprovedMSR = "ApprovedMSR";
 
         public static String StandUser = "StandUser";
         public static String StandBH = "StandBH";

@@ -13,23 +13,23 @@ namespace MSR.UIFormLayer
     public partial class ShowMSR_Approved : Form
     {
         //EF Variables
-        MSR MSRInfo;
+        MSR msrInfo;
 
         //View Variables
-        ICollection<Domain.FormItems> ViewFormItems;
+        ICollection<Domain.FormItems> viewFormItems;
         Domain.GroupsInfo groupsInfo;
 
-        public ShowMSR_Approved(String MSRId)
+        public ShowMSR_Approved(String msrId)
         {
             InitializeComponent();
-            MSRInfo = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetMSRByMSRId(MSRId);
+            msrInfo = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI.GetMSRByMSRId(msrId);
         }
 
         private void ShowMSR_Approved_Load(object sender, EventArgs e)
         {
             //Update the BusininessAPI with FormItems
-            ViewFormItems = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetDomain_FormItems(MSRInfo.FormItems, MSRInfo.BP_No);
-            BusinessAPI.BusinessSingleton.Instance.formItemList_Approved = ViewFormItems;
+            viewFormItems = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI.GetDomainFormItems(msrInfo.FormItems, msrInfo.BP_No);
+            BusinessAPI.BusinessSingleton.Instance.formItemListApproved = viewFormItems;
 
             //Set Group Info from BusininessAPI
             groupsInfo = BusinessAPI.BusinessSingleton.Instance.GetGroupsInfo();
@@ -40,22 +40,22 @@ namespace MSR.UIFormLayer
         private void InitalizeStartingFields()
         {
             //Initialze Project GroupBox
-            project_showMSR_textBox.Text = MSRInfo.Project;
-            wellVL_showMSR_textBox.Text = MSRInfo.WVL;
-            comments_showMSR_textBox.Text = MSRInfo.Comments;
+            project_showMSR_textBox.Text = msrInfo.Project;
+            wellVL_showMSR_textBox.Text = msrInfo.WVL;
+            comments_showMSR_textBox.Text = msrInfo.Comments;
 
             //Initialize Budget GroupBox
-            budgetYear_showMSR_textBox.Text = MSRInfo.BudgetYear.ToString();
-            budgetPool_showMSR_textBox.Text = MSRInfo.BP_No;
-            AFE_showMSR_textBox.Text = MSRInfo.AFE;
+            budgetYear_showMSR_textBox.Text = msrInfo.BudgetYear.ToString();
+            budgetPool_showMSR_textBox.Text = msrInfo.BP_No;
+            AFE_showMSR_textBox.Text = msrInfo.AFE;
 
             //Initialize Vendors
-            suggVendor_showMSR_textBox.Text = MSRInfo.SugVendor;
-            vendorContact_showMSR_textBox.Text = MSRInfo.ContactVendor;
+            suggVendor_showMSR_textBox.Text = msrInfo.SugVendor;
+            vendorContact_showMSR_textBox.Text = msrInfo.ContactVendor;
 
             //Initialize Approve GroupBox
-            originator_showMSR_textBox.Text = MSRInfo.Usr_RO.FullName;
-            compApproval_showMSR_textBox.Text = MSRInfo.Usr_CA.FullName;
+            originator_showMSR_textBox.Text = msrInfo.Usr_RO.FullName;
+            compApproval_showMSR_textBox.Text = msrInfo.Usr_CA.FullName;
 
             ShowMSR_DGV_Load();
 
@@ -91,9 +91,9 @@ namespace MSR.UIFormLayer
             //DGV clear
             UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(showMSR_dataGridView);
 
-            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_Approved)
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemListApproved)
             {
-                showMSR_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
+                showMSR_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROSDate, item.Comments, item.ACNo);
             }
 
         }

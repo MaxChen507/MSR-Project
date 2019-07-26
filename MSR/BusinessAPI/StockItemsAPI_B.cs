@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MSR.BusinessAPI
 {
-    class StockItemsAPI_B
+    class StockItemsAPI
     {
-        public ICollection<Domain.StockItems> GetStockItem_List(String Bp_No)
+        public ICollection<Domain.StockItems> GetStockItemList(String bpNo)
         {
             ICollection<Domain.StockItems> stockItemData = null;
 
@@ -20,8 +20,8 @@ namespace MSR.BusinessAPI
                 stockItemData = new List<Domain.StockItems>();
 
                 var stockItemData_db = (from s in context.V_StockItem_BudgetInfo
-                                        where s.BP_No.ToString().Equals(Bp_No)
-                                        select new Domain.StockItems { BudgetPool = s.BP_No, ItemCode = s.ItemCode, ItemDesc = s.ItemDesc, LookUp = s.LookUp, BarCode = s.BarCode, AC_No = s.AC_No, Unit = s.Unit, ActiveFlag = s.ActiveFlag.ToString() } ).ToList();
+                                        where s.BP_No.ToString().Equals(bpNo)
+                                        select new Domain.StockItems { BudgetPool = s.BP_No, ItemCode = s.ItemCode, ItemDesc = s.ItemDesc, LookUp = s.LookUp, BarCode = s.BarCode, ACNo = s.AC_No, Unit = s.Unit, ActiveFlag = s.ActiveFlag.ToString() } ).ToList();
 
                 stockItemData = stockItemData_db;
             }
@@ -29,7 +29,7 @@ namespace MSR.BusinessAPI
             return stockItemData;
         }
 
-        public ICollection<Domain.StockItems> GetFilterStockItem_List(ICollection<Domain.StockItems> stockItemList, string searchString, string lookUpString)
+        public ICollection<Domain.StockItems> GetFilterStockItemList(ICollection<Domain.StockItems> stockItemList, string searchString, string lookUpString)
         {
 
             List<string> searchStringList = searchString.Split(' ').ToList();
@@ -49,7 +49,7 @@ namespace MSR.BusinessAPI
             return results;
         }
 
-        public ICollection<String> GetLookUpCode_List(ICollection<Domain.StockItems> stockItemList)
+        public ICollection<String> GetLookUpCodeList(ICollection<Domain.StockItems> stockItemList)
         {
             ICollection<String> results = (
                                 from item in stockItemList

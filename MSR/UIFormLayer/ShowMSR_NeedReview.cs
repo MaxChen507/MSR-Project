@@ -13,23 +13,23 @@ namespace MSR.UIFormLayer
     public partial class ShowMSR_NeedReview : Form
     {
         //EF Variables
-        MSR MSRInfo;
+        MSR msrInfo;
 
         //View Variables
-        ICollection<Domain.FormItems> ViewFormItems;
+        ICollection<Domain.FormItems> viewFormItems;
         Domain.GroupsInfo groupsInfo;
 
-        public ShowMSR_NeedReview(String MSRId)
+        public ShowMSR_NeedReview(String msrId)
         {
             InitializeComponent();
-            MSRInfo = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetMSRByMSRId(MSRId);
+            msrInfo = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI.GetMSRByMSRId(msrId);
         }
 
         private void ShowMSR_NeedReview_Load(object sender, EventArgs e)
         {
             //Update the BusininessAPI with FormItems
-            ViewFormItems = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.GetDomain_FormItems(MSRInfo.FormItems, MSRInfo.BP_No);
-            BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview = ViewFormItems;
+            viewFormItems = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI.GetDomainFormItems(msrInfo.FormItems, msrInfo.BP_No);
+            BusinessAPI.BusinessSingleton.Instance.formItemListNeedReview = viewFormItems;
 
             //Set Group Info from BusininessAPI
             groupsInfo = BusinessAPI.BusinessSingleton.Instance.GetGroupsInfo();
@@ -39,33 +39,33 @@ namespace MSR.UIFormLayer
         private void InitalizeStartingFields()
         {
             //Initialze Project GroupBox
-            project_showMSR_textBox.Text = MSRInfo.Project;
-            wellVL_showMSR_textBox.Text = MSRInfo.WVL;
-            comments_showMSR_textBox.Text = MSRInfo.Comments;
+            project_showMSR_textBox.Text = msrInfo.Project;
+            wellVL_showMSR_textBox.Text = msrInfo.WVL;
+            comments_showMSR_textBox.Text = msrInfo.Comments;
 
             //Initialize Budget GroupBox
-            budgetYear_showMSR_textBox.Text = MSRInfo.BudgetYear.ToString();
-            budgetPool_showMSR_textBox.Text = MSRInfo.BP_No;
-            AFE_showMSR_textBox.Text = MSRInfo.AFE;
+            budgetYear_showMSR_textBox.Text = msrInfo.BudgetYear.ToString();
+            budgetPool_showMSR_textBox.Text = msrInfo.BP_No;
+            AFE_showMSR_textBox.Text = msrInfo.AFE;
 
             //Initialize Vendors
-            suggVendor_showMSR_textBox.Text = MSRInfo.SugVendor;
-            vendorContact_showMSR_textBox.Text = MSRInfo.ContactVendor;
+            suggVendor_showMSR_textBox.Text = msrInfo.SugVendor;
+            vendorContact_showMSR_textBox.Text = msrInfo.ContactVendor;
 
             //Initialize Approve GroupBox
-            originator_showMSR_textBox.Text = MSRInfo.Usr_RO.FullName;
-            compApproval_showMSR_textBox.Text = MSRInfo.Usr_CA.FullName;
+            originator_showMSR_textBox.Text = msrInfo.Usr_RO.FullName;
+            compApproval_showMSR_textBox.Text = msrInfo.Usr_CA.FullName;
                        
             ShowMSR_DGV_Load();
 
             //Depending on the type of User, different controls will change
             //If orginator has clicked:
-            if (BusinessAPI.BusinessSingleton.Instance.userInfo_EF.UserId.Equals(MSRInfo.Usr_RO.UserId))
+            if (BusinessAPI.BusinessSingleton.Instance.userInfo_EF.UserId.Equals(msrInfo.Usr_RO.UserId))
             {
                 //Disable Group Boxes
                 approve_showMSR_groupBox.Enabled = false;
                 reason_showMSR_groupBox.Enabled = false;
-                reason_showMSR_richTextBox.Text = MSRInfo.Review_Comment;
+                reason_showMSR_richTextBox.Text = msrInfo.Review_Comment;
 
                 //Enable Add Delete Items
                 edit_showMSR_groupBox.Enabled = true;
@@ -80,7 +80,7 @@ namespace MSR.UIFormLayer
                 //Disable Group Boxes
                 approve_showMSR_groupBox.Enabled = false;
                 reason_showMSR_groupBox.Enabled = false;
-                reason_showMSR_richTextBox.Text = MSRInfo.Review_Comment;
+                reason_showMSR_richTextBox.Text = msrInfo.Review_Comment;
 
                 //Disable Add Delete Items
                 edit_showMSR_groupBox.Enabled = false;
@@ -100,9 +100,9 @@ namespace MSR.UIFormLayer
             //DGV clear
             UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(showMSR_dataGridView);
 
-            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview)
+            foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemListNeedReview)
             {
-                showMSR_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
+                showMSR_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROSDate, item.Comments, item.ACNo);
             }
 
         }
@@ -123,9 +123,9 @@ namespace MSR.UIFormLayer
             UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(showMSR_dataGridView);
 
             //Populate showMSR_dataGridView from Business Singleton List
-            foreach (Domain.FormItems item in ViewFormItems)
+            foreach (Domain.FormItems item in viewFormItems)
             {
-                showMSR_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROS_Date, item.Comments, item.AC_No);
+                showMSR_dataGridView.Rows.Add(item.BudgetPool, item.ItemCode, item.ItemDesc, item.Quantity, item.Unit, item.UnitPrice, item.Currency, item.ROSDate, item.Comments, item.ACNo);
             }
         }
 
@@ -139,9 +139,9 @@ namespace MSR.UIFormLayer
             this.Hide();
 
             //Save state of DGV
-            BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
+            BusinessAPI.BusinessSingleton.Instance.formItemListWaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
 
-            AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.needReviewMSR);
+            AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.NeedReviewMSR);
             fAddStockItem.ShowDialog();
 
             //Update state of DGV
@@ -155,9 +155,9 @@ namespace MSR.UIFormLayer
             this.Hide();
 
             //Save state of DGV
-            BusinessAPI.BusinessSingleton.Instance.formItemList_WaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
+            BusinessAPI.BusinessSingleton.Instance.formItemListWaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
 
-            AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.needReviewMSR);
+            AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.NeedReviewMSR);
             fAddNonStockItem.ShowDialog();
 
             //Update state of DGV
@@ -168,7 +168,7 @@ namespace MSR.UIFormLayer
 
         private void SubmitReview_showMSR_Button_Click(object sender, EventArgs e)
         {
-            if (UserInterfaceAPI.UserInterfaceSIngleton.Instance.CheckMSRFormItemsDGV(showMSR_dataGridView, budgetPool_showMSR_textBox.Text, MSRInfo.Usr_CA.UserId.ToString()) == false)
+            if (UserInterfaceAPI.UserInterfaceSIngleton.Instance.CheckMSRFormItemsDGV(showMSR_dataGridView, budgetPool_showMSR_textBox.Text, msrInfo.Usr_CA.UserId.ToString()) == false)
             {
                 return;
             }
@@ -189,21 +189,20 @@ namespace MSR.UIFormLayer
             }
 
             //Save state of DGV
-            BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
+            BusinessAPI.BusinessSingleton.Instance.formItemListNeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
 
             //DELETE from FormItems
-            BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.DeleteFormItemsByMSRId(MSRInfo.MSRId.ToString());
+            BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI.DeleteFormItemsByMSRId(msrInfo.MSRId.ToString());
 
             //INSERT into FormItems
-            BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.InsertInitialFormItems(BusinessAPI.BusinessSingleton.Instance.formItemList_NeedReview, Convert.ToInt32(MSRInfo.MSRId));
+            BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI.InsertInitialFormItems(BusinessAPI.BusinessSingleton.Instance.formItemListNeedReview, Convert.ToInt32(msrInfo.MSRId));
 
             //Update MSR States and Approve Dates
-            BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI_B.UpdateMSR_NeedReview(Convert.ToInt32(MSRInfo.MSRId), Domain.WorkFlowTrace.WAIT_FOR_APPROVAL);
+            BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI.UpdateMSRNeedReview(Convert.ToInt32(msrInfo.MSRId), Domain.WorkFlowTrace.WAIT_FOR_APPROVAL);
 
             this.Close();
         }
 
         
-
     }
 }

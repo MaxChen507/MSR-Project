@@ -15,11 +15,11 @@ namespace MSR.Domain
         public String Unit { get; }
         public String UnitPrice { get; }
         public String Currency { get; }
-        public DateTime ROS_Date { get; }
+        public DateTime ROSDate { get; }
         public String Comments { get; }
-        public String AC_No { get; }
+        public String ACNo { get; }
         
-        public FormItems(String BudgetPool, String ItemCode, String ItemDesc, String Quantity, String Unit, String UnitPrice, String Currency, DateTime ROS_Date, String Comments, String AC_No)
+        public FormItems(String BudgetPool, String ItemCode, String ItemDesc, String Quantity, String Unit, String UnitPrice, String Currency, DateTime ROSDate, String Comments, String ACNo)
         {
             this.BudgetPool = BudgetPool;
             this.ItemCode = ItemCode;
@@ -28,9 +28,9 @@ namespace MSR.Domain
             this.Unit = Unit;
             this.UnitPrice = UnitPrice;
             this.Currency = Currency;
-            this.ROS_Date = ROS_Date;
+            this.ROSDate = ROSDate;
             this.Comments = Comments;
-            this.AC_No = AC_No;
+            this.ACNo = ACNo;
         }
 
     }

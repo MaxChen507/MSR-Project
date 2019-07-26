@@ -8,20 +8,20 @@ namespace MSR.Domain
 {
     public class BudgetInfo
     {
-        public String Bp_No { get; set; }
-        public String AC_No { get; set; }
-        public String AC_Desc { get; set; }
+        public String BpNo { get; set; }
+        public String ACNo { get; set; }
+        public String ACDesc { get; set; }
 
         public BudgetInfo()
         {
 
         }
 
-        public BudgetInfo(String Bp_No, String AC_No, String AC_Desc)
+        public BudgetInfo(String BpNo, String ACNo, String ACDesc)
         {
-            this.Bp_No = Bp_No;
-            this.AC_No = AC_No;
-            this.AC_Desc = AC_Desc;
+            this.BpNo = BpNo;
+            this.ACNo = ACNo;
+            this.ACDesc = ACDesc;
         }
 
     }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MSR.BusinessAPI
 {
-    class BudgetInfoAPI_B
+    class BudgetInfoAPI
     {
-        public ICollection<Domain.ApproverInfo> GetBudgetHolder_List_EF(String Bp_No)
+        public ICollection<Domain.ApproverInfo> GetBudgetHolderList(String bpNo)
         {
             ICollection<Domain.ApproverInfo> budgetHolderData = null;
 
@@ -20,7 +20,7 @@ namespace MSR.BusinessAPI
                 budgetHolderData = new List<Domain.ApproverInfo>();
 
                 var budgetHolderData_db = (from a in context.V_Approver_BP
-                                        where a.BP_No.Equals(Bp_No)
+                                        where a.BP_No.Equals(bpNo)
                                         select new Domain.ApproverInfo { UserId = a.UserId.ToString(), Username = a.Username, FullName = a.FullName, Email = a.Email, DeptId = a.DeptId.ToString() }).ToList();
 
                 budgetHolderData = budgetHolderData_db;

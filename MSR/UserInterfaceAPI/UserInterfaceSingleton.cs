@@ -107,16 +107,16 @@ namespace MSR.UserInterfaceAPI
             }
         }
 
-        public void Custom_DGV_Clear(DataGridView DGV)
+        public void Custom_DGV_Clear(DataGridView dgv)
         {
-            DGV.DataSource = null;
-            DGV.Rows.Clear();
-            DGV.Refresh();
+            dgv.DataSource = null;
+            dgv.Rows.Clear();
+            dgv.Refresh();
 
-            DGV.ClearSelection();
+            dgv.ClearSelection();
         }
 
-        public Boolean CheckMSRFormItemsDGV(DataGridView dataGridView, String budgetPool, String Usr_CA_Id)
+        public Boolean CheckMSRFormItemsDGV(DataGridView dataGridView, String budgetPool, String usrCAId)
         {
             //Unselect DataGridView
             dataGridView.ClearSelection();
@@ -158,7 +158,7 @@ namespace MSR.UserInterfaceAPI
             //Checking if all items's AC_No matches combobox approver
             foreach (DataGridViewRow row in dataGridView.Rows)
             {
-                if (!BusinessAPI.BusinessSingleton.Instance.CheckACNo_CAId_Match(row.Cells["AC_No"].FormattedValue.ToString(), Usr_CA_Id))
+                if (!BusinessAPI.BusinessSingleton.Instance.CheckACNoCAIdMatch(row.Cells["AC_No"].FormattedValue.ToString(), usrCAId))
                 {
                     Color lightRed = ControlPaint.Light(Color.Red);
                     row.Cells["AC_No"].Style.BackColor = lightRed;
