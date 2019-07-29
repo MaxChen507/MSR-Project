@@ -236,6 +236,13 @@ namespace MSR.UIFormLayer
                     return;
                 }
 
+                //Check if you are the originator, if so you can't approve
+                if (BusinessAPI.BusinessSingleton.Instance.userInfo_EF.UserId == msrInfo.Usr_RO.UserId)
+                {
+                    MessageBox.Show("You cannot approve as the originator");
+                    return;
+                }
+
                 //To confirm if you want to Approve MSR
                 DialogResult result = MessageBox.Show("Are you sure you want to approve the MSR?", "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
