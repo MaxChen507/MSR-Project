@@ -227,19 +227,19 @@ namespace MSR.UIFormLayer
 
         private void Approve_showMSR_Button_Click(object sender, EventArgs e)
         {
+            //Check if you are the originator, if so you can't approve/decline/send for review
+            if (BusinessAPI.BusinessSingleton.Instance.userInfo_EF.UserId == msrInfo.Usr_RO.UserId)
+            {
+                MessageBox.Show("You cannot approve/decline/send for review as the originator");
+                return;
+            }
+
             if (approve_showMSR_Button.Text.ToString().Equals("Approve"))
             {
                 //EDIT AND UPDATE MSR
 
                 if (UserInterfaceAPI.UserInterfaceSIngleton.Instance.CheckMSRFormItemsDGV(showMSR_dataGridView, budgetPool_showMSR_textBox.Text, msrInfo.Usr_CA.UserId.ToString()) == false)
                 {
-                    return;
-                }
-
-                //Check if you are the originator, if so you can't approve
-                if (BusinessAPI.BusinessSingleton.Instance.userInfo_EF.UserId == msrInfo.Usr_RO.UserId)
-                {
-                    MessageBox.Show("You cannot approve as the originator");
                     return;
                 }
 
