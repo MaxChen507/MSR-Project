@@ -98,7 +98,7 @@ namespace MSR.UIFormLayer
         private void ShowMSR_DGV_Load()
         {
             //DGV clear
-            UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(showMSR_dataGridView);
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.CustomDGVClear(showMSR_dataGridView);
 
             foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemListNeedReview)
             {
@@ -120,7 +120,7 @@ namespace MSR.UIFormLayer
         private void UndoAllChanges()
         {
             //DGV clear
-            UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(showMSR_dataGridView);
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.CustomDGVClear(showMSR_dataGridView);
 
             //Populate showMSR_dataGridView from Business Singleton List
             foreach (Domain.FormItems item in viewFormItems)
@@ -139,7 +139,7 @@ namespace MSR.UIFormLayer
             this.Hide();
 
             //Save state of DGV
-            BusinessAPI.BusinessSingleton.Instance.formItemListWaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
+            BusinessAPI.BusinessSingleton.Instance.formItemListWaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGVToFormItemList(showMSR_dataGridView);
 
             AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.NeedReviewMSR);
             fAddStockItem.ShowDialog();
@@ -155,7 +155,7 @@ namespace MSR.UIFormLayer
             this.Hide();
 
             //Save state of DGV
-            BusinessAPI.BusinessSingleton.Instance.formItemListWaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
+            BusinessAPI.BusinessSingleton.Instance.formItemListWaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGVToFormItemList(showMSR_dataGridView);
 
             AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_showMSR_textBox.Text, Domain.WorkFlowTrace.NeedReviewMSR);
             fAddNonStockItem.ShowDialog();
@@ -189,7 +189,7 @@ namespace MSR.UIFormLayer
             }
 
             //Save state of DGV
-            BusinessAPI.BusinessSingleton.Instance.formItemListNeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(showMSR_dataGridView);
+            BusinessAPI.BusinessSingleton.Instance.formItemListNeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGVToFormItemList(showMSR_dataGridView);
 
             //DELETE from FormItems
             BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI.DeleteFormItemsByMSRId(msrInfo.MSRId.ToString());

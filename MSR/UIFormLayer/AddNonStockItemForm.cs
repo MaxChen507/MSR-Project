@@ -55,6 +55,9 @@ namespace MSR.UIFormLayer
             budgetListDGVSource.DataSource = budgetListData;
             budgetInfo_addNonStock_dataGridView.DataSource = budgetListDGVSource;
             budgetInfo_addNonStock_dataGridView.ClearSelection();
+
+            //Set the custom resize
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.CustomDGVSetColumnResize(budgetInfo_addNonStock_dataGridView);
         }
 
         private void InitalizeStartingFields()
@@ -80,7 +83,7 @@ namespace MSR.UIFormLayer
         private void AddListDGV_Load_CreateMSR()
         {
             //DGV clear
-            UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(addList_addNonStock_dataGridView);
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.CustomDGVClear(addList_addNonStock_dataGridView);
 
             //Populate from Singleton List
             foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemListCreateMSR)
@@ -93,7 +96,7 @@ namespace MSR.UIFormLayer
         private void AddListDGV_Load_WaitForApproval()
         {
             //DGV clear
-            UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(addList_addNonStock_dataGridView);
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.CustomDGVClear(addList_addNonStock_dataGridView);
 
             //Populate from Singleton List
             foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemListWaitForApproval)
@@ -106,7 +109,7 @@ namespace MSR.UIFormLayer
         private void AddListDGV_Load_NeedReview()
         {
             //DGV clear
-            UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(addList_addNonStock_dataGridView);
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.CustomDGVClear(addList_addNonStock_dataGridView);
 
             //Populate from Singleton List
             foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemListNeedReview)
@@ -121,17 +124,17 @@ namespace MSR.UIFormLayer
             if (workFlowTrace.Equals(Domain.WorkFlowTrace.CreateMSR))
             {
                 //Save state of DGV to CreateMSR
-                BusinessAPI.BusinessSingleton.Instance.formItemListCreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(addList_addNonStock_dataGridView);
+                BusinessAPI.BusinessSingleton.Instance.formItemListCreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGVToFormItemList(addList_addNonStock_dataGridView);
             }
             else if (workFlowTrace.Equals(Domain.WorkFlowTrace.WaitForApprovalMSR))
             {
                 //Save state of DGV to WaitForApproval
-                BusinessAPI.BusinessSingleton.Instance.formItemListWaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(addList_addNonStock_dataGridView);
+                BusinessAPI.BusinessSingleton.Instance.formItemListWaitForApproval = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGVToFormItemList(addList_addNonStock_dataGridView);
             }
             else if (workFlowTrace.Equals(Domain.WorkFlowTrace.NeedReviewMSR))
             {
                 //Save state of DGV to WaitForApproval
-                BusinessAPI.BusinessSingleton.Instance.formItemListNeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(addList_addNonStock_dataGridView);
+                BusinessAPI.BusinessSingleton.Instance.formItemListNeedReview = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGVToFormItemList(addList_addNonStock_dataGridView);
             }
 
             this.Close();
@@ -214,7 +217,6 @@ namespace MSR.UIFormLayer
         {
             PopulateFilteredBudgetInfoListDGV();
         }
-
 
     }
 }

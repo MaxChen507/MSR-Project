@@ -89,7 +89,7 @@ namespace MSR.UIFormLayer
         private void ShowMSR_DGV_Load()
         {
             //DGV clear
-            UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(showMSR_dataGridView);
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.CustomDGVClear(showMSR_dataGridView);
 
             foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemListApproved)
             {

@@ -34,7 +34,7 @@ namespace MSR.UIFormLayer
         private void RefreshDataGridViews()
         {
             //DGV clear
-            UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(approvedTab_dataGridView);
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.CustomDGVClear(approvedTab_dataGridView);
 
             //Populate approvedTab_dataGridView from BusinessAPI
             approvedTabDGVSource.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI.GetShowMSRListProcure(Domain.WorkFlowTrace.APPROVED);

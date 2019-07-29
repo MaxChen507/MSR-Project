@@ -34,7 +34,7 @@ namespace MSR.UserInterfaceAPI
             }
         }
 
-        public ICollection<Domain.FormItems> ConvertFormItemDGV_ToFormItemList(DataGridView formItemsDGV)
+        public ICollection<Domain.FormItems> ConvertFormItemDGVToFormItemList(DataGridView formItemsDGV)
         {
             //Data List Initialization
             ICollection<Domain.FormItems> formItemData_List = new List<Domain.FormItems>();
@@ -107,7 +107,7 @@ namespace MSR.UserInterfaceAPI
             }
         }
 
-        public void Custom_DGV_Clear(DataGridView dgv)
+        public void CustomDGVClear(DataGridView dgv)
         {
             dgv.DataSource = null;
             dgv.Rows.Clear();
@@ -242,6 +242,22 @@ namespace MSR.UserInterfaceAPI
             }
 
             return true;
+        }
+
+        public void CustomDGVSetColumnResize(DataGridView dgv)
+        {
+            for (int i = 0; i < dgv.Columns.Count - 1; i++)
+            {
+                dgv.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+            dgv.Columns[dgv.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            for (int i = 0; i < dgv.Columns.Count; i++)
+            {
+                int colw = dgv.Columns[i].Width;
+                dgv.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                dgv.Columns[i].Width = colw;
+            }
         }
 
     }

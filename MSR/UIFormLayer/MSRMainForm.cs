@@ -55,10 +55,10 @@ namespace MSR.UIFormLayer
         private void RefreshDataGridViews()
         {
             //DGV clear
-            UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(createTab_dataGridView);
-            UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(waitApprovalTab_dataGridView);
-            UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(needReviewTab_dataGridView);
-            UserInterfaceAPI.UserInterfaceSIngleton.Instance.Custom_DGV_Clear(approvedTab_dataGridView);
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.CustomDGVClear(createTab_dataGridView);
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.CustomDGVClear(waitApprovalTab_dataGridView);
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.CustomDGVClear(needReviewTab_dataGridView);
+            UserInterfaceAPI.UserInterfaceSIngleton.Instance.CustomDGVClear(approvedTab_dataGridView);
 
             //Populate createTab_dataGridView from Business Singleton List
             foreach (Domain.FormItems item in BusinessAPI.BusinessSingleton.Instance.formItemListCreateMSR)
@@ -80,7 +80,6 @@ namespace MSR.UIFormLayer
             needReviewTabDGVSource.DataSource = BusinessAPI.BusinessSingleton.Instance.MSRInfoAPI.GetShowMSRList(BusinessAPI.BusinessSingleton.Instance.userInfo_EF.DeptId.ToString(), Domain.WorkFlowTrace.NEED_REVIEW);
             needReviewTab_dataGridView.DataSource = needReviewTabDGVSource;
             needReviewTab_dataGridView.ClearSelection();
-
         }
 
         private void PopulateFilteredShowMSRItemListDGV(String workFlowTrace, String idSearchText, String deptSearchText, String ogSearchText, String apSearchText, BindingSource tabDGVSource, DataGridView dataGridView)
@@ -131,7 +130,7 @@ namespace MSR.UIFormLayer
             this.Hide();
 
             //Save state of DGV
-            BusinessAPI.BusinessSingleton.Instance.formItemListCreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(createTab_dataGridView);
+            BusinessAPI.BusinessSingleton.Instance.formItemListCreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGVToFormItemList(createTab_dataGridView);
 
             AddStockItemForm fAddStockItem = new AddStockItemForm(budgetPool_createTab_comboBox.Text, Domain.WorkFlowTrace.CreateMSR);
             fAddStockItem.ShowDialog();
@@ -147,7 +146,7 @@ namespace MSR.UIFormLayer
             this.Hide();
 
             //Save state of DGV
-            BusinessAPI.BusinessSingleton.Instance.formItemListCreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGV_ToFormItemList(createTab_dataGridView);
+            BusinessAPI.BusinessSingleton.Instance.formItemListCreateMSR = UserInterfaceAPI.UserInterfaceSIngleton.Instance.ConvertFormItemDGVToFormItemList(createTab_dataGridView);
 
             AddNonStockItemForm fAddNonStockItem = new AddNonStockItemForm(budgetPool_createTab_comboBox.Text, Domain.WorkFlowTrace.CreateMSR);
             fAddNonStockItem.ShowDialog();

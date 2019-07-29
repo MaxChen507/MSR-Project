@@ -31,8 +31,6 @@
             this.budgetInfo_addNonStock_dataGridView = new System.Windows.Forms.DataGridView();
             this.itemCode_addNonStock_label = new System.Windows.Forms.Label();
             this.itemCode_addNonStock_textBox = new System.Windows.Forms.TextBox();
-            this.activityCode_addNonStock_label = new System.Windows.Forms.Label();
-            this.activityCode_addNonStock_textBox = new System.Windows.Forms.TextBox();
             this.unit_addNonStock_textBox = new System.Windows.Forms.TextBox();
             this.unit_addNonStock_label = new System.Windows.Forms.Label();
             this.itemDesc_AddNonStock_label = new System.Windows.Forms.Label();
@@ -63,14 +61,14 @@
             // 
             this.budgetInfo_addNonStock_dataGridView.AllowUserToAddRows = false;
             this.budgetInfo_addNonStock_dataGridView.AllowUserToDeleteRows = false;
-            this.budgetInfo_addNonStock_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.budgetInfo_addNonStock_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.budgetInfo_addNonStock_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.budgetInfo_addNonStock_dataGridView.Location = new System.Drawing.Point(15, 51);
             this.budgetInfo_addNonStock_dataGridView.MultiSelect = false;
             this.budgetInfo_addNonStock_dataGridView.Name = "budgetInfo_addNonStock_dataGridView";
             this.budgetInfo_addNonStock_dataGridView.ReadOnly = true;
             this.budgetInfo_addNonStock_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.budgetInfo_addNonStock_dataGridView.Size = new System.Drawing.Size(380, 288);
+            this.budgetInfo_addNonStock_dataGridView.Size = new System.Drawing.Size(412, 288);
             this.budgetInfo_addNonStock_dataGridView.TabIndex = 0;
             // 
             // itemCode_addNonStock_label
@@ -90,26 +88,9 @@
             this.itemCode_addNonStock_textBox.Size = new System.Drawing.Size(100, 20);
             this.itemCode_addNonStock_textBox.TabIndex = 3;
             // 
-            // activityCode_addNonStock_label
-            // 
-            this.activityCode_addNonStock_label.AutoSize = true;
-            this.activityCode_addNonStock_label.Location = new System.Drawing.Point(558, 51);
-            this.activityCode_addNonStock_label.Name = "activityCode_addNonStock_label";
-            this.activityCode_addNonStock_label.Size = new System.Drawing.Size(69, 13);
-            this.activityCode_addNonStock_label.TabIndex = 4;
-            this.activityCode_addNonStock_label.Text = "Activity Code";
-            // 
-            // activityCode_addNonStock_textBox
-            // 
-            this.activityCode_addNonStock_textBox.Location = new System.Drawing.Point(561, 67);
-            this.activityCode_addNonStock_textBox.Name = "activityCode_addNonStock_textBox";
-            this.activityCode_addNonStock_textBox.ReadOnly = true;
-            this.activityCode_addNonStock_textBox.Size = new System.Drawing.Size(100, 20);
-            this.activityCode_addNonStock_textBox.TabIndex = 5;
-            // 
             // unit_addNonStock_textBox
             // 
-            this.unit_addNonStock_textBox.Location = new System.Drawing.Point(691, 67);
+            this.unit_addNonStock_textBox.Location = new System.Drawing.Point(542, 67);
             this.unit_addNonStock_textBox.Name = "unit_addNonStock_textBox";
             this.unit_addNonStock_textBox.Size = new System.Drawing.Size(100, 20);
             this.unit_addNonStock_textBox.TabIndex = 7;
@@ -117,7 +98,7 @@
             // unit_addNonStock_label
             // 
             this.unit_addNonStock_label.AutoSize = true;
-            this.unit_addNonStock_label.Location = new System.Drawing.Point(688, 51);
+            this.unit_addNonStock_label.Location = new System.Drawing.Point(539, 51);
             this.unit_addNonStock_label.Name = "unit_addNonStock_label";
             this.unit_addNonStock_label.Size = new System.Drawing.Size(26, 13);
             this.unit_addNonStock_label.TabIndex = 6;
@@ -266,7 +247,7 @@
             // 
             // AcSearch_addNonStock_textBox
             // 
-            this.AcSearch_addNonStock_textBox.Location = new System.Drawing.Point(174, 25);
+            this.AcSearch_addNonStock_textBox.Location = new System.Drawing.Point(58, 25);
             this.AcSearch_addNonStock_textBox.Name = "AcSearch_addNonStock_textBox";
             this.AcSearch_addNonStock_textBox.Size = new System.Drawing.Size(100, 20);
             this.AcSearch_addNonStock_textBox.TabIndex = 15;
@@ -275,7 +256,7 @@
             // AcSearch_addNonStock_label
             // 
             this.AcSearch_addNonStock_label.AutoSize = true;
-            this.AcSearch_addNonStock_label.Location = new System.Drawing.Point(201, 9);
+            this.AcSearch_addNonStock_label.Location = new System.Drawing.Point(85, 9);
             this.AcSearch_addNonStock_label.Name = "AcSearch_addNonStock_label";
             this.AcSearch_addNonStock_label.Size = new System.Drawing.Size(41, 13);
             this.AcSearch_addNonStock_label.TabIndex = 14;
@@ -283,7 +264,7 @@
             // 
             // AcDescSearch_addNonStock_textBox
             // 
-            this.AcDescSearch_addNonStock_textBox.Location = new System.Drawing.Point(286, 25);
+            this.AcDescSearch_addNonStock_textBox.Location = new System.Drawing.Point(168, 25);
             this.AcDescSearch_addNonStock_textBox.Name = "AcDescSearch_addNonStock_textBox";
             this.AcDescSearch_addNonStock_textBox.Size = new System.Drawing.Size(103, 20);
             this.AcDescSearch_addNonStock_textBox.TabIndex = 17;
@@ -292,7 +273,7 @@
             // AcDescSearch_addNonStock_label
             // 
             this.AcDescSearch_addNonStock_label.AutoSize = true;
-            this.AcDescSearch_addNonStock_label.Location = new System.Drawing.Point(310, 9);
+            this.AcDescSearch_addNonStock_label.Location = new System.Drawing.Point(192, 9);
             this.AcDescSearch_addNonStock_label.Name = "AcDescSearch_addNonStock_label";
             this.AcDescSearch_addNonStock_label.Size = new System.Drawing.Size(52, 13);
             this.AcDescSearch_addNonStock_label.TabIndex = 16;
@@ -316,8 +297,6 @@
             this.Controls.Add(this.itemDesc_AddNonStock_label);
             this.Controls.Add(this.unit_addNonStock_textBox);
             this.Controls.Add(this.unit_addNonStock_label);
-            this.Controls.Add(this.activityCode_addNonStock_textBox);
-            this.Controls.Add(this.activityCode_addNonStock_label);
             this.Controls.Add(this.itemCode_addNonStock_textBox);
             this.Controls.Add(this.itemCode_addNonStock_label);
             this.Controls.Add(this.budgetInfo_addNonStock_dataGridView);
@@ -336,8 +315,6 @@
         private System.Windows.Forms.DataGridView budgetInfo_addNonStock_dataGridView;
         private System.Windows.Forms.Label itemCode_addNonStock_label;
         private System.Windows.Forms.TextBox itemCode_addNonStock_textBox;
-        private System.Windows.Forms.Label activityCode_addNonStock_label;
-        private System.Windows.Forms.TextBox activityCode_addNonStock_textBox;
         private System.Windows.Forms.TextBox unit_addNonStock_textBox;
         private System.Windows.Forms.Label unit_addNonStock_label;
         private System.Windows.Forms.Label itemDesc_AddNonStock_label;
