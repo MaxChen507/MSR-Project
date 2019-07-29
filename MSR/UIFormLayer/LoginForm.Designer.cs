@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.username_Login_label = new System.Windows.Forms.Label();
             this.username_Login_textBox = new System.Windows.Forms.TextBox();
             this.password_Login_textBox = new System.Windows.Forms.TextBox();
             this.password_Login_label = new System.Windows.Forms.Label();
             this.ok_Login_button = new System.Windows.Forms.Button();
             this.cancel_Login_button = new System.Windows.Forms.Button();
+            this.logo_pictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.logo_pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // username_Login_label
@@ -91,11 +94,21 @@
             this.cancel_Login_button.UseVisualStyleBackColor = true;
             this.cancel_Login_button.Click += new System.EventHandler(this.Cancel_Login_button_Click);
             // 
+            // logo_pictureBox
+            // 
+            this.logo_pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logo_pictureBox.Image")));
+            this.logo_pictureBox.Location = new System.Drawing.Point(25, 28);
+            this.logo_pictureBox.Name = "logo_pictureBox";
+            this.logo_pictureBox.Size = new System.Drawing.Size(126, 98);
+            this.logo_pictureBox.TabIndex = 6;
+            this.logo_pictureBox.TabStop = false;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 181);
+            this.Controls.Add(this.logo_pictureBox);
             this.Controls.Add(this.cancel_Login_button);
             this.Controls.Add(this.ok_Login_button);
             this.Controls.Add(this.password_Login_textBox);
@@ -104,6 +117,7 @@
             this.Controls.Add(this.username_Login_label);
             this.Name = "LoginForm";
             this.Text = "LoginForm";
+            ((System.ComponentModel.ISupportInitialize)(this.logo_pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -117,5 +131,6 @@
         private System.Windows.Forms.Label password_Login_label;
         private System.Windows.Forms.Button ok_Login_button;
         private System.Windows.Forms.Button cancel_Login_button;
+        private System.Windows.Forms.PictureBox logo_pictureBox;
     }
 }
