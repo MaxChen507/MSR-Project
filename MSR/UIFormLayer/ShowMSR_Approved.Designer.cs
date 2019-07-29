@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShowMSR_Approved));
             this.budgetPool_showMSR_label = new System.Windows.Forms.Label();
             this.originator_showMSR_textBox = new System.Windows.Forms.TextBox();
             this.compApproval_showMSR_label = new System.Windows.Forms.Label();
@@ -690,6 +691,7 @@
             this.Controls.Add(this.budget_showMSR_groupBox);
             this.Controls.Add(this.info_showMSR_groupBox);
             this.Controls.Add(this.suggVendor_showMSR_groupBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ShowMSR_Approved";
             this.Text = "ShowMSR_Approved";
             this.Load += new System.EventHandler(this.ShowMSR_Approved_Load);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MSRMain_ProcurementForm));
             this.mainMenuUserControl = new UIFormLayer.MainMenuUserControl();
             this.approved_tabPage = new System.Windows.Forms.TabPage();
             this.approvedTab_dataGridView = new System.Windows.Forms.DataGridView();
@@ -187,6 +188,7 @@
             this.ClientSize = new System.Drawing.Size(1424, 906);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.mainMenuUserControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MSRMain_ProcurementForm";
             this.Text = "MSRMain_ProcurementForm";
             this.Load += new System.EventHandler(this.MSRMain_ProcurementForm_Load);

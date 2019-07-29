@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShowMSR_WaitForApproval));
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.undo_showMSR_button = new System.Windows.Forms.Button();
             this.addNonStock_showMSR_button = new System.Windows.Forms.Button();
@@ -700,6 +701,7 @@
             this.Controls.Add(this.suggVendor_showMSR_groupBox);
             this.Controls.Add(this.budget_showMSR_groupBox);
             this.Controls.Add(this.project_showMSR_groupBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ShowMSR_WaitForApproval";
             this.Text = "ShowMSR_WaitForApproval";
             this.Load += new System.EventHandler(this.ShowMSR_WaitForApproval_Load);

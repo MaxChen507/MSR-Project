@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MSRMainForm));
             this.mainMSR_tabControl = new System.Windows.Forms.TabControl();
             this.createNewMSR_tabPage = new System.Windows.Forms.TabPage();
             this.clearAllFields_createTab_button = new System.Windows.Forms.Button();
@@ -1003,6 +1004,7 @@
             this.ClientSize = new System.Drawing.Size(1424, 906);
             this.Controls.Add(this.mainMenuUserControl);
             this.Controls.Add(this.mainMSR_tabControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MSRMainForm";
             this.Text = "MSR Main Form";
             this.Load += new System.EventHandler(this.MSRMainForm_Load);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddNonStockItemForm));
             this.budgetInfo_addNonStock_dataGridView = new System.Windows.Forms.DataGridView();
             this.itemCode_addNonStock_label = new System.Windows.Forms.Label();
             this.itemCode_addNonStock_textBox = new System.Windows.Forms.TextBox();
@@ -300,6 +301,7 @@
             this.Controls.Add(this.itemCode_addNonStock_textBox);
             this.Controls.Add(this.itemCode_addNonStock_label);
             this.Controls.Add(this.budgetInfo_addNonStock_dataGridView);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddNonStockItemForm";
             this.Text = "AddNonStockItemForm";
             this.Load += new System.EventHandler(this.AddNonStockItemForm_Load);

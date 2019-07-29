@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddStockItemForm));
             this.search_AddStock_label = new System.Windows.Forms.Label();
             this.search_AddStock_textBox = new System.Windows.Forms.TextBox();
             this.lookup_AddStock_label = new System.Windows.Forms.Label();
@@ -228,6 +229,7 @@
             this.Controls.Add(this.lookup_AddStock_label);
             this.Controls.Add(this.search_AddStock_textBox);
             this.Controls.Add(this.search_AddStock_label);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddStockItemForm";
             this.Text = "AddStockItemForm";
             this.Load += new System.EventHandler(this.AddStockItemForm_Load);

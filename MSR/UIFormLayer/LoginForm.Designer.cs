@@ -97,9 +97,9 @@
             // logo_pictureBox
             // 
             this.logo_pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logo_pictureBox.Image")));
-            this.logo_pictureBox.Location = new System.Drawing.Point(25, 28);
+            this.logo_pictureBox.Location = new System.Drawing.Point(26, 28);
             this.logo_pictureBox.Name = "logo_pictureBox";
-            this.logo_pictureBox.Size = new System.Drawing.Size(126, 98);
+            this.logo_pictureBox.Size = new System.Drawing.Size(125, 86);
             this.logo_pictureBox.TabIndex = 6;
             this.logo_pictureBox.TabStop = false;
             // 
@@ -115,6 +115,7 @@
             this.Controls.Add(this.password_Login_label);
             this.Controls.Add(this.username_Login_textBox);
             this.Controls.Add(this.username_Login_label);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginForm";
             this.Text = "LoginForm";
             ((System.ComponentModel.ISupportInitialize)(this.logo_pictureBox)).EndInit();

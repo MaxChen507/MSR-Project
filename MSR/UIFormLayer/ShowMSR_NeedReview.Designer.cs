@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShowMSR_NeedReview));
             this.project_showMSR_textBox = new System.Windows.Forms.TextBox();
             this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -673,6 +674,7 @@
             this.Controls.Add(this.budget_showMSR_groupBox);
             this.Controls.Add(this.project_showMSR_groupBox);
             this.Controls.Add(this.suggVendor_showMSR_groupBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ShowMSR_NeedReview";
             this.Text = "ShowMSR_NeedReview";
             this.Load += new System.EventHandler(this.ShowMSR_NeedReview_Load);
