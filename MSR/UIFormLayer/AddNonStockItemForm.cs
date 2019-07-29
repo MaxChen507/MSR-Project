@@ -157,7 +157,7 @@ namespace MSR.UIFormLayer
 
             foreach (DataGridViewRow row in addList_addNonStock_dataGridView.Rows)
             {
-               if (row.Cells["ItemDesc"].FormattedValue.ToString().Equals(itemDesc_addNonStock_richTextBox.Text))
+               if (row.Cells["ItemDesc"].FormattedValue.ToString().Equals(itemDesc_addNonStock_richTextBox.Text.Trim()))
                 {
                     itemExists = true;
                 }
@@ -179,9 +179,9 @@ namespace MSR.UIFormLayer
             {
                 String BudgetPool = budgetInfo_addNonStock_dataGridView.SelectedRows[0].Cells["BpNo"].FormattedValue.ToString();
                 String ItemCode = "[NonStock]";
-                String ItemDesc = itemDesc_addNonStock_richTextBox.Text;
+                String ItemDesc = itemDesc_addNonStock_richTextBox.Text.Trim();
                 String Quantity = "1";
-                String Unit = unit_addNonStock_textBox.Text;
+                String Unit = unit_addNonStock_textBox.Text.Trim();
                 String UnitPrice = "";
                 String Currency = "";
                 String ROS_Date = BusinessAPI.BusinessSingleton.Instance.GetDateTime().AddDays(14).ToString("MM/dd/yyyy");
